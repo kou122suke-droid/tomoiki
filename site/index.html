@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ともいき｜共に生きる暮らしをつくる</title>
+<meta name="description" content="ともいきは、支え合いながら暮らす新しいコミュニティをつくるプロジェクトです。">
+<link rel="icon" href="assets/tomoiki-mark.png">
+
+<!--
+  ============================================================
+  暫定版（プレースホルダ）
+  「トップページ デザイン.dc.html」を未受領のため、assets/ の
+  ファイル名から構成を組んだ仮のレイアウトです。
+  デザインファイルを受け取り次第、本実装に差し替えます。
+  文言・人名・肩書きはすべて仮置きです。
+  ============================================================
+-->
+
+<style>
+:root{
+  --ink:#2f2a24;
+  --ink-soft:#6b6157;
+  --cream:#faf7f1;
+  --sand:#f0e9dd;
+  --clay:#c0714a;
+  --clay-dark:#a25a37;
+  --forest:#4a6b50;
+  --line:#e2d9c9;
+  --maxw:1120px;
+  --serif:"Yu Mincho","YuMincho","Hiragino Mincho ProN",serif;
+  --sans:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic",Meiryo,system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- placeholder frame ---------- */
+.ph{
+  position:relative;
+  background:
+    linear-gradient(135deg,var(--sand) 0%,#e6ddcd 100%);
+  border:1px solid var(--line);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.ph::after{
+  content:attr(data-label);
+  position:absolute;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.04em;
+  color:#a2957f;
+  padding:0 12px;
+  text-align:center;
+  pointer-events:none;
+}
+.ph img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
+.ph.contain img{object-fit:contain}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,247,241,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.site-header .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .ph{width:132px;height:36px;border:none;background:none}
+.brand .ph::after{font-size:10px}
+.brand-name{font-family:var(--serif);font-size:20px;letter-spacing:.12em}
+.nav{display:flex;gap:28px;font-size:14px;letter-spacing:.06em}
+.nav a{text-decoration:none;color:var(--ink-soft);transition:color .2s}
+.nav a:hover{color:var(--clay)}
+.nav-cta{
+  display:inline-block;padding:10px 22px;border-radius:999px;
+  background:var(--clay);color:#fff;text-decoration:none;
+  font-size:14px;letter-spacing:.06em;transition:background .2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--clay-dark)}
+@media(max-width:860px){.nav{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative}
+.hero .ph{height:min(78vh,620px)}
+.hero-copy{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(90deg,rgba(30,25,20,.55) 0%,rgba(30,25,20,.15) 70%);
+  color:#fff;
+}
+.hero-copy .wrap{width:100%}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(28px,5vw,52px);
+  line-height:1.5;letter-spacing:.08em;
+  margin:0 0 20px;
+  text-shadow:0 2px 24px rgba(0,0,0,.35);
+}
+.hero p{
+  font-size:clamp(14px,1.6vw,17px);
+  max-width:34em;margin:0 0 32px;
+  text-shadow:0 1px 12px rgba(0,0,0,.4);
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:14px 32px;border-radius:999px;
+  text-decoration:none;font-size:15px;letter-spacing:.06em;transition:.2s;
+}
+.btn-primary{background:var(--clay);color:#fff}
+.btn-primary:hover{background:var(--clay-dark)}
+.btn-ghost{border:1px solid rgba(255,255,255,.7);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+/* ---------- section ---------- */
+section{padding:96px 0}
+section.alt{background:var(--sand)}
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-label{
+  font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.24em;
+  color:var(--clay);display:block;margin-bottom:14px;text-transform:uppercase;
+}
+.sec-head h2{
+  font-family:var(--serif);
+  font-size:clamp(24px,3.4vw,34px);
+  letter-spacing:.1em;margin:0 0 18px;font-weight:500;
+}
+.sec-head p{color:var(--ink-soft);margin:0 auto;max-width:40em;font-size:15px}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.two-col.reverse .col-img{order:2}
+@media(max-width:820px){.two-col{grid-template-columns:1fr;gap:32px}.two-col.reverse .col-img{order:0}}
+.col-text h3{font-family:var(--serif);font-size:22px;letter-spacing:.08em;margin:0 0 18px;font-weight:500}
+.col-text p{color:var(--ink-soft);font-size:15px;margin:0 0 16px}
+
+/* ---------- elements grid ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+@media(max-width:820px){.grid-3{grid-template-columns:1fr;gap:28px}.grid-2{grid-template-columns:1fr;gap:28px}}
+.card{background:var(--cream);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+section.alt .card{background:#fff}
+.card .ph{aspect-ratio:4/3}
+.card-body{padding:24px}
+.card-body h3{font-family:var(--serif);font-size:18px;letter-spacing:.06em;margin:0 0 10px;font-weight:500}
+.card-body p{color:var(--ink-soft);font-size:14px;margin:0}
+
+/* ---------- members ---------- */
+.members{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+@media(max-width:820px){.members{grid-template-columns:repeat(2,1fr);gap:24px}}
+@media(max-width:520px){.members{grid-template-columns:1fr}}
+.member{text-align:center}
+.member .ph{aspect-ratio:1;border-radius:50%;margin:0 auto 18px;max-width:200px}
+.member h3{font-family:var(--serif);font-size:18px;letter-spacing:.1em;margin:0 0 6px;font-weight:500}
+.member .role{font-size:13px;color:var(--clay);letter-spacing:.06em;margin:0 0 10px}
+.member p{font-size:13px;color:var(--ink-soft);margin:0;line-height:1.8}
+
+/* ---------- contact ---------- */
+.contact{background:var(--forest);color:#fff;text-align:center}
+.contact .sec-label{color:#c5d8c9}
+.contact h2{font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);letter-spacing:.1em;margin:0 0 18px;font-weight:500}
+.contact > .wrap > p{color:rgba(255,255,255,.82);max-width:38em;margin:0 auto 44px;font-size:15px}
+.contact-rows{display:flex;justify-content:center;gap:56px;flex-wrap:wrap}
+.contact-row{display:flex;align-items:center;gap:14px;font-size:16px;letter-spacing:.04em}
+.contact-row .ph{width:36px;height:36px;flex:none;border:none;background:rgba(255,255,255,.14);border-radius:50%}
+.contact-row .ph::after{font-size:8px;color:rgba(255,255,255,.5)}
+
+/* ---------- footer ---------- */
+.site-footer{background:#2f2a24;color:rgba(255,255,255,.62);padding:56px 0 40px;font-size:13px}
+.site-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.site-footer .ph{width:48px;height:48px;border:none;background:rgba(255,255,255,.08)}
+.site-footer .ph::after{font-size:8px;color:rgba(255,255,255,.4)}
+.footer-nav{display:flex;gap:24px;flex-wrap:wrap}
+.footer-nav a{text-decoration:none;transition:color .2s}
+.footer-nav a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="ph contain" data-label="logo-color.png"><img src="assets/logo-color.png" alt="ともいき"></span>
+    </a>
+    <nav class="nav">
+      <a href="#about">ともいきとは</a>
+      <a href="#elements">6つの要素</a>
+      <a href="#life">目指す暮らし</a>
+      <a href="#earthsong">アースソング</a>
+      <a href="#members">メンバー</a>
+      <a href="#activities">活動</a>
+    </nav>
+    <a class="nav-cta" href="#contact">お問い合わせ</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="ph" data-label="hero-village.png"><img src="assets/hero-village.png" alt=""></div>
+    <div class="hero-copy">
+      <div class="wrap">
+        <h1>共に生きる暮らしを、<br>ここから。</h1>
+        <p>ひとりで抱えこまない。関わりすぎない。ちょうどよい距離で支え合いながら暮らす、新しいコミュニティのかたちをつくっています。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about">ともいきを知る</a>
+          <a class="btn btn-ghost" href="#activities">見学・イベント情報</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">About</span>
+        <h2>ともいきとは</h2>
+        <p>暮らしの一部を分かち合いながら、それぞれの自立した生活を大切にする。そんな住まい方を仲間とつくっていくプロジェクトです。</p>
+      </div>
+      <div class="two-col">
+        <div class="col-img">
+          <div class="ph contain" data-label="tomoiki-center.png" style="aspect-ratio:1"><img src="assets/tomoiki-center.png" alt=""></div>
+        </div>
+        <div class="col-text">
+          <h3>「ともに生きる」を、間取りから考える</h3>
+          <p>それぞれの住戸はしっかり独立させながら、中心にみんなで使える場所を置く。共同の食事や集まりが自然に生まれる配置にすることで、特別な努力をしなくても関わりが続いていきます。</p>
+          <p>行事や当番でつなぎとめるのではなく、日々の動線の中で顔を合わせられること。それが私たちの考える「ともいき」の出発点です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="alt" id="philosophy">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">Philosophy</span>
+        <h2>私たちの考え方</h2>
+        <p>環境・経済・人のつながり。どれかひとつではなく、重なり合う部分に暮らしをつくります。</p>
+      </div>
+      <div class="ph contain" data-label="philosophy-diagram-v3.png" style="aspect-ratio:16/9;max-width:880px;margin:0 auto;background:#fff">
+        <img src="assets/philosophy-diagram-v3.png" alt="ともいきの理念図">
+      </div>
+    </div>
+  </section>
+
+  <!-- SIX ELEMENTS -->
+  <section id="elements">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">Six Elements</span>
+        <h2>6つの要素</h2>
+        <p>ともいきの暮らしを形づくる、6つの柱。</p>
+      </div>
+      <div class="ph contain" data-label="six-elements.png" style="aspect-ratio:16/9;max-width:880px;margin:0 auto"><img src="assets/six-elements.png" alt="6つの要素"></div>
+    </div>
+  </section>
+
+  <!-- LIFE -->
+  <section class="alt" id="life">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">Our Life</span>
+        <h2>目指す暮らし</h2>
+        <p>大きな理想の前に、まず毎日をどう過ごすか。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ph" data-label="common-meal.jpg"><img src="assets/common-meal.jpg" alt=""></div>
+          <div class="card-body">
+            <h3>コモンミール</h3>
+            <p>週に何度か、みんなで食卓を囲む。当番制でつくり、来られる人が来る。義務ではなく楽しみとして続けられる形を探しています。</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="ph" data-label="sketch-family.png"><img src="assets/sketch-family.png" alt=""></div>
+          <div class="card-body">
+            <h3>世代を越えて</h3>
+            <p>子育て世帯もひとり暮らしも、シニアも。年齢の違う人が同じ場所にいることで、支え合いは自然に生まれます。</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="ph" data-label="purpose-house.png"><img src="assets/purpose-house.png" alt=""></div>
+          <div class="card-body">
+            <h3>共有と自立</h3>
+            <p>持ち物も場所も、分け合えるものは分け合う。けれど暮らしの決定権はそれぞれの手に。バランスを丁寧に設計します。</p>
+          </div>
+        </article>
+      </div>
+      <div class="two-col reverse" style="margin-top:72px">
+        <div class="col-img">
+          <div class="ph contain" data-label="tomoiki-house.png" style="aspect-ratio:4/3"><img src="assets/tomoiki-house.png" alt=""></div>
+        </div>
+        <div class="col-text">
+          <h3>住まいのかたち</h3>
+          <p>独立した住戸と、共用のコモンハウス。一般的な集合住宅とも、シェアハウスとも違う中間のかたちを目指しています。</p>
+          <p>建物の計画は、住む人が話し合いながら決めていきます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EARTHSONG -->
+  <section id="earthsong">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">Earthsong</span>
+        <h2>アースソングに学ぶ</h2>
+        <p>ニュージーランドのコハウジング「Earthsong Eco-Neighbourhood」。20年以上続くその実践から、多くを学んでいます。</p>
+      </div>
+      <div class="grid-2">
+        <div class="ph" data-label="earthsong-members.png" style="aspect-ratio:4/3"><img src="assets/earthsong-members.png" alt=""></div>
+        <div class="ph contain" data-label="earthsong-siteplan.png" style="aspect-ratio:4/3;background:#fff"><img src="assets/earthsong-siteplan.png" alt=""></div>
+      </div>
+      <div class="two-col" style="margin-top:64px">
+        <div class="col-img">
+          <div class="ph" data-label="robin-allison.jpg" style="aspect-ratio:3/4;max-width:320px"><img src="assets/robin-allison.jpg" alt=""></div>
+        </div>
+        <div class="col-text">
+          <h3>ロビン・アリソンさん</h3>
+          <p>アースソングの創設者。ひとりの構想から始まり、住民同士の合意形成を重ねながら20年以上かけてコミュニティを育ててきました。</p>
+          <p>その歩みは、私たちがこれから直面する課題そのものです。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="alt" id="location">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">Location</span>
+        <h2>場所について</h2>
+        <p>暮らしの土台となる立地を検討しています。</p>
+      </div>
+      <div class="ph contain" data-label="map-figure-v2.png" style="aspect-ratio:16/9;max-width:880px;margin:0 auto;background:#fff"><img src="assets/map-figure-v2.png" alt="計画地の地図"></div>
+    </div>
+  </section>
+
+  <!-- MEMBERS -->
+  <section id="members">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">Members</span>
+        <h2>メンバー</h2>
+        <p>それぞれの動機を持ち寄って、この場をつくっています。</p>
+      </div>
+      <div class="members">
+        <div class="member">
+          <div class="ph" data-label="member-ueda.jpg"><img src="assets/member-ueda.jpg" alt=""></div>
+          <h3>上田</h3><p class="role">仮の肩書き</p><p>プロフィール文が入ります。</p>
+        </div>
+        <div class="member">
+          <div class="ph" data-label="member-inoue.jpg"><img src="assets/member-inoue.jpg" alt=""></div>
+          <h3>井上</h3><p class="role">仮の肩書き</p><p>プロフィール文が入ります。</p>
+        </div>
+        <div class="member">
+          <div class="ph" data-label="member-takahashi.jpg"><img src="assets/member-takahashi.jpg" alt=""></div>
+          <h3>高橋</h3><p class="role">仮の肩書き</p><p>プロフィール文が入ります。</p>
+        </div>
+        <div class="member">
+          <div class="ph" data-label="member-tsumura.jpg"><img src="assets/member-tsumura.jpg" alt=""></div>
+          <h3>津村</h3><p class="role">仮の肩書き</p><p>プロフィール文が入ります。</p>
+        </div>
+        <div class="member">
+          <div class="ph" data-label="member-sadakata.jpg"><img src="assets/member-sadakata.jpg" alt=""></div>
+          <h3>貞方</h3><p class="role">仮の肩書き</p><p>プロフィール文が入ります。</p>
+        </div>
+        <div class="member">
+          <div class="ph" data-label="member-sagesaka.jpg"><img src="assets/member-sagesaka.jpg" alt=""></div>
+          <h3>提坂</h3><p class="role">仮の肩書き</p><p>プロフィール文が入ります。</p>
+        </div>
+      </div>
+      <div class="ph" data-label="members-group.jpg" style="aspect-ratio:21/9;margin-top:64px"><img src="assets/members-group.jpg" alt="メンバー集合写真"></div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section class="alt" id="activities">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-label">Activities</span>
+        <h2>活動</h2>
+        <p>読書会、勉強会、現地見学。どなたでも参加できる会を開いています。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ph" data-label="reading-circle.png"><img src="assets/reading-circle.png" alt=""></div>
+          <div class="card-body">
+            <h3>読書会</h3>
+            <p>コハウジングやコミュニティづくりの本を、みんなで読み解いていきます。初参加の方も歓迎です。</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="ph" data-label="event-session-visual-v2.png"><img src="assets/event-session-visual-v2.png" alt=""></div>
+          <div class="card-body">
+            <h3>説明会・セッション</h3>
+            <p>ともいきの構想をお話しし、参加者同士で意見を交わす場です。オンラインでも開催しています。</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="ph" data-label="site-visit.png"><img src="assets/site-visit.png" alt=""></div>
+          <div class="card-body">
+            <h3>現地見学</h3>
+            <p>計画地を実際に歩いて、これからの暮らしを一緒に想像してみませんか。</p>
+          </div>
+        </article>
+      </div>
+      <div class="two-col reverse" style="margin-top:72px">
+        <div class="col-img">
+          <div class="ph contain" data-label="book-cover-v2.png" style="aspect-ratio:3/4;max-width:300px;background:#fff"><img src="assets/book-cover-v2.png" alt=""></div>
+        </div>
+        <div class="col-text">
+          <h3>いま読んでいる本</h3>
+          <p>書名と紹介文が入ります。読書会で扱っている本をご案内します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <span class="sec-label">Contact</span>
+      <h2>お問い合わせ</h2>
+      <p>興味を持たれた方、話を聞いてみたい方は、お気軽にご連絡ください。まずは読書会や説明会にお越しいただくのがおすすめです。</p>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="ph contain" data-label="mail"><img src="assets/icon-mail.png" alt=""></span>
+          <span>info@example.jp</span>
+        </div>
+        <div class="contact-row">
+          <span class="ph contain" data-label="tel"><img src="assets/icon-phone.png" alt=""></span>
+          <span>000-0000-0000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="ph contain" data-label="logo-mark"><img src="assets/logo-mark.png" alt=""></span>
+    <nav class="footer-nav">
+      <a href="#about">ともいきとは</a>
+      <a href="#members">メンバー</a>
+      <a href="#activities">活動</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+    <small>&copy; ともいき</small>
+  </div>
+</footer>
+
+<script>
+/* 画像が未配置のあいだはプレースホルダ枠を見せる */
+document.querySelectorAll('.ph img').forEach(function (img) {
+  img.addEventListener('error', function () { img.style.display = 'none'; });
+  if (img.complete && img.naturalWidth === 0) img.style.display = 'none';
+});
+</script>
+</body>
+</html>

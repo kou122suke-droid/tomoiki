@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一般社団法人 ともに生きる実践ラボ｜Co-Living Practice Lab</title>
+<meta name="description" content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出します。">
+<link rel="icon" href="assets/tomoiki-mark.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="一般社団法人 ともに生きる実践ラボ">
+<meta property="og:description" content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出します。">
+<meta property="og:image" content="assets/hero-village.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   ともに生きる実践ラボ — トップページ
+   「トップページ デザイン.dc.html」より実装
+   ============================================================ */
+
+:root{
+  --cream:#f6f1e7;
+  --warm:#fbf8f1;
+  --sand:#ece3d0;
+  --panel:#f1efe4;
+
+  --ink:#3b3a31;
+  --ink-dark:#2f3526;
+  --ink-mid:#595744;
+  --ink-mid2:#4d4a3b;
+  --ink-soft:#6b6857;
+  --muted:#8a8470;
+
+  --olive:#46512f;
+  --olive-mid:#6b7a48;
+  --gold:#b08a5d;
+  --gold-light:#d19a55;
+  --sage:#a7bd84;
+  --sky:#8fb6c9;
+  --apricot:#e6b184;
+  --straw:#d3b96a;
+  --fb:#3b5998;
+
+  --line:#e0d7c0;
+  --line2:#e6ddca;
+  --line3:#ece3d0;
+  --line4:#ddd2bb;
+  --line5:#cdd4b8;
+
+  --serif:'Noto Serif JP',serif;
+  --sans:'Noto Sans JP',sans-serif;
+  --display:'Cormorant Garamond',serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{margin:0}
+p{margin:0}
+ul{list-style:none;padding:0;margin:0}
+
+.inner{max-width:1200px;margin:0 auto;padding:0 40px}
+
+/* ---------- eyebrow ---------- */
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);flex:none}
+.eyebrow span{font-family:var(--display);font-size:16px;letter-spacing:3px;color:var(--gold)}
+.eyebrow.italic span{font-style:italic}
+.eyebrow.caps span{letter-spacing:4px;text-transform:uppercase}
+.eyebrow.center{justify-content:center;display:flex}
+.eyebrow.center::after{content:"";width:34px;height:1px;background:var(--gold);flex:none}
+
+/* ---------- section heads ---------- */
+.sec-h2{font-family:var(--serif);font-weight:600;font-size:31px;line-height:1.6;letter-spacing:1.5px;color:var(--ink-dark)}
+.sub-head{display:flex;align-items:baseline;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:34px}
+.sub-head h3{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:1px;color:var(--ink-dark)}
+.sub-head span{font-family:var(--display);font-style:italic;font-size:14px;color:var(--gold)}
+
+/* ---------- reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+[data-reveal].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1!important;transform:none!important;transition:none}
+  *{animation:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ============ HEADER ============ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,241,231,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #e4dcc9;
+}
+.site-header .inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding-top:14px;padding-bottom:14px;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:none}
+.brand img{height:48px;width:auto}
+.brand-text{display:flex;flex-direction:column;gap:3px}
+.brand-ja{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:2px;color:var(--olive);line-height:1.2;white-space:nowrap}
+.brand-ja em{font-style:normal;color:var(--gold-light)}
+.brand-en{font-family:var(--display);font-size:13px;letter-spacing:2.5px;color:var(--ink-soft);line-height:1.2;white-space:nowrap}
+
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{font-size:13px;letter-spacing:1px;color:var(--olive);text-decoration:none;font-weight:500;white-space:nowrap}
+.nav a:hover{color:var(--gold)}
+.nav .nav-cta{
+  display:inline-flex;align-items:center;gap:7px;
+  color:#fff;background:var(--olive);padding:10px 20px;border-radius:999px;
+}
+.nav .nav-cta:hover{background:#39421a;color:#fff}
+
+.nav-toggle{
+  display:none;flex:none;width:44px;height:44px;
+  border:1px solid var(--line4);border-radius:8px;background:var(--warm);
+  cursor:pointer;padding:0;align-items:center;justify-content:center;
+}
+.nav-toggle span{position:relative;display:block;width:20px;height:1.5px;background:var(--olive)}
+.nav-toggle span::before,.nav-toggle span::after{
+  content:"";position:absolute;left:0;width:20px;height:1.5px;background:var(--olive);transition:transform .25s ease,opacity .25s ease;
+}
+.nav-toggle span::before{top:-6px}
+.nav-toggle span::after{top:6px}
+.nav-toggle[aria-expanded="true"] span{background:transparent}
+.nav-toggle[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* ============ HERO ============ */
+.hero{position:relative;width:100%;height:660px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-img.s1{animation:heroSlide1 21s ease-in-out infinite}
+.hero-img.s2{animation:heroSlide2 21s ease-in-out infinite}
+.hero-img.s3{animation:heroSlide3 21s ease-in-out infinite}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,46,28,.62) 0%,rgba(40,46,28,.30) 46%,rgba(40,46,28,.05) 100%)}
+.hero .inner{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center}
+.hero-body{max-width:700px}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.hero-eyebrow::before{content:"";width:46px;height:1px;background:rgba(255,255,255,.7)}
+.hero-eyebrow span{font-family:var(--display);font-style:italic;font-size:21px;color:#f3ead7;letter-spacing:1px}
+.hero h1{
+  font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.5;
+  color:#fffdf7;margin-bottom:26px;letter-spacing:2px;
+  text-shadow:0 2px 18px rgba(30,34,20,.35);
+}
+.hero-lead{
+  font-size:16px;line-height:2.1;color:#f1ece0;margin-bottom:38px;
+  text-shadow:0 1px 10px rgba(30,34,20,.3);
+}
+.btn-fb{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:15px;font-weight:500;color:#fff;background:var(--fb);
+  padding:16px 30px;border-radius:999px;text-decoration:none;
+  box-shadow:0 8px 24px rgba(30,34,20,.22);
+}
+.btn-fb:hover{background:#31497f;color:#fff}
+.btn-fb .f{font-family:Georgia,serif;font-weight:700;font-size:18px}
+
+@keyframes heroSlide1{
+  0%{opacity:1;transform:scale(1)}
+  28%{opacity:1;transform:scale(1.04)}
+  36%,92%{opacity:0;transform:scale(1.04)}
+  93%{opacity:0;transform:scale(1)}
+  100%{opacity:1;transform:scale(1)}
+}
+@keyframes heroSlide2{
+  0%,28%{opacity:0;transform:scale(1)}
+  36%{opacity:1;transform:scale(1)}
+  61%{opacity:1;transform:scale(1.04)}
+  69%,100%{opacity:0;transform:scale(1.04)}
+}
+@keyframes heroSlide3{
+  0%,61%{opacity:0;transform:scale(1)}
+  69%{opacity:1;transform:scale(1)}
+  94%{opacity:1;transform:scale(1.04)}
+  100%{opacity:0;transform:scale(1.04)}
+}
+
+/* connection bar */
+.connect-bar{height:5px;width:100%;background:linear-gradient(90deg,var(--sky) 0%,var(--apricot) 50%,var(--sage) 100%)}
+
+/* ============ NEWS ============ */
+.news{background:var(--warm);padding:84px 0 88px}
+.news .inner{max-width:1080px}
+.news-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+  padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:8px;
+}
+.news-head .t{display:flex;align-items:baseline;gap:16px}
+.news-head h2{font-family:var(--serif);font-weight:600;font-size:25px;letter-spacing:2px;color:var(--ink-dark)}
+.news-head .en{font-family:var(--display);font-style:italic;font-size:15px;letter-spacing:2px;color:var(--gold)}
+.news-head .more{font-size:13px;color:var(--olive);text-decoration:none;letter-spacing:1px;white-space:nowrap}
+.news li{border-bottom:1px solid var(--line3)}
+.news li a{
+  display:grid;grid-template-columns:108px 108px 1fr;gap:24px;align-items:center;
+  padding:24px 4px;text-decoration:none;
+}
+.news li a:hover .ttl{color:var(--olive)}
+.news time{font-family:Arial,Helvetica,sans-serif;font-size:20px;letter-spacing:1px;color:var(--muted)}
+.tag{font-size:11.5px;color:#fff;padding:4px 0;border-radius:999px;text-align:center;letter-spacing:1px}
+.tag.event{background:var(--straw)}
+.tag.book{background:var(--sky)}
+.tag.corp{background:var(--apricot)}
+.tag.cf{background:var(--sage)}
+.news .ttl{font-size:15px;line-height:1.75;color:var(--ink);transition:color .2s}
+
+/* ============ CONCEPT ============ */
+.concept{background:var(--cream);padding:110px 0 100px;position:relative;overflow:hidden}
+.concept .inner{max-width:1180px}
+.concept-grid{display:grid;grid-template-columns:1fr .82fr;gap:80px;align-items:center}
+.concept h2{font-family:var(--serif);font-weight:500;font-size:33px;line-height:1.7;letter-spacing:1.5px;margin-bottom:30px;color:var(--ink-dark)}
+.concept p{font-size:15.5px;line-height:2.3;color:var(--ink-mid)}
+.concept p + p{margin-top:1.6em}
+.concept-fig{display:flex;align-items:center;justify-content:center}
+.concept-fig img{width:100%;max-width:460px}
+.bird{position:absolute;overflow:visible}
+.bird g{transform-origin:20px 8px}
+@keyframes birdFly{
+  0%{transform:translate(0,0) rotate(0deg);opacity:0}
+  8%{opacity:.75}
+  50%{transform:translate(-150px,-46px) rotate(-4deg);opacity:.75}
+  92%{opacity:.75}
+  100%{transform:translate(-300px,10px) rotate(2deg);opacity:0}
+}
+@keyframes wingFlap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+
+/* ============ PHILOSOPHY ============ */
+.philosophy{background:linear-gradient(180deg,#efe7d7 0%,#f1ead9 100%);padding:110px 0 120px}
+.philosophy .head{text-align:center;max-width:760px;margin:0 auto 70px}
+.philosophy .head .eyebrow{margin-bottom:24px}
+.philosophy h2{font-family:var(--serif);font-weight:500;font-size:33px;line-height:1.6;letter-spacing:2px;margin-bottom:22px;color:var(--ink-dark)}
+.philosophy .head p{font-size:15.5px;line-height:2.2;color:var(--ink-mid)}
+.philosophy-diagram{max-width:860px;margin:0 auto}
+.philosophy-diagram img{width:100%;height:auto}
+.philosophy .close{max-width:900px;margin:66px auto 0;text-align:center}
+.philosophy .close .lead{font-size:17.5px;line-height:2.3;color:var(--ink-mid);margin-bottom:34px}
+.philosophy .close .lead em{font-family:var(--display);font-size:17px;color:var(--gold);font-style:italic}
+.philosophy .close .last{font-family:var(--serif);font-weight:500;font-size:19px;line-height:2;letter-spacing:1px;color:var(--olive)}
+
+/* ============ ORIGIN ============ */
+.origin{background:var(--cream);padding:108px 0 100px}
+.origin .inner{max-width:1020px}
+.origin h2{margin-bottom:30px}
+.origin .lede{font-size:15.5px;line-height:2.2;color:var(--ink-mid);margin-bottom:46px}
+.origin .lede em{font-family:var(--display);font-size:16px;color:var(--muted);font-style:italic}
+.book-row{display:grid;grid-template-columns:250px 1fr;gap:42px;align-items:start;margin-bottom:40px}
+.book-row p{font-size:15.5px;line-height:2.25;color:var(--ink-mid2)}
+.book-row .note{font-size:13.5px;color:var(--muted)}
+strong{font-weight:700;color:var(--ink-dark)}
+.btn-sage{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+  font-size:14.5px;font-weight:500;color:#fff;background:var(--sage);
+  border:1px solid var(--sage);padding:14px 30px;border-radius:999px;text-decoration:none;
+}
+.btn-sage:hover{background:#93aa70;border-color:#93aa70;color:#fff}
+
+.earthsong-row{display:flex;justify-content:center;align-items:flex-start;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.earthsong-row figure{margin:0;width:300px;max-width:100%}
+.earthsong-row figure img{width:100%;aspect-ratio:750/1000;object-fit:cover;border-radius:12px}
+.earthsong-row figcaption{font-size:12px;line-height:1.8;color:var(--muted);margin-top:10px}
+.earthsong-row figcaption span{font-family:var(--display);letter-spacing:1px}
+.earthsong-col{display:flex;flex-direction:column;gap:24px;width:420px;max-width:100%}
+.earthsong-col img{width:100%;object-fit:cover;border-radius:12px}
+
+blockquote{
+  margin:0;background:var(--warm);border-left:3px solid var(--gold);
+  border-radius:0 12px 12px 0;padding:40px 44px;
+}
+blockquote .intro{font-size:14.5px;line-height:2.1;color:var(--ink-soft);margin-bottom:22px}
+blockquote .quote{font-family:var(--serif);font-size:16px;line-height:2.15;color:var(--ink);margin-bottom:26px}
+blockquote footer{font-size:13px;color:var(--muted);text-align:right}
+
+.origin-close{margin-top:64px}
+.origin-close h3{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.6;letter-spacing:1.5px;margin-bottom:24px;color:var(--ink-dark)}
+.origin-close > p{font-size:15.5px;line-height:2.25;color:var(--ink-mid);margin-bottom:34px}
+.six-elements{margin-bottom:44px}
+.six-elements img{width:100%;height:auto}
+.year-box{background:var(--panel);border-radius:14px;padding:44px 48px;margin-bottom:44px}
+.year-box p{font-family:var(--serif);font-weight:500;font-size:16.5px;line-height:2.15;color:var(--ink-dark)}
+
+/* ============ DOORWAYS ============ */
+.ladder{background:var(--warm);padding:100px 0 96px}
+.ladder .inner{max-width:1160px}
+.ladder h2{margin-bottom:26px}
+.ladder .lead{font-size:17.5px;line-height:2.2;color:var(--ink-mid);margin-bottom:54px;max-width:780px}
+.door-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-bottom:46px}
+.door{background:var(--warm);border:1px solid var(--line2);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(80,75,55,.05)}
+.door .thumb{aspect-ratio:4/3;border-bottom:1px solid var(--line5);overflow:hidden}
+.door .thumb img{width:100%;height:100%;object-fit:cover}
+.door .body{padding:28px 30px 32px}
+.door h3{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:1px;margin-bottom:14px;color:var(--ink-dark)}
+.door p{font-size:14px;line-height:2;color:var(--ink-soft)}
+.ladder .note{font-size:14.5px;line-height:2.2;color:var(--muted);margin-bottom:34px;max-width:920px}
+.ladder .last{font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.9;letter-spacing:1px;color:var(--olive)}
+
+/* ============ PLATFORM ============ */
+.platform{background:var(--warm);padding:104px 0 96px}
+.platform .inner{max-width:1020px}
+.platform .eyebrow .badge{
+  font-family:var(--sans);font-size:10.5px;color:#fff;background:var(--olive);
+  padding:4px 10px;border-radius:5px;letter-spacing:1px;
+}
+.platform .kicker{font-size:15px;line-height:2.1;color:var(--ink-soft);margin-bottom:18px}
+.platform h2{margin-bottom:28px}
+.platform .lead{font-size:15px;line-height:2.25;color:var(--ink-soft);margin-bottom:54px}
+.map-figure{max-width:1080px;margin:0 auto 62px}
+.map-figure img{width:100%;height:auto}
+.biz-list{display:flex;flex-direction:column;gap:32px;margin-bottom:46px}
+.biz{display:flex;align-items:flex-start;gap:20px}
+.biz .num{
+  flex:none;width:28px;height:28px;border-radius:50%;background:var(--olive-mid);
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+  font-family:var(--display);font-size:14px;color:#fff;
+}
+.biz h4{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:1px;margin-bottom:12px;color:var(--ink-dark)}
+.biz p{font-size:14px;line-height:2.1;color:var(--ink-soft)}
+.arrow-note{text-align:center;margin-bottom:54px}
+.arrow-note .arrow{font-size:18px;color:var(--sage);line-height:1;margin-bottom:14px}
+.arrow-note p{font-family:var(--serif);font-style:italic;font-size:13.5px;letter-spacing:1px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:48px}
+.form-card{background:var(--cream);border:1px solid var(--line2);border-radius:12px;padding:24px 24px 30px;text-align:center}
+.form-card .fig{margin-bottom:22px;display:flex;align-items:center;justify-content:center;min-height:120px}
+.form-card .fig img{width:100%;height:auto}
+.form-card .fig.mark img{width:62%}
+.form-card h4{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:1px;margin-bottom:6px;color:var(--ink-dark)}
+.form-card .en{font-family:var(--display);font-style:italic;font-size:13px;color:var(--gold);margin-bottom:16px}
+.form-card p{font-size:13px;line-height:1.95;color:var(--ink-soft)}
+.pull-box{background:var(--panel);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:30px 36px}
+.pull-box p{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.95;color:var(--ink-dark)}
+
+/* ============ MEMBERS ============ */
+.members{background:var(--cream);padding:104px 0 96px}
+.members .inner{max-width:1080px}
+.members h2{font-family:var(--serif);font-weight:600;font-size:29px;line-height:1.6;letter-spacing:1.5px;margin-bottom:24px;color:var(--ink-dark)}
+.members .lead{font-size:15px;line-height:2.15;color:var(--ink-soft);margin-bottom:44px}
+.group-photo{border-radius:12px;overflow:hidden;margin-bottom:34px}
+.group-photo img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.member-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 30px;margin-bottom:56px}
+.member .portrait{border-radius:10px;overflow:hidden;aspect-ratio:1;margin-bottom:16px;background:#e5e9d9}
+.member .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.member h3{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:1px;margin-bottom:8px;color:var(--ink-dark)}
+.member .meta{display:flex;align-items:baseline;gap:14px;margin-bottom:10px;flex-wrap:wrap}
+.member .role{font-size:12.5px;color:var(--gold)}
+.member .romaji{font-family:var(--display);font-size:13px;color:var(--muted)}
+.member p{font-size:13px;line-height:1.9;color:var(--ink-soft)}
+.advisor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 30px;margin:0 auto 36px;max-width:860px}
+.photo-slot{
+  background:#e5e9d9;border:1px solid var(--line5);border-radius:10px;aspect-ratio:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
+  text-align:center;margin-bottom:16px;
+}
+.photo-slot .row{display:flex;align-items:center;gap:9px}
+.photo-slot .lbl{font-family:var(--display);font-size:13px;letter-spacing:3px;color:#6f7c56}
+.photo-slot .badge{font-size:10px;color:#fff;background:var(--olive-mid);padding:2px 8px;border-radius:4px}
+.photo-slot .hint{font-size:12px;color:#6f7c56}
+
+/* ============ FIRST DAY ============ */
+.firstday{background:linear-gradient(180deg,#f2f1e5 0%,#eceee0 100%);padding:104px 0 100px}
+.firstday .inner{max-width:1020px}
+.firstday h2{font-family:var(--serif);font-weight:600;font-size:33px;line-height:1.6;letter-spacing:1.5px;margin-bottom:28px;color:var(--ink-dark)}
+.firstday .lead{font-size:16px;line-height:2.1;color:var(--olive);margin-bottom:24px}
+.firstday .body{font-size:15px;line-height:2.25;color:var(--ink-soft);margin-bottom:46px}
+.event-visual{margin-bottom:44px}
+.event-visual img{width:100%;height:auto;border-radius:12px}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:500;color:#fff;background:var(--gold);
+  padding:16px 34px;border-radius:999px;text-decoration:none;
+}
+.btn-gold:hover{background:#9a7749;color:#fff}
+
+/* ============ JOIN ============ */
+.join{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#e7f0f3 0%,#f7e9d8 52%,#e9efdb 100%);
+  padding:100px 0 110px;
+}
+.join-family{position:absolute;right:5%;bottom:0;width:260px;animation:walkAway 14s ease-in-out infinite;pointer-events:none}
+.join-family img{width:100%;transform-origin:bottom center;animation:walkBob 1.6s ease-in-out infinite}
+@keyframes walkAway{
+  0%{transform:translateX(0) scale(1);opacity:.5}
+  45%{transform:translateX(38px) scale(.82);opacity:.34}
+  50%{transform:translateX(40px) scale(.8);opacity:.32}
+  55%{transform:translateX(38px) scale(.82);opacity:.34}
+  100%{transform:translateX(0) scale(1);opacity:.5}
+}
+@keyframes walkBob{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  25%{transform:translateY(-2.5px) rotate(-.5deg)}
+  75%{transform:translateY(-2.5px) rotate(.5deg)}
+}
+.join .inner{position:relative;max-width:800px;text-align:center}
+.join .eyebrow{justify-content:center;margin-bottom:26px}
+.join .eyebrow::before,.join .eyebrow::after{content:"";width:34px;height:1px;background:#9a8358;flex:none}
+.join .eyebrow span{color:#9a8358;letter-spacing:4px;text-transform:uppercase}
+.join h2{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.6;letter-spacing:2px;margin-bottom:22px;color:var(--ink-dark)}
+.join .lead{font-size:15.5px;line-height:2.2;color:#5b5847;margin-bottom:18px}
+.join .lead .strong{color:var(--ink)}
+.join .welcome{font-size:15.5px;line-height:2.2;color:#5b5847;margin-bottom:30px}
+.join-cta{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.join-cta .rule{width:50px;height:1px;background:#c9bda2}
+.join-cta .btn-fb{padding:12px 24px;font-size:14px;box-shadow:none}
+.join-cta .btn-fb .f{font-size:17px}
+
+/* ============ FOOTER ============ */
+.site-footer{background:var(--sand);padding:70px 0 0}
+.site-footer .cols{
+  max-width:1120px;margin:0 auto;padding:0 40px 56px;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:50px;
+}
+.site-footer .logo{width:156px;height:auto;margin-bottom:20px}
+.site-footer .about{font-size:12px;line-height:2.1;color:var(--ink-soft);margin-bottom:22px;max-width:300px}
+.socials{display:flex;gap:14px}
+.socials a{
+  width:42px;height:42px;border-radius:50%;background:var(--cream);border:1px solid var(--line4);
+  display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--olive);
+  font-family:Georgia,serif;font-weight:700;font-size:18px;
+}
+.socials a:hover{background:#fff}
+.socials img{width:22px;height:22px}
+.site-footer h4{font-family:var(--display);font-size:14px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+.site-footer ul{display:flex;flex-direction:column;gap:13px}
+.site-footer ul a{font-size:13.5px;color:var(--ink-mid2);text-decoration:none}
+.site-footer ul a:hover{color:var(--olive)}
+.contact-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.contact-row img{width:20px;height:20px}
+.contact-row a{font-size:13px;color:var(--ink-mid2);text-decoration:none}
+.contact-row a:hover{color:var(--olive)}
+.footer-bottom{
+  border-top:1px solid var(--line4);max-width:1120px;margin:0 auto;
+  padding:22px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.footer-bottom span{font-size:12px;color:var(--muted);letter-spacing:.5px}
+.footer-bottom nav{display:flex;gap:24px}
+.footer-bottom a{font-size:12px;color:var(--muted);text-decoration:none}
+.footer-bottom a:hover{color:var(--olive)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1100px){
+  .nav{gap:18px}
+  .nav a{font-size:12.5px}
+  .concept-grid{gap:48px}
+  .site-footer .cols{grid-template-columns:1fr 1fr;gap:40px}
+}
+
+@media (max-width:960px){
+  html{scroll-padding-top:76px}
+  .inner{padding:0 24px}
+  .site-header .inner{padding-top:12px;padding-bottom:12px}
+  .brand img{height:40px}
+  .brand-ja{font-size:17px;letter-spacing:1.5px}
+  .brand-en{font-size:11px;letter-spacing:2px}
+
+  .nav-toggle{display:flex}
+  .nav{
+    position:absolute;left:0;right:0;top:100%;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(246,241,231,.98);backdrop-filter:blur(10px);
+    border-bottom:1px solid #e4dcc9;
+    padding:8px 24px 20px;
+    display:none;
+  }
+  .nav.is-open{display:flex}
+  .nav a{padding:14px 4px;border-bottom:1px solid var(--line3);font-size:14px}
+  .nav .nav-cta{justify-content:center;margin-top:16px;border-bottom:none;padding:14px 20px}
+
+  .hero{height:auto;min-height:560px;padding:80px 0}
+  .hero h1{font-size:32px;letter-spacing:1.5px}
+  .hero-lead{font-size:15px;line-height:2}
+  .hero-eyebrow span{font-size:18px}
+
+  .news{padding:64px 0 68px}
+  .news li a{grid-template-columns:96px 1fr;gap:8px 16px;padding:20px 2px}
+  .news time{font-size:16px}
+  .tag{padding:4px 12px;justify-self:start}
+  .news .ttl{grid-column:1 / -1;font-size:14.5px}
+
+  .concept,.philosophy,.origin,.ladder,.platform,.members,.firstday,.join{padding-top:72px;padding-bottom:72px}
+  .concept-grid{grid-template-columns:1fr;gap:40px}
+  .concept-fig{order:-1}
+  .concept h2,.philosophy h2,.firstday h2{font-size:26px;line-height:1.65}
+  .sec-h2{font-size:25px}
+  .members h2{font-size:24px}
+  .join h2{font-size:27px}
+  .bird{display:none}
+
+  .philosophy .close .lead{font-size:16px}
+  .book-row{grid-template-columns:1fr;gap:28px}
+  .book-row .cover{max-width:220px}
+  .earthsong-col{width:100%}
+  blockquote{padding:30px 26px}
+  .year-box{padding:32px 26px}
+
+  .ladder .lead{font-size:16px}
+  .door-grid{grid-template-columns:1fr;gap:24px}
+  .form-grid{grid-template-columns:1fr;gap:20px}
+  .pull-box{padding:26px 24px}
+
+  .member-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .advisor-grid{grid-template-columns:repeat(2,1fr)}
+
+  .join-family{width:150px;right:2%;opacity:.7}
+  .join .inner{padding:0 24px}
+
+  .site-footer .cols{padding:0 24px 40px;gap:32px}
+  .footer-bottom{padding:22px 24px}
+}
+
+@media (max-width:560px){
+  .hero{min-height:520px;padding:64px 0}
+  .hero h1{font-size:26px;line-height:1.6}
+  .hero-eyebrow::before{width:28px}
+  .hero-eyebrow span{font-size:16px}
+  .btn-fb{padding:14px 22px;font-size:14px}
+
+  .news-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .news li a{grid-template-columns:1fr;gap:6px}
+  .tag{max-width:96px}
+
+  .member-grid{grid-template-columns:1fr}
+  .advisor-grid{grid-template-columns:1fr}
+  .site-footer .cols{grid-template-columns:1fr}
+  .join-cta .rule{display:none}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+
+/* Below ~400px the brand lockup (nowrap, flex:none) + burger no longer fit
+   the header row, so tighten the lockup rather than let it push the page wide. */
+@media (max-width:400px){
+  .inner{padding:0 16px}
+  .site-header .inner{gap:12px}
+  .brand{gap:10px;min-width:0}
+  .brand img{height:34px}
+  .brand-text{min-width:0}
+  .brand-ja{font-size:15px;letter-spacing:.5px}
+  .brand-en{font-size:9.5px;letter-spacing:1px}
+  .nav{padding:8px 16px 20px}
+  .nav-toggle{width:40px;height:40px}
+
+  .site-footer .cols{padding:0 16px 40px}
+  .footer-bottom{padding:22px 16px}
+  .join .inner{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="#top">
+      <img src="assets/logo-mark.png" alt="ともに生きる実践ラボ">
+      <span class="brand-text">
+        <span class="brand-ja">ともに<em>生</em>きる実践ラボ</span>
+        <span class="brand-en">Co-Living Practice Lab</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="globalnav" aria-label="メニューを開く"><span></span></button>
+    <nav class="nav" id="globalnav">
+      <a href="#concept">私たちについて</a>
+      <a href="#philosophy">TOMOIKIの哲学</a>
+      <a href="#origin">活動の原点</a>
+      <a href="#ladder">実践を知る</a>
+      <a href="#firstday">参加する</a>
+      <a class="nav-cta" href="#join">ともに生きる入口へ&nbsp;▶︎</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <img class="hero-img s1" src="assets/hero-village.png" alt="EarthSong コウハウジングの暮らし">
+    <img class="hero-img s2" src="assets/hero-village-2.png" alt="共同の庭とコモンハウスの夕暮れ">
+    <img class="hero-img s3" src="assets/hero-village-4.png" alt="都市のなかの共同の庭と暮らし">
+    <div class="hero-veil"></div>
+    <div class="inner">
+      <div class="hero-body">
+        <p class="hero-eyebrow"><span>Cohousing for Life</span></p>
+        <h1>ともに生きるって、<br>どんなカタチがあるんだろう？</h1>
+        <div class="hero-lead">
+          ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。<br>
+          共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出。<br>
+          すでにある実践を有機的につなぎ、ひとつの地図を描くとともに、<br>
+          新しいカタチを学び合い、分かち合い、共生・共助の実践のアップデートを図ります。
+        </div>
+        <a class="btn-fb" href="#"><span class="f">f</span> Facebookグループに参加</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="connect-bar"></div>
+
+  <!-- ============ NEWS ============ -->
+  <section class="news" id="news">
+    <div class="inner" data-reveal>
+      <div class="news-head">
+        <div class="t">
+          <h2>お知らせ</h2>
+          <span class="en">news</span>
+        </div>
+        <a class="more" href="#news">すべて見る →</a>
+      </div>
+      <ul>
+        <li>
+          <a href="#firstday">
+            <time datetime="2026-10-10">2026.10.10</time>
+            <span class="tag event">イベント</span>
+            <span class="ttl">【初回イベント】2026年10月10日（土）『ともに暮らす』を探究する仲間と出会うトーキングセッション<br>〜これからの暮らし方、共生・共助の文化を共創する〜を開催します</span>
+          </a>
+        </li>
+        <li>
+          <a href="#origin">
+            <time datetime="2026-08-05">2026.08.05</time>
+            <span class="tag book">書籍</span>
+            <span class="ttl">【書籍】『「ともに暮らす」の作り方』翻訳出版に向けた進捗と、刊行スケジュールのお知らせ。</span>
+          </a>
+        </li>
+        <li>
+          <a href="#concept">
+            <time datetime="2026-07-18">2026.07.18</time>
+            <span class="tag corp">法人設立</span>
+            <span class="ttl">【プレスリリース】一般社団法人ともに生きる実践ラボを設立しました。</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <time datetime="2026-06-30">2026.06.30</time>
+            <span class="tag cf">クラファン</span>
+            <span class="ttl">【クラウドファンディング】のご案内</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONCEPT / PURPOSE ============ -->
+  <section class="concept" id="concept">
+    <div class="inner">
+      <div class="concept-grid" data-reveal>
+        <div>
+          <p class="eyebrow caps"><span>Purpose</span></p>
+          <h2>孤立を前提にしない、文化づくりへ。</h2>
+          <p>現代社会では、単身世帯の増加や地域コミュニティの希薄化により、人と人とのつながりが弱まり、孤立や分断が社会課題となっています。一方で、日本には古くから「ご縁」「助け合い」「分かち合い」の文化が息づいてきました。私たち「一般社団法人 ともに生きる実践ラボ」は、この文化をいまの社会にふさわしい形へと編みなおし、人と人が関係性を深め、自然の循環と調和しながら暮らしを育む——人・地域・自然が支え合う「ともに生きる社会」の実現を目指して設立しました。</p>
+          <p>現代における人とのつながりの減少や孤立は、気まずさ、すれ違い、話し合いの面倒くささを避け続けた結果なのかもしれません。いま必要なのは、「人と関わること」——関係性がもたらす不確実さを引き受ける勇気と知恵だとしたら。目の前の不安や違和感は、希望の種ともいえるのではないでしょうか。</p>
+        </div>
+        <div class="concept-fig">
+          <img src="assets/purpose-house.png" alt="人と人、人と自然が支え合う暮らしのイメージ">
+        </div>
+      </div>
+    </div>
+
+    <svg class="bird" viewBox="0 0 40 16" width="30" style="right:6%;top:64px;animation:birdFly 11s linear infinite" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <g style="animation:wingFlap .5s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
+    </svg>
+    <svg class="bird" viewBox="0 0 40 16" width="22" style="right:2%;top:78px;animation:birdFly 13s linear infinite;animation-delay:3.5s" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <g style="animation:wingFlap .58s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
+    </svg>
+    <svg class="bird" viewBox="0 0 40 16" width="26" style="right:11%;top:88px;animation:birdFly 12s linear infinite;animation-delay:6.5s" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <g style="animation:wingFlap .46s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
+    </svg>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="philosophy" id="philosophy">
+    <div class="inner">
+      <div class="head" data-reveal>
+        <p class="eyebrow caps center"><span>Philosophy</span></p>
+        <h2>関係性を土台に、暮らしの場を共有し、<br>ともに生きる。</h2>
+        <p>そのフィロソフィーを支えるのが、コミュニティ・コミュニケーション・コモンズという3つの要素です。<br>——自然のはたらきになぞらえた3つの要素が、ゆるやかに結びあいます。</p>
+      </div>
+
+      <div class="philosophy-diagram" data-reveal>
+        <img src="assets/philosophy-diagram-v3.png" alt="コミュニティ・コミュニケーション・コモンズの3つの要素と、それらをつなぐ結び手／触媒">
+      </div>
+
+      <div class="close" data-reveal>
+        <p class="lead">TOMOIKI フィロソフィーを支える、これら3つの要素のあいだに立つ「結び手」「触媒」として、<br>"ともに生きる"を問い、試み、分かち合う。<br>——<em>Research &amp; Development</em>（研究・開発）を通じて、新しい共生のかたちを育てていきます。</p>
+        <p class="last">だれもが「ともに生きる」の一歩を踏み出せる。<br>そんな共生のかたちを、ともにつくっていきます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE ORIGIN ============ -->
+  <section class="origin" id="origin">
+    <div class="inner" data-reveal>
+      <p class="eyebrow italic"><span>The Origin</span></p>
+      <h2 class="sec-h2">一冊の本からはじまる、ムーブメント。</h2>
+      <p class="lede">私たちの活動の原点は、一冊の本にあります。<br>『「ともに暮らす」の作り方 ——ニュージーランドで育まれた、ひとつのコミュニティの物語』<em>（原題：Cohousing for Life）</em></p>
+
+      <div class="book-row">
+        <div class="cover">
+          <img src="assets/book-cover-v2.png" alt="『「ともに暮らす」の作り方』書影">
+        </div>
+        <div>
+          <p>ニュージーランド・オークランド郊外に、アースソング（Earthsong Eco-Neighbourhood）というコウハウジング<span class="note">（住人たちが主体となってつくる協同型の住まいモデルのひとつ）</span>があります。著者ロビン・アリソンは、その創設者。1995年、たった一人の想いから始まったこのプロジェクトは、30年以上たつ現在も、<strong>32戸のエコホームからなる共同体</strong>として運営が続いています。世界6,000超のサステナブル・コミュニティが加盟する Global Ecovillage Network（GEN）が認知する代表的事例のひとつであり、国際的なコウハウジング／エコビレッジ運動の<strong>原典</strong>としての位置づけが確立しています。</p>
+          <a class="btn-sage" href="#origin">書籍を詳しく見る&nbsp;→</a>
+        </div>
+      </div>
+
+      <div class="earthsong-row">
+        <figure>
+          <img src="assets/robin-allison.jpg" alt="ロビン・アリソン氏">
+          <figcaption>ロビン・アリソン　<span>Robin Allison</span></figcaption>
+        </figure>
+        <div class="earthsong-col">
+          <img src="assets/earthsong-siteplan.png" alt="アースソング エコネイバーフッド 全体配置計画">
+          <img src="assets/earthsong-members.png" alt="アースソングのコミュニティメンバー">
+        </div>
+      </div>
+
+      <blockquote>
+        <p class="intro">アースソングの壮大なプロジェクトは、たった一人の、こんな想いから生まれました。</p>
+        <p class="quote">「わたしがそこにいることが、地球にとって健やかで、めぐみとなる関係でありたい。人とともに暮らしながらも、ひとりの時間や自分らしさが脅かされることはなく、それでいて、人とふれあい、つながる機会には、いつでも気軽に手をのばせる——そんな場所。さまざまな世代の人、さまざまな文化の人と、隣り合って暮らしたい。そのコミュニティが、大人にとっても、お年寄りにとっても、子どもにとっても、そして見過ごされがちなティーンエイジャーにとっても、末永く居心地のよい場所であってほしい。」</p>
+        <footer>——ロビン・アリソン 個人日記より（『「ともに暮らす」の作り方』第3章）</footer>
+      </blockquote>
+
+      <div class="origin-close">
+        <h3>ただ、コミュニティをつくったのではありません。</h3>
+        <p>アースソングが稀有なのは、<strong>コウハウジング（個と共同体の共存）</strong>を軸に、<strong>パーマカルチャー</strong>、そして<strong>教育</strong>を編み込みながら、設計から建築までを住民自身が推進し、実現させたこと。だから本書には、「ともに生きる」を実現するための、多様な実践知が織り込まれています。</p>
+
+        <div class="six-elements">
+          <img src="assets/six-elements.png" alt="「ともに生きる」を支える6つの要素 — エコ建築、コーチング／ファシリテーション、教育、パーマカルチャー、関係性デザイン、実務スキル">
+        </div>
+
+        <div class="year-box">
+          <p>分断と孤立が深まる、2026年。本書が、日本に届きます。<br>かつて長屋の暮らしにあったように、共生・共助は、この国にとって当たり前のものでした。その精神を今こそ思い出し、一つの実践知に触れながら、新たな共生のかたちを育てたい。私たちは、2026年を「ともに生きる元年」と定めることにしました。<br>ここから、文化づくりのムーブメントが始まります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOORWAYS ============ -->
+  <section class="ladder" id="ladder">
+    <div class="inner" data-reveal>
+      <p class="eyebrow italic"><span>Doorways</span></p>
+      <h2 class="sec-h2">ともに生きる、いくつもの入口。</h2>
+      <p class="lead">暮らしをともにしてもいいし、しなくてもいい。あなたに合った、はじめの一歩から。<br>「ともに生きる」を分かち合う——そんな気軽な場を、仕込み中。</p>
+
+      <div class="door-grid">
+        <article class="door">
+          <div class="thumb"><img src="assets/reading-circle.png" alt="読書会・勉強会"></div>
+          <div class="body">
+            <h3>読書会・勉強会</h3>
+            <p>書籍『「ともに暮らす」の作り方』を囲み、ニュージーランドで育まれた共生・共助の知恵を、ともに読み解き、語り合います。</p>
+          </div>
+        </article>
+        <article class="door">
+          <div class="thumb"><img src="assets/common-meal.jpg" alt="コモンミール（食事会）"></div>
+          <div class="body">
+            <h3>コモンミール（食事会）</h3>
+            <p>ともに作り、一緒に食べる。同じ食卓を囲むことから、関係は始まります。</p>
+          </div>
+        </article>
+        <article class="door">
+          <div class="thumb"><img src="assets/site-visit.png" alt="現場見学"></div>
+          <div class="body">
+            <h3>現場見学</h3>
+            <p>多世代型共同住宅コレクティブハウスなど、実際の暮らしの場を訪ね、体感する。</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="note">このほかにも、実践地へのエクスカーション、合意形成のワークショップ、寺子屋体験、シェアハウス・コレクティブハウスまで——ゆるやかに深めていける、いくつもの入口を用意していきます。</p>
+      <p class="last">歩きながら、あなたの"ともに生きる"のカタチが見えてきます。</p>
+    </div>
+  </section>
+
+  <!-- ============ THE PLATFORM ============ -->
+  <section class="platform" id="platform">
+    <div class="inner" data-reveal>
+      <p class="eyebrow italic"><span>The Platform</span><span class="badge">TO B</span></p>
+      <p class="kicker">そして、この小さな実践を、日本中の実践とつなげていく。</p>
+      <h2 class="sec-h2">点在する実践を、ひとつの地図に。</h2>
+      <p class="lead">ヒトとヒト、ヒトと自然が"ともに生きる"——その実践は、すでに日本、そして世界各地に点在しています。<br>私たちは、共生・共助の文化を実践する<strong>個人・場・組織</strong>を見出し、有機的に結びつける「ご縁結び」のプラットフォームを創出します。<br>点在する実践をつなぎ、<strong>ひとつの地図</strong>にしていくことで、誰もが"ともに生きる"の一歩を踏み出せる入口をつくります。</p>
+
+      <div class="map-figure">
+        <img src="assets/map-figure-v2.png" alt="点在する実践を、ひとつの地図に。日本と世界に点在する実践がつながる地図図解">
+      </div>
+
+      <div class="sub-head">
+        <h3>2つの事業</h3>
+        <span>what we do</span>
+      </div>
+
+      <div class="biz-list">
+        <div class="biz">
+          <span class="num">1</span>
+          <div>
+            <h4>訪ね、見える化し、記録する</h4>
+            <p>コミュニティ・コミュニケーション・コモンズの各分野で「ともに生きる」を実践する人々を訪ね、見える化していきます。"ともに生きる"のかたちを<strong>基準として言語化</strong>し、各地の実践を記録・紹介。その知見をメディアとして発信し、日本中の実践を、ひとつの<strong>データベース（地図）</strong>にしていきます。</p>
+          </div>
+        </div>
+        <div class="biz">
+          <span class="num">2</span>
+          <div>
+            <h4>探究し、連携する</h4>
+            <p>「ともに生きる」ことで一人ひとりが豊かに暮らす、その知恵を深め、探究します。<strong>行政機関・研究機関とも連携し</strong>、"ともに生きる社会"の実践と創造に向けた方策を、ともに探究していきます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow-note">
+        <div class="arrow">↓</div>
+        <p>その営みは、やがて3つのかたちに結実していく</p>
+      </div>
+
+      <div class="sub-head">
+        <h3>これから育てる、3つのかたち</h3>
+        <span>the landscape ahead</span>
+      </div>
+
+      <div class="form-grid">
+        <article class="form-card">
+          <div class="fig"><img src="assets/tomoiki-house.png" alt="TOMOIKI ハウスのイラスト"></div>
+          <h4>TOMOIKI ハウス</h4>
+          <div class="en">the home</div>
+          <p>実際に「ともに暮らす」実践の場。人と暮らしが交わる、生きた拠点。</p>
+        </article>
+        <article class="form-card">
+          <div class="fig"><img src="assets/tomoiki-center.png" alt="TOMOIKI センターのイラスト"></div>
+          <h4>TOMOIKI センター</h4>
+          <div class="en">the hub</div>
+          <p>「ともに暮らす」を支える情報の拠点。知恵と事例が集まる場所。</p>
+        </article>
+        <article class="form-card">
+          <div class="fig mark"><img src="assets/tomoiki-mark.png" alt="TOMOIKI 印のシンボル"></div>
+          <h4>TOMOIKI 印<br>／ブックレット</h4>
+          <div class="en">the mark</div>
+          <p>各地の実践を訪ね、記録し、紹介する。評価ではなく、いっしょに学び、分かち合うために。</p>
+        </article>
+      </div>
+
+      <div class="pull-box">
+        <p>私たちは、点在する実践をつなぎ、公助でも自助でもない——"共生・共助の文化"を、ともに育てていきます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MEMBERS ============ -->
+  <section class="members" id="members">
+    <div class="inner" data-reveal>
+      <p class="eyebrow italic"><span>Members</span></p>
+      <h2>「ともに生きる」を、ともに探究する仲間。</h2>
+      <p class="lead">越境的なキャリアと専門性を持つメンバーが、それぞれの実践知を持ち寄り、この法人を立ち上げました。私たち自身も、答えを持っているわけではありません。"ともに生きる"を問い、試みながら——探究のさなかにいる、ひとりひとりです。</p>
+
+      <div class="group-photo">
+        <img src="assets/members-group.jpg" alt="ともに生きる実践ラボ メンバー全員集合">
+      </div>
+
+      <div class="member-grid">
+        <div class="member">
+          <div class="portrait"><img src="assets/member-takahashi.jpg" alt="高橋 満世"></div>
+          <h3>高橋 満世</h3>
+          <div class="meta"><span class="role">代表理事</span><span class="romaji">Takahashi Mitsuyo</span></div>
+          <p>千葉南房総で夫・仲間とシェアハウスに暮らし、人生と仕事に境目のない生き方を実践。一人の想いからはじまる事業やプロジェクトを“いのち”と捉え、そのCallingを社会に届く形へ翻訳・編集し、実装することを理念とする。東証グロース上場のSaaS企業での事業推進、宝飾業界での外商、ソマティック心理学をベースとした対人支援での経験を糧に、プロジェクト共創・PM・翻訳/出版・コミュニティ運営・司会/MC・講師など、場も役割も越境して触媒的に活動中。ニュージーランドのエコ・ネイバーフッド「アースソング」の実践書『Cohousing For Life』の翻訳出版（No Limit出版）では訳者として携わり、ムーブメント推進のため本法人を設立。人と自然・地域が支え合う暮らしと共生文化の深化・実践を広げていくための活動を本格始動している。</p>
+        </div>
+        <div class="member">
+          <div class="portrait"><img src="assets/member-tsumura.jpg" alt="津村 英作"></div>
+          <h3>津村 英作</h3>
+          <div class="meta"><span class="role">理事</span><span class="romaji">Tsumura Eisaku</span></div>
+          <p>一般社団法人「ともに生きる実践ラボ」理事。組織心理学博士。ヒューマンエデュケア代表。長年にわたりプロコーチ養成、人材育成、対話の場づくりを通じた関係性改善、リーダーシップと組織開発に携わってきた人と関係性の専門家。子どもの不登校を契機に家族の生き方と暮らし方を見つめ直し、2018年から家族とともにニュージーランドへ移住。この経験を通じて、多様性を尊重し、互いに支え合うコミュニティの価値を実感した。人生の目的と社会への貢献を結ぶ「ビガーゲーム」の実践・普及をはじめ、コウハウジング、地域コミュニティ、縄文・アイヌの文化などを手がかりに、豊かな生き方を探究している。一人ひとりが自分らしさと自律性を保ちながら、世代や立場を超えて支え合える共助・共生社会を目指し、人と人、人と地域、人と自然を結ぶ「関係性の触媒」として、学びを実践へ、出会いを協働へと育てている。現在ニュージーランドと東京の2拠点で生活、活動中。</p>
+        </div>
+        <div class="member">
+          <div class="portrait"><img src="assets/member-ueda.jpg" alt="植田 裕子"></div>
+          <h3>植田 裕子</h3>
+          <div class="meta"><span class="role">理事</span><span class="romaji">Ueda Yuko</span></div>
+          <p>Yu-with-You代表。食品会社に就職し２度の育児休職を取りながら原料購買や事業採算、秘書などを経験。その後Co-Active Coachingに出会いコーチとして独立。2007年よりCTIジャパンにてコーチ養成に関わっている。コーチは「人が変化する瞬間」に立ち会える素敵な仕事で、天職だと思っている。子育てを通して時代の変化を感じる中で、便利さ・快適さを手に入れてきた代償として、人とのつながりを失い孤独を感じている人が多いことに心を痛めている。この先の新しい人間関係のあり方を模索していきたいと思い、この「ともに生きる実践ラボ」に参画。自助でも公助でもない共助・共生の社会をつくっていく輪を大きく広げていきたいと願っている。</p>
+        </div>
+        <div class="member">
+          <div class="portrait"><img src="assets/member-inoue.jpg" alt="井上 理津子"></div>
+          <h3>井上 理津子</h3>
+          <div class="meta"><span class="role">理事</span><span class="romaji">Inoue Ritsuko</span></div>
+          <p>金融機関で約40年、営業現場から組織運営、人財育成、ダイバーシティ推進など、さまざまな仕事を経験。仕事の傍らコーチングやカウンセリングを学び、「人の可能性を信じて関わる」こと、一人ひとりの力を活かすことが組織の力につながることを実感してきた。現在は社外取締役として企業経営にも関わる一方、人生100年時代における人と人とのつながりや、「ともに生きる」社会のあり方を探究している。好きな言葉は「一人の100歩よりも100人の1歩」。自らを「道（未知）を拓く冒険家」と称し、好奇心の赴くままに新しい世界へ一歩踏み出し、そこで出会った人や得た学びを、次の誰かへつないでいくことを楽しんでいる。</p>
+        </div>
+        <div class="member">
+          <div class="portrait"><img src="assets/member-sagesaka.jpg" alt="提坂 英暢"></div>
+          <h3>提坂 英暢</h3>
+          <div class="meta"><span class="role">理事</span><span class="romaji">Sagesaka Hidenobu</span></div>
+          <p>メーカーで商品の立ち上げから市場導入、広報まで携わり、専門家と力を合わせて価値を育てる経験を重ねてきた。協働の中で生まれる温かな関係性と、人が持つ可能性の広がりを実感してきたことが原点となっている。また、「人生の岐路に立つ人に、そっと背中を押すきっかけを届けたい」という思いからNPO法人の立ち上げに参画し、起業支援やキャリア形成プログラムを10年以上運営してきた。人が自分らしさを見つけ、前へ進む瞬間に寄り添うことを大切にしている。大切な人と食卓を囲む時間に幸せを感じるように、人と人が温かくつながることは日々を豊かにする力になると信じている。ともに暮らし、ともに生きる社会を育むため、仲間とともに一般社団法人「ともに生きる実践ラボ」を設立し、ゆるやかなつながりが芽生える場づくりを進めている。これから出会う皆さまと心地よい時間を重ねていけることを心より楽しみにしている。</p>
+        </div>
+        <div class="member">
+          <div class="portrait"><img src="assets/member-sadakata.jpg" alt="定形 一輝"></div>
+          <h3>定形 一輝</h3>
+          <div class="meta"><span class="role">監事</span><span class="romaji">Sadakata Kazuki</span></div>
+          <p>東京都の会計事務所で8年間、日系中小企業や外資系投資ファンドの会計・税務サポートを担当。その一方で、都内中心に各所で哲学対話・読書会を毎月開催している。旅先で生産現場のお手伝いをしたことをきっかけに、人と人・人と自然が相互に支えられながら”ともに生き”ていることを強く実感。人間の社会活動は貨幣価値のみで測られるのではなく、多様な価値観への想像力やケアの視点を広げることが、余白のある心豊かな社会をつくると信じている。その媒介者として、自分と他者の心にじっくり耳を傾ける対話の場をあちこちに設けることが目標。そして対話に留まらず、より深い共助・共生社会を仲間とともに探求するために、当法人に参画。モットーは”Feminism is for Everybody.”。現在は都市と地方の魅力的な取り組みを紹介しつなげるローカルライターになるべく勉強中。</p>
+        </div>
+      </div>
+
+      <div class="sub-head">
+        <h3>顧問</h3>
+        <span>advisors</span>
+      </div>
+
+      <div class="advisor-grid">
+        <div class="member">
+          <div class="photo-slot">
+            <div class="row">
+              <span class="lbl">PHOTO</span>
+              <span class="badge">20日納品予定</span>
+            </div>
+            <span class="hint">正方形・統一トーン</span>
+          </div>
+          <h3>山田 貴宏</h3>
+          <div class="meta"><span class="role">顧問</span><span class="romaji">Yamada Takahiro</span></div>
+          <p>専門・立場の紹介。</p>
+        </div>
+        <div class="member">
+          <div class="photo-slot">
+            <div class="row">
+              <span class="lbl">PHOTO</span>
+              <span class="badge">20日納品予定</span>
+            </div>
+            <span class="hint">正方形・統一トーン</span>
+          </div>
+          <h3>伊藤 研人</h3>
+          <div class="meta"><span class="role">顧問</span><span class="romaji">Itoh Kento</span></div>
+          <p>専門・立場の紹介。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE FIRST DAY ============ -->
+  <section class="firstday" id="firstday">
+    <div class="inner" data-reveal>
+      <p class="eyebrow italic"><span>The First Day</span></p>
+      <h2>2026年10月10日（土）<br>"ともに生きる"を探究する仲間と出会う、最初の一日。</h2>
+      <p class="lead">私たちは、2026年を「ともに生きる元年」と定めました。その幕開けを告げる、最初のご縁結び。</p>
+      <p class="body">2026年10月10日（土）、「"ともに生きる"を探究する仲間と出会うトーキングセッション 〜これからの暮らし方、共生・共助の文化を共創する〜」を開催します。書籍『「ともに暮らす」の作り方』の著者ロビン・アリソン氏を、ニュージーランドから迎え、基調講演と対談をお届けします。</p>
+
+      <div class="event-visual">
+        <img src="assets/event-session-visual-v2.png" alt="ともに生きるを探究する仲間と出会うトーキングセッション — 2026年10月10日（土）建築家会館 本館ホール">
+      </div>
+
+      <a class="btn-gold" href="https://tomoiki-lab-2026.peatix.com" target="_blank" rel="noopener">Peatix で申し込む&nbsp;→</a>
+    </div>
+  </section>
+
+  <!-- ============ JOIN ============ -->
+  <section class="join" id="join">
+    <div class="join-family">
+      <img src="assets/sketch-family.png" alt="">
+    </div>
+    <div class="inner" data-reveal>
+      <p class="eyebrow center"><span>Join Us</span></p>
+      <h2>ともに生きるムーブメントの、<br>はじまりに。</h2>
+      <p class="lead">Facebookグループから、書籍の刊行情報や活動のお知らせ、<br><span class="strong">著者であるロビン来日イベントの最新情報をお届けします。</span></p>
+      <p class="welcome">“ともに生きる”世界への入口で、お待ちしています。</p>
+      <div class="join-cta">
+        <span class="rule"></span>
+        <a class="btn-fb" href="#"><span class="f">f</span> Facebookグループに参加</a>
+        <span class="rule"></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="cols">
+    <div>
+      <img class="logo" src="assets/logo-color.png" alt="ともに生きる実践ラボ Co-Living Practice Lab">
+      <p class="about">関係性を土台に、暮らしの場を共有し、ともに生きる。“ともに生きる”ムーブメントを創出する発起母体です。</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="mailto:info@tomoiki-lab.org" aria-label="メール"><img src="assets/icon-mail.png" alt=""></a>
+      </div>
+    </div>
+    <div>
+      <h4>About</h4>
+      <ul>
+        <li><a href="#concept">私たちについて</a></li>
+        <li><a href="#philosophy">TOMOIKIの哲学</a></li>
+        <li><a href="#origin">活動の原点</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contents</h4>
+      <ul>
+        <li><a href="#ladder">実践を知る</a></li>
+        <li><a href="#firstday">参加する</a></li>
+        <li><a href="#join">ともに生きる入口へ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="contact-row">
+        <img src="assets/icon-mail.png" alt="">
+        <a href="mailto:info@tomoiki-lab.org">info@tomoiki-lab.org</a>
+      </div>
+      <div class="contact-row">
+        <img src="assets/icon-phone.png" alt="">
+        <a href="tel:09083833243">090-8383-3243</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 一般社団法人ともに生きる実践ラボ</span>
+    <nav>
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">お問い合わせ</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* --- scroll reveal --- */
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  var reveal = function (el) { el.classList.add('is-in'); };
+  if (!('IntersectionObserver' in window)) {
+    nodes.forEach(reveal);
+  } else {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { reveal(e.target); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function (n) { obs.observe(n); });
+    setTimeout(function () { nodes.forEach(reveal); }, 2600);
+  }
+
+  /* --- mobile nav --- */
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('globalnav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'メニューを開く');
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,22 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>一般社団法人 ともに生きる実践ラボ｜Co-Living Practice Lab</title>
-<meta name="description" content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出します。">
-<link rel="icon" href="assets/tomoiki-mark.png">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="一般社団法人 ともに生きる実践ラボ">
-<meta property="og:description" content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出します。">
-<meta property="og:image" content="assets/hero-village.png">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
+<meta content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出します。" name="description"/>
+<link href="assets/tomoiki-mark.png" rel="icon"/>
+<meta content="website" property="og:type"/>
+<meta content="一般社団法人 ともに生きる実践ラボ" property="og:title"/>
+<meta content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出します。" property="og:description"/>
+<meta content="assets/hero-village.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet"/>
 <style>
 /* ============================================================
    ともに生きる実践ラボ — トップページ
@@ -90,11 +88,22 @@ ul{list-style:none;padding:0;margin:0}
 .sub-head h3{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:1px;color:var(--ink-dark)}
 .sub-head span{font-family:var(--display);font-style:italic;font-size:14px;color:var(--gold)}
 
-/* ---------- reveal ---------- */
-[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
-[data-reveal].is-in{opacity:1;transform:none}
+/* ---------- scroll-linked fade-in ---------- */
+[data-fx]{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .9s cubic-bezier(.22,.61,.36,1) var(--d,0s),
+             transform .9s cubic-bezier(.22,.61,.36,1) var(--d,0s);
+}
+[data-fx].is-in{opacity:1;transform:none}
+/* Images settle a touch slower than the text they sit with. */
+[data-fx] > img,img[data-fx],figure[data-fx],
+.concept-fig[data-fx],.philosophy-diagram[data-fx],.map-figure[data-fx],
+.six-elements[data-fx],.group-photo[data-fx],.event-visual[data-fx]{
+  transition-duration:1.15s;
+}
 @media (prefers-reduced-motion:reduce){
-  [data-reveal]{opacity:1!important;transform:none!important;transition:none}
+  [data-fx]{opacity:1!important;transform:none!important;transition:none!important}
   *{animation:none!important}
   html{scroll-behavior:auto}
 }
@@ -561,484 +570,482 @@ blockquote footer{font-size:13px;color:var(--muted);text-align:right}
 </style>
 </head>
 <body>
-
 <!-- ============ HEADER ============ -->
 <header class="site-header">
-  <div class="inner">
-    <a class="brand" href="#top">
-      <img src="assets/logo-mark.png" alt="ともに生きる実践ラボ">
-      <span class="brand-text">
-        <span class="brand-ja">ともに<em>生</em>きる実践ラボ</span>
-        <span class="brand-en">Co-Living Practice Lab</span>
-      </span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="globalnav" aria-label="メニューを開く"><span></span></button>
-    <nav class="nav" id="globalnav">
-      <a href="#concept">私たちについて</a>
-      <a href="#philosophy">TOMOIKIの哲学</a>
-      <a href="#origin">活動の原点</a>
-      <a href="#ladder">実践を知る</a>
-      <a href="#firstday">参加する</a>
-      <a class="nav-cta" href="#join">ともに生きる入口へ&nbsp;▶︎</a>
-    </nav>
-  </div>
+<div class="inner">
+<a class="brand" href="#top">
+<img alt="ともに生きる実践ラボ" src="assets/logo-mark.png"/>
+<span class="brand-text">
+<span class="brand-ja">ともに<em>生</em>きる実践ラボ</span>
+<span class="brand-en">Co-Living Practice Lab</span>
+</span>
+</a>
+<button aria-controls="globalnav" aria-expanded="false" aria-label="メニューを開く" class="nav-toggle" type="button"><span></span></button>
+<nav class="nav" id="globalnav">
+<a href="#concept">私たちについて</a>
+<a href="#philosophy">TOMOIKIの哲学</a>
+<a href="#origin">活動の原点</a>
+<a href="#ladder">実践を知る</a>
+<a href="#firstday">参加する</a>
+<a class="nav-cta" href="#join">ともに生きる入口へ ▶︎</a>
+</nav>
+</div>
 </header>
-
 <main id="top">
-
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <img class="hero-img s1" src="assets/hero-village.png" alt="EarthSong コウハウジングの暮らし">
-    <img class="hero-img s2" src="assets/hero-village-2.png" alt="共同の庭とコモンハウスの夕暮れ">
-    <img class="hero-img s3" src="assets/hero-village-4.png" alt="都市のなかの共同の庭と暮らし">
-    <div class="hero-veil"></div>
-    <div class="inner">
-      <div class="hero-body">
-        <p class="hero-eyebrow"><span>Cohousing for Life</span></p>
-        <h1>ともに生きるって、<br>どんなカタチがあるんだろう？</h1>
-        <div class="hero-lead">
-          ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。<br>
-          共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出。<br>
-          すでにある実践を有機的につなぎ、ひとつの地図を描くとともに、<br>
+<!-- ============ HERO ============ -->
+<section class="hero">
+<img alt="EarthSong コウハウジングの暮らし" class="hero-img s1" src="assets/hero-village.png"/>
+<img alt="共同の庭とコモンハウスの夕暮れ" class="hero-img s2" src="assets/hero-village-2.png"/>
+<img alt="都市のなかの共同の庭と暮らし" class="hero-img s3" src="assets/hero-village-4.png"/>
+<div class="hero-veil"></div>
+<div class="inner">
+<div class="hero-body">
+<p class="hero-eyebrow" data-fx=""><span>Cohousing for Life</span></p>
+<h1 data-fx="" style="--d:0.09s">ともに生きるって、<br/>どんなカタチがあるんだろう？</h1>
+<div class="hero-lead" data-fx="" style="--d:0.18s">
+          ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。<br/>
+          共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出。<br/>
+          すでにある実践を有機的につなぎ、ひとつの地図を描くとともに、<br/>
           新しいカタチを学び合い、分かち合い、共生・共助の実践のアップデートを図ります。
         </div>
-        <a class="btn-fb" href="#"><span class="f">f</span> Facebookグループに参加</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="connect-bar"></div>
-
-  <!-- ============ NEWS ============ -->
-  <section class="news" id="news">
-    <div class="inner" data-reveal>
-      <div class="news-head">
-        <div class="t">
-          <h2>お知らせ</h2>
-          <span class="en">news</span>
-        </div>
-        <a class="more" href="#news">すべて見る →</a>
-      </div>
-      <ul>
-        <li>
-          <a href="#firstday">
-            <time datetime="2026-10-10">2026.10.10</time>
-            <span class="tag event">イベント</span>
-            <span class="ttl">【初回イベント】2026年10月10日（土）『ともに暮らす』を探究する仲間と出会うトーキングセッション<br>〜これからの暮らし方、共生・共助の文化を共創する〜を開催します</span>
-          </a>
-        </li>
-        <li>
-          <a href="#origin">
-            <time datetime="2026-08-05">2026.08.05</time>
-            <span class="tag book">書籍</span>
-            <span class="ttl">【書籍】『「ともに暮らす」の作り方』翻訳出版に向けた進捗と、刊行スケジュールのお知らせ。</span>
-          </a>
-        </li>
-        <li>
-          <a href="#concept">
-            <time datetime="2026-07-18">2026.07.18</time>
-            <span class="tag corp">法人設立</span>
-            <span class="ttl">【プレスリリース】一般社団法人ともに生きる実践ラボを設立しました。</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <time datetime="2026-06-30">2026.06.30</time>
-            <span class="tag cf">クラファン</span>
-            <span class="ttl">【クラウドファンディング】のご案内</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ CONCEPT / PURPOSE ============ -->
-  <section class="concept" id="concept">
-    <div class="inner">
-      <div class="concept-grid" data-reveal>
-        <div>
-          <p class="eyebrow caps"><span>Purpose</span></p>
-          <h2>孤立を前提にしない、文化づくりへ。</h2>
-          <p>現代社会では、単身世帯の増加や地域コミュニティの希薄化により、人と人とのつながりが弱まり、孤立や分断が社会課題となっています。一方で、日本には古くから「ご縁」「助け合い」「分かち合い」の文化が息づいてきました。私たち「一般社団法人 ともに生きる実践ラボ」は、この文化をいまの社会にふさわしい形へと編みなおし、人と人が関係性を深め、自然の循環と調和しながら暮らしを育む——人・地域・自然が支え合う「ともに生きる社会」の実現を目指して設立しました。</p>
-          <p>現代における人とのつながりの減少や孤立は、気まずさ、すれ違い、話し合いの面倒くささを避け続けた結果なのかもしれません。いま必要なのは、「人と関わること」——関係性がもたらす不確実さを引き受ける勇気と知恵だとしたら。目の前の不安や違和感は、希望の種ともいえるのではないでしょうか。</p>
-        </div>
-        <div class="concept-fig">
-          <img src="assets/purpose-house.png" alt="人と人、人と自然が支え合う暮らしのイメージ">
-        </div>
-      </div>
-    </div>
-
-    <svg class="bird" viewBox="0 0 40 16" width="30" style="right:6%;top:64px;animation:birdFly 11s linear infinite" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-      <g style="animation:wingFlap .5s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
-    </svg>
-    <svg class="bird" viewBox="0 0 40 16" width="22" style="right:2%;top:78px;animation:birdFly 13s linear infinite;animation-delay:3.5s" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-      <g style="animation:wingFlap .58s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
-    </svg>
-    <svg class="bird" viewBox="0 0 40 16" width="26" style="right:11%;top:88px;animation:birdFly 12s linear infinite;animation-delay:6.5s" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-      <g style="animation:wingFlap .46s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
-    </svg>
-  </section>
-
-  <!-- ============ PHILOSOPHY ============ -->
-  <section class="philosophy" id="philosophy">
-    <div class="inner">
-      <div class="head" data-reveal>
-        <p class="eyebrow caps center"><span>Philosophy</span></p>
-        <h2>関係性を土台に、暮らしの場を共有し、<br>ともに生きる。</h2>
-        <p>そのフィロソフィーを支えるのが、コミュニティ・コミュニケーション・コモンズという3つの要素です。<br>——自然のはたらきになぞらえた3つの要素が、ゆるやかに結びあいます。</p>
-      </div>
-
-      <div class="philosophy-diagram" data-reveal>
-        <img src="assets/philosophy-diagram-v3.png" alt="コミュニティ・コミュニケーション・コモンズの3つの要素と、それらをつなぐ結び手／触媒">
-      </div>
-
-      <div class="close" data-reveal>
-        <p class="lead">TOMOIKI フィロソフィーを支える、これら3つの要素のあいだに立つ「結び手」「触媒」として、<br>"ともに生きる"を問い、試み、分かち合う。<br>——<em>Research &amp; Development</em>（研究・開発）を通じて、新しい共生のかたちを育てていきます。</p>
-        <p class="last">だれもが「ともに生きる」の一歩を踏み出せる。<br>そんな共生のかたちを、ともにつくっていきます。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ THE ORIGIN ============ -->
-  <section class="origin" id="origin">
-    <div class="inner" data-reveal>
-      <p class="eyebrow italic"><span>The Origin</span></p>
-      <h2 class="sec-h2">一冊の本からはじまる、ムーブメント。</h2>
-      <p class="lede">私たちの活動の原点は、一冊の本にあります。<br>『「ともに暮らす」の作り方 ——ニュージーランドで育まれた、ひとつのコミュニティの物語』<em>（原題：Cohousing for Life）</em></p>
-
-      <div class="book-row">
-        <div class="cover">
-          <img src="assets/book-cover-v2.png" alt="『「ともに暮らす」の作り方』書影">
-        </div>
-        <div>
-          <p>ニュージーランド・オークランド郊外に、アースソング（Earthsong Eco-Neighbourhood）というコウハウジング<span class="note">（住人たちが主体となってつくる協同型の住まいモデルのひとつ）</span>があります。著者ロビン・アリソンは、その創設者。1995年、たった一人の想いから始まったこのプロジェクトは、30年以上たつ現在も、<strong>32戸のエコホームからなる共同体</strong>として運営が続いています。世界6,000超のサステナブル・コミュニティが加盟する Global Ecovillage Network（GEN）が認知する代表的事例のひとつであり、国際的なコウハウジング／エコビレッジ運動の<strong>原典</strong>としての位置づけが確立しています。</p>
-          <a class="btn-sage" href="#origin">書籍を詳しく見る&nbsp;→</a>
-        </div>
-      </div>
-
-      <div class="earthsong-row">
-        <figure>
-          <img src="assets/robin-allison.jpg" alt="ロビン・アリソン氏">
-          <figcaption>ロビン・アリソン　<span>Robin Allison</span></figcaption>
-        </figure>
-        <div class="earthsong-col">
-          <img src="assets/earthsong-siteplan.png" alt="アースソング エコネイバーフッド 全体配置計画">
-          <img src="assets/earthsong-members.png" alt="アースソングのコミュニティメンバー">
-        </div>
-      </div>
-
-      <blockquote>
-        <p class="intro">アースソングの壮大なプロジェクトは、たった一人の、こんな想いから生まれました。</p>
-        <p class="quote">「わたしがそこにいることが、地球にとって健やかで、めぐみとなる関係でありたい。人とともに暮らしながらも、ひとりの時間や自分らしさが脅かされることはなく、それでいて、人とふれあい、つながる機会には、いつでも気軽に手をのばせる——そんな場所。さまざまな世代の人、さまざまな文化の人と、隣り合って暮らしたい。そのコミュニティが、大人にとっても、お年寄りにとっても、子どもにとっても、そして見過ごされがちなティーンエイジャーにとっても、末永く居心地のよい場所であってほしい。」</p>
-        <footer>——ロビン・アリソン 個人日記より（『「ともに暮らす」の作り方』第3章）</footer>
-      </blockquote>
-
-      <div class="origin-close">
-        <h3>ただ、コミュニティをつくったのではありません。</h3>
-        <p>アースソングが稀有なのは、<strong>コウハウジング（個と共同体の共存）</strong>を軸に、<strong>パーマカルチャー</strong>、そして<strong>教育</strong>を編み込みながら、設計から建築までを住民自身が推進し、実現させたこと。だから本書には、「ともに生きる」を実現するための、多様な実践知が織り込まれています。</p>
-
-        <div class="six-elements">
-          <img src="assets/six-elements.png" alt="「ともに生きる」を支える6つの要素 — エコ建築、コーチング／ファシリテーション、教育、パーマカルチャー、関係性デザイン、実務スキル">
-        </div>
-
-        <div class="year-box">
-          <p>分断と孤立が深まる、2026年。本書が、日本に届きます。<br>かつて長屋の暮らしにあったように、共生・共助は、この国にとって当たり前のものでした。その精神を今こそ思い出し、一つの実践知に触れながら、新たな共生のかたちを育てたい。私たちは、2026年を「ともに生きる元年」と定めることにしました。<br>ここから、文化づくりのムーブメントが始まります。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ DOORWAYS ============ -->
-  <section class="ladder" id="ladder">
-    <div class="inner" data-reveal>
-      <p class="eyebrow italic"><span>Doorways</span></p>
-      <h2 class="sec-h2">ともに生きる、いくつもの入口。</h2>
-      <p class="lead">暮らしをともにしてもいいし、しなくてもいい。あなたに合った、はじめの一歩から。<br>「ともに生きる」を分かち合う——そんな気軽な場を、仕込み中。</p>
-
-      <div class="door-grid">
-        <article class="door">
-          <div class="thumb"><img src="assets/reading-circle.png" alt="読書会・勉強会"></div>
-          <div class="body">
-            <h3>読書会・勉強会</h3>
-            <p>書籍『「ともに暮らす」の作り方』を囲み、ニュージーランドで育まれた共生・共助の知恵を、ともに読み解き、語り合います。</p>
-          </div>
-        </article>
-        <article class="door">
-          <div class="thumb"><img src="assets/common-meal.jpg" alt="コモンミール（食事会）"></div>
-          <div class="body">
-            <h3>コモンミール（食事会）</h3>
-            <p>ともに作り、一緒に食べる。同じ食卓を囲むことから、関係は始まります。</p>
-          </div>
-        </article>
-        <article class="door">
-          <div class="thumb"><img src="assets/site-visit.png" alt="現場見学"></div>
-          <div class="body">
-            <h3>現場見学</h3>
-            <p>多世代型共同住宅コレクティブハウスなど、実際の暮らしの場を訪ね、体感する。</p>
-          </div>
-        </article>
-      </div>
-
-      <p class="note">このほかにも、実践地へのエクスカーション、合意形成のワークショップ、寺子屋体験、シェアハウス・コレクティブハウスまで——ゆるやかに深めていける、いくつもの入口を用意していきます。</p>
-      <p class="last">歩きながら、あなたの"ともに生きる"のカタチが見えてきます。</p>
-    </div>
-  </section>
-
-  <!-- ============ THE PLATFORM ============ -->
-  <section class="platform" id="platform">
-    <div class="inner" data-reveal>
-      <p class="eyebrow italic"><span>The Platform</span><span class="badge">TO B</span></p>
-      <p class="kicker">そして、この小さな実践を、日本中の実践とつなげていく。</p>
-      <h2 class="sec-h2">点在する実践を、ひとつの地図に。</h2>
-      <p class="lead">ヒトとヒト、ヒトと自然が"ともに生きる"——その実践は、すでに日本、そして世界各地に点在しています。<br>私たちは、共生・共助の文化を実践する<strong>個人・場・組織</strong>を見出し、有機的に結びつける「ご縁結び」のプラットフォームを創出します。<br>点在する実践をつなぎ、<strong>ひとつの地図</strong>にしていくことで、誰もが"ともに生きる"の一歩を踏み出せる入口をつくります。</p>
-
-      <div class="map-figure">
-        <img src="assets/map-figure-v2.png" alt="点在する実践を、ひとつの地図に。日本と世界に点在する実践がつながる地図図解">
-      </div>
-
-      <div class="sub-head">
-        <h3>2つの事業</h3>
-        <span>what we do</span>
-      </div>
-
-      <div class="biz-list">
-        <div class="biz">
-          <span class="num">1</span>
-          <div>
-            <h4>訪ね、見える化し、記録する</h4>
-            <p>コミュニティ・コミュニケーション・コモンズの各分野で「ともに生きる」を実践する人々を訪ね、見える化していきます。"ともに生きる"のかたちを<strong>基準として言語化</strong>し、各地の実践を記録・紹介。その知見をメディアとして発信し、日本中の実践を、ひとつの<strong>データベース（地図）</strong>にしていきます。</p>
-          </div>
-        </div>
-        <div class="biz">
-          <span class="num">2</span>
-          <div>
-            <h4>探究し、連携する</h4>
-            <p>「ともに生きる」ことで一人ひとりが豊かに暮らす、その知恵を深め、探究します。<strong>行政機関・研究機関とも連携し</strong>、"ともに生きる社会"の実践と創造に向けた方策を、ともに探究していきます。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="arrow-note">
-        <div class="arrow">↓</div>
-        <p>その営みは、やがて3つのかたちに結実していく</p>
-      </div>
-
-      <div class="sub-head">
-        <h3>これから育てる、3つのかたち</h3>
-        <span>the landscape ahead</span>
-      </div>
-
-      <div class="form-grid">
-        <article class="form-card">
-          <div class="fig"><img src="assets/tomoiki-house.png" alt="TOMOIKI ハウスのイラスト"></div>
-          <h4>TOMOIKI ハウス</h4>
-          <div class="en">the home</div>
-          <p>実際に「ともに暮らす」実践の場。人と暮らしが交わる、生きた拠点。</p>
-        </article>
-        <article class="form-card">
-          <div class="fig"><img src="assets/tomoiki-center.png" alt="TOMOIKI センターのイラスト"></div>
-          <h4>TOMOIKI センター</h4>
-          <div class="en">the hub</div>
-          <p>「ともに暮らす」を支える情報の拠点。知恵と事例が集まる場所。</p>
-        </article>
-        <article class="form-card">
-          <div class="fig mark"><img src="assets/tomoiki-mark.png" alt="TOMOIKI 印のシンボル"></div>
-          <h4>TOMOIKI 印<br>／ブックレット</h4>
-          <div class="en">the mark</div>
-          <p>各地の実践を訪ね、記録し、紹介する。評価ではなく、いっしょに学び、分かち合うために。</p>
-        </article>
-      </div>
-
-      <div class="pull-box">
-        <p>私たちは、点在する実践をつなぎ、公助でも自助でもない——"共生・共助の文化"を、ともに育てていきます。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MEMBERS ============ -->
-  <section class="members" id="members">
-    <div class="inner" data-reveal>
-      <p class="eyebrow italic"><span>Members</span></p>
-      <h2>「ともに生きる」を、ともに探究する仲間。</h2>
-      <p class="lead">越境的なキャリアと専門性を持つメンバーが、それぞれの実践知を持ち寄り、この法人を立ち上げました。私たち自身も、答えを持っているわけではありません。"ともに生きる"を問い、試みながら——探究のさなかにいる、ひとりひとりです。</p>
-
-      <div class="group-photo">
-        <img src="assets/members-group.jpg" alt="ともに生きる実践ラボ メンバー全員集合">
-      </div>
-
-      <div class="member-grid">
-        <div class="member">
-          <div class="portrait"><img src="assets/member-takahashi.jpg" alt="高橋 満世"></div>
-          <h3>高橋 満世</h3>
-          <div class="meta"><span class="role">代表理事</span><span class="romaji">Takahashi Mitsuyo</span></div>
-          <p>千葉南房総で夫・仲間とシェアハウスに暮らし、人生と仕事に境目のない生き方を実践。一人の想いからはじまる事業やプロジェクトを“いのち”と捉え、そのCallingを社会に届く形へ翻訳・編集し、実装することを理念とする。東証グロース上場のSaaS企業での事業推進、宝飾業界での外商、ソマティック心理学をベースとした対人支援での経験を糧に、プロジェクト共創・PM・翻訳/出版・コミュニティ運営・司会/MC・講師など、場も役割も越境して触媒的に活動中。ニュージーランドのエコ・ネイバーフッド「アースソング」の実践書『Cohousing For Life』の翻訳出版（No Limit出版）では訳者として携わり、ムーブメント推進のため本法人を設立。人と自然・地域が支え合う暮らしと共生文化の深化・実践を広げていくための活動を本格始動している。</p>
-        </div>
-        <div class="member">
-          <div class="portrait"><img src="assets/member-tsumura.jpg" alt="津村 英作"></div>
-          <h3>津村 英作</h3>
-          <div class="meta"><span class="role">理事</span><span class="romaji">Tsumura Eisaku</span></div>
-          <p>一般社団法人「ともに生きる実践ラボ」理事。組織心理学博士。ヒューマンエデュケア代表。長年にわたりプロコーチ養成、人材育成、対話の場づくりを通じた関係性改善、リーダーシップと組織開発に携わってきた人と関係性の専門家。子どもの不登校を契機に家族の生き方と暮らし方を見つめ直し、2018年から家族とともにニュージーランドへ移住。この経験を通じて、多様性を尊重し、互いに支え合うコミュニティの価値を実感した。人生の目的と社会への貢献を結ぶ「ビガーゲーム」の実践・普及をはじめ、コウハウジング、地域コミュニティ、縄文・アイヌの文化などを手がかりに、豊かな生き方を探究している。一人ひとりが自分らしさと自律性を保ちながら、世代や立場を超えて支え合える共助・共生社会を目指し、人と人、人と地域、人と自然を結ぶ「関係性の触媒」として、学びを実践へ、出会いを協働へと育てている。現在ニュージーランドと東京の2拠点で生活、活動中。</p>
-        </div>
-        <div class="member">
-          <div class="portrait"><img src="assets/member-ueda.jpg" alt="植田 裕子"></div>
-          <h3>植田 裕子</h3>
-          <div class="meta"><span class="role">理事</span><span class="romaji">Ueda Yuko</span></div>
-          <p>Yu-with-You代表。食品会社に就職し２度の育児休職を取りながら原料購買や事業採算、秘書などを経験。その後Co-Active Coachingに出会いコーチとして独立。2007年よりCTIジャパンにてコーチ養成に関わっている。コーチは「人が変化する瞬間」に立ち会える素敵な仕事で、天職だと思っている。子育てを通して時代の変化を感じる中で、便利さ・快適さを手に入れてきた代償として、人とのつながりを失い孤独を感じている人が多いことに心を痛めている。この先の新しい人間関係のあり方を模索していきたいと思い、この「ともに生きる実践ラボ」に参画。自助でも公助でもない共助・共生の社会をつくっていく輪を大きく広げていきたいと願っている。</p>
-        </div>
-        <div class="member">
-          <div class="portrait"><img src="assets/member-inoue.jpg" alt="井上 理津子"></div>
-          <h3>井上 理津子</h3>
-          <div class="meta"><span class="role">理事</span><span class="romaji">Inoue Ritsuko</span></div>
-          <p>金融機関で約40年、営業現場から組織運営、人財育成、ダイバーシティ推進など、さまざまな仕事を経験。仕事の傍らコーチングやカウンセリングを学び、「人の可能性を信じて関わる」こと、一人ひとりの力を活かすことが組織の力につながることを実感してきた。現在は社外取締役として企業経営にも関わる一方、人生100年時代における人と人とのつながりや、「ともに生きる」社会のあり方を探究している。好きな言葉は「一人の100歩よりも100人の1歩」。自らを「道（未知）を拓く冒険家」と称し、好奇心の赴くままに新しい世界へ一歩踏み出し、そこで出会った人や得た学びを、次の誰かへつないでいくことを楽しんでいる。</p>
-        </div>
-        <div class="member">
-          <div class="portrait"><img src="assets/member-sagesaka.jpg" alt="提坂 英暢"></div>
-          <h3>提坂 英暢</h3>
-          <div class="meta"><span class="role">理事</span><span class="romaji">Sagesaka Hidenobu</span></div>
-          <p>メーカーで商品の立ち上げから市場導入、広報まで携わり、専門家と力を合わせて価値を育てる経験を重ねてきた。協働の中で生まれる温かな関係性と、人が持つ可能性の広がりを実感してきたことが原点となっている。また、「人生の岐路に立つ人に、そっと背中を押すきっかけを届けたい」という思いからNPO法人の立ち上げに参画し、起業支援やキャリア形成プログラムを10年以上運営してきた。人が自分らしさを見つけ、前へ進む瞬間に寄り添うことを大切にしている。大切な人と食卓を囲む時間に幸せを感じるように、人と人が温かくつながることは日々を豊かにする力になると信じている。ともに暮らし、ともに生きる社会を育むため、仲間とともに一般社団法人「ともに生きる実践ラボ」を設立し、ゆるやかなつながりが芽生える場づくりを進めている。これから出会う皆さまと心地よい時間を重ねていけることを心より楽しみにしている。</p>
-        </div>
-        <div class="member">
-          <div class="portrait"><img src="assets/member-sadakata.jpg" alt="定形 一輝"></div>
-          <h3>定形 一輝</h3>
-          <div class="meta"><span class="role">監事</span><span class="romaji">Sadakata Kazuki</span></div>
-          <p>東京都の会計事務所で8年間、日系中小企業や外資系投資ファンドの会計・税務サポートを担当。その一方で、都内中心に各所で哲学対話・読書会を毎月開催している。旅先で生産現場のお手伝いをしたことをきっかけに、人と人・人と自然が相互に支えられながら”ともに生き”ていることを強く実感。人間の社会活動は貨幣価値のみで測られるのではなく、多様な価値観への想像力やケアの視点を広げることが、余白のある心豊かな社会をつくると信じている。その媒介者として、自分と他者の心にじっくり耳を傾ける対話の場をあちこちに設けることが目標。そして対話に留まらず、より深い共助・共生社会を仲間とともに探求するために、当法人に参画。モットーは”Feminism is for Everybody.”。現在は都市と地方の魅力的な取り組みを紹介しつなげるローカルライターになるべく勉強中。</p>
-        </div>
-      </div>
-
-      <div class="sub-head">
-        <h3>顧問</h3>
-        <span>advisors</span>
-      </div>
-
-      <div class="advisor-grid">
-        <div class="member">
-          <div class="photo-slot">
-            <div class="row">
-              <span class="lbl">PHOTO</span>
-              <span class="badge">20日納品予定</span>
-            </div>
-            <span class="hint">正方形・統一トーン</span>
-          </div>
-          <h3>山田 貴宏</h3>
-          <div class="meta"><span class="role">顧問</span><span class="romaji">Yamada Takahiro</span></div>
-          <p>専門・立場の紹介。</p>
-        </div>
-        <div class="member">
-          <div class="photo-slot">
-            <div class="row">
-              <span class="lbl">PHOTO</span>
-              <span class="badge">20日納品予定</span>
-            </div>
-            <span class="hint">正方形・統一トーン</span>
-          </div>
-          <h3>伊藤 研人</h3>
-          <div class="meta"><span class="role">顧問</span><span class="romaji">Itoh Kento</span></div>
-          <p>専門・立場の紹介。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ THE FIRST DAY ============ -->
-  <section class="firstday" id="firstday">
-    <div class="inner" data-reveal>
-      <p class="eyebrow italic"><span>The First Day</span></p>
-      <h2>2026年10月10日（土）<br>"ともに生きる"を探究する仲間と出会う、最初の一日。</h2>
-      <p class="lead">私たちは、2026年を「ともに生きる元年」と定めました。その幕開けを告げる、最初のご縁結び。</p>
-      <p class="body">2026年10月10日（土）、「"ともに生きる"を探究する仲間と出会うトーキングセッション 〜これからの暮らし方、共生・共助の文化を共創する〜」を開催します。書籍『「ともに暮らす」の作り方』の著者ロビン・アリソン氏を、ニュージーランドから迎え、基調講演と対談をお届けします。</p>
-
-      <div class="event-visual">
-        <img src="assets/event-session-visual-v2.png" alt="ともに生きるを探究する仲間と出会うトーキングセッション — 2026年10月10日（土）建築家会館 本館ホール">
-      </div>
-
-      <a class="btn-gold" href="https://tomoiki-lab-2026.peatix.com" target="_blank" rel="noopener">Peatix で申し込む&nbsp;→</a>
-    </div>
-  </section>
-
-  <!-- ============ JOIN ============ -->
-  <section class="join" id="join">
-    <div class="join-family">
-      <img src="assets/sketch-family.png" alt="">
-    </div>
-    <div class="inner" data-reveal>
-      <p class="eyebrow center"><span>Join Us</span></p>
-      <h2>ともに生きるムーブメントの、<br>はじまりに。</h2>
-      <p class="lead">Facebookグループから、書籍の刊行情報や活動のお知らせ、<br><span class="strong">著者であるロビン来日イベントの最新情報をお届けします。</span></p>
-      <p class="welcome">“ともに生きる”世界への入口で、お待ちしています。</p>
-      <div class="join-cta">
-        <span class="rule"></span>
-        <a class="btn-fb" href="#"><span class="f">f</span> Facebookグループに参加</a>
-        <span class="rule"></span>
-      </div>
-    </div>
-  </section>
-
+<a class="btn-fb" data-fx="" href="#" style="--d:0.27s"><span class="f">f</span> Facebookグループに参加</a>
+</div>
+</div>
+</section>
+<div class="connect-bar"></div>
+<!-- ============ NEWS ============ -->
+<section class="news" id="news">
+<div class="inner">
+<div class="news-head" data-fx="">
+<div class="t">
+<h2>お知らせ</h2>
+<span class="en">news</span>
+</div>
+<a class="more" href="#news">すべて見る →</a>
+</div>
+<ul>
+<li data-fx="">
+<a href="#firstday">
+<time datetime="2026-10-10">2026.10.10</time>
+<span class="tag event">イベント</span>
+<span class="ttl">【初回イベント】2026年10月10日（土）『ともに暮らす』を探究する仲間と出会うトーキングセッション<br/>〜これからの暮らし方、共生・共助の文化を共創する〜を開催します</span>
+</a>
+</li>
+<li data-fx="" style="--d:0.09s">
+<a href="#origin">
+<time datetime="2026-08-05">2026.08.05</time>
+<span class="tag book">書籍</span>
+<span class="ttl">【書籍】『「ともに暮らす」の作り方』翻訳出版に向けた進捗と、刊行スケジュールのお知らせ。</span>
+</a>
+</li>
+<li data-fx="" style="--d:0.18s">
+<a href="#concept">
+<time datetime="2026-07-18">2026.07.18</time>
+<span class="tag corp">法人設立</span>
+<span class="ttl">【プレスリリース】一般社団法人ともに生きる実践ラボを設立しました。</span>
+</a>
+</li>
+<li data-fx="" style="--d:0.27s">
+<a href="#">
+<time datetime="2026-06-30">2026.06.30</time>
+<span class="tag cf">クラファン</span>
+<span class="ttl">【クラウドファンディング】のご案内</span>
+</a>
+</li>
+</ul>
+</div>
+</section>
+<!-- ============ CONCEPT / PURPOSE ============ -->
+<section class="concept" id="concept">
+<div class="inner">
+<div class="concept-grid">
+<div>
+<p class="eyebrow caps" data-fx=""><span>Purpose</span></p>
+<h2 data-fx="" style="--d:0.09s">孤立を前提にしない、文化づくりへ。</h2>
+<p data-fx="" style="--d:0.18s">現代社会では、単身世帯の増加や地域コミュニティの希薄化により、人と人とのつながりが弱まり、孤立や分断が社会課題となっています。一方で、日本には古くから「ご縁」「助け合い」「分かち合い」の文化が息づいてきました。私たち「一般社団法人 ともに生きる実践ラボ」は、この文化をいまの社会にふさわしい形へと編みなおし、人と人が関係性を深め、自然の循環と調和しながら暮らしを育む——人・地域・自然が支え合う「ともに生きる社会」の実現を目指して設立しました。</p>
+<p data-fx="" style="--d:0.27s">現代における人とのつながりの減少や孤立は、気まずさ、すれ違い、話し合いの面倒くささを避け続けた結果なのかもしれません。いま必要なのは、「人と関わること」——関係性がもたらす不確実さを引き受ける勇気と知恵だとしたら。目の前の不安や違和感は、希望の種ともいえるのではないでしょうか。</p>
+</div>
+<div class="concept-fig" data-fx="">
+<img alt="人と人、人と自然が支え合う暮らしのイメージ" src="assets/purpose-house.png"/>
+</div>
+</div>
+</div>
+<svg aria-hidden="true" class="bird" fill="none" stroke="#8a7a52" stroke-linecap="round" stroke-width="1.4" style="right:6%;top:64px;animation:birdFly 11s linear infinite" viewbox="0 0 40 16" width="30">
+<g style="animation:wingFlap .5s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
+</svg>
+<svg aria-hidden="true" class="bird" fill="none" stroke="#8a7a52" stroke-linecap="round" stroke-width="1.4" style="right:2%;top:78px;animation:birdFly 13s linear infinite;animation-delay:3.5s" viewbox="0 0 40 16" width="22">
+<g style="animation:wingFlap .58s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
+</svg>
+<svg aria-hidden="true" class="bird" fill="none" stroke="#8a7a52" stroke-linecap="round" stroke-width="1.4" style="right:11%;top:88px;animation:birdFly 12s linear infinite;animation-delay:6.5s" viewbox="0 0 40 16" width="26">
+<g style="animation:wingFlap .46s ease-in-out infinite"><path d="M2 12 Q10 2 20 9"></path><path d="M20 9 Q30 2 38 12"></path></g>
+</svg>
+</section>
+<!-- ============ PHILOSOPHY ============ -->
+<section class="philosophy" id="philosophy">
+<div class="inner">
+<div class="head">
+<p class="eyebrow caps center" data-fx=""><span>Philosophy</span></p>
+<h2 data-fx="" style="--d:0.09s">関係性を土台に、暮らしの場を共有し、<br/>ともに生きる。</h2>
+<p data-fx="" style="--d:0.18s">そのフィロソフィーを支えるのが、コミュニティ・コミュニケーション・コモンズという3つの要素です。<br/>——自然のはたらきになぞらえた3つの要素が、ゆるやかに結びあいます。</p>
+</div>
+<div class="philosophy-diagram" data-fx="">
+<img alt="コミュニティ・コミュニケーション・コモンズの3つの要素と、それらをつなぐ結び手／触媒" src="assets/philosophy-diagram-v3.png"/>
+</div>
+<div class="close">
+<p class="lead" data-fx="">TOMOIKI フィロソフィーを支える、これら3つの要素のあいだに立つ「結び手」「触媒」として、<br/>"ともに生きる"を問い、試み、分かち合う。<br/>——<em>Research &amp; Development</em>（研究・開発）を通じて、新しい共生のかたちを育てていきます。</p>
+<p class="last" data-fx="" style="--d:0.09s">だれもが「ともに生きる」の一歩を踏み出せる。<br/>そんな共生のかたちを、ともにつくっていきます。</p>
+</div>
+</div>
+</section>
+<!-- ============ THE ORIGIN ============ -->
+<section class="origin" id="origin">
+<div class="inner">
+<p class="eyebrow italic" data-fx=""><span>The Origin</span></p>
+<h2 class="sec-h2" data-fx="" style="--d:0.09s">一冊の本からはじまる、ムーブメント。</h2>
+<p class="lede" data-fx="" style="--d:0.18s">私たちの活動の原点は、一冊の本にあります。<br/>『「ともに暮らす」の作り方 ——ニュージーランドで育まれた、ひとつのコミュニティの物語』<em>（原題：Cohousing for Life）</em></p>
+<div class="book-row">
+<div class="cover" data-fx="">
+<img alt="『「ともに暮らす」の作り方』書影" src="assets/book-cover-v2.png"/>
+</div>
+<div>
+<p data-fx="">ニュージーランド・オークランド郊外に、アースソング（Earthsong Eco-Neighbourhood）というコウハウジング<span class="note">（住人たちが主体となってつくる協同型の住まいモデルのひとつ）</span>があります。著者ロビン・アリソンは、その創設者。1995年、たった一人の想いから始まったこのプロジェクトは、30年以上たつ現在も、<strong>32戸のエコホームからなる共同体</strong>として運営が続いています。世界6,000超のサステナブル・コミュニティが加盟する Global Ecovillage Network（GEN）が認知する代表的事例のひとつであり、国際的なコウハウジング／エコビレッジ運動の<strong>原典</strong>としての位置づけが確立しています。</p>
+<a class="btn-sage" data-fx="" href="#origin" style="--d:0.09s">書籍を詳しく見る →</a>
+</div>
+</div>
+<div class="earthsong-row">
+<figure data-fx="">
+<img alt="ロビン・アリソン氏" src="assets/robin-allison.jpg"/>
+<figcaption>ロビン・アリソン　<span>Robin Allison</span></figcaption>
+</figure>
+<div class="earthsong-col" data-fx="" style="--d:0.09s">
+<img alt="アースソング エコネイバーフッド 全体配置計画" src="assets/earthsong-siteplan.png"/>
+<img alt="アースソングのコミュニティメンバー" src="assets/earthsong-members.png"/>
+</div>
+</div>
+<blockquote data-fx="" style="--d:0.27s">
+<p class="intro">アースソングの壮大なプロジェクトは、たった一人の、こんな想いから生まれました。</p>
+<p class="quote">「わたしがそこにいることが、地球にとって健やかで、めぐみとなる関係でありたい。人とともに暮らしながらも、ひとりの時間や自分らしさが脅かされることはなく、それでいて、人とふれあい、つながる機会には、いつでも気軽に手をのばせる——そんな場所。さまざまな世代の人、さまざまな文化の人と、隣り合って暮らしたい。そのコミュニティが、大人にとっても、お年寄りにとっても、子どもにとっても、そして見過ごされがちなティーンエイジャーにとっても、末永く居心地のよい場所であってほしい。」</p>
+<footer>——ロビン・アリソン 個人日記より（『「ともに暮らす」の作り方』第3章）</footer>
+</blockquote>
+<div class="origin-close">
+<h3 data-fx="">ただ、コミュニティをつくったのではありません。</h3>
+<p data-fx="" style="--d:0.09s">アースソングが稀有なのは、<strong>コウハウジング（個と共同体の共存）</strong>を軸に、<strong>パーマカルチャー</strong>、そして<strong>教育</strong>を編み込みながら、設計から建築までを住民自身が推進し、実現させたこと。だから本書には、「ともに生きる」を実現するための、多様な実践知が織り込まれています。</p>
+<div class="six-elements" data-fx="" style="--d:0.18s">
+<img alt="「ともに生きる」を支える6つの要素 — エコ建築、コーチング／ファシリテーション、教育、パーマカルチャー、関係性デザイン、実務スキル" src="assets/six-elements.png"/>
+</div>
+<div class="year-box" data-fx="" style="--d:0.27s">
+<p>分断と孤立が深まる、2026年。本書が、日本に届きます。<br/>かつて長屋の暮らしにあったように、共生・共助は、この国にとって当たり前のものでした。その精神を今こそ思い出し、一つの実践知に触れながら、新たな共生のかたちを育てたい。私たちは、2026年を「ともに生きる元年」と定めることにしました。<br/>ここから、文化づくりのムーブメントが始まります。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ DOORWAYS ============ -->
+<section class="ladder" id="ladder">
+<div class="inner">
+<p class="eyebrow italic" data-fx=""><span>Doorways</span></p>
+<h2 class="sec-h2" data-fx="" style="--d:0.09s">ともに生きる、いくつもの入口。</h2>
+<p class="lead" data-fx="" style="--d:0.18s">暮らしをともにしてもいいし、しなくてもいい。あなたに合った、はじめの一歩から。<br/>「ともに生きる」を分かち合う——そんな気軽な場を、仕込み中。</p>
+<div class="door-grid">
+<article class="door" data-fx="">
+<div class="thumb"><img alt="読書会・勉強会" src="assets/reading-circle.png"/></div>
+<div class="body">
+<h3>読書会・勉強会</h3>
+<p>書籍『「ともに暮らす」の作り方』を囲み、ニュージーランドで育まれた共生・共助の知恵を、ともに読み解き、語り合います。</p>
+</div>
+</article>
+<article class="door" data-fx="" style="--d:0.09s">
+<div class="thumb"><img alt="コモンミール（食事会）" src="assets/common-meal.jpg"/></div>
+<div class="body">
+<h3>コモンミール（食事会）</h3>
+<p>ともに作り、一緒に食べる。同じ食卓を囲むことから、関係は始まります。</p>
+</div>
+</article>
+<article class="door" data-fx="" style="--d:0.18s">
+<div class="thumb"><img alt="現場見学" src="assets/site-visit.png"/></div>
+<div class="body">
+<h3>現場見学</h3>
+<p>多世代型共同住宅コレクティブハウスなど、実際の暮らしの場を訪ね、体感する。</p>
+</div>
+</article>
+</div>
+<p class="note" data-fx="" style="--d:0.27s">このほかにも、実践地へのエクスカーション、合意形成のワークショップ、寺子屋体験、シェアハウス・コレクティブハウスまで——ゆるやかに深めていける、いくつもの入口を用意していきます。</p>
+<p class="last" data-fx="" style="--d:0.36s">歩きながら、あなたの"ともに生きる"のカタチが見えてきます。</p>
+</div>
+</section>
+<!-- ============ THE PLATFORM ============ -->
+<section class="platform" id="platform">
+<div class="inner">
+<p class="eyebrow italic" data-fx=""><span>The Platform</span><span class="badge">TO B</span></p>
+<p class="kicker" data-fx="" style="--d:0.09s">そして、この小さな実践を、日本中の実践とつなげていく。</p>
+<h2 class="sec-h2" data-fx="" style="--d:0.18s">点在する実践を、ひとつの地図に。</h2>
+<p class="lead" data-fx="" style="--d:0.27s">ヒトとヒト、ヒトと自然が"ともに生きる"——その実践は、すでに日本、そして世界各地に点在しています。<br/>私たちは、共生・共助の文化を実践する<strong>個人・場・組織</strong>を見出し、有機的に結びつける「ご縁結び」のプラットフォームを創出します。<br/>点在する実践をつなぎ、<strong>ひとつの地図</strong>にしていくことで、誰もが"ともに生きる"の一歩を踏み出せる入口をつくります。</p>
+<div class="map-figure" data-fx="" style="--d:0.36s">
+<img alt="点在する実践を、ひとつの地図に。日本と世界に点在する実践がつながる地図図解" src="assets/map-figure-v2.png"/>
+</div>
+<div class="sub-head" data-fx="" style="--d:0.45s">
+<h3>2つの事業</h3>
+<span>what we do</span>
+</div>
+<div class="biz-list">
+<div class="biz" data-fx="">
+<span class="num">1</span>
+<div>
+<h4>訪ね、見える化し、記録する</h4>
+<p>コミュニティ・コミュニケーション・コモンズの各分野で「ともに生きる」を実践する人々を訪ね、見える化していきます。"ともに生きる"のかたちを<strong>基準として言語化</strong>し、各地の実践を記録・紹介。その知見をメディアとして発信し、日本中の実践を、ひとつの<strong>データベース（地図）</strong>にしていきます。</p>
+</div>
+</div>
+<div class="biz" data-fx="" style="--d:0.09s">
+<span class="num">2</span>
+<div>
+<h4>探究し、連携する</h4>
+<p>「ともに生きる」ことで一人ひとりが豊かに暮らす、その知恵を深め、探究します。<strong>行政機関・研究機関とも連携し</strong>、"ともに生きる社会"の実践と創造に向けた方策を、ともに探究していきます。</p>
+</div>
+</div>
+</div>
+<div class="arrow-note" data-fx="" style="--d:0.54s">
+<div class="arrow">↓</div>
+<p>その営みは、やがて3つのかたちに結実していく</p>
+</div>
+<div class="sub-head" data-fx="" style="--d:0.54s">
+<h3>これから育てる、3つのかたち</h3>
+<span>the landscape ahead</span>
+</div>
+<div class="form-grid">
+<article class="form-card" data-fx="">
+<div class="fig"><img alt="TOMOIKI ハウスのイラスト" src="assets/tomoiki-house.png"/></div>
+<h4>TOMOIKI ハウス</h4>
+<div class="en">the home</div>
+<p>実際に「ともに暮らす」実践の場。人と暮らしが交わる、生きた拠点。</p>
+</article>
+<article class="form-card" data-fx="" style="--d:0.09s">
+<div class="fig"><img alt="TOMOIKI センターのイラスト" src="assets/tomoiki-center.png"/></div>
+<h4>TOMOIKI センター</h4>
+<div class="en">the hub</div>
+<p>「ともに暮らす」を支える情報の拠点。知恵と事例が集まる場所。</p>
+</article>
+<article class="form-card" data-fx="" style="--d:0.18s">
+<div class="fig mark"><img alt="TOMOIKI 印のシンボル" src="assets/tomoiki-mark.png"/></div>
+<h4>TOMOIKI 印<br/>／ブックレット</h4>
+<div class="en">the mark</div>
+<p>各地の実践を訪ね、記録し、紹介する。評価ではなく、いっしょに学び、分かち合うために。</p>
+</article>
+</div>
+<div class="pull-box" data-fx="" style="--d:0.54s">
+<p>私たちは、点在する実践をつなぎ、公助でも自助でもない——"共生・共助の文化"を、ともに育てていきます。</p>
+</div>
+</div>
+</section>
+<!-- ============ MEMBERS ============ -->
+<section class="members" id="members">
+<div class="inner">
+<p class="eyebrow italic" data-fx=""><span>Members</span></p>
+<h2 data-fx="" style="--d:0.09s">「ともに生きる」を、ともに探究する仲間。</h2>
+<p class="lead" data-fx="" style="--d:0.18s">越境的なキャリアと専門性を持つメンバーが、それぞれの実践知を持ち寄り、この法人を立ち上げました。私たち自身も、答えを持っているわけではありません。"ともに生きる"を問い、試みながら——探究のさなかにいる、ひとりひとりです。</p>
+<div class="group-photo" data-fx="" style="--d:0.27s">
+<img alt="ともに生きる実践ラボ メンバー全員集合" src="assets/members-group.jpg"/>
+</div>
+<div class="member-grid">
+<div class="member" data-fx="">
+<div class="portrait"><img alt="高橋 満世" src="assets/member-takahashi.jpg"/></div>
+<h3>高橋 満世</h3>
+<div class="meta"><span class="role">代表理事</span><span class="romaji">Takahashi Mitsuyo</span></div>
+<p>千葉南房総で夫・仲間とシェアハウスに暮らし、人生と仕事に境目のない生き方を実践。一人の想いからはじまる事業やプロジェクトを“いのち”と捉え、そのCallingを社会に届く形へ翻訳・編集し、実装することを理念とする。東証グロース上場のSaaS企業での事業推進、宝飾業界での外商、ソマティック心理学をベースとした対人支援での経験を糧に、プロジェクト共創・PM・翻訳/出版・コミュニティ運営・司会/MC・講師など、場も役割も越境して触媒的に活動中。ニュージーランドのエコ・ネイバーフッド「アースソング」の実践書『Cohousing For Life』の翻訳出版（No Limit出版）では訳者として携わり、ムーブメント推進のため本法人を設立。人と自然・地域が支え合う暮らしと共生文化の深化・実践を広げていくための活動を本格始動している。</p>
+</div>
+<div class="member" data-fx="" style="--d:0.09s">
+<div class="portrait"><img alt="津村 英作" src="assets/member-tsumura.jpg"/></div>
+<h3>津村 英作</h3>
+<div class="meta"><span class="role">理事</span><span class="romaji">Tsumura Eisaku</span></div>
+<p>一般社団法人「ともに生きる実践ラボ」理事。組織心理学博士。ヒューマンエデュケア代表。長年にわたりプロコーチ養成、人材育成、対話の場づくりを通じた関係性改善、リーダーシップと組織開発に携わってきた人と関係性の専門家。子どもの不登校を契機に家族の生き方と暮らし方を見つめ直し、2018年から家族とともにニュージーランドへ移住。この経験を通じて、多様性を尊重し、互いに支え合うコミュニティの価値を実感した。人生の目的と社会への貢献を結ぶ「ビガーゲーム」の実践・普及をはじめ、コウハウジング、地域コミュニティ、縄文・アイヌの文化などを手がかりに、豊かな生き方を探究している。一人ひとりが自分らしさと自律性を保ちながら、世代や立場を超えて支え合える共助・共生社会を目指し、人と人、人と地域、人と自然を結ぶ「関係性の触媒」として、学びを実践へ、出会いを協働へと育てている。現在ニュージーランドと東京の2拠点で生活、活動中。</p>
+</div>
+<div class="member" data-fx="" style="--d:0.18s">
+<div class="portrait"><img alt="植田 裕子" src="assets/member-ueda.jpg"/></div>
+<h3>植田 裕子</h3>
+<div class="meta"><span class="role">理事</span><span class="romaji">Ueda Yuko</span></div>
+<p>Yu-with-You代表。食品会社に就職し２度の育児休職を取りながら原料購買や事業採算、秘書などを経験。その後Co-Active Coachingに出会いコーチとして独立。2007年よりCTIジャパンにてコーチ養成に関わっている。コーチは「人が変化する瞬間」に立ち会える素敵な仕事で、天職だと思っている。子育てを通して時代の変化を感じる中で、便利さ・快適さを手に入れてきた代償として、人とのつながりを失い孤独を感じている人が多いことに心を痛めている。この先の新しい人間関係のあり方を模索していきたいと思い、この「ともに生きる実践ラボ」に参画。自助でも公助でもない共助・共生の社会をつくっていく輪を大きく広げていきたいと願っている。</p>
+</div>
+<div class="member" data-fx="" style="--d:0.27s">
+<div class="portrait"><img alt="井上 理津子" src="assets/member-inoue.jpg"/></div>
+<h3>井上 理津子</h3>
+<div class="meta"><span class="role">理事</span><span class="romaji">Inoue Ritsuko</span></div>
+<p>金融機関で約40年、営業現場から組織運営、人財育成、ダイバーシティ推進など、さまざまな仕事を経験。仕事の傍らコーチングやカウンセリングを学び、「人の可能性を信じて関わる」こと、一人ひとりの力を活かすことが組織の力につながることを実感してきた。現在は社外取締役として企業経営にも関わる一方、人生100年時代における人と人とのつながりや、「ともに生きる」社会のあり方を探究している。好きな言葉は「一人の100歩よりも100人の1歩」。自らを「道（未知）を拓く冒険家」と称し、好奇心の赴くままに新しい世界へ一歩踏み出し、そこで出会った人や得た学びを、次の誰かへつないでいくことを楽しんでいる。</p>
+</div>
+<div class="member" data-fx="" style="--d:0.36s">
+<div class="portrait"><img alt="提坂 英暢" src="assets/member-sagesaka.jpg"/></div>
+<h3>提坂 英暢</h3>
+<div class="meta"><span class="role">理事</span><span class="romaji">Sagesaka Hidenobu</span></div>
+<p>メーカーで商品の立ち上げから市場導入、広報まで携わり、専門家と力を合わせて価値を育てる経験を重ねてきた。協働の中で生まれる温かな関係性と、人が持つ可能性の広がりを実感してきたことが原点となっている。また、「人生の岐路に立つ人に、そっと背中を押すきっかけを届けたい」という思いからNPO法人の立ち上げに参画し、起業支援やキャリア形成プログラムを10年以上運営してきた。人が自分らしさを見つけ、前へ進む瞬間に寄り添うことを大切にしている。大切な人と食卓を囲む時間に幸せを感じるように、人と人が温かくつながることは日々を豊かにする力になると信じている。ともに暮らし、ともに生きる社会を育むため、仲間とともに一般社団法人「ともに生きる実践ラボ」を設立し、ゆるやかなつながりが芽生える場づくりを進めている。これから出会う皆さまと心地よい時間を重ねていけることを心より楽しみにしている。</p>
+</div>
+<div class="member" data-fx="" style="--d:0.45s">
+<div class="portrait"><img alt="定形 一輝" src="assets/member-sadakata.jpg"/></div>
+<h3>定形 一輝</h3>
+<div class="meta"><span class="role">監事</span><span class="romaji">Sadakata Kazuki</span></div>
+<p>東京都の会計事務所で8年間、日系中小企業や外資系投資ファンドの会計・税務サポートを担当。その一方で、都内中心に各所で哲学対話・読書会を毎月開催している。旅先で生産現場のお手伝いをしたことをきっかけに、人と人・人と自然が相互に支えられながら”ともに生き”ていることを強く実感。人間の社会活動は貨幣価値のみで測られるのではなく、多様な価値観への想像力やケアの視点を広げることが、余白のある心豊かな社会をつくると信じている。その媒介者として、自分と他者の心にじっくり耳を傾ける対話の場をあちこちに設けることが目標。そして対話に留まらず、より深い共助・共生社会を仲間とともに探求するために、当法人に参画。モットーは”Feminism is for Everybody.”。現在は都市と地方の魅力的な取り組みを紹介しつなげるローカルライターになるべく勉強中。</p>
+</div>
+</div>
+<div class="sub-head" data-fx="" style="--d:0.36s">
+<h3>顧問</h3>
+<span>advisors</span>
+</div>
+<div class="advisor-grid">
+<div class="member" data-fx="">
+<div class="photo-slot">
+<div class="row">
+<span class="lbl">PHOTO</span>
+<span class="badge">20日納品予定</span>
+</div>
+<span class="hint">正方形・統一トーン</span>
+</div>
+<h3>山田 貴宏</h3>
+<div class="meta"><span class="role">顧問</span><span class="romaji">Yamada Takahiro</span></div>
+<p>専門・立場の紹介。</p>
+</div>
+<div class="member" data-fx="" style="--d:0.09s">
+<div class="photo-slot">
+<div class="row">
+<span class="lbl">PHOTO</span>
+<span class="badge">20日納品予定</span>
+</div>
+<span class="hint">正方形・統一トーン</span>
+</div>
+<h3>伊藤 研人</h3>
+<div class="meta"><span class="role">顧問</span><span class="romaji">Itoh Kento</span></div>
+<p>専門・立場の紹介。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ THE FIRST DAY ============ -->
+<section class="firstday" id="firstday">
+<div class="inner">
+<p class="eyebrow italic" data-fx=""><span>The First Day</span></p>
+<h2 data-fx="" style="--d:0.09s">2026年10月10日（土）<br/>"ともに生きる"を探究する仲間と出会う、最初の一日。</h2>
+<p class="lead" data-fx="" style="--d:0.18s">私たちは、2026年を「ともに生きる元年」と定めました。その幕開けを告げる、最初のご縁結び。</p>
+<p class="body" data-fx="" style="--d:0.27s">2026年10月10日（土）、「"ともに生きる"を探究する仲間と出会うトーキングセッション 〜これからの暮らし方、共生・共助の文化を共創する〜」を開催します。書籍『「ともに暮らす」の作り方』の著者ロビン・アリソン氏を、ニュージーランドから迎え、基調講演と対談をお届けします。</p>
+<div class="event-visual" data-fx="" style="--d:0.36s">
+<img alt="ともに生きるを探究する仲間と出会うトーキングセッション — 2026年10月10日（土）建築家会館 本館ホール" src="assets/event-session-visual-v2.png"/>
+</div>
+<a class="btn-gold" data-fx="" href="https://tomoiki-lab-2026.peatix.com" rel="noopener" style="--d:0.45s" target="_blank">Peatix で申し込む →</a>
+</div>
+</section>
+<!-- ============ JOIN ============ -->
+<section class="join" id="join">
+<div class="join-family">
+<img alt="" src="assets/sketch-family.png"/>
+</div>
+<div class="inner">
+<p class="eyebrow center" data-fx=""><span>Join Us</span></p>
+<h2 data-fx="" style="--d:0.09s">ともに生きるムーブメントの、<br/>はじまりに。</h2>
+<p class="lead" data-fx="" style="--d:0.18s">Facebookグループから、書籍の刊行情報や活動のお知らせ、<br/><span class="strong">著者であるロビン来日イベントの最新情報をお届けします。</span></p>
+<p class="welcome" data-fx="" style="--d:0.27s">“ともに生きる”世界への入口で、お待ちしています。</p>
+<div class="join-cta" data-fx="" style="--d:0.36s">
+<span class="rule"></span>
+<a class="btn-fb" href="#"><span class="f">f</span> Facebookグループに参加</a>
+<span class="rule"></span>
+</div>
+</div>
+</section>
 </main>
-
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
-  <div class="cols">
-    <div>
-      <img class="logo" src="assets/logo-color.png" alt="ともに生きる実践ラボ Co-Living Practice Lab">
-      <p class="about">関係性を土台に、暮らしの場を共有し、ともに生きる。“ともに生きる”ムーブメントを創出する発起母体です。</p>
-      <div class="socials">
-        <a href="#" aria-label="Facebook">f</a>
-        <a href="mailto:info@tomoiki-lab.org" aria-label="メール"><img src="assets/icon-mail.png" alt=""></a>
-      </div>
-    </div>
-    <div>
-      <h4>About</h4>
-      <ul>
-        <li><a href="#concept">私たちについて</a></li>
-        <li><a href="#philosophy">TOMOIKIの哲学</a></li>
-        <li><a href="#origin">活動の原点</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Contents</h4>
-      <ul>
-        <li><a href="#ladder">実践を知る</a></li>
-        <li><a href="#firstday">参加する</a></li>
-        <li><a href="#join">ともに生きる入口へ</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <div class="contact-row">
-        <img src="assets/icon-mail.png" alt="">
-        <a href="mailto:info@tomoiki-lab.org">info@tomoiki-lab.org</a>
-      </div>
-      <div class="contact-row">
-        <img src="assets/icon-phone.png" alt="">
-        <a href="tel:09083833243">090-8383-3243</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 一般社団法人ともに生きる実践ラボ</span>
-    <nav>
-      <a href="#">プライバシーポリシー</a>
-      <a href="#">お問い合わせ</a>
-    </nav>
-  </div>
+<div class="cols">
+<div data-fx="">
+<img alt="ともに生きる実践ラボ Co-Living Practice Lab" class="logo" src="assets/logo-color.png"/>
+<p class="about">関係性を土台に、暮らしの場を共有し、ともに生きる。“ともに生きる”ムーブメントを創出する発起母体です。</p>
+<div class="socials">
+<a aria-label="Facebook" href="#">f</a>
+<a aria-label="メール" href="mailto:info@tomoiki-lab.org"><img alt="" src="assets/icon-mail.png"/></a>
+</div>
+</div>
+<div data-fx="" style="--d:0.09s">
+<h4>About</h4>
+<ul>
+<li><a href="#concept">私たちについて</a></li>
+<li><a href="#philosophy">TOMOIKIの哲学</a></li>
+<li><a href="#origin">活動の原点</a></li>
+</ul>
+</div>
+<div data-fx="" style="--d:0.18s">
+<h4>Contents</h4>
+<ul>
+<li><a href="#ladder">実践を知る</a></li>
+<li><a href="#firstday">参加する</a></li>
+<li><a href="#join">ともに生きる入口へ</a></li>
+</ul>
+</div>
+<div data-fx="" style="--d:0.27s">
+<h4>Contact</h4>
+<div class="contact-row">
+<img alt="" src="assets/icon-mail.png"/>
+<a href="mailto:info@tomoiki-lab.org">info@tomoiki-lab.org</a>
+</div>
+<div class="contact-row">
+<img alt="" src="assets/icon-phone.png"/>
+<a href="tel:09083833243">090-8383-3243</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom" data-fx="">
+<span>© 一般社団法人ともに生きる実践ラボ</span>
+<nav>
+<a href="#">プライバシーポリシー</a>
+<a href="#">お問い合わせ</a>
+</nav>
+</div>
 </footer>
-
 <script>
 (function () {
-  /* --- scroll reveal --- */
-  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-  var reveal = function (el) { el.classList.add('is-in'); };
-  if (!('IntersectionObserver' in window)) {
-    nodes.forEach(reveal);
-  } else {
+  /* --- scroll-linked fade-in --- */
+  var fx = Array.prototype.slice.call(document.querySelectorAll('[data-fx]'));
+  var show = function (el) { el.classList.add('is-in'); };
+  var atEnd = function () {
+    var de = document.documentElement;
+    return window.innerHeight + (window.scrollY || de.scrollTop) >= de.scrollHeight - 2;
+  };
+  var near = function (el) {
+    var r = el.getBoundingClientRect();
+    var h = window.innerHeight || document.documentElement.clientHeight;
+    // Normally an element has to clear the bottom 6% before it counts as in
+    // view. At the foot of the page there is no more scrolling to do, so the
+    // last strip (the copyright bar) would sit in that band for good - take
+    // whatever is on screen instead.
+    if (atEnd()) { return r.top < h && r.bottom > 0; }
+    return r.top < h * 0.94 && r.bottom > 0;
+  };
+
+  // A sweep over whatever is on screen. This is the guarantee: an anchor jump
+  // or a restored scroll position can move the page further in one frame than
+  // an observer reports on, and content left at opacity 0 in view would be
+  // invisible for good. Cheap to run - revealed elements drop out of the list.
+  var pending = fx.slice();
+  var sweep = function () {
+    for (var i = pending.length - 1; i >= 0; i--) {
+      if (near(pending[i])) { show(pending[i]); pending.splice(i, 1); }
+    }
+  };
+  var queued = false;
+  var onScroll = function () {
+    if (queued) { return; }
+    queued = true;
+    requestAnimationFrame(function () { queued = false; sweep(); });
+  };
+
+  if ('IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { reveal(e.target); obs.unobserve(e.target); }
+        if (e.isIntersecting) {
+          show(e.target);
+          obs.unobserve(e.target);
+          var i = pending.indexOf(e.target);
+          if (i > -1) { pending.splice(i, 1); }
+        }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    nodes.forEach(function (n) { obs.observe(n); });
-    setTimeout(function () { nodes.forEach(reveal); }, 2600);
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    fx.forEach(function (el) { obs.observe(el); });
   }
+  sweep();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', sweep);
 
   /* --- mobile nav --- */
   var toggle = document.querySelector('.nav-toggle');

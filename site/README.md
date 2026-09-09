@@ -1,10 +1,13 @@
 # site/
 
-Netlify に公開する静的ファイルのルート（`netlify.toml` の `publish` 先）。
+公開する静的ファイルのルート。このフォルダの中身が、そのままサイトの
+ルートになります（Netlify なら `netlify.toml` の `publish` 先、
+Cloudflare Pages なら Direct Upload でドラッグするフォルダ）。
 
 ```
 site/
 ├── index.html          ← 「トップページ デザイン.dc.html」から実装済み
+├── _headers            ← Cloudflare Pages 用のキャッシュ設定
 └── assets/             ← ロゴ・写真・図版一式（30点／未配置）
 ```
 
@@ -24,11 +27,26 @@ icon-mail.png / icon-phone.png /
 member-takahashi.jpg / member-tsumura.jpg / member-ueda.jpg /
 member-inoue.jpg / member-sagesaka.jpg / member-sadakata.jpg
 
-画像は長辺2000px程度に縮小してから置くことを推奨します
+画像は長辺2000px程度に縮小してから置いてください
 （元のバンドルは合計約300MBあり、そのままでは表示が重すぎます）。
+
+Cloudflare Pages に上げる場合、縮小は必須です。1ファイルあたり 25MiB の
+上限があり、原寸のままだと超えるファイルが弾かれます。
 
 ## 公開方法
 
-Netlify にこのリポジトリを接続すると、push のたびに自動で反映されます。
-ZIP でのドラッグ&ドロップ公開が必要な場合は、リポジトリルートで
-`./make-zip.sh` を実行すると `dist/tomoiki-site.zip` が生成されます。
+### Cloudflare Pages（Direct Upload）
+
+dash.cloudflare.com → Workers & Pages → Create → Pages → Upload assets で、
+この `site/` フォルダをドラッグします。`_headers` がキャッシュ設定として
+読まれます（このファイル自体は配信されません）。
+
+### Netlify
+
+リポジトリを接続すると push のたびに自動で反映されます。`netlify.toml` の
+`publish = "site"` が効くので、追加設定は不要です。ZIP でのドラッグ&ドロップ
+公開が必要な場合は、リポジトリルートで `./make-zip.sh` を実行すると
+`dist/tomoiki-site.zip` が生成されます。
+
+`netlify.toml` と `_headers` は互いに無視し合うため、両方置いたままで
+問題ありません。

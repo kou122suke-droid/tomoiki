@@ -9,7 +9,8 @@
 | --- | --- | --- |
 | フレームワーク | **Astro 7**（静的出力） | LPはコンテンツ主体。JSゼロ配信を基本にしつつ、必要な箇所だけ島状にスクリプトを置ける |
 | スタイル | **Tailwind CSS v4**（`@theme` トークン） | 配色・角丸・影をトークン化し、ポップな世界観をブレずに再利用 |
-| イラスト | **インラインSVG（自前実装）** | 外部画像リクエストゼロ。13校ぶんの絵柄をパレット+モチーフの組み合わせで描き分け |
+| メインビジュアル | 支給バナー（1737x766）を AVIF/WebP/JPEG で多解像度配信 | `astro:assets` の `getImage()` で最適化。スマホは中央トリミング版に差し替えるアートディレクション対応 |
+| イラスト | **インラインSVG（自前実装）** | 参加校カード等は外部画像リクエストゼロ。パレット+モチーフの組み合わせで描き分け |
 | フォント | Zen Maru Gothic / M PLUS Rounded 1c（Google Fonts） | 丸ゴシックで親しみやすさを出す。未読込時はシステム丸ゴシックにフォールバック |
 | ホスティング | **Netlify** | `netlify.toml` 同梱。Git連携／zipドラッグ&ドロップの両方に対応 |
 
@@ -23,7 +24,14 @@ npm run dev      # http://localhost:4321
 ## ビルドと公開用zipの作成
 
 ```bash
+npm run release  # build → 未参照アセットの削除 → zip 作成 までを一括実行
+```
+
+個別に実行する場合:
+
+```bash
 npm run build    # dist/ に静的サイトを出力
+npm run prune    # dist/_astro 内の未参照ファイルを削除
 npm run zip      # release/orusuku-fes-2026-netlify.zip を作成
 ```
 
@@ -70,10 +78,27 @@ src/
 │   ├── LineFigure.astro   # 線画の人物アイコン
 │   └── Icon.astro         # 面アイコン
 └── styles/global.css      # デザイントークン + 共通クラス
+src/assets/
+├── hero-banner.jpg        # メインビジュアル原本（1737x766・これが解像度の上限）
+└── hero-banner-sp.jpg     # スマホ用の中央トリミング版（自動生成）
 scripts/
-├── make-og-image.mjs      # OGP画像(1200x630 PNG)を生成
+├── make-hero-sp.mjs       # スマホ用トリミングを生成
+├── make-og-image.mjs      # メインビジュアルからOGP画像(1200x630)を生成
+├── prune-assets.mjs       # dist内の未参照アセットを削除
 └── make-zip.mjs           # Netlify公開用zipを作成
 ```
+
+## メインビジュアルの差し替え
+
+1. `src/assets/hero-banner.jpg` を新しいバナーに置き換える
+2. `npm run hero:sp` でスマホ用トリミングを再生成
+   （トリミング範囲は `scripts/make-hero-sp.mjs` の `CROP` で調整）
+3. `npm run ogp` でOGP画像を再生成
+4. `npm run release`
+
+配信解像度は原本の幅が上限です。現在の原本は1737pxのため、
+それ以上に大きい画面では引き伸ばしになります。より高精細にしたい場合は
+原本をより大きいサイズで差し替えてください。
 
 ## 実装しているポイント
 

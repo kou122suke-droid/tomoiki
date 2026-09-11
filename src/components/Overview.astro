@@ -1,0 +1,32 @@
+---
+import { overview, event } from "../data/site";
+import Icon from "./Icon.astro";
+import CtaButton from "./CtaButton.astro";
+---
+
+<section id="apply" class="bg-brand-50 py-16 md:py-24">
+  <div class="container-lp">
+    <h2 class="reveal text-center text-2xl font-bold text-brand-700 sm:text-3xl md:text-[2.15rem]">イベント概要</h2>
+
+    <div class="reveal mt-8 rounded-4xl bg-white p-5 shadow-card sm:p-8">
+      <dl class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
+        {overview.map((o) => (
+          <div class="flex flex-col items-center text-center">
+            <Icon name={o.icon} class="h-10 w-10" />
+            <dt class="mt-2 text-[13px] font-bold text-brand-700">{o.label}</dt>
+            <dd class="mt-1 text-[13px] font-bold leading-snug text-ink">
+              {o.value.split("\n").map((line, li) => (
+                <>{li > 0 && <br />}{line}</>
+              ))}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-8 border-t border-brand-100 pt-7 text-center">
+        <CtaButton href="#apply-form" size="lg">今すぐ参加を申し込む</CtaButton>
+        <p class="mt-5 text-xs text-ink-soft">※定員に達し次第、受付を終了します。</p>
+      </div>
+    </div>
+  </div>
+</section>

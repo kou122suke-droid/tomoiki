@@ -1,0 +1,21 @@
+---
+import { news } from "../data/site";
+---
+
+<section id="news" class="bg-brand-50 py-14 md:py-20">
+  <div class="container-lp">
+    <h2 class="reveal text-center text-2xl font-bold text-brand-700 sm:text-3xl md:text-[2.15rem]">お知らせ</h2>
+
+    <ul class="reveal mx-auto mt-8 max-w-3xl divide-y divide-brand-100 rounded-3xl bg-white px-5 shadow-card sm:px-7">
+      {news.map((n) => (
+        <li class="flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:gap-4">
+          <time class="shrink-0 text-xs font-bold tabular-nums text-ink-soft">{n.date}</time>
+          <span class="w-fit shrink-0 rounded-full bg-brand-100 px-2.5 py-0.5 text-[11px] font-bold text-brand-700">
+            {n.tag}
+          </span>
+          <p class="text-sm font-bold leading-snug text-brand-800">{n.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

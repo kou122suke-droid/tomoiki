@@ -1,0 +1,108 @@
+---
+/** 線画の人物アイコン（お悩み／おすすめセクション用） */
+interface Props {
+  variant: "a" | "b" | "c" | "d" | "parent" | "search" | "heart" | "work";
+  class?: string;
+}
+const { variant, class: className = "" } = Astro.props;
+const S = "#1a74e0";
+---
+
+<svg
+  class={className}
+  viewBox="0 0 120 120"
+  role="img"
+  aria-hidden="true"
+  fill="none"
+  stroke={S}
+  stroke-width="3"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- 共通：肩と頭 -->
+  <path d="M26 112 q0 -30 34 -30 t34 30" />
+  <circle cx="60" cy="52" r="25" fill="#ffffff" />
+
+  {variant === "a" && (
+    <g>
+      <path d="M36 46 q6 -24 24 -24 t24 24 q-10 -8 -24 -6 t-24 6" fill={S} stroke="none" />
+      <path d="M50 50 h7 M64 50 h7" />
+      <path d="M54 64 q6 4 12 0" />
+      <path d="M96 34 q10 -12 18 -2" stroke-width="2.5" />
+      <text x="97" y="90" font-size="22" font-family="system-ui" fill={S} stroke="none">?</text>
+    </g>
+  )}
+
+  {variant === "b" && (
+    <g>
+      <path d="M34 52 q2 -30 26 -30 t26 30 q2 -14 -4 -22 q-22 -12 -44 0 q-6 8 -4 22" fill={S} stroke="none" />
+      <path d="M34 50 q-6 18 2 26" /><path d="M86 50 q6 18 -2 26" />
+      <circle cx="51" cy="52" r="2.6" fill={S} stroke="none" />
+      <circle cx="69" cy="52" r="2.6" fill={S} stroke="none" />
+      <path d="M53 64 q7 6 14 0" />
+    </g>
+  )}
+
+  {variant === "c" && (
+    <g>
+      <path d="M38 44 q4 -22 22 -22 t22 22" />
+      <path d="M36 42 a8 8 0 1 1 12 6 M84 42 a8 8 0 1 0 -12 6" />
+      <circle cx="51" cy="54" r="2.6" fill={S} stroke="none" />
+      <circle cx="69" cy="54" r="2.6" fill={S} stroke="none" />
+      <path d="M53 66 q7 -5 14 0" />
+    </g>
+  )}
+
+  {variant === "d" && (
+    <g>
+      <path d="M35 50 q0 -28 25 -28 t25 28 q4 -20 -8 -26 q-18 -8 -34 0 q-12 6 -8 26" fill={S} stroke="none" />
+      <circle cx="51" cy="54" r="2.6" fill={S} stroke="none" />
+      <circle cx="69" cy="54" r="2.6" fill={S} stroke="none" />
+      <path d="M53 66 q7 5 14 0" />
+      <path d="M92 78 q12 -6 12 -16" stroke-width="2.5" />
+    </g>
+  )}
+
+  {variant === "parent" && (
+    <g>
+      <path d="M36 46 q6 -24 24 -24 t24 24 q-8 -10 -24 -8 t-24 8" fill={S} stroke="none" />
+      <circle cx="52" cy="54" r="2.6" fill={S} stroke="none" />
+      <circle cx="70" cy="54" r="2.6" fill={S} stroke="none" />
+      <path d="M55 65 q6 5 12 0" />
+      <circle cx="97" cy="80" r="13" fill="#ffffff" />
+      <path d="M84 112 q0 -18 13 -18 t13 18" />
+    </g>
+  )}
+
+  {variant === "search" && (
+    <g>
+      <path d="M36 48 q4 -26 24 -26 t24 26 q-8 -12 -24 -10 t-24 10" fill={S} stroke="none" />
+      <circle cx="52" cy="54" r="2.6" fill={S} stroke="none" />
+      <circle cx="70" cy="54" r="2.6" fill={S} stroke="none" />
+      <path d="M55 65 q6 5 12 0" />
+      <circle cx="95" cy="82" r="13" fill="#ffffff" />
+      <path d="M105 92 l10 10" />
+    </g>
+  )}
+
+  {variant === "heart" && (
+    <g>
+      <path d="M34 52 q2 -30 26 -30 t26 30 q2 -16 -6 -24 q-20 -10 -40 0 q-8 8 -6 24" fill={S} stroke="none" />
+      <path d="M50 54 h8 M62 54 h8" />
+      <path d="M54 67 q6 -4 12 0" />
+      <path d="M98 74 a7 7 0 0 1 12 7 l-12 13 l-12 -13 a7 7 0 0 1 12 -7Z" fill="#ffffff" />
+    </g>
+  )}
+
+  {variant === "work" && (
+    <g>
+      <path d="M36 46 q6 -24 24 -24 t24 24 q-8 -10 -24 -8 t-24 8" fill={S} stroke="none" />
+      <circle cx="52" cy="54" r="2.6" fill={S} stroke="none" />
+      <circle cx="70" cy="54" r="2.6" fill={S} stroke="none" />
+      <path d="M55 65 q6 5 12 0" />
+      <rect x="78" y="84" width="30" height="22" rx="3" fill="#ffffff" />
+      <path d="M88 84 v-5 h10 v5" />
+    </g>
+  )}
+</svg>

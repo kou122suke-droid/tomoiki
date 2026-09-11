@@ -1,0 +1,35 @@
+---
+import { recommend } from "../data/site";
+import LineFigure from "./LineFigure.astro";
+---
+
+<section class="relative overflow-hidden bg-cream py-16 md:py-24">
+  <span class="pointer-events-none absolute -left-16 top-10 hidden h-40 w-40 rounded-full bg-pop-green/10 lg:block" aria-hidden="true"></span>
+  <span class="pointer-events-none absolute -right-20 bottom-10 hidden h-48 w-48 rounded-full bg-pop-yellow/15 lg:block" aria-hidden="true"></span>
+
+  <div class="container-lp">
+    <h2 class="reveal text-center text-2xl font-bold text-brand-700 sm:text-3xl md:text-[2.15rem]">こんな方におすすめ</h2>
+
+    <ul class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {recommend.map((r, i) => (
+        <li
+          class="reveal flex flex-col items-center rounded-3xl bg-white px-4 py-6 text-center shadow-card transition-transform duration-300 hover:-translate-y-1"
+          style={`transition-delay:${i * 90}ms`}
+        >
+          <span class="flex h-24 w-24 items-center justify-center rounded-full bg-brand-50">
+            <LineFigure variant={r.icon} class="h-20 w-20" />
+          </span>
+          <p class="mt-4 text-[14.5px] font-bold leading-relaxed text-brand-800">
+            {r.text.split("\n").map((line, li) => (
+              <>{li > 0 && <br />}{line}</>
+            ))}
+          </p>
+        </li>
+      ))}
+    </ul>
+
+    <p class="reveal mt-10 text-center text-lg font-bold text-accent-600 sm:text-2xl">
+      すべての子どもに、自分らしく学べる選択肢を！
+    </p>
+  </div>
+</section>

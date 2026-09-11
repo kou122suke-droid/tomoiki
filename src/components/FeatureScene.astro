@@ -1,0 +1,118 @@
+---
+/** 「できる3つのこと」カードのイラスト */
+interface Props {
+  scene: "online" | "compare" | "talk";
+  class?: string;
+}
+const { scene, class: className = "" } = Astro.props;
+const skin = ["#f6d3ad", "#e8b98c", "#f2c49c", "#d9a071"];
+const hair = ["#41332b", "#6b4a2f", "#2f2a28", "#8a5a3b"];
+const wear = ["#ef4b8d", "#1a74e0", "#5cbf4a", "#f97316", "#8b5cf6", "#21b6e8"];
+---
+
+<svg
+  class={className}
+  viewBox="0 0 400 240"
+  role="img"
+  aria-hidden="true"
+  preserveAspectRatio="xMidYMid slice"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id={`fs-${scene}-bg`} x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eaf4ff" />
+      <stop offset="100%" stop-color="#fdf8ef" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" fill={`url(#fs-${scene}-bg)`} />
+
+  {scene === "online" && (
+    <g>
+      <rect x="58" y="38" width="284" height="152" rx="10" fill="#2f3d51" />
+      <rect x="68" y="48" width="264" height="132" rx="6" fill="#0f1b2b" />
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
+        const col = i % 4;
+        const row = Math.floor(i / 4);
+        const x = 78 + col * 64;
+        const y = 58 + row * 62;
+        return (
+          <g>
+            <rect x={x} y={y} width="56" height="54" rx="5" fill="#1f3350" />
+            <circle cx={x + 28} cy={y + 21} r="11" fill={skin[i % 4]} />
+            <path d={`M${x + 17} ${y + 18} q11 -13 22 0 q-4 -8 -11 -8 t-11 8Z`} fill={hair[i % 4]} />
+            <path d={`M${x + 12} ${y + 50} q16 -18 32 0Z`} fill={wear[i % 6]} />
+          </g>
+        );
+      })}
+      <path d="M150 190 L250 190 L268 206 L132 206Z" fill="#48596e" />
+      <rect x="112" y="206" width="176" height="8" rx="4" fill="#2f3d51" />
+      <g stroke="#21b6e8" stroke-width="7" fill="none" stroke-linecap="round">
+        <path d="M330 42 a26 26 0 0 1 34 0" opacity="0.5" />
+        <path d="M338 54 a15 15 0 0 1 18 0" opacity="0.8" />
+      </g>
+      <circle cx="347" cy="66" r="4.5" fill="#21b6e8" />
+    </g>
+  )}
+
+  {scene === "compare" && (
+    <g>
+      <rect x="0" y="168" width="400" height="72" fill="#f0e6d6" />
+      <rect x="286" y="44" width="92" height="112" rx="8" fill="#dcebf8" />
+      <path d="M286 100 h92 M332 44 v112" stroke="#ffffff" stroke-width="5" />
+      {[
+        { x: 78, s: 1.0, w: 0, k: 0 },
+        { x: 152, s: 1.1, w: 1, k: 1 },
+        { x: 226, s: 1.0, w: 2, k: 2 },
+      ].map((pp) => (
+        <g transform={`translate(${pp.x} 200) scale(${pp.s})`}>
+          <path d="M-32 0 q0 -54 32 -54 t32 54Z" fill={wear[pp.w]} />
+          <circle cx="0" cy="-68" r="21" fill={skin[pp.k]} />
+          <path d="M-22 -72 q22 -26 44 0 q-4 -19 -22 -19 t-22 19Z" fill={hair[pp.k]} />
+          <circle cx="-7" cy="-68" r="2.4" fill="#3b2f28" />
+          <circle cx="7" cy="-68" r="2.4" fill="#3b2f28" />
+          <path d="M-6 -59 q6 5 12 0" stroke="#3b2f28" stroke-width="2.2" fill="none" stroke-linecap="round" />
+        </g>
+      ))}
+      <g fill="#ffffff" opacity="0.95">
+        <rect x="30" y="52" width="72" height="40" rx="12" />
+        <rect x="118" y="34" width="84" height="44" rx="12" />
+      </g>
+      <g fill="#9db3c9">
+        <rect x="42" y="66" width="46" height="5" rx="2.5" />
+        <rect x="42" y="76" width="30" height="5" rx="2.5" />
+        <rect x="132" y="48" width="56" height="5" rx="2.5" />
+        <rect x="132" y="60" width="38" height="5" rx="2.5" />
+      </g>
+    </g>
+  )}
+
+  {scene === "talk" && (
+    <g>
+      <rect x="0" y="176" width="400" height="64" fill="#e9f0d8" />
+      <circle cx="326" cy="72" r="44" fill="#d8ecc8" />
+      <rect x="44" y="96" width="58" height="86" rx="6" fill="#cfe0ef" />
+      <g transform="translate(200 216) scale(1.5)">
+        <path d="M-34 0 q0 -56 34 -56 t34 56Z" fill="#ef4b8d" />
+        <circle cx="0" cy="-70" r="23" fill="#f6d3ad" />
+        <path d="M-24 -74 q24 -28 48 0 q-5 -21 -24 -21 t-24 21Z" fill="#41332b" />
+        <path d="M-25 -74 q-6 22 2 32 q-10 -16 -2 -32Z" fill="#41332b" />
+        <path d="M25 -74 q6 22 -2 32 q10 -16 2 -32Z" fill="#41332b" />
+        <circle cx="-8" cy="-69" r="2.6" fill="#3b2f28" />
+        <circle cx="8" cy="-69" r="2.6" fill="#3b2f28" />
+        <path d="M-7 -59 q7 6 14 0" stroke="#3b2f28" stroke-width="2.4" fill="none" stroke-linecap="round" />
+        <circle cx="-15" cy="-62" r="4" fill="#f7a8c4" opacity="0.7" />
+        <circle cx="15" cy="-62" r="4" fill="#f7a8c4" opacity="0.7" />
+      </g>
+      <g fill="#ffffff">
+        <rect x="40" y="34" width="90" height="46" rx="14" />
+        <rect x="262" y="118" width="96" height="42" rx="14" />
+      </g>
+      <g fill="#9db3c9">
+        <rect x="54" y="48" width="60" height="5" rx="2.5" />
+        <rect x="54" y="60" width="40" height="5" rx="2.5" />
+        <rect x="276" y="130" width="66" height="5" rx="2.5" />
+        <rect x="276" y="142" width="44" height="5" rx="2.5" />
+      </g>
+    </g>
+  )}
+</svg>

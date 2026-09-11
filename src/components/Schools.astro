@@ -1,0 +1,54 @@
+---
+import { schools } from "../data/site";
+import SchoolScene from "./SchoolScene.astro";
+import Icon from "./Icon.astro";
+---
+
+<section id="schools" class="bg-cream py-16 md:py-24">
+  <div class="container-lp">
+    <h2 class="reveal text-center text-2xl font-bold text-brand-700 sm:text-3xl md:text-[2.15rem]">
+      参加スクール
+      <span class="mx-1 text-[1.5em] leading-none text-accent-500">13</span>
+      校
+    </h2>
+    <p class="reveal mt-3 text-center text-sm text-ink-soft sm:text-base">
+      全国から個性豊かなオルタナティブスクールが参加します！
+    </p>
+
+    <ul class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      {schools.map((s, i) => (
+        <li class="reveal" style={`transition-delay:${(i % 5) * 80}ms`}>
+          <a
+            href="#schools"
+            class="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-pop"
+          >
+            <div class="relative overflow-hidden">
+              <SchoolScene
+                variant={s.scene}
+                class="aspect-[4/3] w-full transition-transform duration-500 group-hover:scale-[1.07]"
+              />
+              <span class="absolute left-2 top-2 rounded-full bg-white/90 px-2.5 py-0.5 text-[10px] font-bold text-brand-700">
+                {s.area}
+              </span>
+            </div>
+            <p class="flex flex-1 items-center justify-center px-3 py-3 text-center text-[12.5px] font-bold leading-snug text-brand-800 sm:text-[13.5px]">
+              {s.name.split("\n").map((line, li) => (
+                <>{li > 0 && <br />}{line}</>
+              ))}
+            </p>
+          </a>
+        </li>
+      ))}
+
+      <li class="reveal sm:col-span-3 lg:col-span-2">
+        <a
+          href="#schools"
+          class="group flex h-full min-h-28 items-center justify-center gap-3 rounded-2xl border-2 border-brand-300 bg-white px-6 py-6 text-base font-bold text-brand-700 shadow-card transition-all hover:-translate-y-1 hover:border-brand-500 hover:text-brand-600"
+        >
+          すべてのスクールを見る
+          <Icon name="arrow" class="h-5 w-5 transition-transform group-hover:translate-x-1.5" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

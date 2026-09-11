@@ -1,0 +1,35 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  href: string;
+  size?: "sm" | "md" | "lg";
+  class?: string;
+}
+const { href, size = "md", class: className = "" } = Astro.props;
+
+const sizes = {
+  sm: "px-6 py-2.5 text-sm gap-2",
+  md: "px-8 py-4 text-base gap-3",
+  lg: "px-10 py-5 text-lg md:text-xl gap-4",
+};
+---
+
+<a
+  href={href}
+  class:list={[
+    "group inline-flex items-center justify-center rounded-full font-bold text-white",
+    "bg-gradient-to-b from-accent-400 to-accent-600",
+    "shadow-[0_10px_0_-2px_#bb440b,0_20px_30px_-12px_rgba(187,68,11,0.6)]",
+    "transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105",
+    "active:translate-y-1 active:shadow-[0_4px_0_-2px_#bb440b]",
+    sizes[size],
+    className,
+  ]}
+>
+  <span><slot /></span>
+  <Icon
+    name="arrow"
+    class="h-[1.1em] w-[1.1em] shrink-0 transition-transform duration-200 group-hover:translate-x-1"
+  />
+</a>

@@ -1,0 +1,49 @@
+---
+import CtaButton from "./CtaButton.astro";
+---
+
+<section id="apply-form" class="relative isolate overflow-hidden py-16 md:py-20">
+  <svg class="absolute inset-0 -z-10 h-full w-full" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cta-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#a9def7" />
+        <stop offset="55%" stop-color="#dff2ff" />
+        <stop offset="100%" stop-color="#eef8e6" />
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="420" fill="url(#cta-sky)" />
+    <path d="M-20 250 Q 260 140 560 246 T 1120 214 T 1460 250 L1460 420 L-20 420Z" fill="#7fa9c9" opacity="0.45" />
+    <path d="M-20 300 Q 300 200 620 296 T 1180 276 T 1460 300 L1460 420 L-20 420Z" fill="#6f9d6a" opacity="0.55" />
+    <path d="M-20 348 Q 340 286 700 344 T 1460 336 L1460 420 L-20 420Z" fill="#5b9350" />
+    <g opacity="0.95">
+      {[
+        { x: 1090, s: 1.0, c: "#ef4b8d" },
+        { x: 1152, s: 1.35, c: "#1a74e0" },
+        { x: 1216, s: 0.92, c: "#ffd23f" },
+      ].map((k) => (
+        <g transform={`translate(${k.x} 338) scale(${k.s})`}>
+          <rect x="-16" y="-64" width="32" height="44" rx="14" fill={k.c} />
+          <circle cx="0" cy="-79" r="18" fill="#f6d3ad" />
+          <path d="M-18 -79 a18 18 0 0 0 36 0 q-9 -9 -18 -9 t-18 9Z" fill="#41332b" />
+          <rect x="-11" y="-22" width="9" height="24" rx="4.5" fill="#3d5a6c" />
+          <rect x="2" y="-22" width="9" height="24" rx="4.5" fill="#3d5a6c" />
+          <rect x="-29" y="-62" width="12" height="32" rx="6" fill={k.c} transform="rotate(-28 -23 -52)" />
+          <rect x="17" y="-62" width="12" height="32" rx="6" fill={k.c} transform="rotate(28 23 -52)" />
+        </g>
+      ))}
+    </g>
+  </svg>
+
+  <div class="container-lp text-center">
+    <p class="reveal text-lg font-bold leading-relaxed text-brand-800 sm:text-2xl">
+      みんなちがうから、学び方ももっとちがう。<br />
+      だからこそ、出会って、話してみよう。
+    </p>
+    <div class="reveal mt-7">
+      <CtaButton href="https://example.com/apply" size="lg">今すぐ参加を申し込む</CtaButton>
+    </div>
+    <p class="reveal mt-3 text-xs font-bold text-brand-700/80">
+      参加費 1,000円（両日参加可）／定員100名・先着順
+    </p>
+  </div>
+</section>

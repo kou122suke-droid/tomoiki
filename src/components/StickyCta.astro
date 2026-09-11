@@ -1,0 +1,24 @@
+---
+import { event } from "../data/site";
+import Icon from "./Icon.astro";
+---
+
+<div
+  id="sticky-cta"
+  class="pointer-events-none fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-accent-200 bg-white/95 p-3 backdrop-blur transition-transform duration-300 data-[show=true]:pointer-events-auto data-[show=true]:translate-y-0 sm:hidden"
+>
+  <a
+    href={event.applyUrl}
+    class="flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-accent-400 to-accent-600 py-3.5 text-base font-bold text-white shadow-[0_6px_0_-2px_#bb440b]"
+  >
+    今すぐ参加を申し込む
+    <Icon name="arrow" class="h-5 w-5" />
+  </a>
+</div>
+
+<script>
+  const bar = document.getElementById("sticky-cta");
+  const onScroll = () => bar?.setAttribute("data-show", String(window.scrollY > 600));
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>

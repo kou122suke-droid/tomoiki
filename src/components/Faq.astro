@@ -1,0 +1,35 @@
+---
+import { faqs } from "../data/site";
+---
+
+<section id="faq" class="bg-white py-16 md:py-24">
+  <div class="container-lp">
+    <h2 class="reveal text-center text-2xl font-bold text-brand-700 sm:text-3xl md:text-[2.15rem]">よくある質問</h2>
+
+    <div class="mt-10 grid gap-3 md:grid-cols-2 md:gap-x-6">
+      {faqs.map((f, i) => (
+        <details
+          class="reveal group rounded-2xl border border-brand-100 bg-cream px-4 py-1 transition-colors open:bg-white open:shadow-card sm:px-5"
+          style={`transition-delay:${(i % 2) * 80}ms`}
+        >
+          <summary class="flex cursor-pointer list-none items-center gap-3 py-4 text-left [&::-webkit-details-marker]:hidden">
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-black text-white">
+              Q
+            </span>
+            <span class="flex-1 text-[14.5px] font-bold leading-snug text-brand-800">{f.q}</span>
+            <span
+              class="relative h-4 w-4 shrink-0 text-accent-500 before:absolute before:inset-x-0 before:top-1/2 before:h-0.5 before:-translate-y-1/2 before:rounded-full before:bg-current after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 after:-translate-x-1/2 after:rounded-full after:bg-current after:transition-transform group-open:after:scale-y-0"
+              aria-hidden="true"
+            ></span>
+          </summary>
+          <div class="flex gap-3 border-t border-dashed border-brand-200 py-4">
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-500 text-xs font-black text-white">
+              A
+            </span>
+            <p class="flex-1 text-sm leading-relaxed text-ink-soft">{f.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

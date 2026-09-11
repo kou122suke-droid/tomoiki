@@ -1,0 +1,183 @@
+---
+/**
+ * 参加スクールカード用のフラットイラスト。
+ * variant ごとに配色と前景モチーフを変えて 13 校を描き分ける。
+ */
+interface Props {
+  variant: number;
+  class?: string;
+}
+const { variant, class: className = "" } = Astro.props;
+
+const palettes = [
+  { sky: ["#bfe7ff", "#e8f7ff"], hill: "#7fc96b", hill2: "#5aab52", accent: "#ffd23f" },
+  { sky: ["#ffe0b8", "#fff6e6"], hill: "#8ec96b", hill2: "#65a94e", accent: "#f97316" },
+  { sky: ["#d4f0d0", "#f0fbee"], hill: "#63b85c", hill2: "#3f8f47", accent: "#ffd23f" },
+  { sky: ["#ffe3ee", "#fff5f9"], hill: "#f0b6cd", hill2: "#d98bad", accent: "#ef4b8d" },
+  { sky: ["#d8e6ff", "#f1f6ff"], hill: "#8fb7f0", hill2: "#5f8fd6", accent: "#21b6e8" },
+  { sky: ["#b8e9f7", "#e9fbff"], hill: "#f2dfae", hill2: "#dcc189", accent: "#21b6e8" },
+  { sky: ["#cfe0ff", "#eef4ff"], hill: "#9fb6d8", hill2: "#7791bb", accent: "#1a74e0" },
+  { sky: ["#cdeccf", "#eefaee"], hill: "#6fbf67", hill2: "#4a9a4c", accent: "#5cbf4a" },
+  { sky: ["#d8f0c8", "#f2fbe9"], hill: "#7cbe59", hill2: "#548f3f", accent: "#a3672f" },
+  { sky: ["#ffe9c6", "#fff8ec"], hill: "#84c76e", hill2: "#5da24f", accent: "#f97316" },
+  { sky: ["#c9e9ff", "#eff8ff"], hill: "#7ac46f", hill2: "#4f9a4c", accent: "#ffd23f" },
+  { sky: ["#bfe3fb", "#edf8ff"], hill: "#8ec4a0", hill2: "#5f9d7c", accent: "#21b6e8" },
+  { sky: ["#d6ebff", "#f2f9ff"], hill: "#86ca6f", hill2: "#559e4d", accent: "#ef4b8d" },
+];
+const p = palettes[variant % palettes.length];
+const uid = `sc${variant}`;
+
+const kidColors = ["#ef4b8d", "#f97316", "#1a74e0", "#ffd23f", "#5cbf4a", "#8b5cf6"];
+
+/** バリアントごとに人数と立ち位置を変えて、13枚が同じ絵に見えないようにする */
+const layouts = [
+  [92, 150, 210, 268],
+  [110, 168, 292],
+  [70, 128, 186, 244, 302],
+  [96, 156, 286],
+  [104, 268, 320],
+  [82, 140, 236, 296],
+  [78, 134, 250, 308],
+  [88, 146, 204, 262, 318],
+  [96, 262, 312],
+  [74, 132, 190, 248],
+  [86, 144, 202, 260, 316],
+  [92, 152, 258, 310],
+  [70, 126, 182, 238, 294],
+];
+const kids = layouts[variant % layouts.length].map((x, i) => ({
+  x,
+  s: 0.9 + ((variant + i) % 3) * 0.11,
+  c: kidColors[(variant * 2 + i) % kidColors.length],
+}));
+---
+
+<svg
+  class={className}
+  viewBox="0 0 400 260"
+  role="img"
+  aria-hidden="true"
+  preserveAspectRatio="xMidYMid slice"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id={`${uid}-sky`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color={p.sky[0]} />
+      <stop offset="100%" stop-color={p.sky[1]} />
+    </linearGradient>
+    <clipPath id={`${uid}-clip`}><rect width="400" height="260" /></clipPath>
+  </defs>
+
+  <g clip-path={`url(#${uid}-clip)`}>
+    <rect width="400" height="260" fill={`url(#${uid}-sky)`} />
+
+    <!-- 太陽 / 雲 -->
+    <circle cx="330" cy="52" r="26" fill={p.accent} opacity="0.85" />
+    <g fill="#ffffff" opacity="0.9">
+      <ellipse cx="72" cy="56" rx="34" ry="17" />
+      <ellipse cx="98" cy="48" rx="24" ry="15" />
+      <ellipse cx="188" cy="38" rx="26" ry="13" />
+    </g>
+
+    <!-- 遠景の丘 -->
+    <path d="M-20 172 Q 70 118 170 164 T 420 142 L420 260 L-20 260Z" fill={p.hill2} opacity="0.55" />
+    <path d="M-20 190 Q 110 148 220 186 T 420 172 L420 260 L-20 260Z" fill={p.hill} />
+    <rect x="-20" y="212" width="440" height="60" fill={p.hill2} opacity="0.9" />
+
+    {/* 変化するモチーフ */}
+    {variant % 13 === 1 && (
+      <g>
+        <path d="M120 200 L182 152 L244 200 Z" fill="#c8723c" />
+        <rect x="136" y="196" width="92" height="58" fill="#e3a86b" />
+        <rect x="168" y="216" width="28" height="38" fill="#8b5a2b" />
+      </g>
+    )}
+    {variant % 13 === 3 && (
+      <g>
+        <rect x="104" y="112" width="192" height="112" rx="10" fill="#fffaf2" />
+        <rect x="104" y="112" width="192" height="14" rx="7" fill="#e7d3bb" />
+        <rect x="116" y="134" width="74" height="82" rx="5" fill="#d9a86f" />
+        <g>
+          <rect x="122" y="142" width="11" height="30" rx="2" fill="#ef4b8d" />
+          <rect x="137" y="142" width="11" height="30" rx="2" fill="#1a74e0" />
+          <rect x="152" y="142" width="11" height="30" rx="2" fill="#5cbf4a" />
+          <rect x="167" y="142" width="11" height="30" rx="2" fill="#ffd23f" />
+          <rect x="122" y="180" width="11" height="30" rx="2" fill="#f97316" />
+          <rect x="137" y="180" width="11" height="30" rx="2" fill="#8b5cf6" />
+          <rect x="152" y="180" width="26" height="30" rx="2" fill="#21b6e8" />
+        </g>
+        <rect x="206" y="140" width="76" height="52" rx="5" fill="#5c7f63" />
+        <path d="M216 158 h34 M216 170 h50" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85" />
+      </g>
+    )}
+    {variant % 13 === 4 && (
+      <g>
+        <circle cx="200" cy="146" r="46" fill="#5fb3ea" />
+        <path d="M160 128 q26 14 44 -2 t34 8 M164 168 q22 -14 44 2 t32 -6" stroke="#4f9a4c" stroke-width="11" fill="none" stroke-linecap="round" />
+        <circle cx="200" cy="146" r="46" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.65" />
+        <ellipse cx="200" cy="146" rx="18" ry="46" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.5" />
+        <rect x="194" y="192" width="12" height="22" rx="3" fill="#8b5a2b" />
+        <rect x="176" y="212" width="48" height="10" rx="5" fill="#8b5a2b" />
+      </g>
+    )}
+    {variant % 13 === 5 && (
+      <g>
+        <rect x="-20" y="186" width="440" height="48" fill="#5fc2e8" />
+        <path d="M-20 192 q30 -9 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.8" />
+      </g>
+    )}
+    {variant % 13 === 6 && (
+      <g>
+        <rect x="122" y="118" width="156" height="106" rx="6" fill="#f4f7fb" />
+        <rect x="186" y="96" width="28" height="26" fill="#dbe4ef" />
+        <g fill="#8fc7f5">
+          <rect x="138" y="136" width="26" height="26" rx="3" /><rect x="176" y="136" width="26" height="26" rx="3" />
+          <rect x="214" y="136" width="26" height="26" rx="3" /><rect x="250" y="136" width="16" height="26" rx="3" />
+          <rect x="138" y="176" width="26" height="26" rx="3" /><rect x="176" y="176" width="26" height="26" rx="3" />
+          <rect x="214" y="176" width="26" height="26" rx="3" /><rect x="250" y="176" width="16" height="26" rx="3" />
+        </g>
+      </g>
+    )}
+    {variant % 13 === 8 && (
+      <g>
+        <rect x="188" y="150" width="22" height="80" fill="#8b5a2b" />
+        <circle cx="199" cy="118" r="52" fill="#4f9a4c" />
+        <circle cx="152" cy="140" r="32" fill="#63b85c" />
+        <circle cx="248" cy="142" r="30" fill="#63b85c" />
+        <rect x="160" y="150" width="80" height="42" rx="6" fill="#c8823f" />
+        <path d="M152 152 L200 124 L248 152 Z" fill="#a35d27" />
+        <rect x="188" y="166" width="22" height="26" fill="#6b3f1c" />
+      </g>
+    )}
+    {variant % 13 === 11 && (
+      <g>
+        <rect x="-20" y="180" width="440" height="52" fill="#63bfe0" />
+        <path d="M-20 122 Q 60 78 150 124 L150 182 L-20 182Z" fill="#8fb59a" />
+        <path d="M240 132 Q 320 86 420 128 L420 182 L240 182Z" fill="#8fb59a" />
+      </g>
+    )}
+
+    <!-- 木 -->
+    {[30, 362].map((x, i) => (
+      <g transform={`translate(${x} ${196 + i * 6})`}>
+        <rect x="-5" y="-22" width="10" height="30" fill="#8b5a2b" />
+        <circle cx="0" cy="-34" r="26" fill={p.hill2} />
+        <circle cx="-16" cy="-22" r="17" fill={p.hill} />
+        <circle cx="16" cy="-22" r="17" fill={p.hill} />
+      </g>
+    ))}
+
+    <!-- 子どもたち -->
+    {kids.map((k) => (
+      <g transform={`translate(${k.x} 224) scale(${k.s})`}>
+        <rect x="-9" y="-38" width="18" height="26" rx="8" fill={k.c} />
+        <circle cx="0" cy="-46" r="10" fill="#f6d3ad" />
+        <path d="M-10 -46 a10 10 0 0 0 20 0 q-5 -5 -10 -5 t-10 5Z" fill="#41332b" />
+        <rect x="-7" y="-13" width="5" height="15" rx="2.5" fill="#3f4b5c" />
+        <rect x="2" y="-13" width="5" height="15" rx="2.5" fill="#3f4b5c" />
+        <rect x="-16" y="-36" width="7" height="18" rx="3.5" fill={k.c} transform="rotate(-18 -12 -30)" />
+        <rect x="9" y="-36" width="7" height="18" rx="3.5" fill={k.c} transform="rotate(18 12 -30)" />
+      </g>
+    ))}
+  </g>
+</svg>

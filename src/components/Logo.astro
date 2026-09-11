@@ -1,0 +1,27 @@
+---
+interface Props {
+  variant?: "dark" | "light";
+  class?: string;
+}
+const { variant = "dark", class: className = "" } = Astro.props;
+const ink = variant === "light" ? "#ffffff" : "#0f4696";
+const sub = variant === "light" ? "rgba(255,255,255,.8)" : "#4a6480";
+---
+
+<a href="#top" class:list={["group inline-flex items-center gap-2.5", className]} aria-label="オルタナティブスクール・ジャパン ホームへ">
+  <svg viewBox="0 0 72 40" class="h-9 w-auto shrink-0" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 33 L11 8 h5 l9 25 h-6 l-1.7-5.2h-7.6L8 33Z" fill={ink} />
+    <path d="M12.1 22.6h4.8L14.5 15Z" fill="#ffffff" />
+    <path d="M39.5 13.6q-3-2.1-6.2-1.3-3.2.8-3 3.4.2 2.2 4 3 4.7 1 5.6 4.4.9 3.6-2.5 5.6-3.6 2.1-8.6-.4"
+      fill="none" stroke={ink} stroke-width="4.4" stroke-linecap="round" />
+    <path d="M56.5 9.5v13.6q0 5.6-5.3 5.6-2.6 0-4.2-1.6"
+      fill="none" stroke={ink} stroke-width="4.4" stroke-linecap="round" />
+    <circle cx="65" cy="12" r="4" fill="#f97316" />
+    <circle cx="65" cy="26" r="4" fill="#ffd23f" />
+  </svg>
+
+  <span class="leading-tight">
+    <span class="block text-[10px] font-bold tracking-tight" style={`color:${sub}`}>未来の学びを、みんなでつくる。</span>
+    <span class="block text-[11px] font-bold tracking-tight" style={`color:${sub}`}>オルタナティブスクール・ジャパン</span>
+  </span>
+</a>

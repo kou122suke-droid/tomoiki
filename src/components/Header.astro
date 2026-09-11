@@ -1,0 +1,87 @@
+---
+import { nav, event } from "../data/site";
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-300 data-[scrolled=true]:bg-white/95 data-[scrolled=true]:shadow-[0_4px_20px_-8px_rgba(16,58,120,.35)] data-[scrolled=true]:backdrop-blur bg-white/80 backdrop-blur-sm"
+>
+  <div class="container-lp flex h-16 items-center justify-between gap-4 md:h-[4.5rem]">
+    <Logo class="shrink-0" />
+
+    <nav class="hidden items-center gap-5 lg:flex" aria-label="メインナビゲーション">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class="relative py-2 text-[13px] font-bold text-ink transition-colors hover:text-brand-500 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-accent-500 after:transition-transform hover:after:scale-x-100"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={event.applyUrl}
+        class="hidden items-center gap-2 rounded-full bg-gradient-to-b from-accent-400 to-accent-600 px-5 py-2.5 text-sm font-bold text-white shadow-[0_6px_0_-2px_#bb440b] transition-transform hover:-translate-y-0.5 active:translate-y-0.5 sm:inline-flex"
+      >
+        申し込む
+        <Icon name="arrow" class="h-4 w-4" />
+      </a>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="text-brand-700 lg:hidden"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Icon name="menu" class="h-7 w-7" />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" hidden class="border-t border-brand-100 bg-white lg:hidden">
+    <nav class="container-lp flex flex-col py-2" aria-label="モバイルナビゲーション">
+      {nav.map((item) => (
+        <a href={item.href} class="border-b border-brand-50 py-3.5 text-sm font-bold text-ink last:border-0">
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={event.applyUrl}
+        class="my-3 rounded-full bg-gradient-to-b from-accent-400 to-accent-600 py-3 text-center text-sm font-bold text-white"
+      >
+        今すぐ申し込む
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("site-header");
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  const onScroll = () => {
+    header?.setAttribute("data-scrolled", String(window.scrollY > 24));
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    const open = menu?.hidden ?? false;
+    if (menu) menu.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+  });
+
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      if (menu) menu.hidden = true;
+      toggle?.setAttribute("aria-expanded", "false");
+    })
+  );
+</script>

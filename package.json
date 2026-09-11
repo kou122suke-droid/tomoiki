@@ -1,0 +1,20 @@
+{
+  "name": "orusuku-fes-2026-lp",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "ogp": "node scripts/make-og-image.mjs",
+    "zip": "node scripts/make-zip.mjs",
+    "release": "npm run build && npm run zip"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "description": "オルスクフェス2026 @ONLINE イベントLP（Astro + Tailwind CSS v4 / Netlify公開用）"
+}

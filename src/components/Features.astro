@@ -1,0 +1,40 @@
+---
+import { features } from "../data/site";
+import FeatureScene from "./FeatureScene.astro";
+---
+
+<section class="bg-brand-50 py-16 md:py-24">
+  <div class="container-lp">
+    <h2 class="reveal text-center text-2xl font-bold text-brand-700 sm:text-3xl md:text-[2.15rem]">
+      オルスクフェスでできる
+      <span class="mx-1 text-[1.5em] leading-none text-accent-500">3</span>
+      つのこと
+    </h2>
+
+    <ul class="mt-10 grid gap-6 md:grid-cols-3">
+      {features.map((f, i) => (
+        <li
+          class="reveal group flex h-full flex-col overflow-hidden rounded-4xl bg-white p-5 shadow-card transition-transform duration-300 hover:-translate-y-1.5"
+          style={`transition-delay:${i * 110}ms`}
+        >
+          <div class="flex items-center justify-center gap-3">
+            <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 text-sm font-black text-white">
+              {f.no}
+            </span>
+            <h3 class="text-xl font-bold text-brand-800">{f.title}</h3>
+          </div>
+
+          <div class="mt-4 overflow-hidden rounded-2xl">
+            <FeatureScene
+              scene={f.scene}
+              class="aspect-[5/3] w-full transition-transform duration-500 group-hover:scale-[1.04]"
+            />
+          </div>
+
+          <p class="mt-4 text-[15px] font-bold leading-relaxed text-brand-800">{f.lead}</p>
+          <p class="mt-1 text-sm leading-relaxed text-ink-soft">{f.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

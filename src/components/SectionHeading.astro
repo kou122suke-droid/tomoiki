@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  sub?: string;
+  tone?: "brand" | "white";
+}
+const { title, sub, tone = "brand" } = Astro.props;
+---
+
+<div class="reveal text-center">
+  <h2
+    class:list={[
+      "deco-heading text-2xl font-bold sm:text-3xl md:text-[2.15rem]",
+      tone === "white" ? "text-white" : "text-brand-700",
+    ]}
+  >
+    <slot name="title">{title}</slot>
+  </h2>
+  {sub && (
+    <p
+      class:list={[
+        "mt-3 text-sm sm:text-base",
+        tone === "white" ? "text-white/85" : "text-ink-soft",
+      ]}
+    >
+      {sub}
+    </p>
+  )}
+</div>

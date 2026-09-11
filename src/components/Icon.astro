@@ -1,0 +1,75 @@
+---
+/** イベント概要などで使う面アイコン */
+interface Props {
+  name: "calendar" | "people" | "coin" | "target" | "seat" | "arrow" | "plus" | "menu" | "close";
+  class?: string;
+}
+const { name, class: className = "" } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 48 48"
+  role="img"
+  aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {name === "calendar" && (
+    <g>
+      <rect x="6" y="10" width="36" height="32" rx="5" fill="#1a74e0" />
+      <rect x="6" y="10" width="36" height="10" rx="5" fill="#0f4696" />
+      <rect x="13" y="5" width="5" height="10" rx="2.5" fill="#0f3a78" />
+      <rect x="30" y="5" width="5" height="10" rx="2.5" fill="#0f3a78" />
+      <g fill="#ffffff">
+        <rect x="13" y="25" width="7" height="6" rx="1.5" />
+        <rect x="24" y="25" width="7" height="6" rx="1.5" />
+        <rect x="13" y="34" width="7" height="6" rx="1.5" opacity="0.6" />
+        <rect x="24" y="34" width="7" height="6" rx="1.5" fill="#ffd23f" />
+      </g>
+    </g>
+  )}
+  {name === "people" && (
+    <g fill="#1a74e0">
+      <circle cx="16" cy="17" r="7" />
+      <circle cx="32" cy="17" r="7" fill="#21b6e8" />
+      <path d="M4 42 q0 -13 12 -13 t12 13Z" />
+      <path d="M20 42 q0 -13 12 -13 t12 13Z" fill="#21b6e8" />
+    </g>
+  )}
+  {name === "coin" && (
+    <g>
+      <ellipse cx="24" cy="34" rx="15" ry="6" fill="#e0a107" />
+      <rect x="9" y="22" width="30" height="12" fill="#f0b81c" />
+      <ellipse cx="24" cy="22" rx="15" ry="6" fill="#ffd23f" />
+      <ellipse cx="24" cy="15" rx="15" ry="6" fill="#f0b81c" />
+      <ellipse cx="24" cy="13" rx="15" ry="6" fill="#ffd23f" />
+    </g>
+  )}
+  {name === "target" && (
+    <g>
+      <circle cx="24" cy="24" r="17" fill="#1a74e0" />
+      <circle cx="24" cy="24" r="11" fill="#ffffff" />
+      <circle cx="24" cy="24" r="6" fill="#ef4b8d" />
+      <path d="M24 4 v8 M24 36 v8 M4 24 h8 M36 24 h8" stroke="#0f3a78" stroke-width="3" stroke-linecap="round" />
+    </g>
+  )}
+  {name === "seat" && (
+    <g fill="#1a74e0">
+      <circle cx="24" cy="14" r="8" />
+      <path d="M9 42 q0 -16 15 -16 t15 16Z" />
+      <circle cx="24" cy="14" r="8" fill="#21b6e8" />
+    </g>
+  )}
+  {name === "arrow" && (
+    <path d="M8 24 h30 M28 14 l12 10 l-12 10" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  )}
+  {name === "plus" && (
+    <path d="M24 12 v24 M12 24 h24" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+  )}
+  {name === "menu" && (
+    <path d="M8 15 h32 M8 24 h32 M8 33 h32" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+  )}
+  {name === "close" && (
+    <path d="M13 13 l22 22 M35 13 l-22 22" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" />
+  )}
+</svg>

@@ -1,0 +1,35 @@
+---
+import { worries } from "../data/site";
+import LineFigure from "./LineFigure.astro";
+import SectionHeading from "./SectionHeading.astro";
+---
+
+<section id="about" class="bg-cream py-16 md:py-24">
+  <div class="container-lp">
+    <SectionHeading title="こんなお悩みはありませんか？" />
+
+    <ul class="mt-10 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      {worries.map((w, i) => (
+        <li class="reveal flex h-full flex-col items-center" style={`transition-delay:${i * 90}ms`}>
+          <div class="bubble relative flex w-full flex-1 items-center justify-center rounded-3xl bg-white px-5 py-6 text-center shadow-card">
+            <p class="text-[15px] font-bold leading-relaxed text-brand-800">
+              {w.text.split("\n").map((line, li) => (
+                <>{li > 0 && <br />}{line}</>
+              ))}
+            </p>
+          </div>
+          <LineFigure variant={w.face} class="mt-6 h-24 w-24" />
+        </li>
+      ))}
+    </ul>
+
+    <div class="reveal mt-12 text-center">
+      <p class="relative inline-block px-8 text-base font-bold leading-relaxed text-brand-800 sm:text-xl">
+        <span class="absolute -left-1 top-1/2 -translate-y-1/2 text-3xl text-accent-400" aria-hidden="true">＼</span>
+        でも、どこで情報を集めればいい？<br />
+        どんな学校があるのか分からなくて<br class="sm:hidden" />踏み出せない…そんな方に！
+        <span class="absolute -right-1 top-1/2 -translate-y-1/2 text-3xl text-accent-400" aria-hidden="true">／</span>
+      </p>
+    </div>
+  </div>
+</section>

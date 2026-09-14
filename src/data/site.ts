@@ -3,7 +3,7 @@ export const event = {
   title: "オルスクフェス2026",
   titleSub: "@ONLINE",
   catch: "〜 新しい教育のカタチに出会う2日間 〜",
-  lead: "全国11校のオルタナティブスクールと出会う2日間",
+  lead: "全国のオルタナティブスクールと出会う2日間",
   dates: [
     { day: "9.26", wd: "土", color: "brand" as const },
     { day: "9.27", wd: "日", color: "pink" as const },
@@ -39,7 +39,7 @@ export const features = [
     no: "01",
     title: "知る",
     lead: "全国の多様な学びの場を一度に知る",
-    body: "11校のオルタナティブスクールが参加！",
+    body: "全国のオルタナティブスクールが参加！",
     scene: "online" as const,
   },
   {
@@ -56,21 +56,6 @@ export const features = [
     body: "先生・在校生・保護者と気軽に話せます。",
     scene: "talk" as const,
   },
-];
-
-/** 参加スクール（11校） */
-export const schools = [
-  { name: "タテノイト", area: "長野県", scene: 0 },
-  { name: "自由学舎EUREKA", area: "北海道", scene: 1 },
-  { name: "学びの森\nオルタナティブスクール", area: "京都府", scene: 2 },
-  { name: "モンテッソーリ・エレメンタリー\nスクール北九州（MEK）", area: "福岡県", scene: 3 },
-  { name: "ラーンネット・グローバルスクール\n／ラーンネット・エッジ", area: "兵庫県", scene: 4 },
-  { name: "湘南ホクレア学園", area: "神奈川県", scene: 5 },
-  { name: "インフィニティ国際学院\n中等部・高等部", area: "全国", scene: 6 },
-  { name: "箕面こどもの森学園", area: "大阪府", scene: 7 },
-  { name: "ヒミツキチ森学園", area: "神奈川県", scene: 8 },
-  { name: "学び舎トーカ", area: "愛知県", scene: 9 },
-  { name: "藤枝みんなのミライ楽校", area: "静岡県", scene: 10 },
 ];
 
 /** タイムテーブル */
@@ -148,7 +133,7 @@ export const faqs = [
 
 /** お知らせ */
 export const news = [
-  { date: "2026.09.01", tag: "更新", text: "参加スクールが11校に決定しました！" },
+  { date: "2026.09.01", tag: "更新", text: "参加スクールが決定しました！詳細は参加スクール一覧をご覧ください。" },
   { date: "2026.08.20", tag: "受付", text: "オルスクフェス2026のお申し込み受付を開始しました。" },
   { date: "2026.08.01", tag: "お知らせ", text: "開催日程が2026年9月26日(土)・27日(日)に決定しました。" },
 ];

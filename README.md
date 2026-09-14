@@ -53,11 +53,49 @@ Netlifyでリポジトリを選ぶと `netlify.toml` が読まれ、以下が自
 - publish directory: `dist`
 - Node.js: 22
 
+## 参加スクールの情報
+
+各校のアンケート回答（Googleフォーム「ASJオンラインフェス2026｜LP掲載素材アンケート回答」）を
+`src/data/schools.ts` に転記しています。ここを直せば個別ページとトップの一覧に反映されます。
+
+個別ページは `/schools/<slug>/` に自動生成されます（`src/pages/schools/[slug].astro`）。
+
+### スクール素材（ロゴ・写真）の取り込み
+
+素材は `src/assets/schools/<slug>/` に下記の命名で置くと自動で反映されます。
+置かれていない場合は自動生成イラストにフォールバックするので、素材が揃う前でもビルドは通ります。
+
+```
+src/assets/schools/<slug>/
+├── logo.png          # 学校ロゴ（png / jpg / webp / svg）
+├── photo-1.jpg       # 掲載写真（ファイル名順に表示。photo-1 が大きく出ます）
+├── photo-2.jpg
+├── ...
+└── person.jpg        # 登壇者・代表者写真（代表メッセージ欄に表示）
+```
+
+Drive からの取り込みはスクリプトで一括実行できます。
+
+```bash
+node scripts/fetch-drive-assets.mjs --list      # DriveファイルID と 配置先の対応表を表示
+node scripts/fetch-drive-assets.mjs             # 未取得のものだけダウンロード
+node scripts/fetch-drive-assets.mjs --force     # 既存ファイルも上書き
+node scripts/fetch-drive-assets.mjs --only=frasco,mek
+```
+
+Drive フォルダが「リンクを知っている全員が閲覧可」になっている必要があります。
+共有設定が限定されている場合は `--list` の対応表を見ながら手動で配置してください。
+各ファイルの Drive ファイルIDは `src/data/schools.ts` の `media` フィールドに控えてあります。
+
 ## ディレクトリ構成
 
 ```
 src/
-├── data/site.ts           # 全セクションの原稿（ここだけ直せば文言差し替え完了）
+├── data/site.ts           # イベント全体の原稿
+├── data/schools.ts        # 参加スクール個別情報（アンケート回答の転記）
+├── lib/schoolMedia.ts     # src/assets/schools/ の画像を解決
+├── pages/index.astro      # トップページ
+├── pages/schools/[slug].astro # スクール個別ページ（各校ぶん自動生成）
 ├── layouts/Base.astro     # <head>・OGP・構造化データ・スクロール演出
 ├── components/
 │   ├── Header.astro       # 追従ヘッダー + モバイルメニュー
@@ -73,6 +111,9 @@ src/
 │   ├── FinalCta.astro     # 最終CTA
 │   ├── Footer.astro       # フッター
 │   ├── StickyCta.astro    # スマホ用の追従CTA
+│   ├── SchoolLogo.astro   # 学校ロゴ（無ければ非表示）
+│   ├── SchoolGallery.astro # 写真ギャラリー（無ければイラスト）
+│   ├── VideoEmbed.astro   # クリックするまで通信しないYouTube埋め込み
 │   ├── SchoolScene.astro  # スクールカードのSVGイラスト
 │   ├── FeatureScene.astro # 3つのことのSVGイラスト
 │   ├── LineFigure.astro   # 線画の人物アイコン
@@ -82,6 +123,7 @@ src/assets/
 ├── hero-banner.jpg        # メインビジュアル原本（1737x766・これが解像度の上限）
 └── hero-banner-sp.jpg     # スマホ用の中央トリミング版（自動生成）
 scripts/
+├── fetch-drive-assets.mjs # 各校提出素材をDriveから取り込み
 ├── make-hero-sp.mjs       # スマホ用トリミングを生成
 ├── make-og-image.mjs      # メインビジュアルからOGP画像(1200x630)を生成
 ├── prune-assets.mjs       # dist内の未参照アセットを削除

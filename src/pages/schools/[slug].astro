@@ -1,0 +1,389 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import StickyCta from "../../components/StickyCta.astro";
+import CtaButton from "../../components/CtaButton.astro";
+import Icon from "../../components/Icon.astro";
+import SchoolLogo from "../../components/SchoolLogo.astro";
+import SchoolGallery from "../../components/SchoolGallery.astro";
+import VideoEmbed from "../../components/VideoEmbed.astro";
+import { schools } from "../../data/schools";
+import { event } from "../../data/site";
+import { personFor, hasLogo } from "../../lib/schoolMedia";
+
+export function getStaticPaths() {
+  return schools.map((school) => ({ params: { slug: school.slug }, props: { school } }));
+}
+
+const { school } = Astro.props;
+const person = personFor(school.slug);
+const logo = hasLogo(school.slug);
+const index = schools.findIndex((s) => s.slug === school.slug);
+const prev = schools[(index - 1 + schools.length) % schools.length];
+const next = schools[(index + 1) % schools.length];
+
+/** 改行区切りのテキストを段落に */
+const paragraphs = (text: string) =>
+  text.split(/\n{2,}/).map((block) => block.trim()).filter(Boolean);
+const lines = (text: string) => text.split("\n").map((l) => l.trim()).filter(Boolean);
+---
+
+<Base
+  title={`${school.name}｜オルスクフェス2026 @ONLINE 参加スクール`}
+  description={school.summary}
+>
+  <Header />
+
+  <main id="main">
+    <!-- スクール名 -->
+    <section class="relative isolate overflow-hidden bg-[linear-gradient(150deg,#eaf4ff_0%,#fdf8ef_55%,#ffeef5_100%)] pt-16 md:pt-[4.5rem]">
+      <div class="container-lp py-10 md:py-14">
+        <nav aria-label="パンくず" class="mb-6 flex flex-wrap items-center gap-2 text-xs font-bold text-ink-soft">
+          <a href="/" class="transition-colors hover:text-brand-600">トップ</a>
+          <span aria-hidden="true">/</span>
+          <a href="/#schools" class="transition-colors hover:text-brand-600">参加スクール</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-brand-700">{school.name}</span>
+        </nav>
+
+        <div class="flex flex-col items-start gap-6 md:flex-row md:items-center">
+          {logo && (
+            <div class="flex h-24 w-40 shrink-0 items-center justify-center rounded-2xl bg-white p-3 shadow-card">
+              <SchoolLogo slug={school.slug} name={school.name} class="max-h-full max-w-full" />
+            </div>
+          )}
+
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full bg-brand-600 px-3 py-1 text-[11px] font-bold text-white">
+                {school.pref}
+              </span>
+              <span class="rounded-full bg-white px-3 py-1 text-[11px] font-bold text-brand-700 shadow-sm">
+                {school.target}
+              </span>
+            </div>
+            <h1 class="mt-3 text-2xl font-bold leading-snug text-brand-800 sm:text-3xl md:text-[2.2rem]">
+              {school.name}
+            </h1>
+            {school.kana && <p class="mt-1 text-xs text-ink-soft">{school.kana}</p>}
+            <p class="mt-3 text-base font-bold text-accent-600 sm:text-lg">{school.catch}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 写真 -->
+    <section class="bg-cream py-10 md:py-14">
+      <div class="container-lp">
+        <SchoolGallery slug={school.slug} name={school.name} scene={school.scene} />
+        <p class="mx-auto mt-8 max-w-3xl text-center text-[15px] font-bold leading-relaxed text-brand-800 sm:text-lg">
+          {school.summary}
+        </p>
+      </div>
+    </section>
+
+    <!-- 特徴 -->
+    {school.features.length > 0 && (
+      <section class="bg-white py-12 md:py-16">
+        <div class="container-lp">
+          <h2 class="text-center text-xl font-bold text-brand-700 sm:text-2xl">このスクールの特徴</h2>
+          <ul class="mt-8 grid gap-4 md:grid-cols-3">
+            {school.features.map((f, i) => (
+              <li class="flex flex-col rounded-3xl bg-brand-50 p-5 shadow-card">
+                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 text-sm font-black text-white">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p class="mt-3 text-[15px] font-bold leading-relaxed text-brand-800">{f}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    <!-- 紹介文・理念 -->
+    <section class="bg-cream py-12 md:py-16">
+      <div class="container-lp grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+        <div class="rounded-4xl bg-white p-6 shadow-card sm:p-8">
+          <h2 class="text-xl font-bold text-brand-700 sm:text-2xl">スクールについて</h2>
+          <div class="mt-4 space-y-4">
+            {paragraphs(school.description).map((p) => (
+              <p class="text-[15px] leading-[1.9] text-ink">{p}</p>
+            ))}
+          </div>
+
+          {school.video && (
+            <div class="mt-8">
+              <h3 class="mb-3 text-base font-bold text-brand-700">紹介動画</h3>
+              <VideoEmbed url={school.video} title={school.name} />
+            </div>
+          )}
+        </div>
+
+        <div class="space-y-6">
+          {school.philosophy && (
+            <div class="rounded-4xl bg-brand-700 p-6 text-white shadow-pop sm:p-7">
+              <h2 class="text-lg font-bold">教育理念・大切にしていること</h2>
+              <div class="mt-3 space-y-3">
+                {paragraphs(school.philosophy).map((p) => (
+                  <p class="text-sm leading-[1.9] text-white/90">{p}</p>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {school.recommend && (
+            <div class="rounded-4xl bg-white p-6 shadow-card sm:p-7">
+              <h2 class="text-lg font-bold text-brand-700">こんな方におすすめ</h2>
+              <ul class="mt-3 space-y-2">
+                {lines(school.recommend).map((l) => (
+                  <li class="flex gap-2 text-sm leading-relaxed text-ink">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" aria-hidden="true"></span>
+                    <span>{l.replace(/^[・●]/, "")}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- 当日のコンテンツ -->
+    <section class="bg-brand-50 py-12 md:py-16">
+      <div class="container-lp">
+        <h2 class="text-center text-xl font-bold text-brand-700 sm:text-2xl">
+          オルスクフェスで会えます
+        </h2>
+        <p class="mt-2 text-center text-sm text-ink-soft">
+          当日は次のコンテンツを予定しています。
+        </p>
+        <ul class="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2.5">
+          {school.sessions.map((s) => (
+            <li class="rounded-full bg-white px-4 py-2 text-[13px] font-bold text-brand-700 shadow-card">
+              {s}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8 text-center">
+          <CtaButton href="/#apply">オルスクフェスに申し込む</CtaButton>
+        </div>
+      </div>
+    </section>
+
+    <!-- 声 -->
+    {school.voices && (
+      <section class="bg-cream py-12 md:py-16">
+        <div class="container-lp">
+          <h2 class="text-center text-xl font-bold text-brand-700 sm:text-2xl">
+            保護者・在校生・卒業生の声
+          </h2>
+          <div class="mx-auto mt-8 max-w-3xl space-y-4">
+            {paragraphs(school.voices).map((p) => (
+              <blockquote class="relative rounded-3xl bg-white p-6 shadow-card">
+                <span class="absolute left-4 top-2 text-4xl leading-none text-brand-100" aria-hidden="true">
+                  “
+                </span>
+                <p class="relative text-[15px] leading-[1.9] text-ink">{p}</p>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- 代表メッセージ -->
+    {school.message && (
+      <section class="bg-white py-12 md:py-16">
+        <div class="container-lp">
+          <h2 class="text-center text-xl font-bold text-brand-700 sm:text-2xl">
+            代表・スタッフからのメッセージ
+          </h2>
+          <div class="mx-auto mt-8 flex max-w-4xl flex-col gap-7 rounded-4xl bg-cream p-6 shadow-card sm:p-9 md:flex-row">
+            {person && (
+              <figure class="mx-auto w-36 shrink-0 md:mx-0 md:w-44">
+                <Image
+                  src={person}
+                  alt={school.messageBy ?? `${school.name} 代表者`}
+                  widths={[176, 352]}
+                  sizes="176px"
+                  class="aspect-square w-full rounded-2xl object-cover shadow-card"
+                />
+              </figure>
+            )}
+            <div class="flex-1">
+              <div class="space-y-4">
+                {paragraphs(school.message).map((p) => (
+                  <p class="text-[15px] leading-[1.9] text-ink">{p}</p>
+                ))}
+              </div>
+              {school.messageBy && (
+                <p class="mt-5 text-right text-sm font-bold text-brand-700">{school.messageBy}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- 学費・入学までの流れ -->
+    {(school.tuition || school.flow) && (
+      <section class="bg-brand-50 py-12 md:py-16">
+        <div class="container-lp grid gap-6 lg:grid-cols-2">
+          {school.tuition && (
+            <div class="rounded-4xl bg-white p-6 shadow-card sm:p-7">
+              <h2 class="text-lg font-bold text-brand-700">学費の目安</h2>
+              <p class="mt-3 whitespace-pre-line text-sm leading-[1.9] text-ink">{school.tuition}</p>
+            </div>
+          )}
+
+          {school.flow && school.flow.length > 0 && (
+            <div class="rounded-4xl bg-white p-6 shadow-card sm:p-7">
+              <h2 class="text-lg font-bold text-brand-700">入学・見学までの流れ</h2>
+              <ol class="mt-4 space-y-3">
+                {school.flow.map((step, i) => (
+                  <li class="flex items-start gap-3">
+                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-500 text-[11px] font-black text-white">
+                      {i + 1}
+                    </span>
+                    <span class="text-sm font-bold leading-snug text-ink">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- FAQ -->
+    {school.faqs.length > 0 && (
+      <section class="bg-cream py-12 md:py-16">
+        <div class="container-lp">
+          <h2 class="text-center text-xl font-bold text-brand-700 sm:text-2xl">
+            {school.name}へのよくある質問
+          </h2>
+          <div class="mx-auto mt-8 max-w-3xl space-y-3">
+            {school.faqs.map((f) => (
+              <details class="group rounded-2xl border border-brand-100 bg-white px-4 py-1 open:shadow-card sm:px-5">
+                <summary class="flex cursor-pointer list-none items-center gap-3 py-4 [&::-webkit-details-marker]:hidden">
+                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-black text-white">
+                    Q
+                  </span>
+                  <span class="flex-1 text-[14.5px] font-bold leading-snug text-brand-800">{f.q}</span>
+                  <span
+                    class="relative h-4 w-4 shrink-0 text-accent-500 before:absolute before:inset-x-0 before:top-1/2 before:h-0.5 before:-translate-y-1/2 before:rounded-full before:bg-current after:absolute after:inset-y-0 after:left-1/2 after:w-0.5 after:-translate-x-1/2 after:rounded-full after:bg-current after:transition-transform group-open:after:scale-y-0"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <div class="flex gap-3 border-t border-dashed border-brand-200 py-4">
+                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-500 text-xs font-black text-white">
+                    A
+                  </span>
+                  <p class="flex-1 whitespace-pre-line text-sm leading-[1.9] text-ink-soft">{f.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- 基本情報・リンク -->
+    <section class="bg-white py-12 md:py-16">
+      <div class="container-lp">
+        <h2 class="text-center text-xl font-bold text-brand-700 sm:text-2xl">スクール基本情報</h2>
+        <dl class="mx-auto mt-7 max-w-3xl divide-y divide-brand-100 rounded-3xl bg-cream px-5 shadow-card sm:px-7">
+          <div class="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+            <dt class="w-28 shrink-0 text-xs font-bold text-brand-700">所在地</dt>
+            <dd class="text-sm text-ink">{school.address}</dd>
+          </div>
+          <div class="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+            <dt class="w-28 shrink-0 text-xs font-bold text-brand-700">対象</dt>
+            <dd class="whitespace-pre-line text-sm text-ink">{school.target}</dd>
+          </div>
+          <div class="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+            <dt class="w-28 shrink-0 text-xs font-bold text-brand-700">公式サイト</dt>
+            <dd class="text-sm">
+              <a
+                href={school.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="break-all font-bold text-brand-600 underline underline-offset-2 hover:text-accent-600"
+              >
+                {school.url}
+              </a>
+            </dd>
+          </div>
+          {school.sns.length > 0 && (
+            <div class="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+              <dt class="w-28 shrink-0 text-xs font-bold text-brand-700">SNS</dt>
+              <dd class="flex flex-wrap gap-2">
+                {school.sns.map((s) => (
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-brand-700 shadow-sm transition-colors hover:bg-brand-600 hover:text-white"
+                  >
+                    {s.label}
+                  </a>
+                ))}
+              </dd>
+            </div>
+          )}
+        </dl>
+
+        {school.contactUrl && (
+          <div class="mt-8 text-center">
+            <a
+              href={school.contactUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-2 rounded-full border-2 border-brand-500 px-7 py-3.5 text-sm font-bold text-brand-600 transition-colors hover:bg-brand-600 hover:text-white"
+            >
+              このスクールに見学・相談を申し込む
+              <Icon name="arrow" class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- 前後のスクール -->
+    <nav class="bg-cream py-10" aria-label="他のスクール">
+      <div class="container-lp grid gap-3 sm:grid-cols-2">
+        <a
+          href={`/schools/${prev.slug}/`}
+          class="group flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-card transition-transform hover:-translate-y-0.5"
+        >
+          <Icon name="arrow" class="h-5 w-5 shrink-0 rotate-180 text-brand-400" />
+          <span class="min-w-0">
+            <span class="block text-[10px] font-bold text-ink-soft">前のスクール</span>
+            <span class="block truncate text-sm font-bold text-brand-800">{prev.name}</span>
+          </span>
+        </a>
+        <a
+          href={`/schools/${next.slug}/`}
+          class="group flex items-center justify-end gap-3 rounded-2xl bg-white px-5 py-4 text-right shadow-card transition-transform hover:-translate-y-0.5"
+        >
+          <span class="min-w-0">
+            <span class="block text-[10px] font-bold text-ink-soft">次のスクール</span>
+            <span class="block truncate text-sm font-bold text-brand-800">{next.name}</span>
+          </span>
+          <Icon name="arrow" class="h-5 w-5 shrink-0 text-brand-400" />
+        </a>
+      </div>
+      <div class="container-lp mt-4 text-center">
+        <a href="/#schools" class="text-sm font-bold text-brand-600 underline underline-offset-4 hover:text-accent-600">
+          参加スクール一覧へ戻る
+        </a>
+      </div>
+    </nav>
+  </main>
+
+  <Footer />
+  <StickyCta />
+</Base>

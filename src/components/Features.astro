@@ -1,5 +1,6 @@
 ---
 import { features } from "../data/site";
+import { schools } from "../data/schools";
 import FeatureScene from "./FeatureScene.astro";
 ---
 
@@ -32,7 +33,9 @@ import FeatureScene from "./FeatureScene.astro";
           </div>
 
           <p class="mt-4 text-[15px] font-bold leading-relaxed text-brand-800">{f.lead}</p>
-          <p class="mt-1 text-sm leading-relaxed text-ink-soft">{f.body}</p>
+          <p class="mt-1 text-sm leading-relaxed text-ink-soft">
+            {f.no === "01" ? `${schools.length}校のオルタナティブスクールが参加！` : f.body}
+          </p>
         </li>
       ))}
     </ul>

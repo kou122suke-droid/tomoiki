@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import SchoolScene from "./SchoolScene.astro";
+import { photosFor } from "../lib/schoolMedia";
+
+interface Props {
+  slug: string;
+  name: string;
+  scene: number;
+}
+const { slug, name, scene } = Astro.props;
+const photos = photosFor(slug);
+---
+
+{
+  photos.length > 0 ? (
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {photos.map((photo, i) => (
+        <figure
+          class:list={[
+            "overflow-hidden rounded-2xl bg-brand-50 shadow-card",
+            i === 0 && "sm:col-span-2 lg:col-span-2 lg:row-span-2",
+          ]}
+        >
+          <Image
+            src={photo}
+            alt={`${name} の活動風景 ${i + 1}`}
+            widths={[480, 900, 1400]}
+            sizes="(min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
+            loading={i < 2 ? "eager" : "lazy"}
+            class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+          />
+        </figure>
+      ))}
+    </div>
+  ) : (
+    <div class="overflow-hidden rounded-3xl shadow-card">
+      <SchoolScene variant={scene} class="aspect-[16/7] w-full" />
+      <p class="bg-white px-4 py-3 text-center text-xs text-ink-soft">
+        ※写真は準備中です。イメージイラストを表示しています。
+      </p>
+    </div>
+  )
+}

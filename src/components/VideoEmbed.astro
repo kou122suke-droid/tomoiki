@@ -1,0 +1,65 @@
+---
+/**
+ * クリックするまで YouTube へ一切リクエストを出さないファサード付き埋め込み。
+ * 動画IDが取れないURL（チャンネルなど）は外部リンクとして表示する。
+ */
+interface Props {
+  url: string;
+  title: string;
+}
+const { url, title } = Astro.props;
+
+const idMatch = url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+const videoId = idMatch?.[1];
+---
+
+{
+  videoId ? (
+    <div
+      class="video-embed relative aspect-video w-full overflow-hidden rounded-3xl bg-brand-900 shadow-card"
+      data-video-id={videoId}
+    >
+      <button
+        type="button"
+        class="group absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_50%_40%,#1a74e0_0%,#0f3a78_70%)] text-white transition-colors hover:bg-brand-800"
+      >
+        <span class="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 shadow-pop transition-transform group-hover:scale-110">
+          <svg viewBox="0 0 24 24" class="ml-1 h-7 w-7 fill-accent-500" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+        <span class="px-6 text-center text-sm font-bold">
+          {title}の紹介動画を再生
+          <span class="mt-1 block text-xs font-normal text-white/70">
+            クリックするとYouTubeが読み込まれます
+          </span>
+        </span>
+      </button>
+    </div>
+  ) : (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-600"
+    >
+      紹介動画を見る（YouTube）
+    </a>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLElement>(".video-embed").forEach((box) => {
+    box.querySelector("button")?.addEventListener("click", () => {
+      const id = box.dataset.videoId;
+      if (!id) return;
+      const frame = document.createElement("iframe");
+      frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      frame.title = "紹介動画";
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      frame.allowFullscreen = true;
+      frame.className = "absolute inset-0 h-full w-full border-0";
+      box.replaceChildren(frame);
+    });
+  });
+</script>

@@ -62,13 +62,14 @@ Netlifyでリポジトリを選ぶと `netlify.toml` が読まれ、以下が自
 
 ### ASJロゴ・ファビコン
 
-`src/assets/logo-asj-source.png`（支給された白背景のロゴ）から、
-`npm run logo` で以下を生成します。
+支給された白背景のロゴから、`npm run logo` で以下を生成します。
 
-- `src/assets/logo-asj.png` … ヘッダー用（紺・背景透過）
-- `src/assets/logo-asj-white.png` … フッター用（白抜き・背景透過）
-- `public/favicon.png` / `public/apple-touch-icon.png` … 角丸の紺タイルに白抜きロゴ
+| 元画像 | 生成されるもの | 用途 |
+| --- | --- | --- |
+| `src/assets/logo-asj-lockup-source.png` | `logo-asj-lockup.png` / `logo-asj-lockup-white.png` | ヘッダー・フッター（横組み） |
+| `src/assets/logo-asj-source.png` | `logo-asj.png` / `logo-asj-white.png`、`public/favicon.png`、`public/apple-touch-icon.png` | ファビコン（シンボルのみ） |
 
+`-white` はフッターなど濃色背景用の白抜き版です。
 ロゴを差し替えるときは元画像を置き換えて `npm run logo` を実行してください。
 
 ### スクール素材（ロゴ・写真）の取り込み
@@ -112,6 +113,8 @@ src/
 ├── lib/schoolMedia.ts     # src/assets/schools/ の画像を解決
 ├── pages/index.astro      # トップページ
 ├── pages/schools/[slug].astro # スクール個別ページ（各校ぶん自動生成）
+├── pages/privacy.astro    # プライバシーポリシー
+├── data/privacy.ts        # プライバシーポリシーの本文・事業者情報
 ├── layouts/Base.astro     # <head>・OGP・構造化データ・スクロール演出
 ├── components/
 │   ├── Header.astro       # 追従ヘッダー + モバイルメニュー

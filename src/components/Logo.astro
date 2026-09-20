@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import { event } from "../data/site";
-import markDark from "../assets/logo-asj.png";
-import markLight from "../assets/logo-asj-white.png";
+import lockupDark from "../assets/logo-asj-lockup.png";
+import lockupLight from "../assets/logo-asj-lockup-white.png";
 
 interface Props {
   /** light = 濃色背景用（白抜きロゴ） */
@@ -11,29 +11,20 @@ interface Props {
 }
 const { variant = "dark", class: className = "" } = Astro.props;
 
-const mark = variant === "light" ? markLight : markDark;
-const sub = variant === "light" ? "rgba(255,255,255,.85)" : "#4a6480";
+// ロゴ自体に団体名が入っているため、横にテキストは置かない
+const lockup = variant === "light" ? lockupLight : lockupDark;
 ---
 
 <a
   href="/"
-  class:list={["group inline-flex items-center gap-3", className]}
+  class:list={["inline-flex shrink-0 items-center", className]}
   aria-label={`${event.organizer} ホームへ`}
 >
   <Image
-    src={mark}
-    alt=""
-    widths={[88, 176]}
-    sizes="44px"
-    class="h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105"
+    src={lockup}
+    alt={event.organizer}
+    widths={[220, 440]}
+    sizes="(min-width: 640px) 220px, 180px"
+    class="h-9 w-auto transition-opacity duration-200 hover:opacity-80 sm:h-10"
   />
-
-  <span class="leading-tight">
-    <span class="block text-[10px] font-bold tracking-tight" style={`color:${sub}`}>
-      {event.organizerTagline}
-    </span>
-    <span class="block text-[11px] font-bold tracking-tight" style={`color:${sub}`}>
-      {event.organizer}
-    </span>
-  </span>
 </a>

@@ -1,0 +1,115 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "../components/Icon.astro";
+import { privacy } from "../data/privacy";
+import { event } from "../data/site";
+
+const rows = privacy.organization.filter((r) => r.value);
+---
+
+<Base
+  title={`プライバシーポリシー｜${event.title}${event.titleSub}`}
+  description={`${event.organizerLegal}が運営する「${event.title}」における個人情報の取扱いについて。`}
+>
+  <Header />
+
+  <main id="main">
+    <section class="bg-[linear-gradient(150deg,#eaf4ff_0%,#fdf8ef_60%,#ffeef5_100%)] pt-16 md:pt-[4.5rem]">
+      <div class="container-lp py-10 md:py-14">
+        <nav aria-label="パンくず" class="mb-5 flex flex-wrap items-center gap-2 text-xs font-bold text-ink-soft">
+          <a href="/" class="transition-colors hover:text-brand-600">トップ</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-brand-700">プライバシーポリシー</span>
+        </nav>
+        <h1 class="text-2xl font-bold text-brand-800 sm:text-3xl">プライバシーポリシー</h1>
+        <p class="mt-3 text-xs text-ink-soft">最終改定日：{privacy.updatedAt}</p>
+      </div>
+    </section>
+
+    <section class="bg-cream py-12 md:py-16">
+      <div class="container-lp">
+        <div class="mx-auto max-w-3xl rounded-4xl bg-white p-6 shadow-card sm:p-9">
+          <p class="text-[15px] leading-[1.95] text-ink">{privacy.intro}</p>
+
+          <div class="mt-10 space-y-9">
+            {privacy.sections.map((s) => (
+              <section>
+                <h2 class="border-l-4 border-accent-400 pl-3 text-base font-bold text-brand-800 sm:text-lg">
+                  {s.title}
+                </h2>
+
+                <div class="mt-3 space-y-3">
+                  {s.body.map((p) => (
+                    <p class="text-[14.5px] leading-[1.95] text-ink">{p}</p>
+                  ))}
+                </div>
+
+                {"list" in s && s.list && (
+                  <ul class="mt-3 space-y-2">
+                    {s.list.map((li) => (
+                      <li class="flex gap-2.5 text-[14.5px] leading-[1.9] text-ink">
+                        <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" aria-hidden="true"></span>
+                        <span>{li}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {"linkHref" in s && s.linkHref && (
+                  <a
+                    href={s.linkHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group mt-4 inline-flex items-center gap-2 rounded-full border-2 border-brand-500 px-5 py-2.5 text-sm font-bold text-brand-600 transition-colors hover:bg-brand-600 hover:text-white"
+                  >
+                    {s.linkLabel}
+                    <Icon name="arrow" class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                )}
+              </section>
+            ))}
+          </div>
+
+          {rows.length > 0 && (
+            <section class="mt-11">
+              <h2 class="border-l-4 border-accent-400 pl-3 text-base font-bold text-brand-800 sm:text-lg">
+                事業者情報
+              </h2>
+              <dl class="mt-4 divide-y divide-brand-100 rounded-2xl bg-cream px-5 sm:px-6">
+                {rows.map((r) => (
+                  <div class="flex flex-col gap-1 py-3.5 sm:flex-row sm:gap-6">
+                    <dt class="w-32 shrink-0 text-xs font-bold text-brand-700">{r.label}</dt>
+                    <dd class="text-sm text-ink">
+                      {r.href ? (
+                        <a
+                          href={r.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="break-all font-bold text-brand-600 underline underline-offset-2 hover:text-accent-600"
+                        >
+                          {r.value}
+                        </a>
+                      ) : (
+                        r.value
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="/" class="text-sm font-bold text-brand-600 underline underline-offset-4 hover:text-accent-600">
+            トップページへ戻る
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

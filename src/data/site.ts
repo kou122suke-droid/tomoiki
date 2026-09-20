@@ -10,9 +10,15 @@ export const event = {
   ],
   timeNote: "両日 9:00 - 12:00　オンライン開催（Zoom）",
   organizer: "オルタナティブスクール・ジャパン",
+  /** 正式名称（コピーライト・プライバシーポリシー用） */
+  organizerLegal: "一般財団法人オルタナティブスクール・ジャパン",
   organizerShort: "ASJ",
   organizerTagline: "未来の学びを、みんなでつくる。",
   applyUrl: "https://peatix.com/event/5146747",
+  /** 運営団体の公式サイト */
+  organizerUrl: "https://alternative-school.jp/",
+  /** お問い合わせフォーム */
+  inquiryUrl: "https://alternative-school.jp/inquiry",
 };
 
 /** ヘッダーナビゲーション */

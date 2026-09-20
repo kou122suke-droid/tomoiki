@@ -12,7 +12,7 @@ export const event = {
   organizer: "オルタナティブスクール・ジャパン",
   organizerShort: "ASJ",
   organizerTagline: "未来の学びを、みんなでつくる。",
-  applyUrl: "#apply",
+  applyUrl: "https://peatix.com/event/5146747",
 };
 
 /** ヘッダーナビゲーション */

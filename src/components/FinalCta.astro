@@ -1,5 +1,6 @@
 ---
 import CtaButton from "./CtaButton.astro";
+import { event } from "../data/site";
 ---
 
 <section id="apply-form" class="relative isolate overflow-hidden py-16 md:py-20">
@@ -40,7 +41,7 @@ import CtaButton from "./CtaButton.astro";
       だからこそ、出会って、話してみよう。
     </p>
     <div class="reveal mt-7">
-      <CtaButton href="https://example.com/apply" size="lg">今すぐ参加を申し込む</CtaButton>
+      <CtaButton href={event.applyUrl} size="lg">今すぐ参加を申し込む</CtaButton>
     </div>
     <p class="reveal mt-3 text-xs font-bold text-brand-700/80">
       参加費 1,000円（両日参加可）／定員100名・先着順

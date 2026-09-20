@@ -60,6 +60,17 @@ Netlifyでリポジトリを選ぶと `netlify.toml` が読まれ、以下が自
 
 個別ページは `/schools/<slug>/` に自動生成されます（`src/pages/schools/[slug].astro`）。
 
+### ASJロゴ・ファビコン
+
+`src/assets/logo-asj-source.png`（支給された白背景のロゴ）から、
+`npm run logo` で以下を生成します。
+
+- `src/assets/logo-asj.png` … ヘッダー用（紺・背景透過）
+- `src/assets/logo-asj-white.png` … フッター用（白抜き・背景透過）
+- `public/favicon.png` / `public/apple-touch-icon.png` … 角丸の紺タイルに白抜きロゴ
+
+ロゴを差し替えるときは元画像を置き換えて `npm run logo` を実行してください。
+
 ### スクール素材（ロゴ・写真）の取り込み
 
 素材は `src/assets/schools/<slug>/` に下記の命名で置くと自動で反映されます。
@@ -129,6 +140,7 @@ src/assets/
 └── hero-banner-sp.jpg     # スマホ用の中央トリミング版（自動生成）
 scripts/
 ├── fetch-drive-assets.mjs # 各校提出素材をDriveから取り込み
+├── make-logo.mjs          # ASJロゴの派生素材とファビコンを生成
 ├── make-hero-sp.mjs       # スマホ用トリミングを生成
 ├── make-og-image.mjs      # メインビジュアルからOGP画像(1200x630)を生成
 ├── prune-assets.mjs       # dist内の未参照アセットを削除

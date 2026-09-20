@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "hero:sp": "node scripts/make-hero-sp.mjs",
+    "logo": "node scripts/make-logo.mjs",
     "ogp": "node scripts/make-og-image.mjs",
     "prune": "node scripts/prune-assets.mjs",
     "zip": "node scripts/make-zip.mjs",

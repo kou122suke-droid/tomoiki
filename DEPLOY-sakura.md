@@ -1,130 +1,112 @@
-# さくらのレンタルサーバへの公開手順
+# さくらサーバーへの公開手順
 
-このサイトは静的HTMLです。`dist/` の中身をそのまま公開ディレクトリに置けば動きます。
-PHPやデータベースは不要です。
-
----
-
-## 0. 事前に決めること
-
-**どのURLで公開するか**でビルドコマンドが変わります。
-
-| 公開先 | ビルドコマンド |
-| --- | --- |
-| ドメイン直下（例 `https://example.jp/`） | `SITE_URL=https://example.jp npm run release` |
-| サブディレクトリ（例 `https://example.jp/fes2026/`） | `SITE_URL=https://example.jp BASE_PATH=/fes2026 npm run release` |
-
-`SITE_URL` は canonical と OGP画像の絶対URLに使われます。**指定を忘れるとSNSシェア時に
-画像が出ません**ので必ず指定してください。
+このサイトは静的HTMLです。**`dist/` の中身をサーバーに置くだけ**で公開できます。
 
 ---
 
-## 1. ビルドする
+## 全体の流れ
+
+```
+① ビルド          → dist/ フォルダができる
+② FTPでつなぐ      → さくらサーバーに接続
+③ 中身をコピー     → /home/アカウント名/www/ に置く
+④ ブラウザで確認   → 完了
+```
+
+---
+
+## ① ビルド
 
 ```bash
 npm install                                   # 初回のみ
-SITE_URL=https://example.jp npm run release
+SITE_URL=https://公開するドメイン npm run release
 ```
 
-`dist/` に公開ファイル一式、`release/orusuku-fes-2026-netlify.zip` に同じ内容のzipができます。
+`dist/` に公開ファイル一式ができます（`release/` の中に同じ内容のzipもできます）。
+
+> **`SITE_URL` は必ず指定してください。**
+> 忘れるとSNSでシェアしたときにバナー画像が出ません。
+> サブディレクトリに置く場合は `BASE_PATH=/フォルダ名` も追加します。
 
 ---
 
-## 2. 公開ディレクトリを確認する
+## ② FTPでつなぐ
 
-さくらのレンタルサーバの公開ディレクトリは **`/home/<アカウント名>/www/`** です。
-
-独自ドメインを追加している場合は、コントロールパネルの
-「ドメイン/SSL」→ 対象ドメインの設定で、どのフォルダに割り当てているかを確認してください。
-`www` 直下ではなく `www/fes2026` のようなサブフォルダに割り当てているケースがよくあります。
-
----
-
-## 3. アップロードする
-
-### 方法A：ファイルマネージャー（一番手軽・プラン不問）
-
-1. サーバコントロールパネルにログイン
-2. 「ファイルマネージャー」を開く
-3. 公開ディレクトリへ移動し、`dist/` の**中身**をドラッグ＆ドロップ
-   - `dist` フォルダごとではなく、`index.html` や `_astro` が直下に来るようにします
-
-> 画像を含めて100ファイル以上あるため、ブラウザ経由は時間がかかります。
-> 初回はFTPソフト（方法B）のほうが確実です。
-
-### 方法B：FTPソフト（FileZilla / Cyberduck など）
+FileZilla などのFTPソフトで接続します。
 
 | 項目 | 値 |
 | --- | --- |
-| ホスト | `<アカウント名>.sakura.ne.jp` |
-| ユーザー名 | `<アカウント名>` |
-| パスワード | サーバパスワード |
-| 暗号化 | **FTPS（明示的なTLS）** を選ぶ |
-| 転送先 | `/home/<アカウント名>/www/` |
+| ホスト | `アカウント名.sakura.ne.jp` |
+| ユーザー名 | アカウント名 |
+| パスワード | サーバーパスワード |
+| 暗号化 | FTPS（明示的なTLS） |
 
-`dist/` の中身をすべてアップロードします。**隠しファイルの `.htaccess` も必ず含めてください**
-（FileZillaは初期設定で隠しファイルを表示しません。「サーバー」→「強制的に隠しファイルを表示」をON）。
-
-### 方法C：コマンドで差分同期（推奨・スタンダードプラン以上）
-
-SSHが使えるプラン（スタンダード以上）なら、変更分だけを転送できます。
-
-```bash
-cp .env.sakura.example .env.sakura   # 初回のみ。中身を自分の値に書き換える
-npm run build
-./scripts/deploy-sakura.sh --dry-run # まず内容を確認
-./scripts/deploy-sakura.sh           # 実行
-```
-
-ライトプランはSSH非対応です。`.env.sakura` に `METHOD=ftp` と `SAKURA_PASS` を設定すると
-`lftp` でのFTPS同期に切り替わります。
-
-> `--delete` が付いているため、**公開ディレクトリは `dist/` と完全に同じ内容になります**。
-> 同じフォルダに他のサイトのファイルが同居している場合は消えてしまうので、
-> まず必ず `--dry-run` で確認してください。
+さくらのコントロールパネル →「ファイルマネージャー」でも同じことができます。
 
 ---
 
-## 4. 公開後の確認
+## ③ 中身をコピー
 
-- [ ] トップページが表示される
-- [ ] スクール個別ページが開く（例 `/schools/tatenoito/`）
-- [ ] プライバシーポリシー `/privacy/` が開く
-- [ ] 申し込みボタンがPeatixに飛ぶ
-- [ ] 存在しないURLで404ページが出る
-- [ ] スマホで横スクロールが出ない
+`/home/アカウント名/www/` を開き、**`dist/` の中身**をアップロードします。
+
+```
+www/
+├── index.html      ← dist の中身が直接ここに来る
+├── 404.html        （dist フォルダごと置かない）
+├── .htaccess
+├── _astro/
+├── privacy/
+└── schools/
+```
+
+> **`.htaccess` を忘れずに。** 隠しファイルなのでFTPソフトの初期設定では見えません。
+> FileZilla なら「サーバー」→「強制的に隠しファイルを表示する」をON。
+> これが無いと画像が表示されないことがあります。
+
+---
+
+## ④ 確認
+
+- トップページが出る
+- `/schools/tatenoito/` が開く
+- `/privacy/` が開く
+- 申し込みボタンがPeatixに飛ぶ
+
+---
+
+## 更新するとき
+
+```
+原稿・画像を直す → ① ビルド → ③ 上書きアップロード
+```
 
 ---
 
 ## 補足
 
-### 同梱している設定ファイル
+**コマンドで差分だけ転送したい場合**（スタンダードプラン以上）
 
-| ファイル | 役割 |
-| --- | --- |
-| `.htaccess` | Apache用。MIMEタイプ（AVIF/WebP）、圧縮、キャッシュ、セキュリティヘッダ、404設定 |
-| `_headers` / `netlify.toml` | Netlify用。さくらでは無視されます（`.htaccess` で外部から読めないようにしてあります） |
-
-サブディレクトリ公開にした場合は、`.htaccess` 末尾の
-`ErrorDocument 404 /404.html` を `/fes2026/404.html` のように書き換えてください。
-
-### 常時SSL
-
-さくらのコントロールパネルから無料SSL（Let's Encrypt）を設定できます。
-設定後、HTTPからHTTPSへリダイレクトしたい場合は `.htaccess` の先頭に以下を追加します。
-
-```apache
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</IfModule>
+```bash
+cp .env.sakura.example .env.sakura   # 初回のみ。中身を書き換える
+npm run build
+./scripts/deploy-sakura.sh --dry-run # 確認
+./scripts/deploy-sakura.sh           # 実行
 ```
 
-### 更新のたびにやること
+**常時SSL（https化）**
+コントロールパネルから無料SSLを設定したあと、`.htaccess` の先頭に追記します。
 
-1. 原稿や画像を直す
-2. `SITE_URL=... npm run release`
-3. 方法A〜Cのいずれかで再アップロード
+```apache
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+```
 
-`_astro/` のファイル名にはハッシュが入るため、更新しても古いキャッシュが残りません。
+**うまくいかないとき**
+
+| 症状 | 原因 |
+| --- | --- |
+| 画像が出ない | `.htaccess` がアップロードされていない |
+| リンクが404 | `dist` フォルダごと置いている（中身だけを置く） |
+| SNSで画像が出ない | ビルド時に `SITE_URL` を指定していない |
+| CSSが効かない | サブディレクトリなのに `BASE_PATH` を指定していない |

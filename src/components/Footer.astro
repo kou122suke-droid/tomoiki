@@ -1,9 +1,10 @@
 ---
+import { url } from "../lib/url";
 import { event } from "../data/site";
 import Logo from "./Logo.astro";
 
 const links = [
-  { label: "プライバシーポリシー", href: "/privacy/" },
+  { label: "プライバシーポリシー", href: url("/privacy/") },
   { label: "運営団体", href: event.organizerUrl },
   { label: "お問い合わせ", href: event.inquiryUrl },
 ];

@@ -5,4 +5,8 @@ release/
 .DS_Store
 .env
 .env.*
+!.env.sakura.example
 npm-debug.log*
+
+# さくらサーバの接続情報
+.env.sakura

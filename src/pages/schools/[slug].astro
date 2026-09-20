@@ -1,4 +1,5 @@
 ---
+import { url } from "../../lib/url";
 import { Image } from "astro:assets";
 import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
@@ -41,9 +42,9 @@ const lines = (text: string) => text.split("\n").map((l) => l.trim()).filter(Boo
     <section class="relative isolate overflow-hidden bg-[linear-gradient(150deg,#eaf4ff_0%,#fdf8ef_55%,#ffeef5_100%)] pt-16 md:pt-[4.5rem]">
       <div class="container-lp py-10 md:py-14">
         <nav aria-label="パンくず" class="mb-6 flex flex-wrap items-center gap-2 text-xs font-bold text-ink-soft">
-          <a href="/" class="transition-colors hover:text-brand-600">トップ</a>
+          <a href={url("/")} class="transition-colors hover:text-brand-600">トップ</a>
           <span aria-hidden="true">/</span>
-          <a href="/#schools" class="transition-colors hover:text-brand-600">参加スクール</a>
+          <a href={url("/#schools")} class="transition-colors hover:text-brand-600">参加スクール</a>
           <span aria-hidden="true">/</span>
           <span class="text-brand-700">{school.name}</span>
         </nav>
@@ -356,7 +357,7 @@ const lines = (text: string) => text.split("\n").map((l) => l.trim()).filter(Boo
     <nav class="bg-cream py-10" aria-label="他のスクール">
       <div class="container-lp grid gap-3 sm:grid-cols-2">
         <a
-          href={`/schools/${prev.slug}/`}
+          href={url(`/schools/${prev.slug}/`)}
           class="group flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-card transition-transform hover:-translate-y-0.5"
         >
           <Icon name="arrow" class="h-5 w-5 shrink-0 rotate-180 text-brand-400" />
@@ -366,7 +367,7 @@ const lines = (text: string) => text.split("\n").map((l) => l.trim()).filter(Boo
           </span>
         </a>
         <a
-          href={`/schools/${next.slug}/`}
+          href={url(`/schools/${next.slug}/`)}
           class="group flex items-center justify-end gap-3 rounded-2xl bg-white px-5 py-4 text-right shadow-card transition-transform hover:-translate-y-0.5"
         >
           <span class="min-w-0">
@@ -377,7 +378,7 @@ const lines = (text: string) => text.split("\n").map((l) => l.trim()).filter(Boo
         </a>
       </div>
       <div class="container-lp mt-4 text-center">
-        <a href="/#schools" class="text-sm font-bold text-brand-600 underline underline-offset-4 hover:text-accent-600">
+        <a href={url("/#schools")} class="text-sm font-bold text-brand-600 underline underline-offset-4 hover:text-accent-600">
           参加スクール一覧へ戻る
         </a>
       </div>

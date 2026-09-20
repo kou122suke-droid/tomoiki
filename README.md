@@ -35,6 +35,21 @@ npm run prune    # dist/_astro 内の未参照ファイルを削除
 npm run zip      # release/orusuku-fes-2026-netlify.zip を作成
 ```
 
+> さくらのレンタルサーバなど Apache 系ホスティングへの公開手順は
+> **[DEPLOY-sakura.md](./DEPLOY-sakura.md)** にまとめています。
+
+### 公開URLの指定
+
+`SITE_URL` と `BASE_PATH` で公開先に合わせます（canonical と OGP の絶対URLに使われます）。
+
+```bash
+# ドメイン直下
+SITE_URL=https://example.jp npm run release
+
+# サブディレクトリ（https://example.jp/fes2026/）
+SITE_URL=https://example.jp BASE_PATH=/fes2026 npm run release
+```
+
 ### Netlify で公開する（2通り）
 
 **A. zipをドラッグ&ドロップ（最短）**

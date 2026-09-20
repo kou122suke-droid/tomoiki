@@ -1,0 +1,54 @@
+# ============================================================
+#  Apache（さくらのレンタルサーバ等）向け設定
+#  Netlify では無視されるため、_headers と併存して問題ありません。
+# ============================================================
+
+AddDefaultCharset UTF-8
+
+# ---- MIME タイプ -------------------------------------------
+# 古い Apache だと AVIF/WebP が未登録のことがあるため明示する
+AddType image/avif  .avif
+AddType image/webp  .webp
+AddType image/svg+xml .svg
+AddType font/woff2  .woff2
+
+# ---- 圧縮 --------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---- キャッシュ --------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                      "access plus 1 hour"
+  ExpiresByType text/html             "access plus 0 seconds"
+  ExpiresByType image/avif            "access plus 7 days"
+  ExpiresByType image/webp            "access plus 7 days"
+  ExpiresByType image/jpeg            "access plus 7 days"
+  ExpiresByType image/png             "access plus 7 days"
+  ExpiresByType text/css              "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # /_astro/ 配下はファイル名にハッシュが入るので長期キャッシュしてよい
+  <If "%{REQUEST_URI} =~ m#/_astro/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+
+  # ---- セキュリティ ----
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# ---- 公開不要なファイルを隠す ------------------------------
+# Netlify 用の設定ファイルが URL で読めてしまうのを防ぐ
+<Files "_headers">
+  Require all denied
+</Files>
+
+# ---- 404 ---------------------------------------------------
+ErrorDocument 404 /404.html

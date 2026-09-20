@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/url";
 import { Image } from "astro:assets";
 import { event } from "../data/site";
 import lockupDark from "../assets/logo-asj-lockup.png";
@@ -16,7 +17,7 @@ const lockup = variant === "light" ? lockupLight : lockupDark;
 ---
 
 <a
-  href="/"
+  href={url("/")}
   class:list={["inline-flex shrink-0 items-center", className]}
   aria-label={`${event.organizer} ホームへ`}
 >

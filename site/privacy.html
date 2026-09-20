@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー｜一般社団法人 ともに生きる実践ラボ</title>
+<meta name="description" content="一般社団法人ともに生きる実践ラボの個人情報の取扱いに関する方針です。">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/tomoiki-mark.png">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="プライバシーポリシー｜一般社団法人 ともに生きる実践ラボ">
+<meta property="og:description" content="一般社団法人ともに生きる実践ラボの個人情報の取扱いに関する方針です。">
+<meta property="og:image" content="assets/logo-color.png">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   ともに生きる実践ラボ — トップページ
+   「トップページ デザイン.dc.html」より実装
+   ============================================================ */
+
+:root{
+  --cream:#f6f1e7;
+  --warm:#fbf8f1;
+  --sand:#ece3d0;
+  --panel:#f1efe4;
+
+  --ink:#3b3a31;
+  --ink-dark:#2f3526;
+  --ink-mid:#595744;
+  --ink-mid2:#4d4a3b;
+  --ink-soft:#6b6857;
+  --muted:#8a8470;
+
+  --olive:#46512f;
+  --olive-mid:#6b7a48;
+  --gold:#b08a5d;
+  --gold-light:#d19a55;
+  --sage:#a7bd84;
+  --sky:#8fb6c9;
+  --apricot:#e6b184;
+  --straw:#d3b96a;
+  --fb:#3b5998;
+
+  --line:#e0d7c0;
+  --line2:#e6ddca;
+  --line3:#ece3d0;
+  --line4:#ddd2bb;
+  --line5:#cdd4b8;
+
+  --serif:'Noto Serif JP',serif;
+  --sans:'Noto Sans JP',sans-serif;
+  --display:'Cormorant Garamond',serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{margin:0}
+p{margin:0}
+ul{list-style:none;padding:0;margin:0}
+
+.inner{max-width:1200px;margin:0 auto;padding:0 40px}
+
+/* ---------- eyebrow ---------- */
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);flex:none}
+.eyebrow span{font-family:var(--display);font-size:16px;letter-spacing:3px;color:var(--gold)}
+.eyebrow.italic span{font-style:italic}
+.eyebrow.caps span{letter-spacing:4px;text-transform:uppercase}
+.eyebrow.center{justify-content:center;display:flex}
+.eyebrow.center::after{content:"";width:34px;height:1px;background:var(--gold);flex:none}
+
+/* ---------- section heads ---------- */
+.sec-h2{font-family:var(--serif);font-weight:600;font-size:31px;line-height:1.6;letter-spacing:1.5px;color:var(--ink-dark)}
+.sub-head{display:flex;align-items:baseline;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:34px}
+.sub-head h3{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:1px;color:var(--ink-dark)}
+.sub-head span{font-family:var(--display);font-style:italic;font-size:14px;color:var(--gold)}
+
+/* ---------- scroll-linked fade-in ---------- */
+[data-fx]{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .9s cubic-bezier(.22,.61,.36,1) var(--d,0s),
+             transform .9s cubic-bezier(.22,.61,.36,1) var(--d,0s);
+}
+[data-fx].is-in{opacity:1;transform:none}
+/* Images settle a touch slower than the text they sit with. */
+[data-fx] > img,img[data-fx],figure[data-fx],
+.concept-fig[data-fx],.philosophy-diagram[data-fx],.map-figure[data-fx],
+.six-elements[data-fx],.group-photo[data-fx],.event-visual[data-fx]{
+  transition-duration:1.15s;
+}
+@media (prefers-reduced-motion:reduce){
+  [data-fx]{opacity:1!important;transform:none!important;transition:none!important}
+  *{animation:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ============ HEADER ============ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,241,231,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #e4dcc9;
+}
+.site-header .inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding-top:14px;padding-bottom:14px;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:none}
+.brand img{height:48px;width:auto}
+.brand-text{display:flex;flex-direction:column;gap:3px}
+.brand-ja{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:2px;color:var(--olive);line-height:1.2;white-space:nowrap}
+.brand-ja em{font-style:normal;color:var(--gold-light)}
+.brand-en{font-family:var(--display);font-size:13px;letter-spacing:2.5px;color:var(--ink-soft);line-height:1.2;white-space:nowrap}
+
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{font-size:13px;letter-spacing:1px;color:var(--olive);text-decoration:none;font-weight:500;white-space:nowrap}
+.nav a:hover{color:var(--gold)}
+.nav .nav-cta{
+  display:inline-flex;align-items:center;gap:7px;
+  color:#fff;background:var(--olive);padding:10px 20px;border-radius:999px;
+}
+.nav .nav-cta:hover{background:#39421a;color:#fff}
+
+.nav-toggle{
+  display:none;flex:none;width:44px;height:44px;
+  border:1px solid var(--line4);border-radius:8px;background:var(--warm);
+  cursor:pointer;padding:0;align-items:center;justify-content:center;
+}
+.nav-toggle span{position:relative;display:block;width:20px;height:1.5px;background:var(--olive)}
+.nav-toggle span::before,.nav-toggle span::after{
+  content:"";position:absolute;left:0;width:20px;height:1.5px;background:var(--olive);transition:transform .25s ease,opacity .25s ease;
+}
+.nav-toggle span::before{top:-6px}
+.nav-toggle span::after{top:6px}
+.nav-toggle[aria-expanded="true"] span{background:transparent}
+.nav-toggle[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* ============ HERO ============ */
+.hero{position:relative;width:100%;height:660px;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-img.s1{animation:heroSlide1 21s ease-in-out infinite}
+.hero-img.s2{animation:heroSlide2 21s ease-in-out infinite}
+.hero-img.s3{animation:heroSlide3 21s ease-in-out infinite}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,46,28,.62) 0%,rgba(40,46,28,.30) 46%,rgba(40,46,28,.05) 100%)}
+.hero .inner{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center}
+.hero-body{max-width:700px}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.hero-eyebrow::before{content:"";width:46px;height:1px;background:rgba(255,255,255,.7)}
+.hero-eyebrow span{font-family:var(--display);font-style:italic;font-size:21px;color:#f3ead7;letter-spacing:1px}
+.hero h1{
+  font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.5;
+  color:#fffdf7;margin-bottom:26px;letter-spacing:2px;
+  text-shadow:0 2px 18px rgba(30,34,20,.35);
+}
+.hero-lead{
+  font-size:16px;line-height:2.1;color:#f1ece0;margin-bottom:38px;
+  text-shadow:0 1px 10px rgba(30,34,20,.3);
+}
+.btn-fb{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:15px;font-weight:500;color:#fff;background:var(--fb);
+  padding:16px 30px;border-radius:999px;text-decoration:none;
+  box-shadow:0 8px 24px rgba(30,34,20,.22);
+}
+.btn-fb:hover{background:#31497f;color:#fff}
+.btn-fb .f{font-family:Georgia,serif;font-weight:700;font-size:18px}
+
+@keyframes heroSlide1{
+  0%{opacity:1;transform:scale(1)}
+  28%{opacity:1;transform:scale(1.04)}
+  36%,92%{opacity:0;transform:scale(1.04)}
+  93%{opacity:0;transform:scale(1)}
+  100%{opacity:1;transform:scale(1)}
+}
+@keyframes heroSlide2{
+  0%,28%{opacity:0;transform:scale(1)}
+  36%{opacity:1;transform:scale(1)}
+  61%{opacity:1;transform:scale(1.04)}
+  69%,100%{opacity:0;transform:scale(1.04)}
+}
+@keyframes heroSlide3{
+  0%,61%{opacity:0;transform:scale(1)}
+  69%{opacity:1;transform:scale(1)}
+  94%{opacity:1;transform:scale(1.04)}
+  100%{opacity:0;transform:scale(1.04)}
+}
+
+/* connection bar */
+.connect-bar{height:5px;width:100%;background:linear-gradient(90deg,var(--sky) 0%,var(--apricot) 50%,var(--sage) 100%)}
+
+/* ============ NEWS ============ */
+.news{background:var(--warm);padding:84px 0 88px}
+.news .inner{max-width:1080px}
+.news-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+  padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:8px;
+}
+.news-head .t{display:flex;align-items:baseline;gap:16px}
+.news-head h2{font-family:var(--serif);font-weight:600;font-size:25px;letter-spacing:2px;color:var(--ink-dark)}
+.news-head .en{font-family:var(--display);font-style:italic;font-size:15px;letter-spacing:2px;color:var(--gold)}
+.news-head .more{font-size:13px;color:var(--olive);text-decoration:none;letter-spacing:1px;white-space:nowrap}
+.news li{border-bottom:1px solid var(--line3)}
+.news li a{
+  display:grid;grid-template-columns:108px 108px 1fr;gap:24px;align-items:center;
+  padding:24px 4px;text-decoration:none;
+}
+.news li a:hover .ttl{color:var(--olive)}
+.news time{font-family:Arial,Helvetica,sans-serif;font-size:20px;letter-spacing:1px;color:var(--muted)}
+.tag{font-size:11.5px;color:#fff;padding:4px 0;border-radius:999px;text-align:center;letter-spacing:1px}
+.tag.event{background:var(--straw)}
+.tag.book{background:var(--sky)}
+.tag.corp{background:var(--apricot)}
+.tag.cf{background:var(--sage)}
+.news .ttl{font-size:15px;line-height:1.75;color:var(--ink);transition:color .2s}
+
+/* ============ CONCEPT ============ */
+.concept{background:var(--cream);padding:110px 0 100px;position:relative;overflow:hidden}
+.concept .inner{max-width:1180px}
+.concept-grid{display:grid;grid-template-columns:1fr .82fr;gap:80px;align-items:center}
+.concept h2{font-family:var(--serif);font-weight:500;font-size:33px;line-height:1.7;letter-spacing:1.5px;margin-bottom:30px;color:var(--ink-dark)}
+.concept p{font-size:15.5px;line-height:2.3;color:var(--ink-mid)}
+.concept p + p{margin-top:1.6em}
+.concept-fig{display:flex;align-items:center;justify-content:center}
+.concept-fig img{width:100%;max-width:460px}
+.bird{position:absolute;overflow:visible}
+.bird g{transform-origin:20px 8px}
+@keyframes birdFly{
+  0%{transform:translate(0,0) rotate(0deg);opacity:0}
+  8%{opacity:.75}
+  50%{transform:translate(-150px,-46px) rotate(-4deg);opacity:.75}
+  92%{opacity:.75}
+  100%{transform:translate(-300px,10px) rotate(2deg);opacity:0}
+}
+@keyframes wingFlap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+
+/* ============ PHILOSOPHY ============ */
+.philosophy{background:linear-gradient(180deg,#efe7d7 0%,#f1ead9 100%);padding:110px 0 120px}
+.philosophy .head{text-align:center;max-width:760px;margin:0 auto 70px}
+.philosophy .head .eyebrow{margin-bottom:24px}
+.philosophy h2{font-family:var(--serif);font-weight:500;font-size:33px;line-height:1.6;letter-spacing:2px;margin-bottom:22px;color:var(--ink-dark)}
+.philosophy .head p{font-size:15.5px;line-height:2.2;color:var(--ink-mid)}
+.philosophy-diagram{max-width:860px;margin:0 auto}
+.philosophy-diagram img{width:100%;height:auto}
+.philosophy .close{max-width:900px;margin:66px auto 0;text-align:center}
+.philosophy .close .lead{font-size:17.5px;line-height:2.3;color:var(--ink-mid);margin-bottom:34px}
+.philosophy .close .lead em{font-family:var(--display);font-size:17px;color:var(--gold);font-style:italic}
+.philosophy .close .last{font-family:var(--serif);font-weight:500;font-size:19px;line-height:2;letter-spacing:1px;color:var(--olive)}
+
+/* ============ ORIGIN ============ */
+.origin{background:var(--cream);padding:108px 0 100px}
+.origin .inner{max-width:1020px}
+.origin h2{margin-bottom:30px}
+.origin .lede{font-size:15.5px;line-height:2.2;color:var(--ink-mid);margin-bottom:46px}
+.origin .lede em{font-family:var(--display);font-size:16px;color:var(--muted);font-style:italic}
+.book-row{display:grid;grid-template-columns:250px 1fr;gap:42px;align-items:start;margin-bottom:40px}
+.book-row p{font-size:15.5px;line-height:2.25;color:var(--ink-mid2)}
+.book-row .note{font-size:13.5px;color:var(--muted)}
+strong{font-weight:700;color:var(--ink-dark)}
+.btn-sage{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+  font-size:14.5px;font-weight:500;color:#fff;background:var(--sage);
+  border:1px solid var(--sage);padding:14px 30px;border-radius:999px;text-decoration:none;
+}
+.btn-sage:hover{background:#93aa70;border-color:#93aa70;color:#fff}
+
+.earthsong-row{display:flex;justify-content:center;align-items:flex-start;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.earthsong-row figure{margin:0;width:300px;max-width:100%}
+.earthsong-row figure img{width:100%;aspect-ratio:750/1000;object-fit:cover;border-radius:12px}
+.earthsong-row figcaption{font-size:12px;line-height:1.8;color:var(--muted);margin-top:10px}
+.earthsong-row figcaption span{font-family:var(--display);letter-spacing:1px}
+.earthsong-col{display:flex;flex-direction:column;gap:24px;width:420px;max-width:100%}
+.earthsong-col img{width:100%;object-fit:cover;border-radius:12px}
+
+blockquote{
+  margin:0;background:var(--warm);border-left:3px solid var(--gold);
+  border-radius:0 12px 12px 0;padding:40px 44px;
+}
+blockquote .intro{font-size:14.5px;line-height:2.1;color:var(--ink-soft);margin-bottom:22px}
+blockquote .quote{font-family:var(--serif);font-size:16px;line-height:2.15;color:var(--ink);margin-bottom:26px}
+blockquote footer{font-size:13px;color:var(--muted);text-align:right}
+
+.origin-close{margin-top:64px}
+.origin-close h3{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.6;letter-spacing:1.5px;margin-bottom:24px;color:var(--ink-dark)}
+.origin-close > p{font-size:15.5px;line-height:2.25;color:var(--ink-mid);margin-bottom:34px}
+.six-elements{margin-bottom:44px}
+.six-elements img{width:100%;height:auto}
+.year-box{background:var(--panel);border-radius:14px;padding:44px 48px;margin-bottom:44px}
+.year-box p{font-family:var(--serif);font-weight:500;font-size:16.5px;line-height:2.15;color:var(--ink-dark)}
+
+/* ============ DOORWAYS ============ */
+.ladder{background:var(--warm);padding:100px 0 96px}
+.ladder .inner{max-width:1160px}
+.ladder h2{margin-bottom:26px}
+.ladder .lead{font-size:17.5px;line-height:2.2;color:var(--ink-mid);margin-bottom:54px;max-width:780px}
+.door-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-bottom:46px}
+.door{background:var(--warm);border:1px solid var(--line2);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(80,75,55,.05)}
+.door .thumb{aspect-ratio:4/3;border-bottom:1px solid var(--line5);overflow:hidden}
+.door .thumb img{width:100%;height:100%;object-fit:cover}
+.door .body{padding:28px 30px 32px}
+.door h3{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:1px;margin-bottom:14px;color:var(--ink-dark)}
+.door p{font-size:14px;line-height:2;color:var(--ink-soft)}
+.ladder .note{font-size:14.5px;line-height:2.2;color:var(--muted);margin-bottom:34px;max-width:920px}
+.ladder .last{font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.9;letter-spacing:1px;color:var(--olive)}
+
+/* ============ PLATFORM ============ */
+.platform{background:var(--warm);padding:104px 0 96px}
+.platform .inner{max-width:1020px}
+.platform .eyebrow .badge{
+  font-family:var(--sans);font-size:10.5px;color:#fff;background:var(--olive);
+  padding:4px 10px;border-radius:5px;letter-spacing:1px;
+}
+.platform .kicker{font-size:15px;line-height:2.1;color:var(--ink-soft);margin-bottom:18px}
+.platform h2{margin-bottom:28px}
+.platform .lead{font-size:15px;line-height:2.25;color:var(--ink-soft);margin-bottom:54px}
+.map-figure{max-width:1080px;margin:0 auto 62px}
+.map-figure img{width:100%;height:auto}
+.biz-list{display:flex;flex-direction:column;gap:32px;margin-bottom:46px}
+.biz{display:flex;align-items:flex-start;gap:20px}
+.biz .num{
+  flex:none;width:28px;height:28px;border-radius:50%;background:var(--olive-mid);
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+  font-family:var(--display);font-size:14px;color:#fff;
+}
+.biz h4{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:1px;margin-bottom:12px;color:var(--ink-dark)}
+.biz p{font-size:14px;line-height:2.1;color:var(--ink-soft)}
+.arrow-note{text-align:center;margin-bottom:54px}
+.arrow-note .arrow{font-size:18px;color:var(--sage);line-height:1;margin-bottom:14px}
+.arrow-note p{font-family:var(--serif);font-style:italic;font-size:13.5px;letter-spacing:1px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:48px}
+.form-card{background:var(--cream);border:1px solid var(--line2);border-radius:12px;padding:24px 24px 30px;text-align:center}
+.form-card .fig{margin-bottom:22px;display:flex;align-items:center;justify-content:center;min-height:120px}
+.form-card .fig img{width:100%;height:auto}
+.form-card .fig.mark img{width:62%}
+.form-card h4{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:1px;margin-bottom:6px;color:var(--ink-dark)}
+.form-card .en{font-family:var(--display);font-style:italic;font-size:13px;color:var(--gold);margin-bottom:16px}
+.form-card p{font-size:13px;line-height:1.95;color:var(--ink-soft)}
+.pull-box{background:var(--panel);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:30px 36px}
+.pull-box p{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.95;color:var(--ink-dark)}
+
+/* ============ MEMBERS ============ */
+.members{background:var(--cream);padding:104px 0 96px}
+.members .inner{max-width:1080px}
+.members h2{font-family:var(--serif);font-weight:600;font-size:29px;line-height:1.6;letter-spacing:1.5px;margin-bottom:24px;color:var(--ink-dark)}
+.members .lead{font-size:15px;line-height:2.15;color:var(--ink-soft);margin-bottom:44px}
+.group-photo{border-radius:12px;overflow:hidden;margin-bottom:34px}
+.group-photo img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.member-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 30px;margin-bottom:56px}
+.member .portrait{border-radius:10px;overflow:hidden;aspect-ratio:1;margin-bottom:16px;background:#e5e9d9}
+.member .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.member h3{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:1px;margin-bottom:8px;color:var(--ink-dark)}
+.member .meta{display:flex;align-items:baseline;gap:14px;margin-bottom:10px;flex-wrap:wrap}
+.member .role{font-size:12.5px;color:var(--gold)}
+.member .romaji{font-family:var(--display);font-size:13px;color:var(--muted)}
+.member p{font-size:13px;line-height:1.9;color:var(--ink-soft)}
+.advisor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 30px;margin:0 auto 36px;max-width:860px}
+.photo-slot{
+  background:#e5e9d9;border:1px solid var(--line5);border-radius:10px;aspect-ratio:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
+  text-align:center;margin-bottom:16px;
+}
+.photo-slot .row{display:flex;align-items:center;gap:9px}
+.photo-slot .lbl{font-family:var(--display);font-size:13px;letter-spacing:3px;color:#6f7c56}
+.photo-slot .badge{font-size:10px;color:#fff;background:var(--olive-mid);padding:2px 8px;border-radius:4px}
+.photo-slot .hint{font-size:12px;color:#6f7c56}
+
+/* ============ FIRST DAY ============ */
+.firstday{background:linear-gradient(180deg,#f2f1e5 0%,#eceee0 100%);padding:104px 0 100px}
+.firstday .inner{max-width:1020px}
+.firstday h2{font-family:var(--serif);font-weight:600;font-size:33px;line-height:1.6;letter-spacing:1.5px;margin-bottom:28px;color:var(--ink-dark)}
+.firstday .lead{font-size:16px;line-height:2.1;color:var(--olive);margin-bottom:24px}
+.firstday .body{font-size:15px;line-height:2.25;color:var(--ink-soft);margin-bottom:46px}
+.event-visual{margin-bottom:44px}
+.event-visual img{width:100%;height:auto;border-radius:12px}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:500;color:#fff;background:var(--gold);
+  padding:16px 34px;border-radius:999px;text-decoration:none;
+}
+.btn-gold:hover{background:#9a7749;color:#fff}
+
+/* ============ JOIN ============ */
+.join{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#e7f0f3 0%,#f7e9d8 52%,#e9efdb 100%);
+  padding:100px 0 110px;
+}
+.join-family{position:absolute;right:5%;bottom:0;width:260px;animation:walkAway 14s ease-in-out infinite;pointer-events:none}
+.join-family img{width:100%;transform-origin:bottom center;animation:walkBob 1.6s ease-in-out infinite}
+@keyframes walkAway{
+  0%{transform:translateX(0) scale(1);opacity:.5}
+  45%{transform:translateX(38px) scale(.82);opacity:.34}
+  50%{transform:translateX(40px) scale(.8);opacity:.32}
+  55%{transform:translateX(38px) scale(.82);opacity:.34}
+  100%{transform:translateX(0) scale(1);opacity:.5}
+}
+@keyframes walkBob{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  25%{transform:translateY(-2.5px) rotate(-.5deg)}
+  75%{transform:translateY(-2.5px) rotate(.5deg)}
+}
+.join .inner{position:relative;max-width:800px;text-align:center}
+.join .eyebrow{justify-content:center;margin-bottom:26px}
+.join .eyebrow::before,.join .eyebrow::after{content:"";width:34px;height:1px;background:#9a8358;flex:none}
+.join .eyebrow span{color:#9a8358;letter-spacing:4px;text-transform:uppercase}
+.join h2{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.6;letter-spacing:2px;margin-bottom:22px;color:var(--ink-dark)}
+.join .lead{font-size:15.5px;line-height:2.2;color:#5b5847;margin-bottom:18px}
+.join .lead .strong{color:var(--ink)}
+.join .welcome{font-size:15.5px;line-height:2.2;color:#5b5847;margin-bottom:30px}
+.join-cta{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.join-cta .rule{width:50px;height:1px;background:#c9bda2}
+.join-cta .btn-fb{padding:12px 24px;font-size:14px;box-shadow:none}
+.join-cta .btn-fb .f{font-size:17px}
+
+/* ============ FOOTER ============ */
+.site-footer{background:var(--sand);padding:70px 0 0}
+.site-footer .cols{
+  max-width:1120px;margin:0 auto;padding:0 40px 56px;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:50px;
+}
+.site-footer .logo{width:156px;height:auto;margin-bottom:20px}
+.site-footer .about{font-size:12px;line-height:2.1;color:var(--ink-soft);margin-bottom:22px;max-width:300px}
+.socials{display:flex;gap:14px}
+.socials a{
+  width:42px;height:42px;border-radius:50%;background:var(--cream);border:1px solid var(--line4);
+  display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--olive);
+  font-family:Georgia,serif;font-weight:700;font-size:18px;
+}
+.socials a:hover{background:#fff}
+.socials img{width:22px;height:22px}
+.site-footer h4{font-family:var(--display);font-size:14px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+.site-footer ul{display:flex;flex-direction:column;gap:13px}
+.site-footer ul a{font-size:13.5px;color:var(--ink-mid2);text-decoration:none}
+.site-footer ul a:hover{color:var(--olive)}
+.contact-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.contact-row img{width:20px;height:20px}
+.contact-row a{font-size:13px;color:var(--ink-mid2);text-decoration:none}
+.contact-row a:hover{color:var(--olive)}
+.footer-bottom{
+  border-top:1px solid var(--line4);max-width:1120px;margin:0 auto;
+  padding:22px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.footer-bottom span{font-size:12px;color:var(--muted);letter-spacing:.5px}
+.footer-bottom nav{display:flex;gap:24px}
+.footer-bottom a{font-size:12px;color:var(--muted);text-decoration:none}
+.footer-bottom a:hover{color:var(--olive)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1100px){
+  .nav{gap:18px}
+  .nav a{font-size:12.5px}
+  .concept-grid{gap:48px}
+  .site-footer .cols{grid-template-columns:1fr 1fr;gap:40px}
+}
+
+@media (max-width:960px){
+  html{scroll-padding-top:76px}
+  .inner{padding:0 24px}
+  .site-header .inner{padding-top:12px;padding-bottom:12px}
+  .brand img{height:40px}
+  .brand-ja{font-size:17px;letter-spacing:1.5px}
+  .brand-en{font-size:11px;letter-spacing:2px}
+
+  .nav-toggle{display:flex}
+  .nav{
+    position:absolute;left:0;right:0;top:100%;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(246,241,231,.98);backdrop-filter:blur(10px);
+    border-bottom:1px solid #e4dcc9;
+    padding:8px 24px 20px;
+    display:none;
+  }
+  .nav.is-open{display:flex}
+  .nav a{padding:14px 4px;border-bottom:1px solid var(--line3);font-size:14px}
+  .nav .nav-cta{justify-content:center;margin-top:16px;border-bottom:none;padding:14px 20px}
+
+  .hero{height:auto;min-height:560px;padding:80px 0}
+  .hero h1{font-size:32px;letter-spacing:1.5px}
+  .hero-lead{font-size:15px;line-height:2}
+  .hero-eyebrow span{font-size:18px}
+
+  .news{padding:64px 0 68px}
+  .news li a{grid-template-columns:96px 1fr;gap:8px 16px;padding:20px 2px}
+  .news time{font-size:16px}
+  .tag{padding:4px 12px;justify-self:start}
+  .news .ttl{grid-column:1 / -1;font-size:14.5px}
+
+  .concept,.philosophy,.origin,.ladder,.platform,.members,.firstday,.join{padding-top:72px;padding-bottom:72px}
+  .concept-grid{grid-template-columns:1fr;gap:40px}
+  .concept-fig{order:-1}
+  .concept h2,.philosophy h2,.firstday h2{font-size:26px;line-height:1.65}
+  .sec-h2{font-size:25px}
+  .members h2{font-size:24px}
+  .join h2{font-size:27px}
+  .bird{display:none}
+
+  .philosophy .close .lead{font-size:16px}
+  .book-row{grid-template-columns:1fr;gap:28px}
+  .book-row .cover{max-width:220px}
+  .earthsong-col{width:100%}
+  blockquote{padding:30px 26px}
+  .year-box{padding:32px 26px}
+
+  .ladder .lead{font-size:16px}
+  .door-grid{grid-template-columns:1fr;gap:24px}
+  .form-grid{grid-template-columns:1fr;gap:20px}
+  .pull-box{padding:26px 24px}
+
+  .member-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .advisor-grid{grid-template-columns:repeat(2,1fr)}
+
+  .join-family{width:150px;right:2%;opacity:.7}
+  .join .inner{padding:0 24px}
+
+  .site-footer .cols{padding:0 24px 40px;gap:32px}
+  .footer-bottom{padding:22px 24px}
+}
+
+@media (max-width:560px){
+  .hero{min-height:520px;padding:64px 0}
+  .hero h1{font-size:26px;line-height:1.6}
+  .hero-eyebrow::before{width:28px}
+  .hero-eyebrow span{font-size:16px}
+  .btn-fb{padding:14px 22px;font-size:14px}
+
+  .news-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .news li a{grid-template-columns:1fr;gap:6px}
+  .tag{max-width:96px}
+
+  .member-grid{grid-template-columns:1fr}
+  .advisor-grid{grid-template-columns:1fr}
+  .site-footer .cols{grid-template-columns:1fr}
+  .join-cta .rule{display:none}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+
+/* Below ~400px the brand lockup (nowrap, flex:none) + burger no longer fit
+   the header row, so tighten the lockup rather than let it push the page wide. */
+@media (max-width:400px){
+  .inner{padding:0 16px}
+  .site-header .inner{gap:12px}
+  .brand{gap:10px;min-width:0}
+  .brand img{height:34px}
+  .brand-text{min-width:0}
+  .brand-ja{font-size:15px;letter-spacing:.5px}
+  .brand-en{font-size:9.5px;letter-spacing:1px}
+  .nav{padding:8px 16px 20px}
+  .nav-toggle{width:40px;height:40px}
+
+  .site-footer .cols{padding:0 16px 40px}
+  .footer-bottom{padding:22px 16px}
+  .join .inner{padding:0 16px}
+}
+
+/* ============ PRIVACY POLICY ============ */
+.policy-head{background:var(--cream);padding:72px 0 36px}
+.policy-head .inner{max-width:940px}
+.crumbs{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);
+  margin-bottom:30px;flex-wrap:wrap}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--olive)}
+.crumbs .here{color:var(--olive)}
+.policy-title{display:flex;align-items:baseline;gap:18px;margin-bottom:18px;flex-wrap:wrap}
+.policy-title h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:3px;
+  color:var(--ink-dark)}
+.policy-title span{font-family:var(--display);font-style:italic;font-size:17px;
+  letter-spacing:2px;color:var(--gold)}
+.policy-intro{font-size:14.5px;line-height:2.1;color:var(--ink-soft);text-wrap:pretty}
+
+.policy-body{background:var(--cream);padding:0 0 96px}
+.policy-body .inner{max-width:940px;display:flex;flex-direction:column;gap:46px}
+.policy-sec{display:flex;flex-direction:column;gap:14px;padding-top:34px;
+  border-top:1px solid var(--line)}
+.policy-sec h2{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:1.5px;
+  color:var(--ink-dark)}
+.policy-sec p,.policy-contact p{font-size:14px;line-height:2.1;color:var(--ink-mid2);
+  text-wrap:pretty}
+.policy-sec p.sub{font-size:13px;line-height:2;color:var(--ink-soft)}
+.policy-sec ul{list-style:disc;padding-left:1.3em;display:flex;flex-direction:column;gap:9px}
+.policy-sec li{font-size:14px;line-height:2;color:var(--ink-mid2)}
+.policy-sec a,.policy-contact a{color:var(--olive)}
+.policy-sec a:hover,.policy-contact a:hover{color:var(--gold)}
+
+.policy-contact{display:flex;flex-direction:column;gap:16px;padding:34px 34px 36px;
+  background:var(--sand);border-radius:4px}
+.policy-contact h2{font-family:var(--serif);font-weight:600;font-size:19px;
+  letter-spacing:1.5px;color:var(--ink-dark)}
+.contact-lines{display:flex;flex-direction:column;gap:12px}
+.contact-lines .who{font-size:14px;line-height:1.9;color:var(--ink-mid2)}
+.policy-contact .contact-row{display:flex;align-items:center;gap:10px}
+.policy-contact .contact-row img{width:20px;height:20px;flex:none}
+.policy-contact .contact-row a{font-size:13.5px;color:var(--ink-mid2);text-decoration:none}
+
+.policy-sign{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.policy-sign span{font-size:12.5px;color:var(--muted)}
+
+@media (max-width:960px){
+  .policy-head{padding:48px 0 28px}
+  .policy-title h1{font-size:26px;letter-spacing:2px}
+  .policy-body{padding-bottom:64px}
+  .policy-body .inner{gap:36px}
+  .policy-contact{padding:26px 24px 28px}
+}
+@media (max-width:560px){
+  .policy-title h1{font-size:23px}
+  .policy-sign{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+<div class="inner">
+<a class="brand" href="index.html">
+<img alt="ともに生きる実践ラボ" src="assets/logo-mark.png"/>
+<span class="brand-text">
+<span class="brand-ja">ともに<em>生</em>きる実践ラボ</span>
+<span class="brand-en">Co-Living Practice Lab</span>
+</span>
+</a>
+<button aria-controls="globalnav" aria-expanded="false" aria-label="メニューを開く" class="nav-toggle" type="button"><span></span></button>
+<nav class="nav" id="globalnav">
+<a href="index.html#concept">私たちについて</a>
+<a href="index.html#philosophy">TOMOIKIの哲学</a>
+<a href="index.html#origin">活動の原点</a>
+<a href="index.html#ladder">実践を知る</a>
+<a href="index.html#firstday">参加する</a>
+<a class="nav-cta" href="https://www.facebook.com/groups/tomoiknowa" rel="noopener" target="_blank">ともに生きる入口へ ▶︎</a>
+</nav>
+</div>
+</header>
+<div class="connect-bar"></div>
+
+<!-- ============ TITLE ============ -->
+<section class="policy-head">
+<div class="inner">
+<p class="crumbs" data-fx=""><a href="index.html">ホーム</a><span>／</span><span class="here">プライバシーポリシー</span></p>
+<div class="policy-title" data-fx="" style="--d:0.06s">
+<h1>プライバシーポリシー</h1>
+<span>privacy policy</span>
+</div>
+<p class="policy-intro" data-fx="" style="--d:0.12s">一般社団法人ともに生きる実践ラボ（以下「当法人」といいます。）は、当法人が運営するウェブサイトおよび当法人の事業活動において取得する個人情報の重要性を認識し、個人情報の保護に関する法律（以下「個人情報保護法」といいます。）その他の関係法令およびガイドラインを遵守するとともに、以下の方針に基づき個人情報を適正に取り扱います。</p>
+</div>
+</section>
+
+<!-- ============ POLICY ============ -->
+<section class="policy-body">
+<div class="inner">
+<div class="policy-sec" data-fx="">
+<h2>1. 事業者の名称および個人情報取扱責任者</h2>
+<p>名称：一般社団法人ともに生きる実践ラボ<br/>個人情報保護管理者：代表理事<br/>連絡先：<a href="mailto:info@tomoiki-lab.org">info@tomoiki-lab.org</a>／<a href="tel:09083833243">090-8383-3243</a></p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.06s">
+<h2>2. 取得する個人情報</h2>
+<p>当法人は、適法かつ公正な手段により、以下の情報を取得します。</p>
+<ul><li>氏名、ふりがな、年齢または年代、居住地域</li><li>メールアドレス、電話番号、住所、所属先・職業等の連絡先情報</li><li>イベント・見学会・講座等へのお申込内容、アンケートへのご回答、お問い合わせ内容</li><li>会費・参加費等のお支払いに関する情報（決済事業者を通じて取得する範囲に限ります）</li><li>当法人の活動において撮影した写真・動画のうち、個人を識別できるもの</li><li>ウェブサイトの閲覧情報（IPアドレス、ブラウザの種類、閲覧日時、参照元ページ、Cookie等の識別子）</li></ul>
+<p class="sub">要配慮個人情報（病歴、障がい、信条等）は、法令に基づく場合を除き、ご本人の同意なく取得しません。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.12s">
+<h2>3. 利用目的</h2>
+<p>取得した個人情報は、以下の目的の範囲内で利用します。</p>
+<ul><li>イベント、見学会、講座、コミュニティ活動等の運営、ご連絡および受付管理</li><li>お問い合わせ、ご意見・ご相談への対応</li><li>当法人の活動報告、ニュースレター、催事のご案内の送付</li><li>会費・参加費等の請求、受領および会計処理</li><li>活動記録・広報のための写真・動画等の掲載（ご本人の同意を得た範囲に限ります）</li><li>統計的に処理した情報の作成および活動改善・調査研究への利用（個人を識別できない形式に限ります）</li><li>法令上の義務の履行および当法人の権利の行使・防御</li></ul>
+<p class="sub">利用目的を変更する場合は、変更後の目的が変更前の目的と関連性を有すると合理的に認められる範囲に限り、変更内容を本ページに掲載し、またはご本人へ通知します。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>4. 第三者提供</h2>
+<p>当法人は、次のいずれかに該当する場合を除き、あらかじめご本人の同意を得ることなく個人データを第三者に提供しません。</p>
+<ul><li>法令に基づく場合</li><li>人の生命、身体または財産の保護のために必要があり、ご本人の同意を得ることが困難な場合</li><li>公衆衛生の向上または児童の健全な育成の推進のために特に必要があり、ご本人の同意を得ることが困難な場合</li><li>国の機関等の法令の定める事務への協力が必要で、同意取得により当該事務の遂行に支障を及ぼすおそれがある場合</li></ul>
+<p>共催・協力団体とともに事業を実施する場合など、共同利用を行うときは、共同して利用される項目、範囲、利用目的および管理責任者を事前に公表・通知します。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>5. 業務委託および外部サービスの利用</h2>
+<p>利用目的の達成に必要な範囲で、個人情報の取扱いを外部に委託することがあります。この場合、委託先の適格性を審査し、契約により安全管理義務を課したうえで、必要かつ適切な監督を行います。当法人は、イベント申込・決済（Peatix）、コミュニティ運営（Facebookグループ）、メール配信、ウェブサイトのホスティング等の外部サービスを利用しています。これらのサービスにおける個人情報の取扱いは、各事業者のプライバシーポリシーにも従います。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>6. 外国にある第三者への提供</h2>
+<p>前項の外部サービスの一部は、サーバーが日本国外に所在する場合があります。外国にある第三者へ個人データを提供する場合は、個人情報保護法の定めに従い、当該国の個人情報保護制度等に関する情報を提供したうえで、あらかじめご本人の同意を得るか、または基準に適合する体制を整備した提供先に限って提供します。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>7. 安全管理措置</h2>
+<p>当法人は、個人データの漏えい、滅失または毀損の防止その他の安全管理のため、次の措置を講じます。取扱規程の整備と責任者の設置（組織的措置）、役員・スタッフ・ボランティアへの教育および秘密保持の徹底（人的措置）、書類・記録媒体の施錠保管と持出制限（物理的措置）、アクセス権限の限定、通信の暗号化、不正アクセス対策ソフトの導入（技術的措置）。漏えい等が発生し、個人の権利利益を害するおそれがある場合は、個人情報保護委員会への報告およびご本人への通知を速やかに行います。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>8. 保有期間</h2>
+<p>個人情報は、利用目的の達成に必要な期間、または法令で定められた保存期間に限り保有し、その必要がなくなったときは遅滞なく消去または適切に廃棄します。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>9. Cookie等の取扱い</h2>
+<p>当ウェブサイトは、利便性の向上および閲覧状況の把握のためにCookieおよび類似技術を使用することがあります。これらの情報は原則として個人を特定しない形式で利用します。Cookieはブラウザの設定により無効化できますが、一部の機能がご利用いただけない場合があります。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>10. 写真・動画の取扱い</h2>
+<p>イベント等では、活動記録および広報のために写真・動画を撮影する場合があります。撮影・掲載を希望されない場合は、当日スタッフまたは下記窓口へお申し出ください。掲載後であっても、ご連絡をいただき次第、合理的な範囲で速やかに削除等の対応を行います。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>11. 開示・訂正・利用停止等のご請求</h2>
+<p>ご本人またはその代理人から、保有個人データの利用目的の通知、開示、内容の訂正・追加・削除、利用の停止・消去、第三者提供の停止のご請求があった場合は、ご本人であることを確認のうえ、法令に従い遅滞なく対応します。ご請求は下記窓口までご連絡ください。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>12. 未成年者の個人情報</h2>
+<p>15歳未満の方の個人情報については、原則として保護者の方の同意を得たうえで取得します。</p>
+</div>
+<div class="policy-sec" data-fx="" style="--d:0.18s">
+<h2>13. 本ポリシーの変更</h2>
+<p>法令の改正または当法人の活動内容の変更に応じて、本ポリシーを改定することがあります。重要な変更を行う場合は、本ページにて改定日とともに公表します。</p>
+</div>
+<div class="policy-contact" data-fx="">
+<h2>14. お問い合わせ窓口</h2>
+<p>個人情報の取扱いに関するお問い合わせ、開示等のご請求は、下記までご連絡ください。</p>
+<div class="contact-lines">
+<span class="who">一般社団法人ともに生きる実践ラボ　個人情報お問い合わせ窓口</span>
+<div class="contact-row">
+<img alt="" src="assets/icon-mail.png"/>
+<a href="mailto:info@tomoiki-lab.org">info@tomoiki-lab.org</a>
+</div>
+<div class="contact-row">
+<img alt="" src="assets/icon-phone.png"/>
+<a href="tel:09083833243">090-8383-3243</a>
+</div>
+</div>
+</div>
+<div class="policy-sign" data-fx="">
+<span>制定日：2026年9月20日</span>
+<span>一般社団法人ともに生きる実践ラボ　代表理事</span>
+</div>
+</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+<div class="cols">
+<div data-fx="">
+<img alt="ともに生きる実践ラボ Co-Living Practice Lab" class="logo" src="assets/logo-color.png"/>
+<p class="about">関係性を土台に、暮らしの場を共有し、ともに生きる。“ともに生きる”ムーブメントを創出する発起母体です。</p>
+<div class="socials">
+<a aria-label="Facebook" href="https://www.facebook.com/groups/tomoiknowa" rel="noopener" target="_blank">f</a>
+<a aria-label="メール" href="mailto:info@tomoiki-lab.org"><img alt="" src="assets/icon-mail.png"/></a>
+</div>
+</div>
+<div data-fx="" style="--d:0.09s">
+<h4>About</h4>
+<ul>
+<li><a href="index.html#concept">私たちについて</a></li>
+<li><a href="index.html#philosophy">TOMOIKIの哲学</a></li>
+<li><a href="index.html#origin">活動の原点</a></li>
+</ul>
+</div>
+<div data-fx="" style="--d:0.18s">
+<h4>Contents</h4>
+<ul>
+<li><a href="index.html#ladder">実践を知る</a></li>
+<li><a href="index.html#firstday">参加する</a></li>
+<li><a href="https://www.facebook.com/groups/tomoiknowa" rel="noopener" target="_blank">ともに生きる入口へ</a></li>
+</ul>
+</div>
+<div data-fx="" style="--d:0.27s">
+<h4>Contact</h4>
+<div class="contact-row">
+<img alt="" src="assets/icon-mail.png"/>
+<a href="mailto:info@tomoiki-lab.org">info@tomoiki-lab.org</a>
+</div>
+<div class="contact-row">
+<img alt="" src="assets/icon-phone.png"/>
+<a href="tel:09083833243">090-8383-3243</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom" data-fx="">
+<span>© 一般社団法人ともに生きる実践ラボ</span>
+<nav>
+<span class="here">プライバシーポリシー</span>
+<a href="mailto:info@tomoiki-lab.org">お問い合わせ</a>
+</nav>
+</div>
+</footer>
+
+<script>
+(function () {
+  /* --- scroll-linked fade-in --- */
+  var fx = Array.prototype.slice.call(document.querySelectorAll('[data-fx]'));
+  var show = function (el) { el.classList.add('is-in'); };
+  var atEnd = function () {
+    var de = document.documentElement;
+    return window.innerHeight + (window.scrollY || de.scrollTop) >= de.scrollHeight - 2;
+  };
+  var near = function (el) {
+    var r = el.getBoundingClientRect();
+    var h = window.innerHeight || document.documentElement.clientHeight;
+    // Normally an element has to clear the bottom 6% before it counts as in
+    // view. At the foot of the page there is no more scrolling to do, so the
+    // last strip (the copyright bar) would sit in that band for good - take
+    // whatever is on screen instead.
+    if (atEnd()) { return r.top < h && r.bottom > 0; }
+    return r.top < h * 0.94 && r.bottom > 0;
+  };
+
+  // A sweep over whatever is on screen. This is the guarantee: an anchor jump
+  // or a restored scroll position can move the page further in one frame than
+  // an observer reports on, and content left at opacity 0 in view would be
+  // invisible for good. Cheap to run - revealed elements drop out of the list.
+  var pending = fx.slice();
+  var sweep = function () {
+    for (var i = pending.length - 1; i >= 0; i--) {
+      if (near(pending[i])) { show(pending[i]); pending.splice(i, 1); }
+    }
+  };
+  var queued = false;
+  var onScroll = function () {
+    if (queued) { return; }
+    queued = true;
+    requestAnimationFrame(function () { queued = false; sweep(); });
+  };
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          show(e.target);
+          obs.unobserve(e.target);
+          var i = pending.indexOf(e.target);
+          if (i > -1) { pending.splice(i, 1); }
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    fx.forEach(function (el) { obs.observe(el); });
+  }
+  sweep();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', sweep);
+
+  /* --- mobile nav --- */
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('globalnav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'メニューを開く');
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

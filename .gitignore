@@ -1,1 +1,4 @@
 dist/
+
+# 配布用ZIP（サイズが大きいためコミットしない）
+tomoiki-site.zip

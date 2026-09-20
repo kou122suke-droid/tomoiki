@@ -9,7 +9,7 @@ site/
 ├── index.html          ← 「トップページ デザイン.dc.html」から実装済み
 ├── privacy.html        ← 「プライバシーポリシー.dc.html」から実装済み
 ├── _headers            ← Cloudflare Pages 用のキャッシュ設定
-└── assets/             ← ロゴ・写真・図版一式（27点／未配置）
+└── assets/             ← ロゴ・写真・図版一式（27点／配置済み）
 ```
 
 `privacy.html` はリポジトリルートの `build-privacy.py` が生成します。
@@ -20,7 +20,7 @@ site/
 ## assets/ について
 
 2ページ合わせて以下の27ファイルを `assets/` 直下から参照しています。
-Claude Design のバンドルから、この名前のまま置いてください。
+現在はすべて配置済みで、`site/` をそのまま公開できます。
 
 hero-village.png / hero-village-2.png / hero-village-4.png /
 logo-mark.png / logo-color.png / tomoiki-mark.png /
@@ -37,11 +37,15 @@ member-inoue.jpg / member-sagesaka.jpg / member-sadakata.jpg
 の5点が不要になり、`book-robin.png` と `six-elements-v2.png` が
 新たに必要になりました。
 
-画像は長辺2000px程度に縮小してから置いてください
-（元のバンドルは合計約300MBあり、そのままでは表示が重すぎます）。
+配置済みの画像は、ブラウザが実際に描画する幅の2倍（Retina 相当）まで
+縮小済みです（合計 約9.8MB）。デザインバンドルから差し替えた場合は、
+リポジトリルートの `optimize-assets.py` を実行すると同じ基準に揃います。
 
-Cloudflare Pages に上げる場合、縮小は必須です。1ファイルあたり 25MiB の
-上限があり、原寸のままだと超えるファイルが弾かれます。
+    python3 optimize-assets.py site
+
+このスクリプトはファイル名と拡張子を変えず、画素数と色空間だけを調整します。
+`common-meal.jpg` は元が CMYK（印刷用の色空間）で、ブラウザによっては
+色が崩れるか表示されないため、RGB に変換してあります。
 
 ## 公開方法
 

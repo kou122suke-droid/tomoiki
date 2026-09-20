@@ -83,6 +83,11 @@ node scripts/fetch-drive-assets.mjs --force     # 既存ファイルも上書き
 node scripts/fetch-drive-assets.mjs --only=frasco,mek
 ```
 
+取り込んだ画像は、表示サイズに合わせて長辺1800px・JPEG品質82に縮小してからコミットしています
+（元データは4000px級のため、そのまま置くとリポジトリとビルドが肥大化します）。
+
+HEIC形式で提出された素材は `heic-convert` でJPEGに変換しています。
+
 Drive フォルダが「リンクを知っている全員が閲覧可」になっている必要があります。
 共有設定が限定されている場合は `--list` の対応表を見ながら手動で配置してください。
 各ファイルの Drive ファイルIDは `src/data/schools.ts` の `media` フィールドに控えてあります。

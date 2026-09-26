@@ -44,7 +44,7 @@ DNS 側の追加作業は不要です。
 
 | 名前 | 既定値 | 説明 |
 | --- | --- | --- |
-| `FTP_SERVER_DIR` | `/public_html/` | tomoiki-lab.org の公開フォルダ。コントロールパネル「ドメイン」画面の「公開フォルダ」と同じにする（例：`/public_html/tomoiki-lab.org/`）。末尾は `/` |
+| `FTP_SERVER_DIR` | `/public_html/tomoiki-lab.org/` | 公開フォルダ（ファイルマネージャーで確認済み）。末尾は `/` |
 | `FTP_PROTOCOL` | `ftps` | 接続に失敗する場合は `ftp` |
 
 登録後、**Actions → Deploy to お名前.com レンタルサーバー → Run workflow** で手動実行もできます。

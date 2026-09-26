@@ -1,7 +1,9 @@
-# ── https / 表記ゆれ（www あり）を https://no-limit.life に統一 ──
+# ── https / www なしに統一（no-limit.life 本体だけに適用し、サブドメインには影響させない） ──
 RewriteEngine On
-RewriteCond %{HTTPS} !on [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{HTTP_HOST} ^www\.no-limit\.life$ [NC]
+RewriteRule ^(.*)$ https://no-limit.life/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^no-limit\.life$ [NC]
+RewriteCond %{HTTPS} !on
 RewriteRule ^(.*)$ https://no-limit.life/$1 [R=301,L]
 
 # ── 存在しないページは 404.html を表示 ──
@@ -27,8 +29,3 @@ AddType video/mp4 .mp4
   ExpiresByType image/x-icon "access plus 30 days"
   ExpiresByType video/mp4 "access plus 30 days"
 </IfModule>
-
-# ── README など公開不要なファイルを見せない ──
-<FilesMatch "\.(md|zip)$">
-  Require all denied
-</FilesMatch>

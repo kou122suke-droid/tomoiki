@@ -59,7 +59,7 @@ FileZilla などの FTP ソフト、またはコントロールパネルの「�
 
 1. http://tomoiki-lab.org で表示を確認
 2. コントロールパネルで無料独自SSLを tomoiki-lab.org / www.tomoiki-lab.org に設定
-3. SSL が有効になったら `public/.htaccess` の https 統一の 2 行のコメントを外して再アップロード
+3. SSL 有効化済み（2026-09）。`.htaccess` で http・www を https://tomoiki-lab.org に統一
 
 ## 画像を差し替えるとき
 

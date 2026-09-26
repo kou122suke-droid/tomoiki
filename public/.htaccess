@@ -9,9 +9,9 @@ RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.tomoiki-lab\.org$ [NC]
 RewriteRule ^(.*)$ http://tomoiki-lab.org/$1 [R=301,L]
 
-# 無料独自SSLの設定が完了したら、下の2行の先頭の # を外すと https に統一されます
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
+# http → https に統一
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
 
 <IfModule mod_expires.c>
   ExpiresActive On

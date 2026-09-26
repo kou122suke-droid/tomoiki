@@ -20,5 +20,4 @@ favicon.ico, favicon-32.png, apple-touch-icon.png, icon-512.png
 
 ## 公開前に残っている作業
 
-- **動画ファイルの追加**: `assets/pv-revive.mp4`（魚突きプログラム）と `assets/pv-top.mp4`（UMIKAZE）を置くと、トップの「提供サービス」で自動再生されます。未配置の間は静止画（poster）が表示されます。
 - **OGP画像のURL**: 公開ドメインが決まったら、各HTMLの `og:image` を `https://<ドメイン>/assets/ogp.jpg` の絶対URLに変更し、`<link rel="canonical">` と `og:url` を追加してください（SNSでのシェア表示に必要）。

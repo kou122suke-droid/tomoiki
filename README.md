@@ -10,7 +10,7 @@ public/
 ├── privacy.html    プライバシーポリシー
 ├── support.js      ページ描画ランタイム
 ├── vendor/         React（CDN に依存しないよう同梱）
-├── assets/         画像
+├── assets/         画像（WebP に圧縮済み。ogp.jpg は SNS シェア用）
 └── .htaccess       www なし統一・キャッシュ設定
 ```
 
@@ -60,3 +60,9 @@ FileZilla などの FTP ソフト、またはコントロールパネルの「�
 1. http://tomoiki-lab.org で表示を確認
 2. コントロールパネルで無料独自SSLを tomoiki-lab.org / www.tomoiki-lab.org に設定
 3. SSL が有効になったら `public/.htaccess` の https 統一の 2 行のコメントを外して再アップロード
+
+## 画像を差し替えるとき
+
+- 写真は横幅 2000px 以下、WebP か JPEG で保存すると表示が軽くなります（目安：1 枚 300KB 以下）。
+- イベントバナー `assets/peatix-banner-v2.png` を追加したら、`index.html` 内の
+  「イベントバナー画像…を追加したらコメントを外す」の行と、その下の `-->` の行を削除してください。

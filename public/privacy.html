@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>プライバシーポリシー | 一般社団法人ともに生きる実践ラボ</title>
 <link rel="icon" href="assets/logo-mark.png">
+<meta name="description" content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、一般社団法人ともに生きる実践ラボの公式サイトです。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ともに生きる実践ラボ">
+<meta property="og:title" content="プライバシーポリシー | 一般社団法人ともに生きる実践ラボ">
+<meta property="og:description" content="ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。共生・共助の文化を未来へつなぐ、一般社団法人ともに生きる実践ラボの公式サイトです。">
+<meta property="og:url" content="https://tomoiki-lab.org/privacy.html">
+<meta property="og:image" content="https://tomoiki-lab.org/assets/ogp.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="assets/logo-mark.png">
 <script src="./vendor/react.production.min.js"></script>
 <script src="./vendor/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
@@ -14,19 +24,70 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #f6f1e7; -webkit-font-smoothing: antialiased; }
   a { color: #46512f; }
   a:hover { color: #b08a5d; }
+  img { max-width: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+  }
+  @media (max-width: 1024px) {
+    .site-nav { gap: 16px !important; }
+    .site-nav a:not(:last-child) { font-size: 12px !important; letter-spacing: 0 !important; }
+    .g-footer { grid-template-columns: 1fr 1fr !important; gap: 36px !important; }
+  }
+  @media (max-width: 860px) {
+    .site-nav a:not(:last-child) { display: none !important; }
+    .g-stack { grid-template-columns: 1fr !important; gap: 36px !important; }
+    .g-members { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 600px) {
+    section, footer { padding-left: 20px !important; padding-right: 20px !important; }
+    h1:not(.hero-title) { font-size: 26px !important; letter-spacing: 1.5px !important; }
+    section[id] { padding-top: 64px !important; padding-bottom: 64px !important; }
+    .site-header > div { padding: 10px 16px !important; gap: 10px; }
+    .site-header img { height: 38px !important; }
+    .site-header span { font-size: 15px !important; letter-spacing: 1px !important; }
+    .site-header span span { font-size: inherit !important; }
+    .site-header span + span { font-size: 11px !important; letter-spacing: 1.5px !important; }
+    .site-nav a { padding: 8px 14px !important; font-size: 12px !important; white-space: nowrap; }
+    .hero { height: auto !important; min-height: 560px; }
+    .hero > div:last-child { padding: 72px 20px !important; }
+    .hero-title { font-size: 28px !important; letter-spacing: 1px !important; }
+    .hero-title + div { font-size: 14px !important; line-height: 2 !important; }
+    h2 { font-size: 23px !important; letter-spacing: 1px !important; }
+    h2 br, .hero-title + div br { display: none; }
+    h3 { font-size: 19px !important; }
+    p { font-size: 14.5px !important; }
+    .news-row { grid-template-columns: auto auto 1fr !important; gap: 8px 14px !important; padding: 20px 0 !important; }
+    .news-row time { font-size: 16px !important; }
+    .news-row > span:first-of-type { padding: 3px 12px !important; }
+    .news-row > span:last-child { grid-column: 1 / -1; font-size: 14px !important; }
+    .g-members { grid-template-columns: 1fr !important; }
+    .quote { padding: 26px 22px !important; }
+    .pad-box { padding: 28px 22px !important; }
+    .walkers { width: 130px !important; right: 0 !important; }
+    .g-footer { grid-template-columns: 1fr !important; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start !important; }
+    .join-cta > span { display: none; }
+    .join-cta a { white-space: nowrap; }
+    .site-header a > div > span:first-child, .site-header > div > div > div > span:first-child { white-space: nowrap; font-size: 14px !important; }
+    .site-header > div > div > div > span + span, .site-header a > div > span + span { display: none; }
+    .site-header a > div > span:first-child, .site-header > div > div > div > span:first-child { font-size: 13px !important; letter-spacing: 0.5px !important; }
+    .site-header > div > div, .site-header > div > a { gap: 8px !important; min-width: 0; }
+    .site-nav a:last-child { font-size: 11px !important; padding: 8px 12px !important; }
+  }
 </style>
 </helmet>
 
 <div style="font-family: 'Noto Sans JP', sans-serif; color: #3b3a31; background: #f6f1e7; overflow-x: hidden;">
 
-  <header style="position: sticky; top: 0; z-index: 50; background: rgba(246,241,231,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid #e4dcc9;">
+  <header class="site-header" style="position: sticky; top: 0; z-index: 50; background: rgba(246,241,231,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid #e4dcc9;">
     <div style="max-width: 1200px; margin: 0 auto; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
       <a href="index.html" style="display: flex; align-items: center; gap: 14px; text-decoration: none;">
         <img src="assets/logo-mark.png" alt="ともに生きる実践ラボ" style="height: 48px; width: auto; display: block;">
@@ -35,7 +96,7 @@
           <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 2.5px; color: #6b6857; line-height: 1.2;">Co-Living Practice Lab</span>
         </div>
       </a>
-      <nav style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <nav class="site-nav" style="display: flex; align-items: center; gap: 28px;">
         <a href="index.html#concept" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">私たちについて</a>
         <a href="index.html#philosophy" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">TOMOIKIの哲学</a>
         <a href="index.html#origin" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">活動の原点</a>
@@ -163,11 +224,11 @@
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <span style="font-size: 14px; line-height: 1.9; color: #4d4a3b;">一般社団法人ともに生きる実践ラボ　個人情報お問い合わせ窓口</span>
           <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="assets/icon-mail.svg" alt="" style="width: 20px; height: 20px;">
+            <img loading="lazy" decoding="async" src="assets/icon-mail.svg" alt="" style="width: 20px; height: 20px;">
             <span style="font-size: 13.5px; color: #4d4a3b;">info@tomoiki-lab.org</span>
           </div>
           <div style="display: flex; align-items: center; gap: 10px;">
-            <img src="assets/icon-phone.svg" alt="" style="width: 20px; height: 20px;">
+            <img loading="lazy" decoding="async" src="assets/icon-phone.svg" alt="" style="width: 20px; height: 20px;">
             <span style="font-size: 13.5px; color: #4d4a3b;">090-8383-3243</span>
           </div>
         </div>
@@ -182,13 +243,13 @@
   </section>
 
   <footer style="background: #ece3d0; padding: 70px 40px 0;">
-    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 50px; padding-bottom: 56px;">
+    <div class="g-footer" style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 50px; padding-bottom: 56px;">
       <div>
-        <img src="assets/logo-color.png" alt="ともに生きる実践ラボ Co-Living Practice Lab" style="width: 156px; height: auto; display: block; margin-bottom: 20px;">
+        <img loading="lazy" decoding="async" src="assets/logo-color.png" alt="ともに生きる実践ラボ Co-Living Practice Lab" style="width: 156px; height: auto; display: block; margin-bottom: 20px;">
         <p style="font-size: 12px; line-height: 2.1; color: #6b6857; margin: 0 0 22px; max-width: 300px;">関係性を土台に、暮らしの場を共有し、ともに生きる。“ともに生きる”ムーブメントを創出する発起母体です。</p>
         <div style="display: flex; gap: 14px;">
           <a href="https://www.facebook.com/groups/tomoiknowa" target="_blank" rel="noopener" style="width: 42px; height: 42px; border-radius: 50%; background: #f6f1e7; border: 1px solid #ddd2bb; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #46512f; font-family: Georgia, serif; font-weight: 700; font-size: 18px;">f</a>
-          <a href="mailto:info@tomoiki-lab.org" style="width: 42px; height: 42px; border-radius: 50%; background: #f6f1e7; border: 1px solid #ddd2bb; display: flex; align-items: center; justify-content: center; text-decoration: none;"><img src="assets/icon-mail.svg" alt="メール" style="width: 22px; height: 22px;"></a>
+          <a href="mailto:info@tomoiki-lab.org" style="width: 42px; height: 42px; border-radius: 50%; background: #f6f1e7; border: 1px solid #ddd2bb; display: flex; align-items: center; justify-content: center; text-decoration: none;"><img loading="lazy" decoding="async" src="assets/icon-mail.svg" alt="メール" style="width: 22px; height: 22px;"></a>
         </div>
       </div>
       <div>
@@ -210,16 +271,16 @@
       <div>
         <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; color: #b08a5d; text-transform: uppercase; margin: 0 0 20px;">Contact</h4>
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-          <img src="assets/icon-mail.svg" alt="" style="width: 20px; height: 20px;">
+          <img loading="lazy" decoding="async" src="assets/icon-mail.svg" alt="" style="width: 20px; height: 20px;">
           <span style="font-size: 13px; color: #4d4a3b;">info@tomoiki-lab.org</span>
         </div>
         <div style="display: flex; align-items: center; gap: 10px;">
-          <img src="assets/icon-phone.svg" alt="" style="width: 20px; height: 20px;">
+          <img loading="lazy" decoding="async" src="assets/icon-phone.svg" alt="" style="width: 20px; height: 20px;">
           <span style="font-size: 13px; color: #4d4a3b;">090-8383-3243</span>
         </div>
       </div>
     </div>
-    <div style="border-top: 1px solid #ddd2bb; padding: 22px 0; max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+    <div class="footer-bottom" style="border-top: 1px solid #ddd2bb; padding: 22px 0; max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
       <span style="font-size: 12px; color: #8a8470; letter-spacing: 0.5px;">© 一般社団法人ともに生きる実践ラボ</span>
       <div style="display: flex; gap: 24px;">
         <a href="privacy.html" style="font-size: 12px; color: #46512f; text-decoration: none;">プライバシーポリシー</a>

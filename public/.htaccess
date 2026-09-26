@@ -2,15 +2,9 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
-# www あり → なし に統一
+# http → https、www あり → なし に統一（https://tomoiki-lab.org）
+RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.tomoiki-lab\.org$ [NC]
-RewriteCond %{HTTPS} on
-RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
-RewriteCond %{HTTP_HOST} ^www\.tomoiki-lab\.org$ [NC]
-RewriteRule ^(.*)$ http://tomoiki-lab.org/$1 [R=301,L]
-
-# http → https に統一
-RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
 
 <IfModule mod_expires.c>

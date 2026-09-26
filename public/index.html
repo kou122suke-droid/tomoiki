@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ともに生きる実践ラボ | 一般社団法人ともに生きる実践ラボ</title>
+<link rel="icon" href="assets/logo-mark.png">
+<script src="./vendor/react.production.min.js"></script>
+<script src="./vendor/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #f6f1e7; -webkit-font-smoothing: antialiased; }
+  @keyframes heroSlide1 {
+    0% { opacity: 1; transform: scale(1); }
+    28% { opacity: 1; transform: scale(1.04); }
+    36%,92% { opacity: 0; transform: scale(1.04); }
+    93% { opacity: 0; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes heroSlide2 {
+    0%,28% { opacity: 0; transform: scale(1); }
+    36% { opacity: 1; transform: scale(1); }
+    61% { opacity: 1; transform: scale(1.04); }
+    69%,100% { opacity: 0; transform: scale(1.04); }
+  }
+  @keyframes heroSlide3 {
+    0%,61% { opacity: 0; transform: scale(1); }
+    69% { opacity: 1; transform: scale(1); }
+    94% { opacity: 1; transform: scale(1.04); }
+    100% { opacity: 0; transform: scale(1.04); }
+  }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes walkAway {
+    0%   { transform: translateX(0) scale(1); opacity: 0.5; }
+    45%  { transform: translateX(38px) scale(0.82); opacity: 0.34; }
+    50%  { transform: translateX(40px) scale(0.8); opacity: 0.32; }
+    55%  { transform: translateX(38px) scale(0.82); opacity: 0.34; }
+    100% { transform: translateX(0) scale(1); opacity: 0.5; }
+  }
+  @keyframes walkBob {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-2.5px) rotate(-0.5deg); }
+    75% { transform: translateY(-2.5px) rotate(0.5deg); }
+  }
+  @keyframes branchSway {
+    0%,100% { transform: rotate(8deg); }
+    50% { transform: rotate(3.5deg); }
+  }
+  @keyframes birdFly {
+    0%   { transform: translate(0,0) rotate(0deg); opacity: 0; }
+    8%   { opacity: 0.75; }
+    50%  { transform: translate(-150px,-46px) rotate(-4deg); opacity: 0.75; }
+    92%  { opacity: 0.75; }
+    100% { transform: translate(-300px,10px) rotate(2deg); opacity: 0; }
+  }
+  @keyframes wingFlap {
+    0%,100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.55); }
+  }
+</style>
+</helmet>
+
+<div style="font-family: 'Noto Sans JP', sans-serif; color: #3b3a31; background: #f6f1e7; overflow-x: hidden;">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(246,241,231,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid #e4dcc9;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img src="assets/logo-mark.png" alt="ともに生きる実践ラボ" style="height: 48px; width: auto; display: block;">
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 19px; letter-spacing: 2px; color: #46512f; line-height: 1.2;">ともに<span style="color: #d19a55;">生</span>きる実践ラボ</span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 2.5px; color: #6b6857; line-height: 1.2;">Co-Living Practice Lab</span>
+        </div>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 28px;">
+        <a href="#concept" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">私たちについて</a>
+        <a href="#philosophy" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">TOMOIKIの哲学</a>
+        <a href="#origin" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">活動の原点</a>
+        <a href="#ladder" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">実践を知る</a>
+        <a href="#firstday" style="font-size: 13px; letter-spacing: 1px; color: #46512f; text-decoration: none; font-weight: 500;">参加する</a>
+        <a href="https://www.facebook.com/groups/tomoiknowa" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: #fff; background: #46512f; padding: 10px 20px; border-radius: 999px; text-decoration: none;">ともに生きる入口へ&nbsp; ▶︎</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO / FV ============ -->
+  <section style="position: relative; width: 100%; height: 660px; overflow: hidden;">
+    <img src="assets/hero-village.png" alt="EarthSong コウハウジングの暮らし" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: heroSlide1 21s ease-in-out infinite;">
+    <img src="assets/hero-village-2.png" alt="共同の庭とコモンハウスの夕暮れ" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: heroSlide2 21s ease-in-out infinite;">
+    <img src="assets/hero-village-4.png" alt="都市のなかの共同の庭と暮らし" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: heroSlide3 21s ease-in-out infinite;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(40,46,28,0.62) 0%, rgba(40,46,28,0.30) 46%, rgba(40,46,28,0.05) 100%);"></div>
+    
+  <div style="position: relative; max-width: 1200px; margin: 0 auto; height: 100%; padding: 0 40px; display: flex; flex-direction: column; justify-content: center;">
+      <div style="max-width: 620px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+          <span style="width: 46px; height: 1px; background: rgba(255,255,255,0.7);"></span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 21px; color: #f3ead7; letter-spacing: 1px;">Cohousing for Life</span>
+        </div>
+        
+        
+        <h1 style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 44px; line-height: 1.5; color: #fffdf7; margin: 0 0 26px; letter-spacing: 2px; text-shadow: 0 2px 18px rgba(30,34,20,0.35); width: 674px; height: 160px">
+          ともに生きるって、<br>どんなカタチがあるんだろう？
+        </h1><div style="font-size: 16px; line-height: 2.1; color: #f1ece0; margin: 0 0 38px; font-weight: 400; max-width: 620px; text-shadow: 0 1px 10px rgba(30,34,20,0.3); width: 689px; height: 162px"><div>ヒトとヒト、ヒトと自然が「ともに生きる」社会へ。</div><div>共生・共助の文化を未来へつなぐ、新しいプラットフォームを創出。</div><div>すでにある実践を有機的につなぎ、ひとつの地図を描くとともに、</div><div style="width: 639px; height: 101px">新しいカタチを学び合い、分かち合い、共生・共助の実践のアップデートを図ります。</div></div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          
+          <a href="https://www.facebook.com/groups/tomoiknowa" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 500; color: #fff; background: #3b5998; padding: 16px 30px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 24px rgba(30,34,20,0.22);"><span style="font-family: Georgia, serif; font-weight: 700; font-size: 18px;">f</span> Facebookグループに参加</a>
+        </div>
+      </div>
+    </div></section>
+
+  <!-- connection gradient bar (= つながり) -->
+  <div style="height: 5px; width: 100%; background: linear-gradient(90deg, #8fb6c9 0%, #e6b184 50%, #a7bd84 100%);"></div>
+
+  <!-- ============ NEWS ============ -->
+  <section id="news" style="background: #fbf8f1; padding: 84px 40px 88px;">
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; max-width: 1000px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid #e0d7c0; margin-bottom: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 16px;">
+          <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 25px; letter-spacing: 2px; margin: 0; color: #2f3526;">お知らせ</h2>
+          <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; letter-spacing: 2px; color: #b08a5d;">news</span>
+        </div>
+        
+      </div>
+
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="border-bottom: 1px solid #ece3d0;">
+          <a href="https://tomoiki-lab-2026.peatix.com" target="_blank" rel="noopener" style="display: grid; grid-template-columns: 108px 108px 1fr; gap: 24px; align-items: center; padding: 24px 4px; text-decoration: none;">
+            <time style="font-family: Arial; font-size: 20px; letter-spacing: 1px; color: #8a8470">2026.10.10</time>
+            <span style="font-size: 11.5px; color: #fff; background: #d3b96a; padding: 4px 0; border-radius: 999px; text-align: center; letter-spacing: 1px;">イベント</span>
+            <span style="font-size: 15px; line-height: 1.75; color: #3b3a31;">【<span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 14.6667px; white-space: pre-wrap;">出版記念特別</span>イベント】<br><span id="docs-internal-guid-8b82eb36-7fff-ec9f-f3f9-15bd19a9c25f"><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;"><b>『「ともに暮らす」の作り方』著者 ロビン・アリソン出版記念講演会＆対話会 』</b></span></span>を開催いたします！</span>
+          </a>
+        </li>
+        <li style="border-bottom: 1px solid #ece3d0;">
+          <a href="https://camp-fire.jp/projects/984808/preview?token=3p6nhu0f&amp;utm_campaign=cp_po_share_c_msg_projects_show" target="_blank" rel="noopener" style="display: grid; grid-template-columns: 108px 108px 1fr; gap: 24px; align-items: center; padding: 24px 4px; text-decoration: none;">
+            <time style="font-family: Arial; font-size: 20px; letter-spacing: 1px; color: #8a8470">2026.09.01</time>
+            <span style="font-size: 11.5px; color: #fff; background: #8fb6c9; padding: 4px 0; border-radius: 999px; text-align: center; letter-spacing: 1px;">書籍</span>
+            <span style="font-size: 15px; line-height: 1.75; color: #3b3a31;">【書籍先行販売】<span id="docs-internal-guid-681969bc-7fff-35b3-8864-031c2cff855b"><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;"><b>『「ともに暮らす」の作り方～ニュージーランドで育まれた、ひとつのコミュニティの物語～』</b>
+クラウドファウンディングにて先行販売決定！
+</span></p></span></span>
+          </a>
+        </li>
+        <li style="border-bottom: 1px solid #ece3d0;">
+          
+        </li>
+        <li style="border-bottom: 1px solid #ece3d0;">
+          
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONCEPT ============ -->
+  <section id="concept" style="background: #f6f1e7; padding: 110px 40px 100px; width: 2119px; height: 678px; position: relative">
+    <div data-reveal="" style="opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 0.82fr; gap: 80px; align-items: center; position: relative">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+          <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-size: 16px; letter-spacing: 4px; color: #b08a5d; text-transform: uppercase;">PURPOSE</span>
+        </div>
+        <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 33px; line-height: 1.7; letter-spacing: 1.5px; margin: 0 0 30px; color: #2f3526;">孤立を前提にしない、文化づくりへ。</h2>
+        <div style="font-size: 15.5px; line-height: 2.3; color: #595744; margin: 0 0 22px; font-weight: 400; width: 605px; height: 140px"><div>現代社会では、単身世帯の増加や地域コミュニティの希薄化により、人と人とのつながりが弱まり、孤立や分断が社会課題となっています。一方で、日本には古くから「ご縁」「助け合い」「分かち合い」の文化が息づいてきました。私たち「一般社団法人 ともに生きる実践ラボ」は、この文化をいまの社会にふさわしい形へと編みなおし、人と人が関係性を深め、自然の循環と調和しながら暮らしを育む——人・地域・自然が支え合う「ともに生きる社会」の実現を目指して設立しました。</div><div><br></div><div>現代における人とのつながりの減少や孤立は、気まずさ、すれ違い、話し合いの面倒くささを避け続けた結果なのかもしれません。いま必要なのは、「人と関わること」——関係性がもたらす不確実さを引き受ける勇気と知恵だとしたら。目の前の不安や違和感は、希望の種ともいえるのではないでしょうか。</div></div>
+        
+      </div>
+      <div style="position: relative; text-align: center; align-self: center; display: flex; align-items: center; justify-content: center; min-height: 100%;">
+        <img src="assets/purpose-house.png" alt="" style="width: 606px; max-width: 460px; display: block; margin: 0 auto; height: 279px">
+        
+        
+        
+        
+      </div>
+    </div>
+
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s ease; max-width: 1100px; margin: 72px auto 0;">
+      
+    </div>
+  <svg viewBox="0 0 40 16" width="22" style="position: absolute; left: 1094px; top: 76px; overflow: visible; animation: birdFly 13s linear infinite; animation-delay: 3.5s" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round">
+          <g style="transform-origin: 20px 8px; animation: wingFlap 0.58s ease-in-out infinite;">
+            <path d="M2 12 Q10 2 20 9"></path>
+            <path d="M20 9 Q30 2 38 12"></path>
+          </g>
+        </svg><svg viewBox="0 0 40 16" width="30" style="position: absolute; left: 1002px; top: 81px; overflow: visible; animation: birdFly 11s linear infinite" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round">
+          <g style="transform-origin: 20px 8px; animation: wingFlap 0.5s ease-in-out infinite;">
+            <path d="M2 12 Q10 2 20 9"></path>
+            <path d="M20 9 Q30 2 38 12"></path>
+          </g>
+        </svg><svg viewBox="0 0 40 16" width="26" style="position: absolute; left: 913px; top: 85px; overflow: visible; animation: birdFly 12s linear infinite; animation-delay: 6.5s" fill="none" stroke="#8a7a52" stroke-width="1.4" stroke-linecap="round">
+          <g style="transform-origin: 20px 8px; animation: wingFlap 0.46s ease-in-out infinite;">
+            <path d="M2 12 Q10 2 20 9"></path>
+            <path d="M20 9 Q30 2 38 12"></path>
+          </g>
+        </svg></section>
+
+  <!-- ============ PHILOSOPHY / 3 PILLARS ============ -->
+  <section id="philosophy" style="background: linear-gradient(180deg, #efe7d7 0%, #f1ead9 100%); padding: 110px 40px 120px; width: 2123px; height: 1268px">
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; text-align: center; max-width: 760px; margin: 0 auto 70px;">
+      <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+        <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 16px; letter-spacing: 4px; color: #b08a5d; text-transform: uppercase;">Philosophy</span>
+        <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+      </div>
+      <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 33px; line-height: 1.6; letter-spacing: 2px; margin: 0 0 22px; color: #2f3526;">関係性を土台に、暮らしの場を共有し、<br>ともに生きる。</h2>
+      <p style="font-size: 15.5px; line-height: 2.2; color: #595744; margin: 0;">そのフィロソフィーを支えるのが、コミュニティ・コミュニケーション・コモンズという3つの要素です。<br>——自然のはたらきになぞらえた3つの要素が、ゆるやかに結びあいます。</p>
+    </div>
+
+    <!-- philosophy diagram -->
+    <div data-reveal="" style="opacity: 0; transform: translateY(18px); transition: opacity 1s ease, transform 1s ease; max-width: 1240px; margin: 0 auto; width: 829px; height: 488px">
+      
+    <img src="assets/philosophy-diagram-v3.png" alt="コミュニティ・コミュニケーション・コモンズの3つの要素と、それらをつなぐ結び手／触媒" style="width: 852px; height: 533px; display: block"></div>
+
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; max-width: 900px; margin: 66px auto 0; text-align: center;">
+      <p style="font-size: 17.5px; line-height: 2.3; color: #595744; margin: 0 0 34px">TOMOIKI フィロソフィーを支える、これら3つの要素のあいだに立つ「結び手」「触媒」として、<br>"ともに生きる"を問い、試み、分かち合う。<br>——<em style="font-family: &quot;Cormorant Garamond&quot;, serif; font-size: 17px; color: rgb(176, 138, 93); font-style: italic;">Research &amp; Development</em>（研究・開発）を通じて、新しい共生のかたちを育てていきます。</p>
+      <p style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 19px; line-height: 2; letter-spacing: 1px; color: #46512f; margin: 0;">だれもが「ともに生きる」の一歩を踏み出せる。<br>そんな共生のかたちを、ともにつくっていきます。</p>
+    </div>
+  </section>
+
+  <!-- ============ THE ORIGIN ============ -->
+  <section id="origin" style="background: #f6f1e7; padding: 108px 40px 100px;">
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; max-width: 940px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; letter-spacing: 3px; color: #b08a5d;">The Origin</span>
+      </div>
+      <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 31px; line-height: 1.6; letter-spacing: 1.5px; margin: 0 0 30px; color: #2f3526;">一冊の本からはじまる、ムーブメント。</h2>
+      <p style="font-size: 15.5px; line-height: 2.2; color: #595744; margin: 0 0 46px;">私たちの活動の原点は、一冊の本にあります。<br>『「ともに暮らす」の作り方 ——ニュージーランドで育まれた、ひとつのコミュニティの物語』<em style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: #8a8470;">（原題：Cohousing for Life）</em></p>
+
+      <div style="display: grid; grid-template-columns: 250px 1fr; gap: 42px; align-items: start; margin-bottom: 40px;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <img src="assets/book-robin.png" alt="『「ともに暮らす」の作り方』書影と著者ロビン・アリソン" style="width: 100%; height: auto; display: block;">
+          </div>
+          
+        </div>
+        <div>
+          <p style="font-size: 15.5px; line-height: 2.25; color: #4d4a3b; margin: 0;"><span id="docs-internal-guid-4fa07a16-7fff-1280-44bf-007e2006db4f"><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">2020年にニューランドで原著が刊行、いよいよ2026年。翻訳版が出版されます！</span></span><br>ニュージーランド・オークランド郊外に、アースソング（Earthsong Eco-Neighbourhood）というコウハウジング<span style="font-size: 13.5px; color: rgb(138, 132, 112);">（住人たちが主体となってつくる協同型の住まいモデルのひとつ）</span>があります。著者ロビン・アリソンは、その創設者。1995年、たった一人の想いから始まったこのプロジェクトは、30年以上たつ現在も、<strong style="font-weight: 700; color: rgb(47, 53, 38);">32戸のエコホームからなる共同体</strong>として運営が続いています。世界6,000超のサステナブル・コミュニティが加盟する Global Ecovillage Network（GEN）が認知する代表的事例のひとつであり、国際的なコウハウジング／エコビレッジ運動の<strong style="font-weight: 700; color: rgb(47, 53, 38);">原典</strong>としての位置づけが確立しています。</p>
+          <div style="display: flex; justify-content: flex-end; margin-top: 28px;">
+            
+          </div><a href="https://camp-fire.jp/projects/984808/preview?token=3p6nhu0f&amp;utm_campaign=cp_po_share_c_msg_projects_show" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; color: #fff; background: #a7bd84; border: 1px solid #a7bd84; padding: 14px 30px; border-radius: 999px; text-decoration: none; width: 203px; height: 50px">書籍を詳しく見る&nbsp;→</a>
+        </div>
+      </div>
+
+      
+
+      <blockquote style="margin: 0; background: #fbf8f1; border-left: 3px solid #b08a5d; border-radius: 0 12px 12px 0; padding: 40px 44px;">
+        <p style="font-size: 14.5px; line-height: 2.1; color: #6b6857; margin: 0 0 22px;">アースソングの壮大なプロジェクトは、たった一人の、こんな想いから生まれました。</p>
+        <p style="font-family: 'Noto Serif JP', serif; font-size: 16px; line-height: 2.15; color: #3b3a31; margin: 0 0 26px;">「わたしがそこにいることが、地球にとって健やかで、めぐみとなる関係でありたい。人とともに暮らしながらも、ひとりの時間や自分らしさが脅かされることはなく、それでいて、人とふれあい、つながる機会には、いつでも気軽に手をのばせる——そんな場所。さまざまな世代の人、さまざまな文化の人と、隣り合って暮らしたい。そのコミュニティが、大人にとっても、お年寄りにとっても、子どもにとっても、そして見過ごされがちなティーンエイジャーにとっても、末永く居心地のよい場所であってほしい。」</p>
+        <footer style="font-size: 13px; color: #8a8470; text-align: right;">——ロビン・アリソン 個人日記より（『「ともに暮らす」の作り方』第3章）</footer>
+      </blockquote>
+
+      <div style="margin-top: 64px;">
+        <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 24px; line-height: 1.6; letter-spacing: 1.5px; margin: 0 0 24px; color: #2f3526;">ただ、コミュニティをつくったのではありません。</h3>
+        <div style="font-size: 15.5px; line-height: 2.25; color: #595744; margin: 0 0 34px;">アースソングが稀有なのは、<strong style="font-weight: 700; color: rgb(47, 53, 38);">コウハウジング（個と共同体の共存）</strong>を軸に、<strong style="font-weight: 700; color: rgb(47, 53, 38);">パーマカルチャー</strong>、そして<strong style="font-weight: 700; color: rgb(47, 53, 38);">教育</strong>を編み込みながら、設計から建築までを住民自身が推進し、実現させたこと。だから本書には、「ともに生きる」を実現するための、多様な実践知が織り込まれています。<br><div>本書のもうひとつの魅力は、その構成にあります。全15章が「テーマ章（思想・手法）」と「ストーリー章（実践の物語）」の交互で編まれており、理論と実体験が一章ごとに往復します。</div><div>ビジョンの策定、合意形成、リーダーシップと権力、資金調達、法的構造——テーマ章で語られる知見は、コウハウジングに限らず、あらゆるプロジェクトの推進に通じるものです。そしてストーリー章では、理想と現実のあいだで揺れる人間の葛藤、仲間との対立と和解、何度も訪れる挫折と、それでも手放さなかった一人の意志が、生々しく描かれています。</div><div>本書は、住まいをつくりたい人だけのものではありません。「まだ世の中にないものを、仲間とともに実現したい」と願うすべての人にとっての実践書です。</div><div><br></div></div>
+
+        <div style="margin: 0 0 44px;">
+          
+        </div>
+
+        <div style="margin: 0 0 44px;">
+          <img src="assets/six-elements-v2.png" alt="「ともに生きる」を支える6つの要素 — エコ建築、コーチング／ファシリテーション、教育、パーマカルチャー、関係性デザイン、実務スキル" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <div style="background: #f1efe4; border-radius: 14px; padding: 44px 48px; margin-bottom: 44px;">
+          <p style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 16.5px; line-height: 2.15; color: #2f3526; margin: 0;">分断と孤立が深まる、2026年。本書が、日本に届きます。<br>かつて長屋の暮らしにあったように、共生・共助は、この国にとって当たり前のものでした。その精神を今こそ思い出し、一つの実践知に触れながら、新たな共生のかたちを育てたい。私たちは、2026年を「ともに生きる元年」と定めることにしました。<br>ここから、文化づくりのムーブメントが始まります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOORWAYS ============ -->
+  <section id="ladder" style="background: #fbf8f1; padding: 100px 40px 96px; width: 2121px; height: 1036px">
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; max-width: 1080px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; letter-spacing: 3px; color: #b08a5d;">Doorways</span>
+      </div>
+      <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 31px; line-height: 1.6; letter-spacing: 1.5px; margin: 0 0 26px; color: #2f3526;">ともに生きる、いくつもの入口。</h2>
+      <p style="font-size: 17.5px; line-height: 2.2; color: #595744; margin: 0 0 54px; max-width: 780px; width: 853px; height: 79px">暮らしをともにしてもいいし、しなくてもいい。あなたに合った、はじめの一歩から。<br>「ともに生きる」を分かち合う——そんな気軽な場を、仕込み中。</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-bottom: 46px;">
+        <article style="background: #fbf8f1; border: 1px solid #e6ddca; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(80,75,55,0.05);">
+          <div style="aspect-ratio: 4/3; border-bottom: 1px solid #cdd4b8; overflow: hidden;">
+            <img src="assets/reading-circle.png" alt="読書会・勉強会" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div style="padding: 28px 30px 32px;">
+            <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 20px; letter-spacing: 1px; margin: 0 0 14px; color: #2f3526;">読書会・勉強会</h3>
+            <p style="font-size: 14px; line-height: 2; color: #6b6857; margin: 0;">書籍『「ともに暮らす」の作り方』を囲み、ニュージーランドで育まれた共生・共助の知恵を、ともに読み解き、語り合います。</p>
+          </div>
+        </article>
+        <article style="background: #fbf8f1; border: 1px solid #e6ddca; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(80,75,55,0.05);">
+          <div style="aspect-ratio: 4/3; border-bottom: 1px solid #cdd4b8; overflow: hidden;">
+            <img src="assets/common-meal.jpg" alt="コモンミール（食事会）" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div style="padding: 28px 30px 32px;">
+            <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 20px; letter-spacing: 1px; margin: 0 0 14px; color: #2f3526;">コモンミール（食事会）</h3>
+            <p style="font-size: 14px; line-height: 2; color: #6b6857; margin: 0;">ともに作り、一緒に食べる。同じ食卓を囲むことから、関係は始まります。</p>
+          </div>
+        </article>
+        <article style="background: #fbf8f1; border: 1px solid #e6ddca; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(80,75,55,0.05);">
+          <div style="aspect-ratio: 4/3; border-bottom: 1px solid #cdd4b8; overflow: hidden;">
+            <img src="assets/site-visit.png" alt="現場見学" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <div style="padding: 28px 30px 32px;">
+            <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 20px; letter-spacing: 1px; margin: 0 0 14px; color: #2f3526;">現場見学</h3>
+            <p style="font-size: 14px; line-height: 2; color: #6b6857; margin: 0;">多世代型共同住宅コレクティブハウスなど、実際の暮らしの場を訪ね、体感する。</p>
+          </div>
+        </article>
+      </div>
+
+      <p style="font-size: 14.5px; line-height: 2.2; color: #8a8470; margin: 0 0 34px; max-width: 920px;">このほかにも、実践地へのエクスカーション、合意形成のワークショップ、寺子屋体験、シェアハウス・コレクティブハウスまで——ゆるやかに深めていける、いくつもの入口を用意していきます。</p>
+
+      
+
+      <p style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 17px; line-height: 1.9; letter-spacing: 1px; color: #46512f; margin: 0;">歩きながら、あなたの"ともに生きる"のカタチが見えてきます。</p>
+    </div>
+  </section>
+
+  <!-- ============ BOOK ============ -->
+  
+
+  <!-- leaf divider -->
+  
+
+  <!-- ============ THE PLATFORM ============ -->
+  <section id="platform" style="background: #fbf8f1; padding: 104px 40px 96px;">
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; max-width: 940px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+        
+        
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; letter-spacing: 3px; color: #b08a5d;">The Platform</span><span style="font-size: 10.5px; color: #fff; background: #46512f; padding: 4px 10px; border-radius: 5px; letter-spacing: 1px;">TO B</span>
+      </div><p style="font-size: 15px; line-height: 2.1; color: #6b6857; margin: 0 0 18px;">そして、この小さな実践を、日本中の実践とつなげていく。</p>
+      <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 31px; line-height: 1.6; letter-spacing: 1.5px; margin: 0 0 28px; color: #2f3526;">点在する実践を、ひとつの地図に。</h2>
+      <p style="font-size: 15px; line-height: 2.25; color: #6b6857; margin: 0 0 54px;">ヒトとヒト、ヒトと自然が"ともに生きる"——その実践は、すでに日本、そして世界各地に点在しています。<br>私たちは、共生・共助の文化を実践する<strong style="font-weight: 700; color: rgb(47, 53, 38);">個人・場・組織</strong>を見出し、有機的に結びつける「ご縁結び」のプラットフォームを創出します。<br>点在する実践をつなぎ、<strong style="font-weight: 700; color: rgb(47, 53, 38);">ひとつの地図</strong>にしていくことで、誰もが"ともに生きる"の一歩を踏み出せる入口をつくります。</p>
+
+      <div style="max-width: 1080px; margin: 0 auto 62px;">
+        <img src="assets/map-figure-v2.png" alt="点在する実践を、ひとつの地図に。日本と世界に点在する実践がつながる地図図解" style="width: 100%; height: auto; display: block;">
+      </div>
+
+      <div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid #e0d7c0; margin-bottom: 34px;">
+        <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 19px; letter-spacing: 1px; margin: 0; color: #2f3526;">2つの事業</h3>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: #b08a5d;">what we do</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 46px;">
+        <div style="display: flex; align-items: flex-start; gap: 20px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; background: #6b7a48; display: flex; align-items: center; justify-content: center; margin-top: 2px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #fff;">1</span></span>
+          <div style="flex: 1;">
+            <h4 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 17px; letter-spacing: 1px; margin: 0 0 12px; color: #2f3526;">訪ね、見える化し、記録する</h4>
+            <p style="font-size: 14px; line-height: 2.1; color: #6b6857; margin: 0;">コミュニティ・コミュニケーション・コモンズの各分野で「ともに生きる」を実践する人々を訪ね、見える化していきます。"ともに生きる"のかたちを<strong style="font-weight: 700; color: #2f3526;">基準として言語化</strong>し、各地の実践を記録・紹介。その知見をメディアとして発信し、日本中の実践を、ひとつの<strong style="font-weight: 700; color: #2f3526;">データベース（地図）</strong>にしていきます。</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 20px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; background: #6b7a48; display: flex; align-items: center; justify-content: center; margin-top: 2px;"><span style="font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #fff;">2</span></span>
+          <div style="flex: 1;">
+            <h4 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 17px; letter-spacing: 1px; margin: 0 0 12px; color: #2f3526;">探究し、連携する</h4>
+            <p style="font-size: 14px; line-height: 2.1; color: #6b6857; margin: 0;">「ともに生きる」ことで一人ひとりが豊かに暮らす、その知恵を深め、探究します。<strong style="font-weight: 700; color: #2f3526;">行政機関・研究機関とも連携し</strong>、"ともに生きる社会"の実践と創造に向けた方策を、ともに探究していきます。</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-bottom: 54px;">
+        <div style="font-size: 18px; color: #a7bd84; line-height: 1; margin-bottom: 14px;">↓</div>
+        <p style="font-family: 'Noto Serif JP', serif; font-style: italic; font-size: 13.5px; letter-spacing: 1px; color: #8a8470; margin: 0;">その営みは、やがて3つのかたちに結実していく</p>
+      </div>
+
+      <div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid #e0d7c0; margin-bottom: 34px;">
+        <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 19px; letter-spacing: 1px; margin: 0; color: #2f3526;">これから育てる、3つのかたち</h3>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: #b08a5d;">the landscape ahead</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-bottom: 48px;">
+        <article style="background: #f6f1e7; border: 1px solid #e6ddca; border-radius: 12px; padding: 24px 24px 30px; text-align: center;">
+          <div style="margin-bottom: 22px;">
+            <img src="assets/tomoiki-house.png" alt="TOMOIKI ハウスのイラスト" style="width: 100%; height: auto; display: block;">
+          </div>
+          <h4 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 6px; color: #2f3526;">TOMOIKI ハウス</h4>
+          <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: #b08a5d; margin-bottom: 16px;">the home</div>
+          <p style="font-size: 13px; line-height: 1.95; color: #6b6857; margin: 0;">実際に「ともに暮らす」実践の場。人と暮らしが交わる、生きた拠点。</p>
+        </article>
+        <article style="background: #f6f1e7; border: 1px solid #e6ddca; border-radius: 12px; padding: 24px 24px 30px; text-align: center;">
+          <div style="margin-bottom: 22px;">
+            <img src="assets/tomoiki-center.png" alt="TOMOIKI センターのイラスト" style="width: 100%; height: auto; display: block;">
+          </div>
+          <h4 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 6px; color: #2f3526;">TOMOIKI センター</h4>
+          <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: #b08a5d; margin-bottom: 16px;">the hub</div>
+          <p style="font-size: 13px; line-height: 1.95; color: #6b6857; margin: 0;">「ともに暮らす」を支える情報の拠点。知恵と事例が集まる場所。</p>
+        </article>
+        <article style="background: #f6f1e7; border: 1px solid #e6ddca; border-radius: 12px; padding: 24px 24px 30px; text-align: center;">
+          <div style="margin-bottom: 22px; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/tomoiki-mark.png" alt="TOMOIKI 印のシンボル" style="width: 62%; height: auto; display: block;">
+          </div>
+          <h4 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 6px; color: #2f3526;">TOMOIKI 印<br>／ブックレット</h4>
+          <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: #b08a5d; margin-bottom: 16px;">the mark</div>
+          <p style="font-size: 13px; line-height: 1.95; color: #6b6857; margin: 0;">各地の実践を訪ね、記録し、紹介する。評価ではなく、いっしょに学び、分かち合うために。</p>
+        </article>
+      </div>
+
+      <div style="background: #f1efe4; border-left: 3px solid #b08a5d; border-radius: 0 10px 10px 0; padding: 30px 36px;">
+        <p style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 16px; line-height: 1.95; color: #2f3526; margin: 0;">私たちは、点在する実践をつなぎ、公助でも自助でもない——"共生・共助の文化"を、ともに育てていきます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LANDSCAPE AHEAD ============ -->
+  
+
+  <!-- ============ MEMBERS 07 ============ -->
+  <section id="members07" style="background: #f6f1e7; padding: 104px 40px 96px;">
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; max-width: 1000px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+        
+        
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; letter-spacing: 3px; color: #b08a5d;">Members</span>
+      </div><h2 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 29px; line-height: 1.6; letter-spacing: 1.5px; margin: 0 0 24px; color: #2f3526;">「ともに生きる」を、ともに探究する仲間。</h2>
+      <div style="font-size: 15px; line-height: 2.15; color: #6b6857; margin: 0 0 44px;"><div>関係性のプロフェッショナルを中心に、越境的なキャリアと専門性を持つメンバーが、それぞれの実践知を持ち寄り、この法人を立ち上げました。熟練の答えを持っているわけではありません。だからこそ、どの立場にも偏らない触媒・結び手として、「ともに生きる」の多様な実践を一つの地図に編んでいきます。ともに探究し、実践を広めていく。それが私たちのスタンスです。&nbsp;</div><div><br></div></div>
+
+      <div style="border-radius: 12px; overflow: hidden; margin-bottom: 34px;">
+        <img src="assets/members-group.jpg" alt="ともに生きる実践ラボ メンバー全員集合" style="width: 990px; aspect-ratio: 3/2; object-fit: cover; display: block; height: 469px">
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 30px; margin-bottom: 56px;">
+        <div>
+          <div style="border-radius: 10px; overflow: hidden; aspect-ratio: 1; margin-bottom: 16px;">
+            <img src="assets/member-takahashi.jpg" alt="高橋 満世" style="width: 313px; height: 438px; object-fit: cover; display: block">
+          </div>
+          <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 8px; color: #2f3526;">高橋 満世</h3>
+          <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+            <span style="font-size: 12.5px; color: #b08a5d;">代表理事</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8a8470;">Takahashi Mitsuyo</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.9; color: #6b6857; margin: 0;">千葉南房総で夫・仲間とシェアハウスに暮らし、人生と仕事に境目のない生き方を実践。一人の想いからはじまる事業やプロジェクトを“いのち”と捉え、そのCallingを社会に届く形へ翻訳・編集し、実装することを理念とする。東証グロース上場のSaaS企業での事業推進、宝飾業界での外商、ソマティック心理学をベースとした対人支援での経験を糧に、プロジェクト共創・PM・翻訳/出版・コミュニティ運営・司会/MC・講師など、場も役割も越境して触媒的に活動中。ニュージーランドのエコ・ネイバーフッド「アースソング」の実践書『Cohousing For Life』の翻訳出版（No Limit出版）では訳者として携わり、ムーブメント推進のため本法人を設立。人と自然・地域が支え合う暮らしと共生文化の深化・実践を広げていくための活動を本格始動している。</p>
+        </div>
+        <div>
+          <div style="border-radius: 10px; overflow: hidden; aspect-ratio: 1; margin-bottom: 16px;">
+            <img src="assets/member-tsumura.jpg" alt="津村 英作" style="width: 307px; height: 397px; object-fit: cover; display: block">
+          </div>
+          <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 8px; color: #2f3526;">津村 英作</h3>
+          <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+            <span style="font-size: 12.5px; color: #b08a5d;">理事</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8a8470;">Tsumura Eisaku</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.9; color: #6b6857; margin: 0;">一般社団法人「ともに生きる実践ラボ」理事。組織心理学博士。ヒューマンエデュケア代表。長年にわたりプロコーチ養成、人材育成、対話の場づくりを通じた関係性改善、リーダーシップと組織開発に携わってきた人と関係性の専門家。子どもの不登校を契機に家族の生き方と暮らし方を見つめ直し、2018年から家族とともにニュージーランドへ移住。この経験を通じて、多様性を尊重し、互いに支え合うコミュニティの価値を実感した。人生の目的と社会への貢献を結ぶ「ビガーゲーム」の実践・普及をはじめ、コウハウジング、地域コミュニティ、縄文・アイヌの文化などを手がかりに、豊かな生き方を探究している。一人ひとりが自分らしさと自律性を保ちながら、世代や立場を超えて支え合える共助・共生社会を目指し、人と人、人と地域、人と自然を結ぶ「関係性の触媒」として、学びを実践へ、出会いを協働へと育てている。現在ニュージーランドと東京の2拠点で生活、活動中。</p>
+        </div>
+        <div>
+          <div style="border-radius: 10px; overflow: hidden; aspect-ratio: 1; margin-bottom: 16px;">
+            <img src="assets/member-ueda.jpg" alt="植田 裕子" style="width: 295px; height: 443px; object-fit: cover; display: block">
+          </div>
+          <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 8px; color: #2f3526;">植田 裕子</h3>
+          <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+            <span style="font-size: 12.5px; color: #b08a5d;">理事</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8a8470;">Ueda Yuko</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.9; color: #6b6857; margin: 0;">Yu-with-You代表。食品会社に就職し２度の育児休職を取りながら原料購買や事業採算、秘書などを経験。その後Co-Active Coachingに出会いコーチとして独立。2007年よりCTIジャパンにてコーチ養成に関わっている。コーチは「人が変化する瞬間」に立ち会える素敵な仕事で、天職だと思っている。子育てを通して時代の変化を感じる中で、便利さ・快適さを手に入れてきた代償として、人とのつながりを失い孤独を感じている人が多いことに心を痛めている。この先の新しい人間関係のあり方を模索していきたいと思い、この「ともに生きる実践ラボ」に参画。自助でも公助でもない共助・共生の社会をつくっていく輪を大きく広げていきたいと願っている。</p>
+        </div>
+        <div>
+          <div style="border-radius: 10px; overflow: hidden; aspect-ratio: 1; margin-bottom: 16px;">
+            <img src="assets/member-inoue.jpg" alt="井上 理津子" style="width: 305px; height: 423px; object-fit: cover; display: block">
+          </div>
+          <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 8px; color: #2f3526;">井上 理津子</h3>
+          <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+            <span style="font-size: 12.5px; color: #b08a5d;">理事</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8a8470;">Inoue Ritsuko</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.9; color: #6b6857; margin: 0;"><div>金融機関で、営業現場から組織運営、人財育成、ダイバーシティ推進など、さまざまな仕事を経験。仕事の傍らコーチングやカウンセリングを学び、「人の可能性を信じて関わる」ことの大切さを実感してきた。&nbsp;</div><div>現在は社外取締役として企業経営に関わる一方、「ともに生きる」社会のあり方を探究している。ジェロントロジーの学びにも触発され、人生のどの段階にあっても、誰もが自分らしく、その人らしい可能性を活かして生きられる社会を願っている。&nbsp;</div><div>一人ひとりが自立し、それぞれができることを持ち寄ることで、豊かな関係性や新しい支え合いが生まれる。「ともに生きる実践ラボ」を通じて、さまざまな学びや出会いを実践につなげ、そんな社会のあり方を仲間とともに探究していきたい。&nbsp;</div></div>
+        </div>
+        <div>
+          <div style="border-radius: 10px; overflow: hidden; aspect-ratio: 1; margin-bottom: 16px;">
+            <img src="assets/member-sagesaka.jpg" alt="提坂 英暢" style="width: 313px; height: 424px; object-fit: cover; display: block">
+          </div>
+          <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 8px; color: #2f3526;">提坂 英暢</h3>
+          <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+            <span style="font-size: 12.5px; color: #b08a5d;">理事</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8a8470;">Sagesaka Hidenobu</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.9; color: #6b6857; margin: 0;">メーカーで商品の立ち上げから市場導入、広報まで携わり、専門家と力を合わせて価値を育てる経験を重ねてきた。協働の中で生まれる温かな関係性と、人が持つ可能性の広がりを実感してきたことが原点となっている。また、「人生の岐路に立つ人に、そっと背中を押すきっかけを届けたい」という思いからNPO法人の立ち上げに参画し、起業支援やキャリア形成プログラムを10年以上運営してきた。人が自分らしさを見つけ、前へ進む瞬間に寄り添うことを大切にしている。大切な人と食卓を囲む時間に幸せを感じるように、人と人が温かくつながることは日々を豊かにする力になると信じている。ともに暮らし、ともに生きる社会を育むため、仲間とともに一般社団法人「ともに生きる実践ラボ」を設立し、ゆるやかなつながりが芽生える場づくりを進めている。これから出会う皆さまと心地よい時間を重ねていけることを心より楽しみにしている。</p>
+        </div>
+        <div>
+          <div style="border-radius: 10px; overflow: hidden; aspect-ratio: 1; margin-bottom: 16px;">
+            <img src="assets/member-sadakata.jpg" alt="定形 一輝" style="width: 314px; height: 456px; object-fit: cover; display: block">
+          </div>
+          <h3 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin: 0 0 8px; color: #2f3526;">定形 一輝</h3>
+          <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px;">
+            <span style="font-size: 12.5px; color: #b08a5d;">監事</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #8a8470;">Sadakata Kazuki</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.9; color: #6b6857; margin: 0;">東京都の会計事務所で8年間、日系中小企業や外資系投資ファンドの会計・税務サポートを担当。その一方で、都内中心に各所で哲学対話・読書会を毎月開催している。旅先で生産現場のお手伝いをしたことをきっかけに、人と人・人と自然が相互に支えられながら”ともに生き”ていることを強く実感。人間の社会活動は貨幣価値のみで測られるのではなく、多様な価値観への想像力やケアの視点を広げることが、余白のある心豊かな社会をつくると信じている。その媒介者として、自分と他者の心にじっくり耳を傾ける対話の場をあちこちに設けることが目標。そして対話に留まらず、より深い共助・共生社会を仲間とともに探求するために、当法人に参画。モットーは”Feminism is for Everybody.”。現在は都市と地方の魅力的な取り組みを紹介しつなげるローカルライターになるべく勉強中。</p></div>
+        </div>
+      </div>
+
+      
+
+      
+
+      
+    </section></div>
+  
+
+  <!-- ============ ACTIVITIES ============ -->
+  
+
+  <!-- ============ BOARD MEMBERS ============ -->
+  
+
+  <!-- ============ THE FIRST DAY ============ -->
+  <section id="firstday" style="background: linear-gradient(180deg, #f2f1e5 0%, #eceee0 100%); padding: 104px 40px 100px; width: 2122px; height: 1109px">
+    <div data-reveal="" style="opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; max-width: 940px; margin: 0 auto; width: 937px; height: 815px">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 34px; height: 1px; background: #b08a5d;"></span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; letter-spacing: 3px; color: #b08a5d;">The First Day</span>
+      </div>
+      <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 33px; line-height: 1.6; letter-spacing: 1.5px; margin: 0 0 28px; color: #2f3526;">2026年10月10日（土）<br>"ともに生きる"を探究する仲間と出会う、最初の一日。</h2>
+      <p style="font-size: 16px; line-height: 2.1; color: #46512f; margin: 0 0 24px;">私たちは、2026年を「ともに生きる元年」と定めました。その幕開けを告げる、最初のご縁結び。</p>
+      <p style="font-size: 15px; line-height: 2.25; color: #6b6857; margin: 0 0 46px;">2026年10月10日（土）、「"ともに生きる"を探究する仲間と出会うトーキングセッション 〜これからの暮らし方、共生・共助の文化を共創する〜」を開催します。書籍『「ともに暮らす」の作り方』の著者ロビン・アリソン氏を、ニュージーランドから迎え、基調講演と対談をお届けします。</p>
+
+      <div style="margin: 0 0 44px;">
+        <img src="assets/peatix-banner-v2.png" alt="ロビン・アリソン氏来日！『「ともに暮らす」の作り方』出版記念講演＆対話会 — 2026年10月10日（土）13:00〜17:00 東京都神宮前" style="width: 100%; height: auto; display: block; border-radius: 12px;">
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 44px;">
+        
+        <figure style="margin: 0;">
+          
+          
+        </figure>
+      </div>
+
+      
+
+      <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+        <a href="https://tomoiki-lab-2026.peatix.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: #fff; background: #b08a5d; padding: 16px 34px; border-radius: 999px; text-decoration: none;">Peatix で申し込む&nbsp;→</a>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER CTA ============ -->
+  <section id="join" style="position: relative; background: linear-gradient(135deg, #e7f0f3 0%, #f7e9d8 52%, #e9efdb 100%); padding: 100px 40px 110px; overflow: hidden;">
+    <div style="position: absolute; right: 5%; bottom: 0; width: 260px; animation: walkAway 14s ease-in-out infinite;">
+      <img src="assets/sketch-family.png" alt="" style="display: block; width: 100%; transform-origin: bottom center; animation: walkBob 1.6s ease-in-out infinite;">
+    </div>
+    <div data-reveal="" style="opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; position: relative; max-width: 720px; margin: 0 auto; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 26px;">
+        <span style="width: 34px; height: 1px; background: #9a8358;"></span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 16px; letter-spacing: 4px; color: #9a8358; text-transform: uppercase;">Join Us</span>
+        <span style="width: 34px; height: 1px; background: #9a8358;"></span>
+      </div>
+      <h2 style="font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 34px; line-height: 1.6; letter-spacing: 2px; margin: 0 0 22px; color: #2f3526;">
+        ともに生きるムーブメントの、<br>はじまりに。
+      </h2>
+      <p style="font-size: 15.5px; line-height: 2.2; color: #5b5847; margin: 0 0 40px;">Facebookグループから、書籍の刊行情報や活動のお知らせ、<br><span style="color: rgb(59, 58, 49); font-size: medium;">著者であるロビン来日イベントの最新情報をお届けします。</span></p><div>“ともに生きる”世界への入口で、お待ちしています。
+      </div><p></p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 30px;">
+        <span style="width: 50px; height: 1px; background: #c9bda2;"></span>
+        <span style="font-size: 13px; color: #6b6857;"><br></span>
+        <a href="https://www.facebook.com/groups/tomoiknowa" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; color: #fff; background: #3b5998; padding: 12px 24px; border-radius: 999px; text-decoration: none;">
+          <span style="font-family: Georgia, serif; font-weight: 700; font-size: 17px;">f</span> Facebookグループに参加
+        </a>
+        <span style="width: 50px; height: 1px; background: #c9bda2;"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background: #ece3d0; padding: 70px 40px 0;">
+    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 50px; padding-bottom: 56px;">
+      <div>
+        <img src="assets/logo-color.png" alt="ともに生きる実践ラボ Co-Living Practice Lab" style="width: 156px; height: auto; display: block; margin-bottom: 20px">
+        <p style="font-size: 12px; line-height: 2.1; color: #6b6857; margin: 0 0 22px; max-width: 300px">関係性を土台に、暮らしの場を共有し、ともに生きる。“ともに生きる”ムーブメントを創出する発起母体です。</p>
+        <div style="display: flex; gap: 14px;">
+          
+          
+          
+        </div>
+      </div>
+      <div>
+        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; color: #b08a5d; text-transform: uppercase; margin: 0 0 20px;">About</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 13px;">
+          <li><a href="#concept" style="font-size: 13.5px; color: #4d4a3b; text-decoration: none;">私たちについて</a></li>
+          <li><a href="#philosophy" style="font-size: 13.5px; color: #4d4a3b; text-decoration: none;">TOMOIKIの哲学</a></li>
+          <li><a href="#origin" style="font-size: 13.5px; color: #4d4a3b; text-decoration: none;">活動の原点</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; color: #b08a5d; text-transform: uppercase; margin: 0 0 20px;">Contents</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 13px;">
+          <li><a href="#ladder" style="font-size: 13.5px; color: #4d4a3b; text-decoration: none;">実践を知る</a></li>
+          <li><a href="#firstday" style="font-size: 13.5px; color: #4d4a3b; text-decoration: none;">参加する</a></li>
+          <li><a href="https://www.facebook.com/groups/tomoiknowa" target="_blank" rel="noopener" style="font-size: 13.5px; color: #4d4a3b; text-decoration: none;">ともに生きる入口へ&nbsp;</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; color: #b08a5d; text-transform: uppercase; margin: 0 0 20px;">Contact</h4>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+          <img src="assets/icon-mail.svg" alt="" style="width: 20px; height: 20px;">
+          <span style="font-size: 13px; color: #4d4a3b;"><div><span style="font-size: 13px;">info@tomoiki-lab.org</span><br></div></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="assets/icon-phone.svg" alt="" style="width: 20px; height: 20px;">
+          <span style="font-size: 13px; color: #4d4a3b;"><span style="font-size: 13px;">090-8383-3243</span></span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #ddd2bb; padding: 22px 0; max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 12px; color: #8a8470; letter-spacing: 0.5px;">© 一般社団法人ともに生きる実践ラボ</span>
+      <div style="display: flex; gap: 24px;">
+        <a href="privacy.html" style="font-size: 12px; color: #8a8470; text-decoration: none;">プライバシーポリシー</a>
+        <a href="mailto:info@tomoiki-lab.org" style="font-size: 12px; color: #8a8470; text-decoration: none;">お問い合わせ</a>
+      </div>
+    </div>
+  </footer>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const reveal = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; };
+    const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!('IntersectionObserver' in window)) { nodes.forEach(reveal); return; }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { reveal(e.target); obs.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach((n) => obs.observe(n));
+    // safety fallback
+    setTimeout(() => nodes.forEach(reveal), 2600);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# www あり → なし に統一
+RewriteCond %{HTTP_HOST} ^www\.tomoiki-lab\.org$ [NC]
+RewriteCond %{HTTPS} on
+RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.tomoiki-lab\.org$ [NC]
+RewriteRule ^(.*)$ http://tomoiki-lab.org/$1 [R=301,L]
+
+# 無料独自SSLの設定が完了したら、下の2行の先頭の # を外すと https に統一されます
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>

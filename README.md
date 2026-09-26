@@ -18,6 +18,8 @@ favicon.ico, favicon-32.png, apple-touch-icon.png, icon-512.png
 
 ローカル確認: `python3 -m http.server` を実行して http://localhost:8000 を開く。
 
-## 公開前に残っている作業
+## 公開（エックスサーバー / https://no-limit.life）
 
-- **OGP画像のURL**: 公開ドメインが決まったら、各HTMLの `og:image` を `https://<ドメイン>/assets/ogp.jpg` の絶対URLに変更し、`<link rel="canonical">` と `og:url` を追加してください（SNSでのシェア表示に必要）。
+README.md 以外のファイル一式を `no-limit.life/public_html/` 直下にアップロードする。
+`.htaccess` で https・www なしへの統一、404ページ、キャッシュを設定済み。
+別ドメインで公開する場合は、各HTMLの `canonical` / `og:url` / `og:image`、`.htaccess`、`robots.txt`、`sitemap.xml` の `no-limit.life` を置き換える。

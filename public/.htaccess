@@ -2,8 +2,12 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
-# http → https、www あり → なし に統一（https://tomoiki-lab.org）
-RewriteCond %{HTTPS} off [OR]
+# redirect http -> https (also works behind the server's proxy)
+RewriteCond %{HTTPS} !on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
+
+# redirect www -> no www
 RewriteCond %{HTTP_HOST} ^www\.tomoiki-lab\.org$ [NC]
 RewriteRule ^(.*)$ https://tomoiki-lab.org/$1 [R=301,L]
 

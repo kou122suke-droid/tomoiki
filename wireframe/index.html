@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>上川町アイヌ文様ブランド WF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f4f2; --paper:#ffffff; --ink:#222; --sub:#666; --line:#bbb; --box:#e2e2df; --box2:#cfcfcb;
+  --note:#d94f2b; --note-bg:#fff4ef;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1b1b1b; --paper:#242424; --ink:#e8e8e8; --sub:#a0a0a0; --line:#4a4a4a; --box:#333; --box2:#3d3d3d;
+    --note:#ff8a65; --note-bg:#3a2620;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1b1b1b; --paper:#242424; --ink:#e8e8e8; --sub:#a0a0a0; --line:#4a4a4a; --box:#333; --box2:#3d3d3d;
+  --note:#ff8a65; --note-bg:#3a2620;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,sans-serif;line-height:1.7;font-size:15px}
+.page{max-width:1120px;margin:0 auto;background:var(--paper);border-left:1px dashed var(--line);border-right:1px dashed var(--line)}
+section{position:relative;padding:72px 48px;border-bottom:1px dashed var(--line)}
+.label{position:absolute;top:12px;left:16px;font-size:11px;letter-spacing:.08em;color:var(--sub);font-family:ui-monospace,monospace}
+h1,h2,h3{margin:0;font-weight:700;line-height:1.4}
+h2{font-size:26px;text-align:center;margin-bottom:8px}
+.en{display:block;text-align:center;font-size:12px;letter-spacing:.2em;color:var(--sub);margin-bottom:6px}
+.lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 40px}
+.ph{background:var(--box);border:1px solid var(--box2);display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:12px;text-align:center;padding:8px;
+  background-image:linear-gradient(to top right,transparent calc(50% - .5px),var(--box2) 50%,transparent calc(50% + .5px)),linear-gradient(to top left,transparent calc(50% - .5px),var(--box2) 50%,transparent calc(50% + .5px))}
+.ph span{background:var(--box);padding:2px 6px}
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+.card{border:1px solid var(--line);padding:20px;background:var(--paper)}
+.card h3{font-size:17px;margin:12px 0 6px}
+.card p{margin:0;color:var(--sub);font-size:14px}
+.btn{display:inline-block;border:2px solid var(--ink);padding:12px 28px;font-weight:700;font-size:14px;text-decoration:none;color:var(--ink)}
+.btn.fill{background:var(--ink);color:var(--paper)}
+.center{text-align:center}
+.tag{display:inline-block;border:1px solid var(--line);font-size:11px;padding:1px 8px;color:var(--sub)}
+/* annotations */
+.note{display:block;margin-top:12px;border-left:3px solid var(--note);background:var(--note-bg);color:var(--note);font-size:12px;padding:6px 10px;line-height:1.6}
+.note b{font-weight:700}
+body.hide-notes .note{display:none}
+.toolbar{position:sticky;top:0;z-index:20;background:var(--ink);color:var(--paper);font-size:12px;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:8px 16px;flex-wrap:wrap}
+.toolbar button{font:inherit;background:transparent;color:inherit;border:1px solid currentColor;padding:3px 10px;cursor:pointer}
+/* header */
+header.site{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid var(--line);position:relative}
+header.site nav{display:flex;gap:20px;font-size:13px;color:var(--sub);flex-wrap:wrap}
+.logo{width:160px;height:40px}
+.burger{display:none;width:32px;height:24px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);position:relative}
+.burger:after{content:"";position:absolute;left:0;right:0;top:7px;border-top:3px solid var(--ink)}
+/* hero */
+.hero{padding:0;border-bottom:1px dashed var(--line)}
+.hero .ph{height:560px;flex-direction:column;gap:16px}
+.hero-copy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+.hero-copy h1{font-size:40px;background:var(--paper);padding:4px 16px}
+.hero-copy p{background:var(--paper);padding:2px 12px;margin:12px 0 28px}
+/* story flow */
+.flow{display:flex;align-items:stretch;gap:0;justify-content:center;flex-wrap:wrap}
+.flow .step{flex:1;min-width:160px;border:1px solid var(--line);padding:20px 16px;text-align:center}
+.flow .arrow{align-self:center;padding:0 8px;color:var(--sub)}
+.step .num{font-family:ui-monospace,monospace;color:var(--sub);font-size:12px}
+.quote{max-width:720px;margin:40px auto 0;border:1px solid var(--line);padding:24px;text-align:center;font-size:17px}
+/* steps */
+.steps{counter-reset:s}
+.steps .card{position:relative}
+.steps .card .num{font-family:ui-monospace,monospace;font-size:12px;color:var(--sub)}
+.warn{margin-top:24px;border:2px solid var(--ink);padding:16px 20px;font-weight:700;text-align:center}
+/* cycle */
+.cycle{display:grid;grid-template-columns:1fr 280px 1fr;gap:24px;align-items:center}
+.circle{width:240px;height:240px;border-radius:50%;border:2px dashed var(--ink);display:flex;align-items:center;justify-content:center;text-align:center;margin:0 auto;font-weight:700;padding:20px}
+/* timeline */
+.timeline .card.current{border:2px solid var(--ink)}
+.timeline ul{margin:8px 0 0;padding-left:18px;font-size:14px;color:var(--sub)}
+/* channel map */
+.map{height:320px}
+/* team */
+.org{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.org .card{text-align:center}
+.avatar{width:72px;height:72px;border-radius:50%;margin:0 auto}
+.logos{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:32px}
+.logos .ph{height:56px}
+/* cta */
+.cta{background:var(--box);text-align:center}
+.cta .grid{max-width:800px;margin:0 auto}
+footer{padding:40px 48px;font-size:12px;color:var(--sub);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+/* sitemap side */
+.sitemap{font-size:12px;columns:2;color:var(--sub);margin:0;padding-left:18px}
+
+@media (max-width:820px){
+  section{padding:56px 16px}
+  header.site{padding:12px 16px}
+  header.site nav{display:none}
+  .burger{display:block}
+  .g2,.g3,.g4,.org{grid-template-columns:1fr}
+  .cycle{grid-template-columns:1fr}
+  .hero .ph{height:480px}
+  .hero-copy h1{font-size:26px}
+  .flow{flex-direction:column}
+  .flow .arrow{transform:rotate(90deg)}
+  .logos{grid-template-columns:repeat(3,1fr)}
+  h2{font-size:22px}
+  .sitemap{columns:1}
+  footer{padding:32px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span>WIREFRAME v0.1 ｜ 上川町アイヌ文様ブランド サービスページ（叩き）｜ 出典：実務手順書および成果物全書</span>
+  <button type="button" id="toggle">注記を隠す</button>
+</div>
+
+<div class="page">
+
+<!-- 00 HEADER -->
+<header class="site">
+  <div class="ph logo"><span>ブランドロゴ</span></div>
+  <nav>
+    <span>ストーリー</span><span>文様と作り手</span><span>プロダクト</span><span>取り扱い場所</span><span>事業者の方へ</span><span>お問い合わせ</span>
+  </nav>
+  <div class="burger" aria-hidden="true"></div>
+</header>
+
+<!-- 01 HERO -->
+<section class="hero">
+  <span class="label">01 / HERO</span>
+  <div class="ph"><span>メインビジュアル（大雪山・層雲峡の自然 ／ 文様の手仕事クローズアップ）</span></div>
+  <div class="hero-copy">
+    <h1>源流の祈りを、暮らしに灯す</h1>
+    <p>〜カムイミンタラから届く、自然への言葉〜</p>
+    <div><a class="btn fill" href="#products">プロダクトを見る</a></div>
+    <span class="note" style="max-width:520px"><b>注記：</b>ブランド名（正式名称）は未確定のためロゴ・タイトルはプレースホルダー。「公認」表記は許諾確定までコピー・ビジュアルに使用しない（成果品⑥ルール）。</span>
+  </div>
+</section>
+
+<!-- 02 STORY -->
+<section id="story">
+  <span class="label">02 / STORY ・ ブランドメッセージ</span>
+  <span class="en">OUR STORY</span>
+  <h2>文化と自然への敬意を、手仕事の温もりで。</h2>
+  <p class="lead">大雪山の自然信仰と、受け継がれてきた血縁紋様。その二つを源に、上川町から現代の暮らしへ届けます。</p>
+  <div class="flow">
+    <div class="step"><div class="num">01</div><b>現存する継承者</b></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="num">02</div><b>石狩川源流</b></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="num">03</div><b>層雲峡の大自然</b></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="num">04</div><b>感謝と祈りの精神</b></div>
+  </div>
+  <div class="quote">単なるモノではなく、文化・自然への敬意そのものを、<br>手仕事の温もりを通じて現代の暮らしに静かに灯す。</div>
+  <span class="note"><b>注記：</b>各ステップに写真（小）＋短文説明を追加予定。ストーリーカード原稿（成果品⑧）を流用。</span>
+</section>
+
+<!-- 03 PILLARS -->
+<section>
+  <span class="label">03 / CONCEPT ・ 3つの柱</span>
+  <span class="en">CONCEPT</span>
+  <h2>「体験 → 共感 → 購入 → 応援」の循環をつくる</h2>
+  <p class="lead">私たちの取り組みは、3つの柱で成り立っています。</p>
+  <div class="grid g3">
+    <div class="card"><div class="ph" style="height:120px"><span>アイコン／写真</span></div><h3>伝統を守る</h3><p>使用許諾・文化監修・禁忌確認を経た、適切な表示と記録保存。</p></div>
+    <div class="card"><div class="ph" style="height:120px"><span>アイコン／写真</span></div><h3>産業を創る</h3><p>新商品の開発、既存工芸品の改善、販路の創出。</p></div>
+    <div class="card"><div class="ph" style="height:120px"><span>アイコン／写真</span></div><h3>地域に還す</h3><p>伝承者への還元、町内事業者との共創、次世代の育成。</p></div>
+  </div>
+</section>
+
+<!-- 04 PATTERNS & MAKERS -->
+<section id="patterns">
+  <span class="label">04 / PATTERNS ・ 文様と作り手</span>
+  <span class="en">PATTERNS &amp; MAKERS</span>
+  <h2>三世代が紡ぐ、三つの文様</h2>
+  <p class="lead">伊澤家に受け継がれる血縁紋様を、それぞれの想いとともにプロダクトへ。</p>
+  <div class="grid g3">
+    <div class="card">
+      <div class="ph" style="height:200px"><span>文様ビジュアル</span></div>
+      <span class="tag">ご家族</span>
+      <h3>調和と現代の架け橋</h3>
+      <p>直線と曲線の調和。</p>
+      <p style="margin-top:8px"><small>展開：日常使いTシャツ、ライフスタイルアパレル</small></p>
+    </div>
+    <div class="card">
+      <div class="ph" style="height:200px"><span>文様ビジュアル</span></div>
+      <span class="tag">フチ（伊澤フサ子 氏）</span>
+      <h3>慈愛と包容</h3>
+      <p>優しく包み込むモレウ文様。</p>
+      <p style="margin-top:8px"><small>展開：手刺繍・布地製品</small></p>
+    </div>
+    <div class="card">
+      <div class="ph" style="height:200px"><span>文様ビジュアル</span></div>
+      <span class="tag">エカシ（伊澤修一 氏）</span>
+      <h3>守護と魔除け</h3>
+      <p>鋭いトゲ（アイウシ）の文様。</p>
+      <p style="margin-top:8px"><small>展開：木彫・金属ハードプロダクト</small></p>
+    </div>
+  </div>
+  <span class="note"><b>注記：</b>個人名・肖像の掲載は伊澤家の同意確認が必要。文様画像は監修済ベクターデータ（Master_Pattern）のみ使用。天地の向き・尖り具合も監修どおりに。</span>
+</section>
+
+<!-- 05 PRODUCTS -->
+<section id="products">
+  <span class="label">05 / PRODUCTS ・ プロダクト</span>
+  <span class="en">PRODUCTS</span>
+  <h2>第1弾プロダクト</h2>
+  <p class="lead">伊澤家の監修を受け、町内の販売・観光事業者の声を聞きながら仕上げた最初のラインナップです。</p>
+  <div class="grid g3">
+    <div class="card"><div class="ph" style="height:220px"><span>商品写真</span></div><h3>レザー小物</h3><p>国産牛革 × 高圧素押し</p><p style="margin-top:8px"><b>¥ ——</b></p></div>
+    <div class="card"><div class="ph" style="height:220px"><span>商品写真</span></div><h3>Tシャツ</h3><p>天竺綿 × シルクスクリーン</p><p style="margin-top:8px"><b>¥ ——</b></p></div>
+    <div class="card"><div class="ph" style="height:220px"><span>商品写真</span></div><h3>レーザー刻印アイテム</h3><p>町産木材など既存品への刻印</p><p style="margin-top:8px"><b>¥ ——</b></p></div>
+  </div>
+  <div class="center" style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn fill" href="#">公式オンラインストア</a>
+    <a class="btn" href="#">ふるさと納税で応援する</a>
+  </div>
+  <span class="note"><b>注記：</b>現状は試作段階（管理番号 SAMPLE-R08-01）。販売価格・発売時期未定のため「Coming soon」表示も検討。EC/ふるさと納税の説明文は約280字の原稿規定に合わせる。今後の展開：アパレル本格ライン・フチ手刺繍（第2期）、エカシ木彫り＆町産木材（第3期）。</span>
+</section>
+
+<!-- 06 GUIDELINE / REVIEW -->
+<section>
+  <span class="label">06 / GUIDELINE ・ 文様の取り扱い</span>
+  <span class="en">OUR PROMISE</span>
+  <h2>文様を正しく、敬意をもって使うために</h2>
+  <p class="lead">すべての製品は、4段階の審査を経て世に出ます。</p>
+  <div class="grid g4 steps">
+    <div class="card"><div class="num">STEP 1</div><h3>使用申請</h3><p>事業者から事務局へ申請。</p></div>
+    <div class="card"><div class="num">STEP 2</div><h3>一次審査</h3><p>事務局が禁忌・データベースを事前調査。阿寒コンサルンと連携し法的リスクを排除。</p></div>
+    <div class="card"><div class="num">STEP 3</div><h3>最終承認</h3><p>監修委員会が文化的真正性を確認（伊澤家・学術監修・禁忌確認）。</p></div>
+    <div class="card"><div class="num">STEP 4</div><h3>認定</h3><p>マークの付与と許諾番号の発行。</p></div>
+  </div>
+  <div class="warn">許諾が確定するまで「公認」とは表記しません。宗教的な禁忌は完全に排除します。</div>
+  <span class="note"><b>注記：</b>STEP4の名称は制度確定後に「公認認定」へ差し替え可。認定マークのビジュアル見本枠を追加するか要相談。</span>
+</section>
+
+<!-- 07 GIVE BACK -->
+<section>
+  <span class="label">07 / GIVE BACK ・ 還元モデル</span>
+  <span class="en">GIVE BACK</span>
+  <h2>お買い物が、文化を未来へつなぐ</h2>
+  <p class="lead">製品の売上の一部は「上川町アイヌ文化継承基金（仮称）」へ積み立てられ、三つのかたちで還元されます。</p>
+  <div class="cycle">
+    <div class="card"><h3>製品の購入・利用</h3><p>認定プロダクトの販売・利用</p></div>
+    <div class="circle">上川町アイヌ<br>文化継承基金<br>（仮称）</div>
+    <div class="card"><h3>利益還元・ロイヤリティ</h3><p>基金へ積み立て</p></div>
+  </div>
+  <div class="grid g3" style="margin-top:32px">
+    <div class="card"><h3>1. 伝承者への直接還元</h3><p>正規の手仕事と意匠に対するロイヤリティ</p></div>
+    <div class="card"><h3>2. 文化の維持</h3><p>伝統儀式の維持管理</p></div>
+    <div class="card"><h3>3. 次世代と自然の保全</h3><p>町産木材などの森林資源保全</p></div>
+  </div>
+  <span class="note"><b>注記：</b>還元率など数値は未確定のため記載しない。基金名称は（仮称）を外すまで併記。図はアニメーション（循環矢印）化の余地あり。</span>
+</section>
+
+<!-- 08 WHERE TO BUY -->
+<section id="where">
+  <span class="label">08 / WHERE ・ 出会える場所</span>
+  <span class="en">WHERE TO FIND</span>
+  <h2>上川町をめぐって、出会う</h2>
+  <p class="lead">町内の各スポットで実物を手に取れます。QRコードから、オンラインでもお求めいただけます。</p>
+  <div class="grid g2">
+    <div class="ph map"><span>町内マップ（イラスト or Google Map埋め込み）</span></div>
+    <div class="grid" style="gap:12px">
+      <div class="card"><span class="tag">① 交通拠点</span><h3>JR駅 ほか</h3></div>
+      <div class="card"><span class="tag">② 文化施設</span><h3>上川町郷土資料館</h3></div>
+      <div class="card"><span class="tag">③ 宿泊施設</span><h3>層雲峡エリアのホテル ほか</h3></div>
+      <div class="card"><span class="tag">④ 飲食・商業</span><h3>町内の飲食店・商店</h3></div>
+    </div>
+  </div>
+  <span class="note"><b>注記：</b>具体的な店舗名・営業時間は確定後に差し込み。店頭POP（約100字）・町内サイン（約150字）とコピーを揃える。</span>
+</section>
+
+<!-- 09 EVENTS & PARTNERS -->
+<section>
+  <span class="label">09 / EVENTS &amp; PARTNERS</span>
+  <span class="en">EVENTS &amp; COLLABORATION</span>
+  <h2>イベント・コラボレーション</h2>
+  <div class="grid g2" style="margin-top:32px">
+    <div class="card"><div class="ph" style="height:160px"><span>写真</span></div><span class="tag">夏</span><h3>層雲峡峡谷火まつり</h3><p>伝統儀式と連動した展示・販売</p></div>
+    <div class="card"><div class="ph" style="height:160px"><span>写真</span></div><span class="tag">冬</span><h3>層雲峡氷瀑まつり</h3><p>極寒対応アパレルの展開</p></div>
+  </div>
+  <div class="grid g4" style="margin-top:24px">
+    <div class="card"><h3>TSIホールディングス</h3><p>アパレルPOPUP</p></div>
+    <div class="card"><h3>Columbia</h3><p>アウトドア・コラボ</p></div>
+    <div class="card"><h3>サツドラ</h3><p>道内流通・インバウンド店舗</p></div>
+    <div class="card"><h3>No Limit</h3><p>CAMPFIREクラウドファンディング</p></div>
+  </div>
+  <span class="note"><b>注記：</b>パートナー企業名・ロゴの掲載は各社の承諾が必要。「予定」「検討中」の取り組みは公開範囲を要確認（第1期は試作・テストマーケ段階）。</span>
+</section>
+
+<!-- 10 ROADMAP -->
+<section>
+  <span class="label">10 / ROADMAP</span>
+  <span class="en">ROADMAP</span>
+  <h2>これからの3年間</h2>
+  <div class="grid g3 timeline" style="margin-top:32px">
+    <div class="card current"><span class="tag">NOW</span><h3>第1期｜令和8年度</h3><p><b>基盤をつくる</b></p><ul><li>文様の許諾体制づくり</li><li>第1弾試作（レザー・Tシャツ等）</li><li>テストマーケティング</li></ul></div>
+    <div class="card"><h3>第2期｜令和9年度</h3><p><b>手仕事を届ける</b></p><ul><li>アパレル本格ライン</li><li>フチの手刺繍展開</li><li>ホテルでの取り扱い拡大</li></ul></div>
+    <div class="card"><h3>第3期｜令和10年度</h3><p><b>地域とともに自走する</b></p><ul><li>エカシ木彫り＆町産木材プロダクト</li><li>パートナー企業との本格協業</li><li>継承基金の自立運用</li></ul></div>
+  </div>
+  <span class="note"><b>注記：</b>一般向けに言い換え済み。行政向けの詳細（予算・証憑等）はサービスページには載せない。</span>
+</section>
+
+<!-- 11 TEAM -->
+<section>
+  <span class="label">11 / TEAM ・ 体制</span>
+  <span class="en">TEAM</span>
+  <h2>つくっている人たち</h2>
+  <div class="org" style="margin-top:32px">
+    <div class="card"><div class="ph avatar"></div><h3>竹内 達也</h3><p>全体プロデュース</p></div>
+    <div class="card"><div class="ph avatar"></div><h3>伊澤家の皆さま</h3><p>デザイン・文化監修</p></div>
+    <div class="card"><div class="ph avatar"></div><h3>小曽根 敦成</h3><p>現場開発・現地交渉</p></div>
+    <div class="card"><div class="ph avatar"></div><h3>立石 貴久</h3><p>PR・プロモーション</p></div>
+    <div class="card"><div class="ph avatar"></div><h3>上川アイヌ協会</h3><p>協力パートナー</p></div>
+    <div class="card"><div class="ph avatar"></div><h3>一般社団法人ペニウンクル</h3><p>協力パートナー</p></div>
+  </div>
+  <p class="center" style="margin-top:24px;color:var(--sub);font-size:13px">運営：一般社団法人 森の暮らし ／ 上川町地場産品ブランド化事業</p>
+  <span class="note"><b>注記：</b>氏名・顔写真の掲載可否は各人に確認。上川町（地域魅力創造課）のクレジット表記方法も要確認。</span>
+</section>
+
+<!-- 12 CTA -->
+<section class="cta" id="contact">
+  <span class="label">12 / CTA ・ お問い合わせ</span>
+  <h2>一緒に、文化を未来へ。</h2>
+  <p class="lead">取り扱いや文様の使用を検討される事業者の方、メディアの方はこちらから。</p>
+  <div class="grid g3">
+    <div class="card"><h3>文様の使用申請</h3><p>事業者向け</p><p style="margin-top:12px"><a class="btn" href="#">申請について</a></p></div>
+    <div class="card"><h3>お取り扱い・協業</h3><p>店舗・宿泊・企業向け</p><p style="margin-top:12px"><a class="btn" href="#">相談する</a></p></div>
+    <div class="card"><h3>取材・その他</h3><p>メディア・一般向け</p><p style="margin-top:12px"><a class="btn" href="#">お問い合わせ</a></p></div>
+  </div>
+  <span class="note"><b>注記：</b>申請様式（成果品⑥）のDL導線を置くか、フォーム化するか要相談。インバウンド向けに英語版切替の要否も検討。</span>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="ph logo"><span>ロゴ</span></div>
+    <p>運営：一般社団法人 森の暮らし<br>上川町地場産品ブランド化事業</p>
+  </div>
+  <ul class="sitemap">
+    <li>ストーリー</li><li>文様と作り手</li><li>プロダクト</li><li>取り扱い場所</li><li>文様の取り扱いについて</li><li>お問い合わせ</li><li>プライバシーポリシー</li><li>Instagram / SNS</li>
+  </ul>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('toggle');
+  b.addEventListener('click',function(){
+    var h=document.body.classList.toggle('hide-notes');
+    b.textContent=h?'注記を表示':'注記を隠す';
+  });
+})();
+</script>
+</body>
+</html>

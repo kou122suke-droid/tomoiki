@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1622"/><stop offset="1" stop-color="#3a2418"/></linearGradient>
+    <radialGradient id="g" cx=".5" cy=".72" r=".55"><stop offset="0" stop-color="#ffb347" stop-opacity=".9"/><stop offset=".35" stop-color="#e2672b" stop-opacity=".5"/><stop offset="1" stop-color="#e2672b" stop-opacity="0"/></radialGradient>
+    <linearGradient id="f" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff1b8"/><stop offset=".4" stop-color="#ffb02e"/><stop offset="1" stop-color="#d9481c" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#n)"/>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <path d="M0 500 L0 120 L60 90 L90 160 L140 130 L170 220 L210 260 L230 500Z" fill="#1a1512"/>
+  <path d="M800 500 L800 100 L740 140 L700 110 L660 200 L620 240 L590 500Z" fill="#1a1512"/>
+  <g fill="url(#f)">
+    <path d="M400 400 C350 380 360 300 390 260 C385 300 410 310 405 270 C430 300 450 340 440 300 C470 340 460 390 400 400Z"/>
+    <path d="M330 410 C300 395 305 350 325 330 C325 355 340 360 338 340 C355 360 365 395 330 410Z"/>
+    <path d="M470 410 C440 395 448 350 468 330 C468 355 482 360 480 340 C498 360 506 395 470 410Z"/>
+  </g>
+  <rect x="200" y="408" width="400" height="10" rx="5" fill="#2a1a10"/>
+  <g fill="#ffd48a"><circle cx="380" cy="220" r="2"/><circle cx="430" cy="180" r="1.5"/><circle cx="410" cy="140" r="1.2"/><circle cx="350" cy="250" r="1.5"/><circle cx="460" cy="230" r="1.8"/></g>
+  <rect y="418" width="800" height="82" fill="#120d0a"/>
+</svg>

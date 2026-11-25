@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1730"/><stop offset="1" stop-color="#1d3a5f"/></linearGradient>
+    <linearGradient id="i" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8f6ff"/><stop offset=".6" stop-color="#7fc3e8"/><stop offset="1" stop-color="#3a7fb5"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".65" r=".5"><stop offset="0" stop-color="#9fe0ff" stop-opacity=".55"/><stop offset="1" stop-color="#9fe0ff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#n)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <g fill="#fff" opacity=".8"><circle cx="90" cy="60" r="1.5"/><circle cx="210" cy="110" r="1"/><circle cx="520" cy="50" r="1.4"/><circle cx="660" cy="120" r="1"/><circle cx="740" cy="40" r="1.6"/><circle cx="330" cy="70" r="1"/></g>
+  <g fill="url(#i)">
+    <path d="M230 430 L260 260 L290 300 L320 170 L350 260 L380 140 L410 240 L440 120 L470 230 L500 180 L530 290 L560 240 L590 430Z"/>
+  </g>
+  <g fill="#ffffff" opacity=".45">
+    <path d="M320 170 L330 430 L312 430Z"/><path d="M440 120 L452 430 L432 430Z"/><path d="M380 140 L388 430 L372 430Z"/>
+  </g>
+  <path d="M120 430 L170 330 L210 430Z M600 430 L650 340 L700 430Z" fill="#a9d8f0" opacity=".7"/>
+  <rect y="430" width="800" height="70" fill="#dceaf4"/>
+  <rect y="430" width="800" height="6" fill="#ffffff"/>
+</svg>

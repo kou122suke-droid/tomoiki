@@ -1,0 +1,673 @@
+<title>源流の祈り ブランドサイト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#2f4a3a; --forest-deep:#1d3127; --indigo:#1f3550; --indigo-deep:#14233a;
+  --paper:#f6f2ea; --sand:#ece4d3; --sand-2:#e0d5bf; --gold:#a8894f; --gold-light:#d8c08c;
+  --ink:#23272a; --sub:#5d625f; --line:#d6ccb8; --white:#fffdf8;
+  --mincho:"Shippori Mincho",serif; --sans:"Noto Sans JP",system-ui,sans-serif; --en:"Cormorant Garamond",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--mincho);font-weight:600;margin:0;line-height:1.5;letter-spacing:.08em}
+p{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 40px}
+section{padding:128px 0;position:relative}
+.eyebrow{font-family:var(--en);font-style:italic;font-size:17px;letter-spacing:.12em;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.eyebrow:before{content:"";width:36px;height:1px;background:currentColor}
+.eyebrow.center{justify-content:center}
+.eyebrow.center:after{content:"";width:36px;height:1px;background:currentColor}
+.h2{font-size:clamp(24px,3.2vw,36px)}
+.lead{color:var(--sub);margin-top:20px;max-width:620px}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:16px 34px;font-size:14px;font-weight:500;letter-spacing:.12em;text-decoration:none;border:1px solid currentColor;transition:background .25s,color .25s}
+.btn:after{content:"→";font-family:var(--en)}
+.btn.solid{background:var(--forest);border-color:var(--forest);color:var(--white)}
+.btn.solid:hover{background:var(--forest-deep)}
+.btn.ghost:hover{background:var(--ink);color:var(--white)}
+.btn.light{color:var(--white)}
+.btn.light:hover{background:var(--white);color:var(--forest)}
+
+/* comp badge */
+.comp-badge{position:fixed;right:16px;bottom:16px;z-index:50;background:rgba(20,35,58,.92);color:#fff;font-size:11px;padding:8px 12px;letter-spacing:.06em;line-height:1.5;max-width:260px}
+
+/* header */
+.site-header{position:absolute;top:0;left:0;right:0;z-index:10;color:var(--white)}
+.site-header .wrap{display:flex;justify-content:space-between;align-items:center;height:88px;max-width:1320px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:38px;height:38px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-family:var(--mincho);font-size:16px}
+.brand-name{font-family:var(--mincho);font-size:15px;letter-spacing:.2em;line-height:1.3}
+.brand-name small{display:block;font-family:var(--en);font-size:11px;letter-spacing:.24em;opacity:.8}
+.nav{display:flex;gap:30px;font-size:13px;letter-spacing:.12em}
+.nav a{text-decoration:none;opacity:.9}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.menu-btn{display:none;width:28px;height:16px;border-top:1px solid currentColor;border-bottom:1px solid currentColor;background:none;padding:0}
+
+/* hero */
+.hero{height:100vh;min-height:640px;max-height:980px;position:relative;overflow:hidden;color:var(--white);padding:0}
+.hero-bg{position:absolute;inset:0;background:url(img/photo-hero.jpg) center 60%/cover no-repeat;animation:zoom 18s ease-out both}
+@keyframes zoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,35,58,.55) 0%,rgba(20,35,58,.25) 45%,rgba(20,35,58,.55) 100%),linear-gradient(270deg,rgba(20,35,58,.45) 0%,rgba(20,35,58,0) 45%)}
+.hero-inner{position:relative;height:100%;max-width:1320px;margin:0 auto;padding:0 40px}
+.hero-copy{position:absolute;right:12%;top:50%;transform:translateY(-52%);writing-mode:vertical-rl;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.hero-copy h1{white-space:nowrap;font-size:clamp(30px,3.6vw,50px);letter-spacing:.24em;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.hero-copy p{white-space:nowrap;font-family:var(--mincho);font-size:15px;letter-spacing:.3em;opacity:.92;padding-top:5em}
+.hero-en{position:absolute;left:40px;bottom:56px;font-family:var(--en);font-size:15px;letter-spacing:.18em;line-height:1.6;opacity:.9}
+.hero-en strong{display:block;font-size:clamp(28px,3vw,42px);font-weight:500;letter-spacing:.06em}
+.scroll{position:absolute;left:50%;bottom:0;width:1px;height:80px;background:rgba(255,255,255,.4);overflow:hidden}
+.scroll:after{content:"";position:absolute;left:0;top:-40px;width:1px;height:40px;background:#fff;animation:sc 2.2s infinite}
+@keyframes sc{to{top:80px}}
+
+/* intro / story */
+.story{background:var(--paper);overflow:hidden}
+.story-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.story-text p+p{margin-top:1.2em}
+.story-img{position:relative}
+.story-img{padding:0 0 80px 80px}
+.story-img .main{width:100%;aspect-ratio:3/4;object-fit:cover}
+.story-img .sub{position:absolute;left:0;bottom:0;width:52%;aspect-ratio:4/3;object-fit:cover;border:10px solid var(--paper)}
+.source{padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0 0;margin-top:96px;border-bottom:1px solid var(--line)}
+.source li{list-style:none;padding:0 24px 36px;position:relative}
+.source .ph{margin:0 -24px 28px;aspect-ratio:4/3;overflow:hidden}
+.source .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.source li:hover .ph img{transform:scale(1.05)}
+.source li+li{border-left:1px solid var(--line)}
+.source .n{font-family:var(--en);font-size:40px;color:var(--gold);line-height:1}
+.source h3{font-size:19px;margin:14px 0 8px}
+.source p{font-size:13px;color:var(--sub);line-height:1.8}
+.source ol{margin:0;padding:0;display:contents}
+.quote-wrap{margin-top:96px;padding:40px 0;position:relative;isolation:isolate}
+.quote-wrap:before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/tree.jpg) center/min(820px,100%) no-repeat;mix-blend-mode:multiply;opacity:.32;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 45%,#000 30%,transparent 92%);mask-image:radial-gradient(ellipse 50% 50% at 50% 45%,#000 30%,transparent 92%)}
+.quote-wrap .quote{margin-top:0;padding:40px 20px}
+.quote{margin:96px auto 0;max-width:760px;text-align:center;font-family:var(--mincho);font-size:clamp(18px,2vw,23px);line-height:2.2;letter-spacing:.12em;position:relative;padding:0 20px}
+.quote:before,.quote:after{content:"";display:block;width:1px;height:56px;background:var(--gold);margin:0 auto 32px}
+.quote:after{margin:32px auto 0}
+
+/* pillars */
+.pillars{background:var(--forest);color:var(--white)}
+.pillars .eyebrow{color:var(--gold-light)}
+.pillars .lead{color:rgba(255,253,248,.78)}
+.cycle-line{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:28px;font-family:var(--mincho);font-size:16px;letter-spacing:.2em;flex-wrap:wrap}
+.cycle-line span{border:1px solid rgba(216,192,140,.6);padding:4px 18px;border-radius:999px}
+.cycle-line i{font-style:normal;color:var(--gold-light)}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.18);margin-top:72px;border:1px solid rgba(255,255,255,.18)}
+.pillar{background:var(--forest);padding:48px 36px}
+.pillar svg{width:52px;height:52px;stroke:var(--gold-light);fill:none;stroke-width:1.4}
+.pillar .no{font-family:var(--en);font-size:14px;letter-spacing:.2em;color:var(--gold-light);margin-top:28px}
+.pillar h3{font-size:24px;margin:6px 0 16px}
+.pillar p{font-size:14px;color:rgba(255,253,248,.8)}
+
+/* patterns */
+.patterns{background:var(--sand)}
+.pattern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:72px}
+.pattern-card{background:var(--white);display:flex;flex-direction:column}
+.pattern-img{aspect-ratio:4/5;background-size:cover;background-position:center;position:relative}
+.pattern-img .who{position:absolute;left:20px;top:20px;writing-mode:vertical-rl;background:var(--white);padding:14px 8px;font-family:var(--mincho);font-size:15px;letter-spacing:.3em}
+.pattern-img .stamp{position:absolute;right:16px;bottom:16px;font-size:10px;letter-spacing:.1em;color:#fff;background:rgba(0,0,0,.45);padding:3px 8px}
+.pattern-body{padding:30px 28px 34px}
+.pattern-body .name{font-size:12px;color:var(--gold);letter-spacing:.14em}
+.pattern-body h3{font-size:23px;margin:6px 0 12px}
+.pattern-body p{font-size:14px;color:var(--sub)}
+.pattern-body .use{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+.pattern-body .use b{color:var(--ink);font-weight:500}
+
+/* products */
+.products{background:var(--paper)}
+.products-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px}
+.product .img{aspect-ratio:1;overflow:hidden;background:var(--sand);position:relative}
+.product .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.product:hover .img img{transform:scale(1.04)}
+.product .badge{position:absolute;left:14px;top:14px;background:var(--indigo);color:#fff;font-size:11px;letter-spacing:.12em;padding:4px 10px}
+.product .cap{position:absolute;right:10px;bottom:10px;font-size:10px;color:#fff;background:rgba(0,0,0,.5);padding:2px 8px}
+.product h3{font-size:19px;margin-top:20px}
+.product .spec{font-size:13px;color:var(--sub);margin-top:4px}
+.product .price{font-family:var(--en);font-size:18px;margin-top:10px;letter-spacing:.08em;color:var(--gold)}
+.buy-row{margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.buy{display:flex;justify-content:space-between;align-items:center;padding:34px 40px;text-decoration:none;color:var(--white);background:var(--forest);transition:background .25s}
+.buy:hover{background:var(--forest-deep)}
+.buy.alt{background:var(--indigo)}
+.buy.alt:hover{background:var(--indigo-deep)}
+.buy small{display:block;font-family:var(--en);font-size:13px;letter-spacing:.16em;opacity:.75}
+.buy strong{font-family:var(--mincho);font-size:21px;font-weight:600;letter-spacing:.1em}
+.buy .arrow{width:46px;height:46px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center;font-family:var(--en);font-size:18px;flex:none}
+.next-line{margin-top:40px;font-size:13px;color:var(--sub);text-align:center}
+
+/* promise */
+.promise{background:var(--indigo);color:var(--white)}
+.promise .eyebrow{color:var(--gold-light)}
+.promise .lead{color:rgba(255,255,255,.75)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:72px;position:relative}
+.flow:before{content:"";position:absolute;left:12.5%;right:12.5%;top:36px;height:1px;background:rgba(216,192,140,.5)}
+.flow li{list-style:none;text-align:center;padding:0 18px;position:relative}
+.flow .dot{width:72px;height:72px;border-radius:50%;border:1px solid var(--gold-light);background:var(--indigo);margin:0 auto;display:grid;place-items:center;font-family:var(--en);font-size:26px;color:var(--gold-light)}
+.flow li:last-child .dot{background:var(--gold);color:var(--indigo);border-color:var(--gold)}
+.flow h3{font-size:19px;margin:22px 0 10px}
+.flow p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.8}
+.flow ol{display:contents}
+.vow{margin-top:72px;border:1px solid rgba(216,192,140,.6);padding:30px 36px;display:flex;gap:24px;align-items:center}
+.vow .seal{flex:none;width:64px;height:64px;border-radius:50%;border:1px solid var(--gold-light);display:grid;place-items:center;font-family:var(--mincho);color:var(--gold-light);font-size:22px}
+.vow p{font-family:var(--mincho);font-size:17px;letter-spacing:.1em;line-height:1.9}
+
+/* give back */
+.giveback{background:var(--paper)}
+.gb-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.gb-diagram{position:relative;max-width:440px;margin:0 auto;width:100%}
+.gb-diagram svg{width:100%;height:auto}
+.gb-list{margin-top:40px;display:grid;gap:0}
+.gb-list div{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line)}
+.gb-list div:last-child{border-bottom:1px solid var(--line)}
+.gb-list .n{font-family:var(--en);font-size:32px;color:var(--gold);line-height:1}
+.gb-list h3{font-size:18px}
+.gb-list p{font-size:13px;color:var(--sub)}
+
+/* where */
+.where{background:var(--sand)}
+.where-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:64px}
+.map-frame{background:var(--white);padding:14px}
+.map-frame figcaption{font-size:11px;color:var(--sub);padding-top:8px}
+.spots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.spots .qr{grid-column:1/-1;justify-content:center}
+.spot{background:var(--white);padding:22px 20px;display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:center}
+.spot .num{width:44px;height:44px;border-radius:50%;background:var(--forest);color:#fff;display:grid;place-items:center;font-family:var(--en);font-size:19px}
+.spot small{font-size:11px;color:var(--gold);letter-spacing:.14em;display:block}
+.spot b{font-family:var(--mincho);font-size:15px;font-weight:600;line-height:1.6;display:block}
+.qr{display:flex;gap:18px;align-items:center;background:var(--indigo);color:#fff;padding:22px 26px}
+.qr .code{width:60px;height:60px;flex:none;background:
+  conic-gradient(from 90deg at 30% 30%,#fff 25%,transparent 0) 0 0/12px 12px,
+  #fff;outline:6px solid #fff;outline-offset:-1px;position:relative}
+.qr .code{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21'%3E%3Cpath fill='%2314233a' d='M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM14 0h7v7h-7zm1 1v5h5V1zm1 1h3v3h-3zM0 14h7v7H0zm1 1v5h5v-5zm1 1h3v3H2zM9 0h1v2H9zM11 1h2v1h-2zM8 3h2v2H8zM11 4h1v3h-1zM9 8h3v1H9zM0 9h2v1H0zM3 8h2v2H3zM14 9h2v2h-2zM18 8h3v1h-3zM8 11h2v2H8zM12 11h3v1h-3zM17 11h2v3h-2zM9 14h1v3H9zM11 15h3v1h-3zM15 17h2v2h-2zM18 15h3v1h-3zM11 18h3v3h-3zM19 19h2v2h-2zM8 19h2v2H8z'/%3E%3C/svg%3E") center/52px no-repeat;outline:none}
+.qr p{font-size:13px;line-height:1.7}
+.qr b{font-family:var(--mincho);font-size:16px;font-weight:600;display:block}
+
+/* events */
+.events{background:var(--paper)}
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:64px}
+.event{position:relative;aspect-ratio:16/10;overflow:hidden;color:#fff}
+.event .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s}
+.event:hover .bg{transform:scale(1.04)}
+.event .bg.fire:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 95%,rgba(255,150,60,.55),rgba(255,120,40,.15) 45%,rgba(0,0,0,0) 70%);mix-blend-mode:screen}
+.event .credit{position:absolute;right:12px;top:10px;z-index:1;font-size:10px;opacity:.7}
+.event:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6),rgba(0,0,0,0) 55%)}
+.event .txt{position:absolute;left:32px;bottom:28px;right:32px;z-index:1}
+.event .season{font-family:var(--en);font-size:14px;letter-spacing:.24em;opacity:.85}
+.event h3{font-size:24px;margin:2px 0 4px}
+.event p{font-size:13px;opacity:.88}
+.partners{margin-top:96px}
+.partners-title{font-size:13px;letter-spacing:.2em;color:var(--sub);text-align:center}
+.partner-row{display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.partner{padding:30px 20px;text-align:center}
+.partner+.partner{border-left:1px solid var(--line)}
+.partner b{display:block;font-family:var(--en),var(--mincho);font-size:20px;font-weight:600;letter-spacing:.06em;color:var(--ink)}
+.partner span{font-size:12px;color:var(--sub)}
+
+/* roadmap */
+.roadmap{background:var(--forest-deep);color:var(--white);overflow:hidden}
+.roadmap .eyebrow{color:var(--gold-light)}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:72px;position:relative}
+.road:before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:rgba(255,255,255,.25)}
+.phase{padding-right:40px;position:relative}
+.phase .pin{width:19px;height:19px;border-radius:50%;border:1px solid var(--gold-light);background:var(--forest-deep);position:relative}
+.phase.now .pin{background:var(--gold-light);box-shadow:0 0 0 8px rgba(216,192,140,.18)}
+.phase .when{font-family:var(--en);font-size:14px;letter-spacing:.2em;color:var(--gold-light);margin-top:28px}
+.phase .now-tag{display:inline-block;margin-left:10px;font-family:var(--sans);font-size:10px;letter-spacing:.14em;background:var(--gold-light);color:var(--forest-deep);padding:1px 8px;vertical-align:2px}
+.phase h3{font-size:22px;margin:6px 0 18px}
+.phase ul{margin:0;padding:0;list-style:none}
+.phase li{font-size:14px;color:rgba(255,255,255,.8);padding:8px 0;border-top:1px solid rgba(255,255,255,.12)}
+
+/* team */
+.team{background:var(--paper)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px;margin-top:64px}
+.member{display:grid;grid-template-columns:84px 1fr;gap:20px;align-items:center}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--sand-2);display:grid;place-items:center;font-family:var(--mincho);font-size:24px;color:var(--forest);position:relative;overflow:hidden}
+.avatar.org{background:var(--forest);color:var(--gold-light);font-size:15px}
+.member small{display:block;font-size:11px;color:var(--gold);letter-spacing:.14em}
+.member b{font-family:var(--mincho);font-size:18px;font-weight:600;letter-spacing:.1em}
+.member p{font-size:12px;color:var(--sub);line-height:1.7}
+.operator{margin-top:64px;text-align:center;font-size:13px;color:var(--sub);letter-spacing:.1em}
+
+/* contact */
+.contact{color:var(--white);background:linear-gradient(rgba(29,49,39,.82),rgba(29,49,39,.9)),url(img/photo-autumn.jpg) center/cover}
+.contact .eyebrow{color:var(--gold-light)}
+.contact .lead{color:rgba(255,255,255,.8)}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.2);margin-top:64px;border:1px solid rgba(255,255,255,.2)}
+.contact-card{background:rgba(29,49,39,.6);padding:40px 34px;display:flex;flex-direction:column;gap:12px;text-decoration:none;transition:background .25s}
+.contact-card:hover{background:rgba(255,255,255,.08)}
+.contact-card small{font-family:var(--en);font-size:13px;letter-spacing:.2em;color:var(--gold-light)}
+.contact-card h3{font-size:21px}
+.contact-card p{font-size:13px;color:rgba(255,255,255,.75);flex:1}
+.contact-card span{font-size:13px;letter-spacing:.12em;border-bottom:1px solid rgba(255,255,255,.5);align-self:flex-start;padding-bottom:4px}
+
+/* footer */
+footer{background:var(--indigo-deep);color:rgba(255,255,255,.75);padding:72px 0 40px;font-size:13px}
+.foot{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.foot .brand{color:#fff}
+.foot ul{list-style:none;margin:0;padding:0;columns:2;column-gap:48px}
+.foot li{padding:4px 0}
+.credits{margin-top:48px;font-size:11px;color:rgba(255,255,255,.55)}
+.credits summary{cursor:pointer;letter-spacing:.1em}
+.credits ul{margin:12px 0;padding-left:18px;line-height:1.9}
+.credits a{color:inherit}
+.copy{margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* responsive */
+@media (max-width:900px){
+  .wrap{padding:0 16px}
+  section{padding:88px 0}
+  .site-header .wrap{height:64px}
+  .nav{display:none}
+  .menu-btn{display:block;color:inherit}
+  .hero{height:100svh;min-height:600px}
+  .hero-inner{padding:0 16px}
+  .hero-copy{right:50%;transform:translate(50%,-56%);gap:18px}
+  .hero-copy h1{font-size:30px}
+  .hero-copy p{font-size:13px}
+  .hero-en{left:16px;bottom:40px}
+  .story-grid,.gb-grid,.where-grid{grid-template-columns:1fr;gap:40px}
+  .story-img{padding:0 0 56px 40px}
+  .source li{padding:0 16px 28px}
+  .source .ph{margin:0 -16px 20px}
+  .spots{grid-template-columns:1fr}
+  .spots .qr{justify-content:flex-start}
+  .source{grid-template-columns:1fr 1fr;margin-top:64px}
+  .source li:nth-child(3){border-left:none}
+  .source li:nth-child(n+3){border-top:1px solid var(--line)}
+  .pillar-grid,.pattern-grid,.product-grid,.contact-grid{grid-template-columns:1fr}
+  .pattern-img{aspect-ratio:16/11}
+  .buy-row,.event-grid{grid-template-columns:1fr}
+  .buy{padding:26px 24px}
+  .flow{grid-template-columns:1fr;gap:36px}
+  .flow:before{left:36px;right:auto;top:36px;bottom:36px;width:1px;height:auto}
+  .flow li{display:grid;grid-template-columns:72px 1fr;gap:20px;text-align:left;padding:0}
+  .flow h3{margin:4px 0 6px}
+  .flow .dot{margin:0}
+  .vow{flex-direction:column;text-align:center;padding:28px 20px}
+  .partner-row{grid-template-columns:1fr 1fr}
+  .partner:nth-child(3){border-left:none}
+  .partner:nth-child(n+3){border-top:1px solid var(--line)}
+  .road{grid-template-columns:1fr;gap:48px}
+  .road:before{display:none}
+  .phase{padding-right:0}
+  .team-grid{grid-template-columns:1fr;gap:24px}
+  .comp-badge{display:none}
+  .foot ul{columns:1}
+}
+
+/* --- site behaviour --- */
+html{scroll-padding-top:72px}
+body{background:var(--paper)}
+.site-header{position:fixed;top:env(safe-area-inset-top,0px);transition:background .35s,box-shadow .35s}
+.site-header.solid{background:rgba(20,35,58,.94);box-shadow:0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(6px)}
+.site-header.solid .wrap{height:68px}
+.site-header .wrap{transition:height .35s}
+.nav a.active{opacity:1;text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--gold-light)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
+.comp-badge{bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.menu-btn{cursor:pointer}
+@media (max-width:900px){
+  .nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--indigo-deep);padding:8px 16px 16px}
+  .nav.open a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .site-header.menu-open{background:var(--indigo-deep)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+
+
+<div class="comp-badge">制作中のデザイン案です｜ブランド名・商品・数値は仮のものです</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="brand-mark">源</span>
+      <span class="brand-name">ブランド名（仮）<small>KAMIKAWA · HOKKAIDO</small></span>
+    </a>
+    <nav class="nav">
+      <a href="#story">ストーリー</a><a href="#patterns">文様と作り手</a><a href="#products">プロダクト</a><a href="#where">出会える場所</a><a href="#promise">文様の取り扱い</a><a href="#contact">お問い合わせ</a>
+    </nav>
+    <button class="menu-btn" aria-label="メニュー"></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="大雪山と層雲峡、石狩川源流の風景イメージ"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h1>源流の祈りを、<br>暮らしに灯す</h1>
+      <p>カムイミンタラから届く、自然への言葉</p>
+    </div>
+    <div class="hero-en">From the source of the Ishikari River<strong>Kamuy Mintar</strong></div>
+  </div>
+  <div class="scroll"></div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-text">
+        <div class="eyebrow">Our Story</div>
+        <h2 class="h2">文化と自然への敬意を、<br>手仕事の温もりで。</h2>
+        <p class="lead">北海道・上川町。大雪山のふもと、石狩川がはじまる場所。</p>
+        <p class="lead">この地には、山や川、森に宿るものへ感謝と祈りを捧げてきた人々の暮らしと、家族の中で受け継がれてきた紋様があります。私たちはその文様を継承者とともに、いまの暮らしに寄り添うかたちで届けていきます。</p>
+      </div>
+      <figure class="story-img" style="margin:0">
+        <img class="main" src="img/photo-cliff.jpg" alt="層雲峡の柱状節理の断崖">
+        <img class="sub" src="img/photo-river.jpg" alt="上川町を流れる石狩川">
+      </figure>
+    </div>
+
+    <ol class="source">
+      <li><div class="ph"><img src="img/photo-thread.jpg" alt="糸と針の手仕事"></div><div class="n">01</div><h3>現存する継承者</h3><p>上川町で今も文様を受け継ぐ伊澤家とともに。</p></li>
+      <li><div class="ph"><img src="img/photo-river.jpg" alt="石狩川の流れ"></div><div class="n">02</div><h3>石狩川源流</h3><p>北海道の大河が生まれる、はじまりの地。</p></li>
+      <li><div class="ph"><img src="img/photo-gorge.jpg" alt="層雲峡の岩峰と森"></div><div class="n">03</div><h3>層雲峡の大自然</h3><p>大雪山がつくり出した峡谷と森の恵み。</p></li>
+      <li><div class="ph"><img src="img/photo-asahidake.jpg" alt="大雪山・旭岳の山肌"></div><div class="n">04</div><h3>感謝と祈りの精神</h3><p>自然を敬い、ともに生きるこころ。</p></li>
+    </ol>
+
+    <div class="quote-wrap"><p class="quote">単なるモノではなく、<br>文化・自然への敬意そのものを、<br>手仕事の温もりを通じて<br>現代の暮らしに静かに灯す。</p></div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="wrap center">
+    <div class="eyebrow center">Concept</div>
+    <h2 class="h2">守り、創り、還す。</h2>
+    <p class="lead">文様を「使う」だけでは終わらせない。<br>手に取った人の想いが、文化と地域へ巡っていく仕組みをつくります。</p>
+    <div class="cycle-line"><span>体験</span><i>→</i><span>共感</span><i>→</i><span>購入</span><i>→</i><span>応援</span></div>
+  </div>
+  <div class="wrap">
+    <div class="pillar-grid">
+      <div class="pillar">
+        <svg viewBox="0 0 52 52"><path d="M26 4 L44 11 V25 C44 37 36 45 26 48 C16 45 8 37 8 25 V11 Z"/><path d="M18 26 l6 6 l11 -12"/></svg>
+        <div class="no">I</div>
+        <h3>伝統を守る</h3>
+        <p>使用許諾・文化監修・禁忌確認を経て、文様を正しく表示し、記録として残します。</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 52 52"><path d="M10 42 L30 22"/><path d="M28 12 a8 8 0 1 0 12 12 l-5 -5 l-2 -5z"/><path d="M8 36 l8 8"/><circle cx="16" cy="16" r="6"/><path d="M16 6v4M16 22v4M6 16h4M22 16h4"/></svg>
+        <div class="no">II</div>
+        <h3>産業を創る</h3>
+        <p>新しい商品の開発、既存工芸品の改善、そして販路づくりまで。町の新しい仕事を生み出します。</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 52 52"><path d="M26 30 C26 20 32 14 40 12 C40 22 34 28 26 30Z"/><path d="M26 30 C26 22 21 17 14 16 C14 24 19 29 26 30Z"/><path d="M26 30 V40"/><path d="M6 38 C14 36 18 44 26 44 C34 44 38 36 46 38"/></svg>
+        <div class="no">III</div>
+        <h3>地域に還す</h3>
+        <p>伝承者への還元、町内事業者との共創、そして次の世代を育てること。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATTERNS -->
+<section class="patterns" id="patterns">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow center">Patterns &amp; Makers</div>
+      <h2 class="h2">三世代が紡ぐ、三つの文様</h2>
+      <p class="lead">伊澤家に受け継がれる血縁紋様を、それぞれの想いとともにプロダクトへ。</p>
+    </div>
+    <div class="pattern-grid">
+      <article class="pattern-card">
+        <div class="pattern-img" style="background-image:url(img/tex-cotton.jpg)"><span class="who">ご家族</span><span class="stamp">文様画像 差込予定</span></div>
+        <div class="pattern-body">
+          <div class="name">HARMONY</div>
+          <h3>調和と現代の架け橋</h3>
+          <p>直線と曲線が調和する文様。伝統と現代の暮らしをつなぐ、日常に寄り添うデザインです。</p>
+          <div class="use"><b>展開</b>　日常使いのTシャツ、ライフスタイルアパレル</div>
+        </div>
+      </article>
+      <article class="pattern-card">
+        <div class="pattern-img" style="background-image:url(img/tex-thread.jpg)"><span class="who">フチ　伊澤フサ子</span><span class="stamp">文様画像 差込予定</span></div>
+        <div class="pattern-body">
+          <div class="name">COMPASSION</div>
+          <h3>慈愛と包容</h3>
+          <p>優しく包み込むモレウ文様。ひと針ひと針に込められた、あたたかなまなざし。</p>
+          <div class="use"><b>展開</b>　手刺繍、布地製品</div>
+        </div>
+      </article>
+      <article class="pattern-card">
+        <div class="pattern-img" style="background-image:url(img/tex-wood.jpg)"><span class="who">エカシ　伊澤修一</span><span class="stamp">文様画像 差込予定</span></div>
+        <div class="pattern-body">
+          <div class="name">PROTECTION</div>
+          <h3>守護と魔除け</h3>
+          <p>鋭いトゲ（アイウシ）の文様。身につける人を守る、力強い意匠です。</p>
+          <div class="use"><b>展開</b>　木彫、金属などのハードプロダクト</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="products-head">
+      <div>
+        <div class="eyebrow">Products</div>
+        <h2 class="h2">第1弾プロダクト</h2>
+        <p class="lead">伊澤家に一つひとつ監修いただき、町内の販売・観光事業者の声を聞きながら仕上げました。</p>
+      </div>
+      <a class="btn ghost" href="#">すべての商品を見る</a>
+    </div>
+    <div class="product-grid">
+      <article class="product">
+        <div class="img"><img src="img/tag.jpg" alt="型押し文様のレザーキーホルダー（イメージ）"><span class="badge">LEATHER</span><span class="cap">AI生成イメージ</span></div>
+        <h3>レザー小物</h3>
+        <p class="spec">国産牛革／高圧素押し</p>
+        <p class="price">Coming soon</p>
+      </article>
+      <article class="product">
+        <div class="img"><img src="img/product-tshirt.jpg" alt="Tシャツのモックアップ"><span class="badge">APPAREL</span></div>
+        <h3>Tシャツ</h3>
+        <p class="spec">天竺綿／シルクスクリーン</p>
+        <p class="price">Coming soon</p>
+      </article>
+      <article class="product">
+        <div class="img"><img src="img/product-plate.jpg" alt="木製プレートのモックアップ"><span class="badge">WOOD</span></div>
+        <h3>レーザー刻印アイテム</h3>
+        <p class="spec">町産木材ほか／レーザー刻印</p>
+        <p class="price">Coming soon</p>
+      </article>
+    </div>
+    <div class="buy-row">
+      <a class="buy" href="#"><span><small>Online Store</small><strong>公式オンラインストア</strong></span><span class="arrow">→</span></a>
+      <a class="buy alt" href="#"><span><small>Furusato Nozei</small><strong>ふるさと納税で応援する</strong></span><span class="arrow">→</span></a>
+    </div>
+    <p class="next-line">今後、アパレルの本格ラインやフチの手刺繍、エカシの木彫りなども順次展開予定です。</p>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise" id="promise">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow center">Our Promise</div>
+      <h2 class="h2">文様を正しく、敬意をもって。</h2>
+      <p class="lead">文様を使うすべての製品は、4つのステップの審査を経てから世に出ます。</p>
+    </div>
+    <ol class="flow">
+      <li><div class="dot">1</div><div><h3>使用申請</h3><p>事業者から事務局へ申請します。</p></div></li>
+      <li><div class="dot">2</div><div><h3>一次審査</h3><p>事務局が禁忌やデータベースを事前に調べます。阿寒コンサルンと連携し、法的なリスクも確認します。</p></div></li>
+      <li><div class="dot">3</div><div><h3>最終承認</h3><p>伊澤家・学術監修者による監修委員会が、文化的な真正性を確かめます。</p></div></li>
+      <li><div class="dot">4</div><div><h3>認定</h3><p>認定マークを付け、許諾番号を発行します。</p></div></li>
+    </ol>
+    <div class="vow">
+      <div class="seal">誓</div>
+      <p>許諾が確定するまで「公認」とは表記しません。<br>宗教的な禁忌に触れる使い方は、一切いたしません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- GIVE BACK -->
+<section class="giveback">
+  <div class="wrap gb-grid">
+    <div class="gb-diagram">
+      <svg viewBox="0 0 440 440" role="img" aria-label="製品の売上が基金に積み立てられ、三つの形で還元される循環図">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#a8894f"/></marker>
+        </defs>
+        <circle cx="220" cy="220" r="170" fill="none" stroke="#d6ccb8" stroke-width="1"/>
+        <path d="M 80 140 A 160 160 0 0 1 360 140" fill="none" stroke="#a8894f" stroke-width="1.6" marker-end="url(#ah)"/>
+        <path d="M 370 300 A 160 160 0 0 1 70 300" fill="none" stroke="#a8894f" stroke-width="1.6" marker-end="url(#ah)"/>
+        <circle cx="220" cy="220" r="92" fill="#2f4a3a"/>
+        <circle cx="220" cy="220" r="84" fill="none" stroke="#d8c08c" stroke-width=".8"/>
+        <text x="220" y="204" text-anchor="middle" font-family="Shippori Mincho,serif" font-size="15" fill="#fffdf8" letter-spacing="2">上川町アイヌ</text>
+        <text x="220" y="228" text-anchor="middle" font-family="Shippori Mincho,serif" font-size="15" fill="#fffdf8" letter-spacing="2">文化継承基金</text>
+        <text x="220" y="252" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#d8c08c">（仮称）</text>
+        <g font-family="Noto Sans JP,sans-serif" font-size="12" fill="#23272a" text-anchor="middle">
+          <rect x="150" y="26" width="140" height="30" fill="#f6f2ea"/>
+          <text x="220" y="46">製品の購入・利用</text>
+          <rect x="140" y="384" width="160" height="30" fill="#f6f2ea"/>
+          <text x="220" y="404">利益還元・ロイヤリティ</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <div class="eyebrow">Give Back</div>
+      <h2 class="h2">お買い物が、<br>文化を未来へつなぐ。</h2>
+      <p class="lead">製品の売上の一部は「上川町アイヌ文化継承基金（仮称）」に積み立てられ、三つのかたちで還元されます。</p>
+      <div class="gb-list">
+        <div><span class="n">01</span><span><h3>伝承者への直接還元</h3><p>正規の手仕事と意匠に対するロイヤリティとして。</p></span></div>
+        <div><span class="n">02</span><span><h3>文化の維持</h3><p>伝統儀式の維持・管理のために。</p></span></div>
+        <div><span class="n">03</span><span><h3>次世代と自然の保全</h3><p>町産木材をはじめとする森林資源の保全に。</p></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE -->
+<section class="where" id="where">
+  <div class="wrap">
+    <div class="eyebrow">Where to Find</div>
+    <h2 class="h2">上川町をめぐって、出会う。</h2>
+    <p class="lead">町内のスポットで、実物を手に取ってご覧いただけます。店頭のQRコードから、オンラインでもお求めいただけます。</p>
+    <div class="where-grid">
+      <figure class="map-frame" style="margin:0">
+        <img src="img/map.jpg" alt="上川町内の取り扱いスポットを示すイラストマップ">
+        <figcaption>イラストマップ（イメージ）</figcaption>
+      </figure>
+      <div class="spots">
+        <div class="spot"><span class="num">1</span><span><small>交通拠点</small><b>JR上川駅 ほか</b></span></div>
+        <div class="spot"><span class="num">2</span><span><small>文化施設</small><b>上川町郷土資料館</b></span></div>
+        <div class="spot"><span class="num">3</span><span><small>宿泊施設</small><b>層雲峡温泉のホテル ほか</b></span></div>
+        <div class="spot"><span class="num">4</span><span><small>飲食・商業</small><b>町内の飲食店・商店</b></span></div>
+        <div class="qr"><span class="code" aria-hidden="true"></span><p><b>店頭のQRコードから</b>公式オンラインストア・ふるさと納税ページへ</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow center">Events &amp; Collaboration</div>
+      <h2 class="h2">季節の祭りとともに。</h2>
+    </div>
+    <div class="event-grid">
+      <article class="event"><div class="bg fire" style="background-image:url(img/photo-night.jpg)"></div><div class="txt"><div class="season">SUMMER · 会場イメージ</div><h3>層雲峡峡谷火まつり</h3><p>伝統儀式と連動した展示・販売</p></div></article>
+      <article class="event"><div class="bg" style="background-image:url(img/photo-ice.jpg)"></div><div class="txt"><div class="season">WINTER</div><h3>層雲峡氷瀑まつり</h3><p>極寒にも対応するアパレルを展開</p></div></article>
+    </div>
+    <div class="partners">
+      <p class="partners-title">協業パートナー</p>
+      <div class="partner-row">
+        <div class="partner"><b>TSIホールディングス</b><span>アパレルPOPUP</span></div>
+        <div class="partner"><b>Columbia</b><span>アウトドアコラボ</span></div>
+        <div class="partner"><b>サツドラ</b><span>道内流通・インバウンド店舗</span></div>
+        <div class="partner"><b>No Limit</b><span>クラウドファンディング</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap">
+  <div class="wrap">
+    <div class="eyebrow">Roadmap</div>
+    <h2 class="h2">これからの3年間</h2>
+    <div class="road">
+      <div class="phase now"><div class="pin"></div><div class="when">2026 — 第1期<span class="now-tag">NOW</span></div><h3>基盤をつくる</h3><ul><li>文様の許諾体制づくり</li><li>第1弾プロダクトの試作</li><li>テストマーケティング</li></ul></div>
+      <div class="phase"><div class="pin"></div><div class="when">2027 — 第2期</div><h3>手仕事を届ける</h3><ul><li>アパレル本格ライン</li><li>フチの手刺繍シリーズ</li><li>ホテルでの取り扱い拡大</li></ul></div>
+      <div class="phase"><div class="pin"></div><div class="when">2028 — 第3期</div><h3>地域とともに自走する</h3><ul><li>エカシの木彫り×町産木材</li><li>パートナー企業との本格協業</li><li>継承基金の自立運用</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="wrap">
+    <div class="eyebrow">Team</div>
+    <h2 class="h2">つくっている人たち</h2>
+    <div class="team-grid">
+      <div class="member"><div class="avatar">竹</div><div><small>PRODUCE</small><b>竹内 達也</b><p>全体の構築とプロジェクトのプロデュース</p></div></div>
+      <div class="member"><div class="avatar">伊</div><div><small>DESIGN &amp; CULTURE</small><b>伊澤家の皆さま</b><p>文化体験・意匠化・三世代の架け橋</p></div></div>
+      <div class="member"><div class="avatar">小</div><div><small>DEVELOPMENT</small><b>小曽根 敦成</b><p>現場での開発と現地交渉</p></div></div>
+      <div class="member"><div class="avatar">立</div><div><small>PR &amp; PROMOTION</small><b>立石 貴久</b><p>現地での公開とプロモーション</p></div></div>
+      <div class="member"><div class="avatar org">協会</div><div><small>PARTNER</small><b>上川アイヌ協会</b><p>協力パートナー</p></div></div>
+      <div class="member"><div class="avatar org">P</div><div><small>PARTNER</small><b>一般社団法人ペニウンクル</b><p>協力パートナー</p></div></div>
+    </div>
+    <p class="operator">運営：一般社団法人 森の暮らし ／ 上川町地場産品ブランド化事業</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow center">Contact</div>
+      <h2 class="h2">一緒に、文化を未来へ。</h2>
+      <p class="lead">取り扱いや文様の使用を検討されている事業者の方、取材をご希望のメディアの方は、こちらからご連絡ください。</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card" href="#"><small>For Business</small><h3>文様の使用申請</h3><p>文様を使った商品づくりを検討されている事業者の方へ。</p><span>申請について</span></a>
+      <a class="contact-card" href="#"><small>Partnership</small><h3>お取り扱い・協業</h3><p>店舗、宿泊施設、企業の方からのご相談をお待ちしています。</p><span>相談する</span></a>
+      <a class="contact-card" href="#"><small>Press &amp; Others</small><h3>取材・その他</h3><p>メディアの方、そのほかのお問い合わせはこちら。</p><span>お問い合わせ</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#"><span class="brand-mark">源</span><span class="brand-name">ブランド名（仮）<small>KAMIKAWA · HOKKAIDO</small></span></a>
+        <p style="margin-top:20px">運営：一般社団法人 森の暮らし<br>上川町地場産品ブランド化事業</p>
+      </div>
+      <ul>
+        <li>ストーリー</li><li>文様と作り手</li><li>プロダクト</li><li>出会える場所</li><li>文様の取り扱いについて</li><li>お問い合わせ</li><li>プライバシーポリシー</li><li>Instagram</li>
+      </ul>
+    </div>
+    <details class="credits"><summary>写真クレジット（Wikimedia Commons）</summary><ul><li>トップ：<a href="https://commons.wikimedia.org/wiki/File:Asahi_Mountains_2011-06-25.jpg" target="_blank" rel="noopener">Asahi Mountains 2011-06-25.jpg</a> / Y-Kaki / <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a></li><li>ストーリー：<a href="https://commons.wikimedia.org/wiki/File:Japan_Hokkaido,_Sounkyo_gorge_02.jpg" target="_blank" rel="noopener">Japan Hokkaido, Sounkyo gorge 02.jpg</a> / Marie-Sophie Mejan / <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a></li><li>ストーリー：<a href="https://commons.wikimedia.org/wiki/File:Ishikari-River.Kamikawa-Sounkyo2022.JPG" target="_blank" rel="noopener">Ishikari-River.Kamikawa-Sounkyo2022.JPG</a> / RJD / <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a></li><li>ストーリー：<a href="https://commons.wikimedia.org/wiki/File:%E5%B1%A4%E9%9B%B2%E5%B3%BD_Sounkyo_-_panoramio.jpg" target="_blank" rel="noopener">層雲峽 Sounkyo - panoramio.jpg</a> / lienyuan lee / <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a></li><li>ストーリー：<a href="https://commons.wikimedia.org/wiki/File:Asahidake,_Daisetsuzan_Volcanic_Group_-_Asahidake6047.jpg" target="_blank" rel="noopener">Asahidake, Daisetsuzan Volcanic Group - Asahidake6047.jpg</a> / lumoplank / <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a></li><li>イベント：<a href="https://commons.wikimedia.org/wiki/File:Night_sky_over_Sounkyo_Canyon_(52266121468).jpg" target="_blank" rel="noopener">Night sky over Sounkyo Canyon (52266121468).jpg</a> / Big Ben in Japan from Kawasaki, Japan / <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener">CC BY-SA 2.0</a></li><li>イベント：<a href="https://commons.wikimedia.org/wiki/File:Souunkyouhyoubakumatsuri.jpg" target="_blank" rel="noopener">Souunkyouhyoubakumatsuri.jpg</a> / Outside147 / <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a></li><li>お問い合わせ：<a href="https://commons.wikimedia.org/wiki/File:%E7%A7%8B%E5%87%BD%EF%BC%88Autumn_in_valley%EF%BC%89_-_panoramio.jpg" target="_blank" rel="noopener">秋函（Autumn in valley） - panoramio.jpg</a> / pakku / <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a></li></ul><p>文様・樹のイラスト・町内マップ・レザータグ画像はブランド資料（PDF）より。テクスチャ・商品モックアップは本カンプ用に作成。</p></details>
+    <div class="copy"><span>© 2026 Mori no Kurashi</span><span>上川町地場産品ブランド化事業</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var h=document.querySelector('.site-header'), hero=document.querySelector('.hero');
+  var btn=document.querySelector('.menu-btn'), nav=document.querySelector('.nav');
+  function onScroll(){ h.classList.toggle('solid', window.scrollY > (hero ? hero.offsetHeight-90 : 40)); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  btn.setAttribute('aria-expanded','false');
+  btn.addEventListener('click', function(){
+    var o=nav.classList.toggle('open'); h.classList.toggle('menu-open',o); btn.setAttribute('aria-expanded', o?'true':'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); h.classList.remove('menu-open'); btn.setAttribute('aria-expanded','false'); }); });
+  var links={}; nav.querySelectorAll('a[href^="#"]').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && links[e.target.id]){ Object.values(links).forEach(function(l){l.classList.remove('active')}); links[e.target.id].classList.add('active'); } }); },{rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(links).forEach(function(id){ var s=document.getElementById(id); if(s) io.observe(s); });
+  }
+  document.querySelectorAll('a[href="#"]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); }); a.title='準備中'; });
+})();
+</script>
